@@ -13,16 +13,23 @@ basePath: "/"
 # Paths supported by the server application
 paths:
   # EXAMPLE OF PATH
-  /fruits:
-    get:
-      operationId: "fruit.fruit_bean.getFruits"
-      tags:
-        - "People"
+  /scraper:
+    post:
+      operationId: "api.scraper.berlusconi_vendor_list"
       summary: "The people data structure supported by the server application"
-      description: "Read the list of fruits"
+      consumes:
+        - application/form-data
+      
+      parameters:
+        - in:  formData
+          name: url
+          type: string
+          #schema:
+            
+      
       responses:
         200:
           description: "Successful read fruit list operation"
           schema:
-            type: "object"
+            type: boolean
 
