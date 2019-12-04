@@ -1,0 +1,28 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/"
+
+# Paths supported by the server application
+paths:
+  # EXAMPLE OF PATH
+  /fruits:
+    get:
+      operationId: "fruit.fruit_bean.getFruits"
+      tags:
+        - "People"
+      summary: "The people data structure supported by the server application"
+      description: "Read the list of fruits"
+      responses:
+        200:
+          description: "Successful read fruit list operation"
+          schema:
+            type: "object"
+
