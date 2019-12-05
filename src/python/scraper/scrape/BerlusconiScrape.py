@@ -5,6 +5,7 @@ from scraper.bean.Feedback import Feedback
 import datetime
 from datetime import datetime as dt
 from bs4 import BeautifulSoup
+import os
 
 class BerlusconiScrape(MarketScrape):
 
@@ -12,24 +13,30 @@ class BerlusconiScrape(MarketScrape):
         pass
 
 
-    def vendor_scrape(self, html_pages):
+    def vendor_scrape(self, url):
+        """
+        Extract info on vendor html page\n
+        Input: html pages -> 3 pages related to the vendor page\n
+        Return value: vendor
+        """
+
         format = "%Y-%m-%d"
 
-        """Extract info on vendor html page
-           Input: html pages -> 3 pages related to the vendor page
-           Return value: vendor"""
+        html_pages = self.getVendorTabs(url)
 
         if (len(html_pages) > 4):
             raise Exception("BerlusconiScrape exception: the lenght of html pages must be 4 or less")
-        
+
         url_profile_tab = html_pages[0]
         url_termcondition_tab = html_pages[1]
         url_pgp_tab = html_pages[2]
         url_feedback_tab = html_pages[3]
         
+        # WORKS ON LOCAL (open(...)). TO DO: ONLINE SUPPORT 
         soup_profile_tab = BeautifulSoup(open(url_profile_tab), "html.parser")
         soup_termcondition_tab = BeautifulSoup(open(url_termcondition_tab), "html.parser")
         soup_pgp_tab = BeautifulSoup(open(url_pgp_tab), "html.parser")
+
 
         # Vendor - Parsing rules
         vendor = Vendor()
@@ -72,7 +79,7 @@ class BerlusconiScrape(MarketScrape):
     def feedback_scrape(self, html_page):
         soup_feedback_tab = BeautifulSoup(open(html_page), "html.parser")
 
-        rating=None
+        rating = None
 
         feedbacks = []
 
@@ -108,3 +115,17 @@ class BerlusconiScrape(MarketScrape):
         
         return feedbacks
 
+    # STUB !!!!!!!!!!
+    def getVendorTabs(self, url):
+        """
+        This function takes 4 tabs from main url vendor page\n
+        Input: url page\n
+        Return: 4 tabs: profile, termcondition, pgp and feedback tabs
+        """
+
+        profile_tab = url
+        termcondition_tab = os.path.splitext(url)[0] + "&tab=2.htm" 
+        pgp_tab = os.path.splitext(url)[0] + "&tab=3.htm"
+        feedback_tab = os.path.splitext(url)[0] + "&tab=4.htm"
+
+        return profile_tab, termcondition_tab, pgp_tab, feedback_tab

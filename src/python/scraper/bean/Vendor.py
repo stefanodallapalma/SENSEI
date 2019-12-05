@@ -128,3 +128,28 @@ class Vendor:
     def feedback(self, value):
         """Set the feedback of the vendor in a list"""
         self._feedback = value
+
+
+    def to_string(self):
+        to_string = "Name: " + self.name
+        
+        i = 1
+        for rat in self.dream_market_rating:
+            to_string += "\nDream Market Rating " + str(i) + ": " + rat
+            i += 1
+        
+        to_string += "\nLast Seen: " + self.last_seen
+        to_string += "\nSince: " + self.since
+        to_string += "\nShips From: " + self.ships_from
+        
+        i = 1
+        for rat in self.rating:
+            to_string += "\nRating " + str(i) + ": " + rat
+            i += 1
+        
+        to_string += "\nOrder Finalized: " + self.orders_finalized
+        to_string += "\nFinalized Early: " + self.finalized_early
+        to_string += "\nProfile: " + self.profile
+        to_string += "\nTerms and Conditions: " + self.terms_conditions
+        
+        return to_string
