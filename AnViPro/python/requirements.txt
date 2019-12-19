@@ -1,0 +1,5 @@
+Packages to install
+
+connexion==2.5.1
+beautifulsoup4==4.8.1
+
