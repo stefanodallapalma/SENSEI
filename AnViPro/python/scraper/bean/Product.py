@@ -9,6 +9,16 @@ class Product:
     def timestamp(self, value):
         """Set timestamp"""
         self._timestamp = value
+
+    @property
+    def market(self):
+        """Darkweb Market"""
+        return self._market
+
+    @market.setter
+    def market(self, value):
+        """Set darkweb market"""
+        self._market = value
     
     
     @property
@@ -196,3 +206,34 @@ class Product:
     def feedback(self, value):
         """Set the feedback of the vendor in a list"""
         self._feedback = value
+
+
+    def __str__(self):
+        to_string = "Name: " + self.name
+        to_string += "\nCategory: " + self.category
+        to_string += "\nSubcategory: " + self.subcategory
+        to_string += "\nVendor: " + self.vendor
+        to_string += "\nEUR: " + str(self.price_eur)
+        to_string += "\nBTC: " + str(self.price_btc)
+        to_string += "\nStock: " + self.stock
+
+        i = 1
+        for option in self.shipping_options:
+            to_string += "\nShipping option " + str(i) + ": " + option
+            i += 1
+
+        to_string += "\nProduct class: " + self.product_class
+        to_string += "\nEscrow Type: " + self.escrow_type
+        to_string += "\nShips From: " + self.ships_from
+
+        i = 1
+        for to in self.ships_to:
+            to_string += "\nShips To " + str(i) + ": " + to
+            i += 1
+
+        to_string += "\nItems sold: " + str(self.items_sold)
+        to_string += "\nOrders sold since: " + str(self.orders_sold_since)
+        to_string += "\nDetails: " + self.details
+        to_string += "\nTerms and conditions: " + self.terms_and_conditions
+
+        return to_string

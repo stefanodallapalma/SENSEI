@@ -1,5 +1,8 @@
 from scraper.MarketScrape import MarketScrape
 from scraper.bean.Vendor import Vendor
+from scraper.rules.VendorRules import VendorRules
+from scraper.bean.Product import Product
+from scraper.rules.ProductRules import ProductRules
 from scraper.bean.Feedback import Feedback
 from datetime import datetime as dt
 from bs4 import BeautifulSoup
@@ -7,69 +10,66 @@ import os
 
 class BerlusconiScrape(MarketScrape):
 
-    def product_scrape(self, html_pages):
-        pass
-
-
-    def vendor_scrape(self, url):
+    def product_scrape(self, html_page):
         """
         Extract info on vendor html page\n
-        Input: html pages -> 3 pages related to the vendor page\n
-        Return value: vendor
+        Input: html page class\n
+        Return value: product extracted
         """
 
-        format = "%Y-%m-%d"
+        productRules = ProductRules(html_page)
 
-        html_pages = self.getVendorTabs(url)
+        product = Product()
 
-        if (len(html_pages) > 4):
-            raise Exception("BerlusconiScrape exception: the lenght of html pages must be 4 or less")
+        product.timestamp = html_page.timestamp
+        product.market = html_page.marketplace.name
 
-        url_profile_tab = html_pages[0]
-        url_termcondition_tab = html_pages[1]
-        url_pgp_tab = html_pages[2]
-        url_feedback_tab = html_pages[3]
-        
-        # WORKS ON LOCAL (open(...)). TO DO: ONLINE SUPPORT 
-        soup_profile_tab = BeautifulSoup(open(url_profile_tab), "html.parser")
-        soup_termcondition_tab = BeautifulSoup(open(url_termcondition_tab), "html.parser")
-        soup_pgp_tab = BeautifulSoup(open(url_pgp_tab), "html.parser")
+        product.name = productRules.name()
+        product.product_class = productRules.product_class()
+        product.category = productRules.category()
+        product.subcategory = productRules.subcategory()
+        product.vendor = productRules.vendor()
+        product.price_eur = productRules.price_eur()
+        product.price_btc = productRules.price_btc()
+        product.stock = productRules.stock()
+        product.shipping_options = productRules.shipping_options()
+        product.escrow_type = productRules.escrow_type()
+        product.ships_from = productRules.ships_from()
+        product.ships_to = productRules.ships_to()
+        product.items_sold = productRules.items_sold()
+        product.orders_sold_since = productRules.orders_sold_since()
+        product.details = productRules.details()
+        product.terms_and_conditions = productRules.terms_and_conditions()
+
+        return product
 
 
-        # Vendor - Parsing rules
+    def vendor_scrape(self, html_page):
+        """
+        Extract info on vendor html page\n
+        Input: html page class\n
+        Return value: vendor extracted
+        """
+
+        vendorRules = VendorRules(html_page)
+
         vendor = Vendor()
 
-        vendor.name = soup_profile_tab.find('h1').text.strip().split()[0]
+        vendor.timestamp = html_page.timestamp
+        vendor.market = html_page.marketplace.name
 
-        positive = soup_profile_tab.find('a',{'style':'color:#41ad41;'}).text
-        negative = soup_profile_tab.find('a',{'style':'color:red;'}).text
-        vendor.dream_market_rating = [positive,negative]
-        
-        date = str(soup_profile_tab.find("i", {"class": "fa-feed"}).next_sibling.strip()[12:22])
-        vendor.last_seen = dt.strptime(date, format).isoformat()
-
-        date = str(soup_profile_tab.find("i", {"class": "fa-user"}).next_sibling.strip()[15:25])
-        vendor.since = dt.strptime(date, format).isoformat()
-
-        vendor.ships_from = soup_profile_tab.find("i", {"class": "fa fa-cube"}).next_sibling.strip()[13:]
-        
-        positive = str(soup_profile_tab.find("strong", {"style": "font-size:15px;"}).text)
-        neutral = soup_profile_tab.find_all("strong", {"style": "font-size:15px;"})[1].text
-        negative = soup_profile_tab.find_all("strong", {"style": "font-size:15px;"})[2].text
-        vendor.rating = [positive, neutral, negative]
-        
-        vendor.orders_finalized = soup_profile_tab.find("strong",{"style":"font-size:15px;"}).text
-
-        subsoup=soup_profile_tab.findAll('div',{'class':'col-md-4 text-center'})[1]
-        vendor.finalized_early = subsoup.find('strong',{'style':"font-size:15px;"}).text
-
-        vendor.profile = soup_profile_tab.find_all('div',{'class':'row'})[2].find_all('p')[10].text
-        
-        vendor.terms_conditions = soup_termcondition_tab.find_all('div',{'class':'row'})[2].find_all('p')[10].text
-        
-        vendor.pgp = soup_pgp_tab.find_all('div',{'class':'row'})[2].find_all('p')[10].text
-
-        vendor.feedback = self.feedback_scrape(url_feedback_tab)
+        vendor.name = vendorRules.name()
+        vendor.dream_market_rating = vendorRules.dream_market_rating()
+        vendor.last_seen = vendorRules.last_seen()
+        vendor.since = vendorRules.since()
+        vendor.ships_from = vendorRules.ships_from()
+        vendor.rating = vendorRules.rating()
+        vendor.orders_finalized = vendorRules.orders_finalized()
+        vendor.finalized_early = vendorRules.finalized_early()
+        vendor.profile = vendorRules.profile()
+        vendor.terms_conditions = vendorRules.terms_conditions()
+        vendor.pgp = vendorRules.pgp()
+        #vendor.feedback = self.feedback_scrape(url_feedback_tab)
 
         return vendor
 
@@ -97,7 +97,7 @@ class BerlusconiScrape(MarketScrape):
             new_feedback.message = feedback.find_all('td')[1].text
             
             # Buyer feedback
-            new_feedback.buyer = feedback.find_all('td')[2].text[:-6]
+            new_feedback.buyer = feedback.find_all('td')[2].text
             
             # find order count
             count = feedback.find_all('td')[2].text
@@ -127,3 +127,18 @@ class BerlusconiScrape(MarketScrape):
         feedback_tab = os.path.splitext(url)[0] + "&tab=4.htm"
 
         return profile_tab, termcondition_tab, pgp_tab, feedback_tab
+
+
+    # STUB !!!!!!!!!!
+    def getProductTabs(self, url):
+        """
+        This function takes 4 tabs from main url vendor page\n
+        Input: url page\n
+        Return: 4 tabs: profile, termcondition, pgp and feedback tabs
+        """
+
+        profile_tab = url
+        termcondition_tab = os.path.splitext(url)[0] + "&tab=2.htm"
+        feedback_tab = os.path.splitext(url)[0] + "&tab=3.htm"
+
+        return profile_tab, termcondition_tab, feedback_tab

@@ -9,6 +9,16 @@ class Vendor:
     def timestamp(self, value):
         """Set timestamp"""
         self._timestamp = value
+
+    @property
+    def market(self):
+        """Darkweb Market"""
+        return self._market
+
+    @market.setter
+    def market(self, value):
+        """Set darkweb market"""
+        self._market = value
     
     
     @property
@@ -141,12 +151,12 @@ class Vendor:
         self._feedback = value
 
 
-    def to_string(self):
+    def __str__(self):
         to_string = "Name: " + self.name
         
         i = 1
         for rat in self.dream_market_rating:
-            to_string += "\nDream Market Rating " + str(i) + ": " + rat
+            to_string += "\nDream Market Rating " + str(i) + ": " + str(rat)
             i += 1
         
         to_string += "\nLast Seen: " + self.last_seen
@@ -155,10 +165,10 @@ class Vendor:
         
         i = 1
         for rat in self.rating:
-            to_string += "\nRating " + str(i) + ": " + rat
+            to_string += "\nRating " + str(i) + ": " + str(rat)
             i += 1
         
-        to_string += "\nOrder Finalized: " + self.orders_finalized
+        to_string += "\nOrder Finalized: " + str(self.orders_finalized)
         to_string += "\nFinalized Early: " + self.finalized_early
         to_string += "\nProfile: " + self.profile
         to_string += "\nTerms and Conditions: " + self.terms_conditions
