@@ -16,12 +16,11 @@ $(document).ready(function() {
                 alert("Success!"); 
             },
             
-        });/*).done(function() {
-            alert( "success" );
-        }).fail(function(xhr, status, error) {
-            alert(xhr.responseText);
-            alert(status);
-            alert(error);
-        });*/
-    }); 
+        });
+    });
+
+    $("#btn_add_page").click(function() {
+        var page_block = $("#div_page_block").html();
+        $("#page_section").append(page_block)
+    });
 });

@@ -85,3 +85,8 @@ def load_data():
 
 
     return True
+
+def load_single_data():
+    category = request.files["category"]
+    marketplace = request.files["marketplace"]
+    
