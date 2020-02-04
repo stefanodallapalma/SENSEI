@@ -1,0 +1,37 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/resource"
+
+schemes:
+  - "https"
+  - "http"
+
+
+paths:
+  /get_html_folders:
+    post:
+      operationId: "api.resource.get_html_resource_folders.get_htmp_page_folders"
+      summary: "This function returns all resource folders containing html files"
+      produces:
+        - "application/json"
+
+
+      responses:
+        200:
+          description: A list of all html folders
+          schema:
+            type: boolean
+        400:
+          description: aaa
+          schema:
+            type: boolean
+
+

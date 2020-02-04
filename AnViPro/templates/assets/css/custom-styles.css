@@ -111,7 +111,7 @@ padding-bottom: 9px;
 margin: 10px 0 20px;
 border-bottom: 1px solid transparent;
 }
-.panel-left{  
+.panel-left{
 width: 35%;
 height: 158px;
 background: #5CB85C;
@@ -122,14 +122,14 @@ color: rgba(255, 255, 255, 0.15);
 padding: 40px 0;
 margin-bottom:30px;
 }
-.panel-right{ 
+.panel-right{
 width: 65%;
 height: 158px;
 background: transparent;
 margin-bottom: 0;
 color: #fff;
 }
-.panel-right h3{  
+.panel-right h3{
 font-size: 50px;
 padding: 31px 10px 13px;
 color: rgba(255, 255, 255, 0.96);

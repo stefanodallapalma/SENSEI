@@ -150,6 +150,8 @@ class AnViProDB:
 
         self._mysqlDB.insert_many(sql, values)
 
+    def insertSonaqube(self, sonarqube):
+        pass
 
     def list_to_string(self, elements):
         to_string = ""

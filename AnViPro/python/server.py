@@ -7,6 +7,7 @@ app = connexion.App(__name__, specification_dir='./')
 
 # Read the swagger.yml file to configure the endpoints
 app.add_api('swagger.yml')
+app.add_api('resources.yml')
 
 
 if __name__ == "__main__":

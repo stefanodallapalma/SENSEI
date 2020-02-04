@@ -1,31 +1,37 @@
 $(document).ready(function() {
-    $("#dataZipFile").click(function() {
-        alert("CLICK")
-    });
-    
-    //$("#uploadForm").on('click', '#btn_zip_submit', function () {
     $("#btn_zip_submit").click(function() {
-        alert("AAA");
-        var fd = new FormData(); 
-        var zipFile = $('#dataZipFile').val(); 
-        fd.append('zipFile', zipFile); 
-        alert(fd);
+        var fd = new FormData($('#uploadForm')[0]);
+        //var zipFile = $('#dataZipFile').val();
+        //fd.append('zipFile', zipFile);
 
         $.ajax({
-            //url: 'http://0.0.0.0:5000/upload',
-            url: '/upload', 
-            type: 'post', 
-            data: fd, 
-            contentType: false, 
-            processData: false, 
-            success: function(response){ 
-                if(response != 0){ 
-                   alert('file uploaded');
-                } 
-                else{ 
-                    alert('file not uploaded'); 
-                } 
-            }, 
-        }); 
-    }); 
+            url: 'http://0.0.0.0:5000/load',
+            //url: '/upload',
+            type: 'post',
+            data: fd,
+            contentType: false,
+            cache: false,
+            processData: false,
+            /*success: function(response){
+                alert("Success!");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(textStatus);
+                alert(errorThrown);
+            }*/
+
+        }).done(function (response) {
+            alert("Success!");
+        }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status);
+            alert(textStatus);
+            alert(errorThrown);
+        });
+    });
+
+    $("#btn_add_page").click(function() {
+        var page_block = $("#div_page_block").html();
+        $("#page_section").append(page_block)
+    });
 });

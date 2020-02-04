@@ -82,8 +82,6 @@ def load_data():
     db.insertProducts(products)
     print("PRODUCTS SAVED")
 
-
-
     return True
 
 def load_single_data():
