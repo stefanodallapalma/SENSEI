@@ -1,3 +1,4 @@
+from flask import Response
 import os
 
 html_page_path = "../resources/html_pages/"
@@ -10,6 +11,6 @@ def get_htmp_page_folders():
             print(name)
             folders.append(name)
 
-    return True
+    return folders
 
 

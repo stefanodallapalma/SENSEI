@@ -321,27 +321,24 @@
                         <!-- NEW RESOURCE SECTION -->
                         <div class="panel panel-default">
                             <div class="col-md-12">
-                                <form action="" id="new_resource_form" method="post">
-                                    <div class="form-group">
-                                        <h4>New resource folder</h4>
-                                    </div>
+                                <div class="form-group">
+                                    <h4>New resource folder</h4>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label>Resource folder name</label>
-                                        <input type="text" id="resource_folder_name">
-                                    </div>
+                                <div class="form-group">
+                                    <label>Resource folder name</label>
+                                    <input type="text" id="resource_folder_name">
+                                </div>
 
-                                    <div class="form-group">
-                                        <label>Html zip/rar file</label>
-                                        <input type="file">
-                                        <small>All html pages must be compressed inside a rar/zip file</small>
-                                    </div>
+                                <div class="form-group">
+                                    <label>Html zip/rar file</label>
+                                    <input type="file">
+                                    <small>All html pages must be compressed inside a rar/zip file</small>
+                                </div>
 
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-default" id="btn_sq_newres">Send</button>
-                                    </div>
-                                </form>
-
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default" id="btn_sq_newres">Send</button>
+                                </div>
                             </div>
                         </div>
 
@@ -354,7 +351,7 @@
 
                                 <div class="form-group">
                                     <label>Selects</label>
-                                    <select>
+                                    <select id="resource_folders_list">
 
                                     </select>
                                 </div>
@@ -381,7 +378,7 @@
     </div>
 
     <!-- JS Scripts-->
-    <script src="js/sectionHandler.js"></script>
+    <script type="text/javascript" src="js/sectionHandler.js"></script>
     
 </body>
 </html>

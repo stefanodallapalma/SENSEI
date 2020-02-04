@@ -21,17 +21,14 @@ paths:
       operationId: "api.resource.get_html_resource_folders.get_htmp_page_folders"
       summary: "This function returns all resource folders containing html files"
       produces:
-        - "application/json"
-
+        - "text/plain"
 
       responses:
         200:
           description: A list of all html folders
           schema:
-            type: boolean
-        400:
-          description: aaa
-          schema:
-            type: boolean
+            type: array
+            items:
+              type: string
 
 
