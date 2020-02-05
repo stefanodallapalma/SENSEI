@@ -1,3 +1,5 @@
+import os
+
 def get_dict_from_file(path):
     file = open(path, 'r')
 
@@ -7,4 +9,3 @@ def get_dict_from_file(path):
         parameters[split[0].lstrip()] = split[1].rstrip()
 
     return parameters
-

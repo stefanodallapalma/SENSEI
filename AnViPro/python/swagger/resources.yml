@@ -18,7 +18,7 @@ schemes:
 paths:
   /get_html_folders:
     post:
-      operationId: "api.resource.get_html_resource_folders.get_htmp_page_folders"
+      operationId: "api.resource.get_html_resource_folders.get_html_page_folders"
       summary: "This function returns all resource folders containing html files"
       produces:
         - "text/plain"

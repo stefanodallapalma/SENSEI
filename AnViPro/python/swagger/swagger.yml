@@ -36,29 +36,9 @@ paths:
             type: boolean
 
 
-  
 
-  /load:
-    post:
-      operationId: "api.load.load_data"
-      summary: "The people data structure supported by the server application"
-      consumes:
-        - "multipart/form-data"
-      produces:
-        - "application/json"
-      
-      parameters:
-        - in:  formData
-          name: file
-          required: true
-          type: file
-          
-      
-      responses:
-        200:
-          description: "Successful read fruit list operation"
-          schema:
-            type: boolean
+
+
 
       
 

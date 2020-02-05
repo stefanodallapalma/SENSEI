@@ -1,16 +1,16 @@
-from flask import Response
+from flask import Response, json
 import os
 
 html_page_path = "../resources/html_pages/"
 
-def get_htmp_page_folders():
-    folders = []
+def get_html_page_folders():
+    folders = os.listdir(html_page_path)
 
-    for root, dirs, files in os.walk(html_page_path):
-        for name in dirs:
-            print(name)
-            folders.append(name)
+    json_return = json.dumps(folders)
+    status_code = 200
 
-    return folders
+    resp = Response(response=json_return, status=status_code, mimetype="application/json")
+
+    return resp
 
 

@@ -20,7 +20,6 @@
 
     <!-- jQuery Js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
 </head>
 
 <body id="data_handle_body">
@@ -321,40 +320,54 @@
                         <!-- NEW RESOURCE SECTION -->
                         <div class="panel panel-default">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <h4>New resource folder</h4>
-                                </div>
+                                <form action="" method="post" id="sq_new_load_data_form">
+                                    <div class="form-group">
+                                        <h4>New resource folder</h4>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label>Resource folder name</label>
-                                    <input type="text" id="resource_folder_name">
-                                </div>
+                                    <div class="form-group">
+                                        <label>Resource folder name</label>
+                                        <input type="text" name="resource_folder_name" id="resource_folder_name">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label>Html zip/rar file</label>
-                                    <input type="file">
-                                    <small>All html pages must be compressed inside a rar/zip file</small>
-                                </div>
+                                    <div class="form-group">
+                                        <label>Html zip/rar file</label>
+                                        <input type="file" name="sq_zip_html_pages" id="sq_new_zip_html_pages">
+                                        <small>All html pages must be compressed inside a rar/zip file</small>
+                                    </div>
 
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-default" id="btn_sq_newres">Send</button>
-                                </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default" id="btn_sq_newres">Send</button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
 
-                        <!-- ADD INTO SECTIOn -->
+                        <!-- RESOURCE SECTION -->
                         <div class="panel panel-default">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <h4>Add pages into a resource already created</h4>
-                                </div>
+                                <form action="" method="post" id="sq_load_data_form">
+                                    <div class="form-group">
+                                        <h4>Add pages into a resource already created</h4>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label>Selects</label>
-                                    <select id="resource_folders_list">
+                                    <div class="form-group" id="add_pages_block">
+                                        <label>Select resource folder</label>
+                                        <select name="resource_folders_list" id="resource_folders_list"></select>
+                                    </div>
 
-                                    </select>
-                                </div>
+                                    <div class="form-group">
+                                        <label>Html zip/rar file</label>
+                                        <input type="file" name="sq_zip_html_pages" id="sq_zip_html_pages">
+                                        <small>All html pages must be compressed inside a rar/zip file</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-default" id="btn_sq_res">Send</button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -363,9 +376,27 @@
                     <!-- DELETE SECTION -->
                     <div id="delete_div" style="display: none;">
                         <div class="col-md-12">
-                            <h4>Delete list</h4>
-                            <label>Text Input</label>
-                            <input type="text">
+                            <h4>Resource folder list</h4>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" value="" id="select-all"></label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">Checkbox 1
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">Checkbox 2
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">Checkbox 3
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -379,6 +410,7 @@
 
     <!-- JS Scripts-->
     <script type="text/javascript" src="js/sectionHandler.js"></script>
+    <script type="text/javascript" src="js/upload.js"></script>
     
 </body>
 </html>
