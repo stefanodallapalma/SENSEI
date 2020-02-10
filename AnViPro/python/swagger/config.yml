@@ -24,20 +24,45 @@ paths:
       parameters:
         - in:  formData
           name: host
-          required: true
+          required: false
           type: string
         - in:  formData
           name: port
-          required: true
+          required: false
           type: string
         - in:  formData
           name: token
+          required: false
+          type: string
+        - in:  formData
+          name: source
           required: true
+          type: string
+        - in:  formData
+          name: user
+          required: false
+          type: string
+        - in:  formData
+          name: password
+          required: false
           type: string
 
 
       responses:
         200:
           description: "Configuration setup completed"
+          schema:
+            type: boolean
+
+  /sonarscanner-setup:
+    post:
+      operationId: "api.endpoints.conf.sonarscanner_setup.setup"
+      summary: "Endpoint used to configure sonarscanner"
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Sonarscanner configuration setup completed"
           schema:
             type: boolean

@@ -63,3 +63,26 @@ paths:
           description: "Successful zip file sent"
           schema:
             type: boolean
+
+  /delete-projects:
+    post:
+      operationId: "api.endpoints.data.delete_projects.delete"
+      summary: "Endpoint to delete a list of projects sent by input)"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_list
+          required: false
+          type: array
+          items:
+            type: string
+
+      responses:
+        200:
+          description: "Projects deleted successfully"
+          schema:
+            type: boolean

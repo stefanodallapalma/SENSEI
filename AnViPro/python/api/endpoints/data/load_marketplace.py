@@ -1,8 +1,7 @@
 from flask import request, Response, json
 from zipfile import ZipFile
-import os
+import os, shutil
 from os.path import join
-import shutil
 
 from html_pages.utils.HtmlPageUtils import get_html_pages
 from html_pages.bean.Category import Category
