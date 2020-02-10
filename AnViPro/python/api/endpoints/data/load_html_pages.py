@@ -8,11 +8,13 @@ import subprocess
 from sonar.bean.SonarqubeParameters import SonarqubeParameters
 import utils.SonarqubeUtils as sq_utils
 import sonar.SonarqubeAPI as sqAPI
+import shutil
 
 from exception import DuplicateProjectNameException, DuplicateProjectKeyException
 
 html_pages_path = "../resources/html_pages/"
 zip_name = "tmpZip.zip"
+scannerwork_folder_name = ".scannerwork"
 
 
 def load_data():
@@ -85,8 +87,19 @@ def load_data():
     if project_key is None:
         return Response(json.dumps("No Project key found for the current project"), status=400, mimetype="application/json")
 
-    #subprocess.run("sonar-scanner", "-Dsonar.projectKey=" + project_key, "-Dsonar.sources=" + source,
-    #               "-Dsonar.host.url=" + sonarqubeParameters.url, "-Dsonar.login=" + sonarqubeParameters.token)
+    command = []
+    command.append("sonar-scanner")
+    command.append("-Dsonar.projectKey=" + project_key)
+    command.append("-Dsonar.sources=.")
+    command.append("-Dsonar.host.url=" + sonarqubeParameters.url)
+    command.append("-Dsonar.login=" + sonarqubeParameters.token)
+
+    process = subprocess.Popen(command, cwd=source)
+    process.wait()
+    
+    # Delete sonar scanner tmp folder
+    scannerwork_path = source + "/" + scannerwork_folder_name
+    shutil.rmtree(scannerwork_path)
 
     return Response(json.dumps("Operation successful"), status=200, mimetype="application/json")
 
