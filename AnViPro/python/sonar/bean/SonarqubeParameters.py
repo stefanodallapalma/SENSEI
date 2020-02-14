@@ -60,12 +60,12 @@ class SonarqubeParameters:
         self._data["password"] = password
 
     @property
-    def projectKeys(self):
-        return self._data["projectKeys"]
+    def projects(self):
+        return self._data["projects"]
 
-    @projectKeys.setter
-    def projectKeys(self, projectKeys):
-        self._data["projectKeys"] = projectKeys
+    @projects.setter
+    def projects(self, projects):
+        self._data["projects"] = projects
 
     def __str__(self):
         return_str = ""
@@ -75,6 +75,6 @@ class SonarqubeParameters:
         return_str += "USER: " + self.user + "\n"
         return_str += "PASSWORD: " + self.password + "\n"
         return_str += "TOKEN: " + self.token + "\n"
-        return_str += "PROJECT KEYS: " + str(self.projectKeys)
+        return_str += "PROJECTS: " + str(self.projects)
 
         return return_str

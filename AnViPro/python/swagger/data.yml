@@ -12,9 +12,9 @@ basePath: "/v1/data"
 
 # Paths supported by the server application
 paths:
-  /load-html-files:
+  /load-new-html-files:
     post:
-      operationId: "api.endpoints.data.load_html_pages.load_data"
+      operationId: "api.endpoints.data.load_html_pages.load_new_data"
       summary: "Endpoint used to load a zip containing html pages"
       consumes:
         - "multipart/form-data"
@@ -28,13 +28,8 @@ paths:
           type: file
         - in:  formData
           name: resource_folder_name
-          required: false
+          required: true
           type: string
-        - in:  formData
-          name: resource_folders_list
-          required: false
-          type: string
-
 
       responses:
         200:

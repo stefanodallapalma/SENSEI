@@ -1,6 +1,6 @@
 from flask import request, Response, json
 import utils.SonarqubeUtils as sq_utils
-import sonar.SonarqubeAPI as sq_api
+import sonar.SonarqubeAPIController as sq_api_controller
 import shutil
 from os.path import join
 import random
@@ -31,11 +31,11 @@ def delete():
             print("Project to delete: " + project)
             print("Project key: " + project_key)
 
-            delete_response = sq_api.delete_project(project_key)
+            delete_response = sq_api_controller.delete_project(project_key)
             print("Delete response status code: " + str(delete_response.status_code))
 
             if 400 <= delete_response.status_code < 500:
-                return Response(json.dumps(delete_response.json()), status = delete_response.status_code, mimetype="application/json")
+                print(str(sq_api_controller.get_content(delete_response)))
 
             # Remove the project key from the sonarqube json
             sq_utils.delete_project(project)

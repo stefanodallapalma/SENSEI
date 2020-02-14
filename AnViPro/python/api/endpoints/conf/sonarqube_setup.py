@@ -22,7 +22,7 @@ def setup():
         # TO DO
         return Response(json.dumps("INTERNAL SONARQUBE CONFIGURATION NOT BEEN AVAILABLE"), status=400, mimetype="application/json")
 
-    sonarqube_dict["projectKeys"] = {}
+    sonarqube_dict["projects"] = {}
 
     with open(sonarqube_setup_path, 'w') as outfile:
         json.dump(sonarqube_dict, outfile)

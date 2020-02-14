@@ -16,6 +16,7 @@ def create_project(name, project_key):
 
     return response
 
+
 def delete_project(project_key):
     api_url = "/api/projects/delete"
 
@@ -34,3 +35,37 @@ def delete_project(project_key):
 
     return response
 
+
+def measures(project_key, metric_normalized, page_number = 0):
+    api = "/api/measures/component_tree"
+
+    sonarqube_parameters = properties()
+
+    url = sonarqube_parameters.url + api + "?metricKeys=" + metric_normalized + "&component=" + project_key
+    if page_number > 0:
+        url += "&p=" + str(page_number)
+
+    response = requests.get(url)
+
+    return response
+
+
+def task_list(project_key):
+    api = "/api/ce/component"
+
+    sonarqube_parameters = properties()
+    url = sonarqube_parameters.url + api + "?component=" + project_key
+
+    response = requests.get(url)
+
+    return response
+
+def metric_list():
+    api = "/api/metrics/search"
+
+    sonarqube_parameters = properties()
+    url = sonarqube_parameters.url + api
+
+    response = requests.get(url)
+
+    return response
