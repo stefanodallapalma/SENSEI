@@ -21,14 +21,15 @@ def metrics():
         return Response(json.dumps(msg), status=400, mimetype="application/json")
 
     # Check if there are any background tasks to this project with a status different from "SUCCESS"
-    """project_tasks = sq_api.task_list(project_key).json()
-    if "queue" in project_tasks:
-        queues = project_tasks["queue"]
+    project_tasks = sq_api_controller.task_list(project_key)
+    project_tasks_content = sq_api_controller.get_content(project_tasks)
+    if "queue" in project_tasks_content:
+        queues = project_tasks_content["queue"]
         for queue in queues:
             if queue["status"] != "SUCCESS":
                 msg = "msg: Metrics not been processed. Please, wait. status task: " + queue["status"]
                 return Response(json.dumps(msg), status=400, mimetype="application/json")
-"""
+
     # The api accepts only 15 metrics for call
     sub_metric_lists = array_split(metric_list, LIMIT_METRICS_API)
 
@@ -40,7 +41,6 @@ def metrics():
         print("Metric list to process: " + metric_normalized)
 
         response = sq_api_controller.measures(project_key, metric_normalized)
-        return Response(json.dumps("OK"), status=200, mimetype="application/json")
 
         number_html_pages = sq_api_controller.get_content(response)["paging"]["total"]
         max_pages = number_of_pages(number_html_pages, MAX_ELEMENTS_FOR_PAGE)
@@ -63,15 +63,6 @@ def metrics():
                     if html_list[index]["Name"] == file_name:
                         metric_dict = html_list.pop(index)
                         break
-
-                '''if not any(d["Name"] == file_name for d in html_list):
-                    metric_dict["Name"] = file_name
-                else:
-                    for d in html_list:
-                        if d["Name"] == file_name:
-                            metric_dict = d
-                            html_list.remove(d)
-                            break'''
 
                 metrics = component["measures"]
                 for metric in metrics:

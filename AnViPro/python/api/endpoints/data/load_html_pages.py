@@ -4,6 +4,7 @@ from os.path import join, isfile
 from zipfile import ZipFile
 import string
 import random
+from utils.ListUtils import array_split
 import utils.SonarqubeUtils as sq_utils
 import sonar.SonarqubeAPIController as sq_api_controller
 from sonar.SonarscannerController import run_sonarscanner as scanner
@@ -14,6 +15,7 @@ from exception.NoProjectException import NoProjectException
 html_pages_path = "../resources/html_pages/"
 zip_name = "tmpZip.zip"
 scannerwork_folder_name = ".scannerwork"
+jsonbuffer_name = "infoBuffer.json"
 
 MAX_PROJECT_SIZE = 100
 
@@ -51,11 +53,15 @@ def load_new_data():
     onlyfiles = [f for f in os.listdir(resource_folder_path) if isfile(join(resource_folder_path, f))]
     count = len(onlyfiles)
 
+    # Create the json with the information of each subproject
+    output_infojson = resource_folder_path + os.path.sep + name + "_" + jsonbuffer_name
+    add_json_buffer(onlyfiles, output_infojson, MAX_PROJECT_SIZE)
+
     # Generate a new project key for this project
     while project_key is None:
         try:
             key_length = random.randint(10, 51)
-            project_key = randomString(key_length)
+            project_key = random_string(key_length)
         except DuplicateProjectNameException:
             project_key = None
         except DuplicateProjectKeyException:
@@ -77,7 +83,20 @@ def load_new_data():
     return Response(json.dumps("Operation successful"), status=200, mimetype="application/json")
 
 
-def randomString(stringLength=10):
+def random_string(stringLength=10):
     """Generate a random string of fixed length """
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
+
+
+def add_json_buffer(files, output_file, buffer_size):
+    json_buffer = {}
+    buffers = array_split(files, buffer_size)
+
+    i = 1
+    for buffer in buffers:
+        json_buffer[i] = buffer
+        i += 1
+
+    with open(output_file, 'w') as outfile:
+        json.dump(json_buffer, outfile)

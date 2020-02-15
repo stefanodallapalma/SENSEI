@@ -2,10 +2,12 @@ import utils.SonarqubeUtils as sq_utils
 import shutil
 import os
 import subprocess
+import json
 from os.path import isfile, join
 from utils.ListUtils import array_split
 
 scannerwork_folder_name = ".scannerwork"
+jsonbuffer_name = "infoBuffer.json"
 
 def run_sonarscanner(project_key, project_path):
     sonarqubeParameters = sq_utils.get_sonarqube_properties()
@@ -18,18 +20,20 @@ def run_sonarscanner(project_key, project_path):
     command.append("-Dsonar.ce.javaOpts=-Xmx2048m")
 
     project = sq_utils.get_project("Key", project_key)
-    buffer_size = project["ProjectSize"]
 
     # Create new tmp dir for sonarscanner process
     tmp_path = project_path + os.path.sep + "tmp"
     os.mkdir(tmp_path)
 
-    # Get a list of all files in the project directory
-    onlyfiles = [f for f in os.listdir(project_path) if isfile(join(project_path, f))]
-    buffers = array_split(onlyfiles, buffer_size)
+    # Get a list of all buffers and html files
+    json_path = project_path + os.path.sep + project["Name"] + "_" + jsonbuffer_name
+    with open(json_path) as json_file:
+        json_buffer = json.loads(json_file.read())
 
-    i = 1
-    for buffer in buffers:
+    for i in range(len(json_buffer)):
+        buffer = json_buffer[str(i+1)]
+        print(str(buffer))
+
         # Copy all buffer's files into tmp dir
         for file in buffer:
             file_path = project_path + os.path.sep + file
@@ -37,7 +41,7 @@ def run_sonarscanner(project_key, project_path):
             shutil.copy(file_path, new_file_path)
 
         # Run sonar scanner
-        command.append("-Dsonar.projectKey=" + project_key + "_" + str(i))
+        command.append("-Dsonar.projectKey=" + project_key + "_" + str(i+1))
         process = subprocess.Popen(command, cwd=tmp_path)
         process.wait()
 
@@ -45,8 +49,6 @@ def run_sonarscanner(project_key, project_path):
         for file in buffer:
             file_path = tmp_path + os.path.sep + file
             os.remove(file_path)
-
-        i += 1
 
     # Delete tmp folder
     shutil.rmtree(tmp_path)

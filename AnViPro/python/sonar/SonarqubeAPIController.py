@@ -13,7 +13,9 @@ def create_project(name, project_key):
 
     total_files = project["TotalFiles"]
     project_size = project["ProjectSize"]
-    project_numbers = (total_files // project_size) + 1
+    project_numbers = total_files // project_size
+    if (total_files % project_size) > 0:
+        project_numbers += 1
 
     final_response = None
     for i in range(project_numbers):
@@ -72,8 +74,6 @@ def measures(project_key, metric_normalized, page_number=1):
 
     missed_projects = []
     for i in range(project_numbers):
-        print(str(i+1))
-
         new_project_key = project_key + "_" + str(i+1)
         response = sq_api.measures(new_project_key, metric_normalized, page_number)
         response_json = response.json()
@@ -102,15 +102,29 @@ def task_list(project_key):
 
     total_files = project["TotalFiles"]
     project_size = project["ProjectSize"]
-    project_numbers = (total_files // project_size) + 1
 
-    responses = []
+    project_numbers = total_files // project_size
+    if (total_files % project_size) > 0:
+        project_numbers += 1
+
+    queues = []
+    currents = []
+    final_content = {}
     for i in range(project_numbers):
         new_project_key = project_key + "_" + str(i + 1)
         response = sq_api.task_list(new_project_key)
-        responses.append(response)
+        content = response.json()
 
-    return responses
+        if "queue" in content:
+            queues += content["queue"]
+        if "current" in content:
+            currents.append(content["current"])
+        final_content = content
+
+    final_content["queue"] = queues
+    final_content["current"] = currents
+
+    return Response(json.dumps(final_content), status=200, mimetype="application/json")
 
 
 def metric_list():

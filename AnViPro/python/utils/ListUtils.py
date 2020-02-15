@@ -10,7 +10,9 @@ def array_split(array, size_of_array):
     sub_arrays = np.array_split(array, subarray_numbers)
 """
     sub_arrays = []
-    partion_numbers = int(len(array) / size_of_array) + 1
+    partion_numbers = int(len(array) / size_of_array)
+    if (len(array) % size_of_array) > 0:
+        partion_numbers += 1
 
     for i in range(partion_numbers):
         start = i * size_of_array
