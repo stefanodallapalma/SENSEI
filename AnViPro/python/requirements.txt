@@ -1,7 +1,0 @@
-beautifulsoup4==4.8.2
-connexion==2.6.0
-Flask==1.1.1
-Flask-Cors==3.0.8
-mysql-connector==2.2.9
-pycountry==19.8.18
-wget==3.2
