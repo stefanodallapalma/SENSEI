@@ -1,0 +1,83 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/v1/data"
+
+# Paths supported by the server application
+paths:
+  /load-new-html-files:
+    post:
+      operationId: "api.endpoints.data.load_html_pages.load_new_data"
+      summary: "Endpoint used to load a zip containing html pages"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: sq_zip_html_pages
+          required: true
+          type: file
+        - in:  formData
+          name: resource_folder_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Successful sent html zip file"
+          schema:
+            type: boolean
+
+
+  /load-marketplace:
+    post:
+      operationId: "api.endpoints.data.load_marketplace.load_data"
+      summary: "Endpoint to load a zip file containing html marketplace's files"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: file
+          required: true
+          type: file
+
+      responses:
+        200:
+          description: "Successful zip file sent"
+          schema:
+            type: boolean
+
+  /delete-projects:
+    post:
+      operationId: "api.endpoints.data.delete_projects.delete"
+      summary: "Endpoint to delete a list of projects sent by input)"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_list
+          required: false
+          type: array
+          items:
+            type: string
+
+      responses:
+        200:
+          description: "Projects deleted successfully"
+          schema:
+            type: boolean

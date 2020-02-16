@@ -1,0 +1,40 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/v1/software-quality"
+
+# Paths supported by the server application
+paths:
+  /metrics:
+    post:
+      operationId: "api.endpoints.software_quality.metrics.metrics"
+      summary: "Endpoint used to request the dataset of a given project with all metrics chosen"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_name
+          required: true
+          type: string
+        - in:  formData
+          name: metric_list
+          required: true
+          type: array
+          items:
+            type: string
+
+      responses:
+        200:
+          description: "Successful"
+          schema:
+            type: boolean
