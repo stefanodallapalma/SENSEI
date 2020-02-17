@@ -53,16 +53,3 @@ paths:
           description: "Configuration setup completed"
           schema:
             type: boolean
-
-  /sonarscanner-setup:
-    post:
-      operationId: "api.endpoints.conf.sonarscanner_setup.setup"
-      summary: "Endpoint used to configure sonarscanner"
-      produces:
-        - "application/json"
-
-      responses:
-        200:
-          description: "Sonarscanner configuration setup completed"
-          schema:
-            type: boolean

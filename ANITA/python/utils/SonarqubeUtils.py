@@ -1,4 +1,4 @@
-import json
+import json, os
 from sonar.bean.SonarqubeParameters import SonarqubeParameters
 
 from exception.NoProjectException import NoProjectException
@@ -7,7 +7,8 @@ from exception.DuplicateProjectKeyException import DuplicateProjectKeyException
 
 
 sonarqube_setup_path = "../resources/sonarqube_properties.json"
-
+html_pages_path = "../resources/html_pages/"
+jsonbuffer_suffix = "_infoBuffer.json"
 
 def get_sonarqube_properties():
     return SonarqubeParameters(sonarqube_setup_path)
@@ -100,3 +101,21 @@ def get_project(key, value):
             return project
 
     raise NoProjectException("EXC")
+
+
+def set_token(token):
+    sq_parameters = SonarqubeParameters(sonarqube_setup_path)
+    sq_parameters.token = token
+
+    with open(sonarqube_setup_path, 'w') as outfile:
+        json.dump(sq_parameters.data, outfile)
+
+
+def get_bufferlist(name):
+    project_path = os.path.join(html_pages_path, name)
+    projectbufferjson_path = os.path.join(project_path, (name + jsonbuffer_suffix))
+
+    with open(projectbufferjson_path) as json_file:
+        buffers = json.loads(json_file.read())
+
+    return buffers

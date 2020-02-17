@@ -69,3 +69,23 @@ def metric_list():
     response = requests.get(url)
 
     return response
+
+
+def generate_token(login, name):
+    api = "/api/user_tokens/generate"
+
+    # Parameter setup
+    param = {}
+    param["login"] = login
+    param["name"] = name
+
+    sonarqube_parameters = properties()
+    url = sonarqube_parameters.url + api
+
+    # Basic Auth parameters
+    user = sonarqube_parameters.user
+    password = sonarqube_parameters.password
+
+    response = requests.post(url, data=param, auth=HTTPBasicAuth(user, password))
+
+    return response

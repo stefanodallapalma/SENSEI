@@ -1,6 +1,7 @@
 from flask import Response, json
 import sonar.SonarqubeAPI as sq_api
 import utils.SonarqubeUtils as sq_utils
+import os
 
 from exception.NoProjectException import NoProjectException
 
@@ -94,6 +95,17 @@ def measures(project_key, metric_normalized, page_number=1):
     final_response_json["baseComponent"]["name"] = project["Name"]
     final_response_json["components"] = component_list
 
+    # Retrive the pages not analyzed
+    missed_pages = []
+    project_name = sq_utils.get_name(project_key)
+    buffers = sq_utils.get_bufferlist(project_name)
+
+    for missed_project in missed_projects:
+        html_pages = buffers[str(missed_project)]
+        missed_pages += html_pages
+
+    final_response_json["projectNotAnalysed"] = missed_pages
+
     return Response(json.dumps(final_response_json), status=200, mimetype="application/json")
 
 
@@ -129,6 +141,11 @@ def task_list(project_key):
 
 def metric_list():
     return sq_api.metric_list()
+
+
+def generate_token(login, name):
+    response = sq_api.generate_token(login, name)
+    return Response(json.dumps(response.json()), status=response.status_code, mimetype="application/json")
 
 
 def get_content(response):
