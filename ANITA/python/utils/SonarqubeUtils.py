@@ -10,8 +10,12 @@ sonarqube_setup_path = "../resources/sonarqube_properties.json"
 html_pages_path = "../resources/html_pages/"
 jsonbuffer_suffix = "_infoBuffer.json"
 
+
 def get_sonarqube_properties():
-    return SonarqubeParameters(sonarqube_setup_path)
+    with open(sonarqube_setup_path) as json_file:
+        data = json.loads(json_file.read())
+
+    return SonarqubeParameters(data)
 
 
 def add_project(name, projectkey, number_of_files, project_size):

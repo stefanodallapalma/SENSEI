@@ -22,8 +22,8 @@ MAX_PROJECT_SIZE = 100
 
 def load_new_data():
     project_key = None
-
     name = request.form["resource_folder_name"]
+    resource_folder_path = join(html_pages_path, name)
 
     # Check if the resource folder name is available or not
     try:
@@ -32,7 +32,7 @@ def load_new_data():
     except NoProjectException:
         pass
 
-    resource_folder_path = join(html_pages_path, name)
+
 
     # Create the new directory
     try:

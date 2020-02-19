@@ -1,11 +1,9 @@
 import json
 
-class SonarqubeParameters:
-    def __init__(self, properties_path):
-        self._path = properties_path
 
-        with open(properties_path) as json_file:
-            self._data = json.loads(json_file.read())
+class SonarqubeParameters:
+    def __init__(self, json_file):
+        self._data = json_file
 
     @property
     def data(self):

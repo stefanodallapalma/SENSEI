@@ -1,4 +1,4 @@
-from db.AnViProDB import AnViProDB
+from database.anita.AnitaDB import AnViProDB
 
 db_parameters_path = "../resources/db_parameters"
 

@@ -15,7 +15,7 @@ paths:
   # EXAMPLE OF PATH
   /scraper/vendor/list:
     post:
-      operationId: "api.scraper.berlusconi_vendor_list"
+      operationId: "api.markets.berlusconi_vendor_list"
       summary: "The people data structure supported by the server application"
       consumes:
         - "application/x-www-form-urlencoded"

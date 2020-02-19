@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class Marketplace(Enum):
     BERLUSCONI = 1
     AGARTHA = 2

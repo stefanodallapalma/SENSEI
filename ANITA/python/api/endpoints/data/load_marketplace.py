@@ -7,7 +7,7 @@ from html_pages.utils.HtmlPageUtils import get_html_pages
 from html_pages.bean.Category import Category
 from html_pages.bean.Marketplace import Marketplace
 from scraper.BerlusconiScrape import BerlusconiScrape
-from db.AnViProDB import AnViProDB
+from database.anita.AnitaDB import AnViProDB
 
 upload_zip_path = "../resources/zip/"
 zip_path = upload_zip_path + "tmpFile.zip"
@@ -42,7 +42,7 @@ def load_data():
     vendors = []
 
     for html_page in html_pages:
-        # Detect the scraper to use
+        # Detect the markets to use
         # TESTED ONLY WITH BERLUSCONI SCRAPER
 
         if html_page.marketplace == Marketplace.BERLUSCONI:
