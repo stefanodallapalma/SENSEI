@@ -1,27 +1,30 @@
-import mysql.connecto
+import mysql.connector
 from database.db.DB import DB
 from database.db.DBType import DBType
+from database.utils.DBUtils import get_db_parameters
 from utils.FileUtils import get_dict_from_file as get_parameters_dict
 
 
 class MySqlDB(DB):
     def __init__(self, database_name=None):
         super().__init__(DBType.MYSQL, database_name)
+        self._parameters = get_db_parameters(DBType.MYSQL)
+        self._db_name = database_name
 
     def connect(self):
         if self._db_name is None:
             db = mysql.connector.connect(
-                host=self._parameter["host"],
-                user=self._parameter["user"],
-                passwd=self._parameter["password"],
+                host=self.parameters.host,
+                user=self.parameters.user,
+                passwd=self.parameters.password,
                 charset='utf8'
             )
         else:
             db = mysql.connector.connect(
-                host=self._parameter["host"],
-                user=self._parameter["user"],
-                passwd=self._parameter["password"],
-                database=self._parameter["database"],
+                host=self.parameters.host,
+                user=self.parameters.user,
+                passwd=self.parameters.password,
+                database=self.parameters.database,
                 charset='utf8'
             )
 

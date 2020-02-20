@@ -3,21 +3,18 @@ import shutil
 import os
 import subprocess
 import json
-from utils import FileUtils as file_utils
-
-from os.path import isfile, join
-from utils.ListUtils import array_split
+from utils import SonarscannerUtils as scanner_utils
+from os.path import join
 
 scanner_folder = "Sonar-scanner"
 scannerwork_folder_name = ".scannerwork"
 jsonbuffer_name = "infoBuffer.json"
 
+
 def run_sonarscanner(project_key, project_path):
     sonarqubeParameters = sq_utils.get_sonarqube_properties()
 
-    sonar_scanner_path = get_scannerdir_path()
-    sonar_scanner_name = file_utils.getfiles(sonar_scanner_path)[0]
-    print(str(sonar_scanner_name))
+    sonar_scanner_path = scanner_utils.get_sonarscanner_path()
 
     project = sq_utils.get_project("Key", project_key)
 
@@ -25,24 +22,21 @@ def run_sonarscanner(project_key, project_path):
     tmp_path = project_path + os.path.sep + "tmp"
     os.mkdir(tmp_path)
 
-    relative_jar_path = get_scannerdir_path(tmp_path)
-    relative_jar_path = join(relative_jar_path, sonar_scanner_name)
-
     command = ["java", "-jar"]
-    command.append(relative_jar_path)
+    command.append(sonar_scanner_path)
     command.append("-Dsonar.sources=.")
     command.append("-Dsonar.host.url=" + sonarqubeParameters.url)
     command.append("-Dsonar.login=" + sonarqubeParameters.token)
     command.append("-Dsonar.ce.javaOpts=-Xmx2048m")
 
     # Get a list of all buffers and html files
-    json_path = project_path + os.path.sep + project["Name"] + "_" + jsonbuffer_name
+    json_name = project["Name"] + "_" + jsonbuffer_name
+    json_path = join(project_path, json_name)
     with open(json_path) as json_file:
         json_buffer = json.loads(json_file.read())
 
     for i in range(len(json_buffer)):
         buffer = json_buffer[str(i+1)]
-        print(str(buffer))
 
         # Copy all buffer's files into tmp dir
         for file in buffer:
@@ -64,6 +58,7 @@ def run_sonarscanner(project_key, project_path):
     shutil.rmtree(tmp_path)
 
 
+"""
 def get_scannerdir_path(path = os.getcwd()):
     dirs = file_utils.getdirs(path)
 
@@ -83,3 +78,4 @@ def get_scannerdir_path(path = os.getcwd()):
     scanner_folder_path = join(scanner_folder_path, dirs[0])
 
     return join(scanner_folder_path, "lib")
+"""

@@ -108,7 +108,7 @@ def get_project(key, value):
 
 
 def set_token(token):
-    sq_parameters = SonarqubeParameters(sonarqube_setup_path)
+    sq_parameters = get_sonarqube_properties()
     sq_parameters.token = token
 
     with open(sonarqube_setup_path, 'w') as outfile:

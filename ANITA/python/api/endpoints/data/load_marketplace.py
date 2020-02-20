@@ -6,8 +6,8 @@ from os.path import join
 from html_pages.utils.HtmlPageUtils import get_html_pages
 from html_pages.bean.Category import Category
 from html_pages.bean.Marketplace import Marketplace
-from scraper.BerlusconiScrape import BerlusconiScrape
-from database.anita.AnitaDB import AnViProDB
+from markets.BerlusconiScrape import BerlusconiScrape
+from database.anita.AnitaDB import AnitaDB
 
 upload_zip_path = "../resources/zip/"
 zip_path = upload_zip_path + "tmpFile.zip"

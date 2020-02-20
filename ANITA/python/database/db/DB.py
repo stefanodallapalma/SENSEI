@@ -6,6 +6,10 @@ class DB(ABC):
         self._parameters = get_db_parameters(database_type)
         self._db_name = database_name
 
+    @property
+    def parameters(self):
+        return self._parameters
+
     @abstractmethod
     def connect(self):
         pass
@@ -21,3 +25,4 @@ class DB(ABC):
     @abstractmethod
     def delete(self, query):
         pass
+

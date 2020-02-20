@@ -2,18 +2,18 @@ from socket import *
 
 
 def scanner(host, port):
+    if "https" in host:
+        host = host.replace("https://", "")
+    elif "http" in host:
+        host = host.replace("http://", "")
+
     status = False
 
     s = socket(AF_INET, SOCK_STREAM)
 
-    conn = s.connect_ex((host, port))
-    print("Host: " + host)
-    print("PORT: " + port)
-    if (conn == 0):
-        print("Port " + port + ": OPEN")
+    conn = s.connect_ex((host, int(port)))
+    if conn == 0:
         status = True
-    else:
-        print("Port " + port + ": UNREACHABLE")
 
     s.close()
 

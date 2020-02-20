@@ -36,3 +36,15 @@ def getparent_path(path):
     parent_path = os.path.sep.join(split)
 
     return parent_path
+
+
+def load_json(path):
+    with open(path) as json_file:
+        data = json.loads(json_file.read())
+
+    return data
+
+
+def save_json(path, file):
+    with open(path, 'w') as outfile:
+        json.dump(file, outfile)

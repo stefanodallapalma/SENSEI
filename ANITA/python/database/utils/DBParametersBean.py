@@ -3,7 +3,15 @@ import json
 
 class DBParametersBean():
     def __init__(self, json_file):
-        self._data = json.loads(json_file.read())
+        self._data = json_file
+
+    @property
+    def data(self):
+        return self._data
+
+    @data.setter
+    def data(self, value):
+        self._data = value
 
     @property
     def host(self):
@@ -24,3 +32,7 @@ class DBParametersBean():
     @property
     def database_name(self):
         return self._data["database_name"]
+
+    @database_name.setter
+    def database_name(self, value):
+        self._data["database_name"] = value

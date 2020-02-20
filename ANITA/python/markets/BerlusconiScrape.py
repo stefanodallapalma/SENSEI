@@ -1,9 +1,9 @@
-from scraper.MarketScrape import MarketScrape
-from scraper.bean.Vendor import Vendor
-from scraper.rules.VendorRules import VendorRules
-from scraper.bean.Product import Product
-from scraper.rules.ProductRules import ProductRules
-from scraper.bean.Feedback import Feedback
+from markets.MarketScrape import MarketScrape
+from markets.bean.Vendor import Vendor
+from markets.rules.VendorRules import VendorRules
+from markets.bean.Product import Product
+from markets.rules.ProductRules import ProductRules
+from markets.bean.Feedback import Feedback
 from datetime import datetime as dt
 from bs4 import BeautifulSoup
 import os

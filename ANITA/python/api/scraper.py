@@ -1,4 +1,4 @@
-from scraper.BerlusconiScrape import BerlusconiScrape
+from markets.BerlusconiScrape import BerlusconiScrape
 from flask import request
 import json
 
