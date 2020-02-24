@@ -1,14 +1,4 @@
 def array_split(array, size_of_array):
-    """
-    q = int(len(array) / size_of_array)
-    r = len(array) % size_of_array
-
-    subarray_numbers = q
-    if r > 0:
-        subarray_numbers += 1
-
-    sub_arrays = np.array_split(array, subarray_numbers)
-"""
     sub_arrays = []
     partion_numbers = int(len(array) / size_of_array)
     if (len(array) % size_of_array) > 0:

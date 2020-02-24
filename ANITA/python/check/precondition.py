@@ -1,6 +1,6 @@
 from utils.PortScanner import scanner
-from utils import SonarqubeUtils as sq_utils
-import sonar.SonarqubeAPIController as sq_api_controller
+from sonarqube.utils import SonarqubeUtils as sq_utils
+from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from check.setup import *
 from check.servers import run_sonarnet
 from os.path import join, exists
@@ -88,10 +88,12 @@ def check_preconditions():
     print()
 
     # Sonarqube token
+    server_sq = SonarqubeAPIExtended()
     if sonarqube_property.token == "":
         print("Sonarqube token not found: generation of a new one")
-        response = sq_api_controller.generate_token(sonarqube_property.user, "ANITA")
-        content = sq_api_controller.get_content(response)
+        response = server_sq.generate_token(sonarqube_property.user, "ANITA")
+        content = server_sq.get_json_content(response)
+        print(content)
         sq_utils.set_token(content["token"])
         print()
 

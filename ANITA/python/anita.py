@@ -18,6 +18,5 @@ if __name__ == "__main__":
 
     if status:
         print("OK")
-        #app.run(host='0.0.0.0', port=5000, debug=True)
-        pass
+        app.run(host='0.0.0.0', port=5000, debug=True)
 

@@ -1,5 +1,5 @@
 from utils.FileUtils import load_json, save_json
-from utils.SonarscannerUtils import *
+from sonarscanner.SonarscannerUtils import *
 from os.path import join
 
 resource_folder = "../resources/"

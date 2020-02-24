@@ -1,15 +1,15 @@
 from flask import request, Response, json
-import utils.SonarqubeUtils as sq_utils
-import sonar.SonarqubeAPIController as sq_api_controller
+import sonarqube.utils.SonarqubeUtils as sq_utils
+from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 import shutil
 from os.path import join
-import random
 
 from exception.NoProjectException import NoProjectException
 
 html_pages_path = "../resources/html_pages/"
 
 def delete():
+    server_sq = SonarqubeAPIExtended()
     sonar_properties = sq_utils.get_sonarqube_properties()
     project_error_list = []
 
@@ -31,11 +31,11 @@ def delete():
             print("Project to delete: " + project)
             print("Project key: " + project_key)
 
-            delete_response = sq_api_controller.delete_project(project_key)
+            delete_response = server_sq.delete_project(project_key)
             print("Delete response status code: " + str(delete_response.status_code))
 
             if 400 <= delete_response.status_code < 500:
-                print(str(sq_api_controller.get_content(delete_response)))
+                print(str(server_sq.get_content(delete_response)))
 
             # Remove the project key from the sonarqube json
             sq_utils.delete_project(project)

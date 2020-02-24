@@ -1,6 +1,6 @@
 from flask import request, Response, json
-from utils import SonarqubeUtils as sq_utils
-import sonar.SonarqubeAPIController as sq_api_controller
+from sonarqube.utils import SonarqubeUtils as sq_utils
+from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from utils.ListUtils import array_split
 
 from exception import NoProjectException
@@ -9,6 +9,8 @@ LIMIT_METRICS_API = 15
 MAX_ELEMENTS_FOR_PAGE = 100
 
 def metrics():
+    server_sq = SonarqubeAPIExtended()
+
     # Load parameters
     project_name = request.form["project_name"]
     metric_list = request.form.getlist("metric_list")
@@ -21,8 +23,8 @@ def metrics():
         return Response(json.dumps(msg), status=400, mimetype="application/json")
 
     # Check if there are any background tasks to this project with a status different from "SUCCESS"
-    project_tasks = sq_api_controller.task_list(project_key)
-    project_tasks_content = sq_api_controller.get_content(project_tasks)
+    project_tasks = server_sq.task_list(project_key)
+    project_tasks_content = server_sq.get_content(project_tasks)
     if "queue" in project_tasks_content:
         queues = project_tasks_content["queue"]
         for queue in queues:
@@ -40,17 +42,17 @@ def metrics():
         metric_normalized = normalize_metric_list(sub_metric_list)
         print("Metric list to process: " + metric_normalized)
 
-        response = sq_api_controller.measures(project_key, metric_normalized)
+        response = server_sq.measures(project_key, metric_normalized)
 
-        number_html_pages = sq_api_controller.get_content(response)["paging"]["total"]
+        number_html_pages = server_sq.get_content(response)["paging"]["total"]
         max_pages = number_of_pages(number_html_pages, MAX_ELEMENTS_FOR_PAGE)
 
         print("Total html files: " + str(number_html_pages))
         print("Max pages: " + str(max_pages))
 
         for x in range(max_pages):
-            response = sq_api_controller.measures(project_key, metric_normalized, (x+1))
-            components = sq_api_controller.get_content(response)["components"]
+            response = server_sq.measures(project_key, metric_normalized, (x+1))
+            components = server_sq.get_content(response)["components"]
 
             for component in components:
                 metric_dict = metrict_dict_template(metric_list)
