@@ -1,30 +1,52 @@
 from database.db.MySqlDB import MySqlDB
 from database.utils import DBUtils as db_utils
-from database.db.DBType import DBType
+from database.db.structure.DBType import DBType
 
-database_name = "anita"
+name = "anita"
 
 
 class AnitaDB:
-    def __init__(self, database_name=None):
-        self._mysqlDB = MySqlDB(database_name)
+    def __init__(self, anonymous=False):
+        self.database_name = name
+        if anonymous:
+            self.mysql_db = MySqlDB()
+        else:
+            self.mysql_db = MySqlDB(self.database_name)
+
+    @property
+    def database_name(self):
+        return self._database_name
+
+    @database_name.setter
+    def database_name(self, value):
+        self._database_name = value
+
+    @property
+    def mysql_db(self):
+        return self._mysql_db
+
+    @mysql_db.setter
+    def mysql_db(self, value):
+        self._mysql_db = value
 
     def create_db(self):
         if self.exist():
             raise Exception("Database \"anita\" already created")
 
-        create_query = "CREATE SCHEMA " + database_name
-        self._mysqlDB.search(create_query)
+        create_query = "CREATE SCHEMA " + self.database_name
+        self.mysql_db.search(create_query)
 
-        db_utils.add_database_name(DBType.MYSQL, database_name)
+        db_utils.add_database_name(DBType.MYSQL, self.database_name)
 
     def exist(self):
         query = "SHOW DATABASES"
 
-        databases = self._mysqlDB.search(query)
+        databases = self.mysql_db.search(query)
         for database in databases:
-            if database_name == database[0]:
+            if self.database_name == database[0]:
                 return True
 
         return False
+
+
 

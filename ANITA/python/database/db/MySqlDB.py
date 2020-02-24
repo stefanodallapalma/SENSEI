@@ -1,8 +1,7 @@
 import mysql.connector
 from database.db.DB import DB
-from database.db.DBType import DBType
+from database.db.structure.DBType import DBType
 from database.utils.DBUtils import get_db_parameters
-from utils.FileUtils import get_dict_from_file as get_parameters_dict
 
 
 class MySqlDB(DB):
@@ -72,3 +71,26 @@ class MySqlDB(DB):
 
     def delete(self, query):
         pass
+
+    def create_table(self, name, columns):
+        pk_query = "PRIMARY KEY (`timestamp`, `name`)"
+        for column in columns:
+            if column.pk:
+                pk_query += column.name + ", "
+
+        pk_query = pk_query[:-2]
+        pk_query += ")"
+
+        query = "CREATE TABLE " + name + "("
+
+        for column in columns:
+            query += column.name + " " + column.type
+            if column.not_null:
+                query += " NOT NULL"
+            query += ", "
+
+        query += pk_query + ")"
+
+        res = self.search(query)
+
+        return res

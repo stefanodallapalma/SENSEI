@@ -7,9 +7,7 @@ from os.path import join, exists
 import os
 from database.anita.AnitaDB import AnitaDB
 from database.utils import DBUtils as db_utils
-from database.db.DBType import DBType
-
-from exception.ServerUnreachableException import ServerUnreachableException
+from database.db.structure.DBType import DBType
 
 resource_path = "../resources/"
 database_resource_path = join(resource_path, "database")
@@ -52,7 +50,7 @@ def check_preconditions():
     print()
 
     # MySQL database
-    db = AnitaDB()
+    db = AnitaDB(anonymous=True)
     if db.exist():
         print("MySQL ANITA DB: OK")
     else:

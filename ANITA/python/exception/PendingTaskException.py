@@ -1,0 +1,2 @@
+class PendingTaskException(Exception):
+    pass

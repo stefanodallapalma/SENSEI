@@ -1,6 +1,5 @@
-import json
 from os.path import join
-from database.db.DBType import DBType
+from database.db.structure.DBType import DBType
 from database.utils.DBParametersBean import DBParametersBean
 from utils.FileUtils import load_json, save_json
 
