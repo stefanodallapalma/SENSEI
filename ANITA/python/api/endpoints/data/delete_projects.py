@@ -35,7 +35,7 @@ def delete():
             print("Delete response status code: " + str(delete_response.status_code))
 
             if 400 <= delete_response.status_code < 500:
-                print(str(server_sq.get_content(delete_response)))
+                print(str(SonarqubeAPIExtended.get_json_content(delete_response)))
 
             # Remove the project key from the sonarqube json
             sq_utils.delete_project(project)

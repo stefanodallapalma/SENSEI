@@ -1,10 +1,11 @@
 from flask import request, Response, json
-from sonarqube.metrics import retrieve_metrics
 import sonarqube.utils.SonarqubeUtils as sq_utils
+from sonarqube.anita.SonarqubeAnitaAPI import SonarqubeAnitaAPI
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 from sonarscanner.SonarscannerController import run_sonarscanner as scanner
-from database.anita.sonarqube.SonarqubeTable import QualityTable
+from database.anita.table.SonarqubeTable import SonarqubeTable
+from database.anita.controller.SonarqubeController import get_beans
 
 
 # Endpoint
@@ -16,12 +17,15 @@ def load_new_data():
     # Parameter
     local_sq = SonarqubeLocalProject(name)
     server_sq = SonarqubeAPIExtended()
+    anita_sq_api = SonarqubeAnitaAPI()
     project_key = sq_utils.generate_project_key()
 
+    print("Check precondition")
     # Preconditions
     if local_sq.exist():
         return Response(json.dumps("The project already exists"), status=400, mimetype="application/json")
 
+    print("Create local project")
     # Local
     create_project = local_sq.create_project()
     if not create_project:
@@ -34,6 +38,7 @@ def load_new_data():
     raw_files = local_sq.get_raw_files()
     sq_utils.add_project(name, project_key, len(raw_files), local_sq.BUFFER_SIZE)
 
+    print("Create project on sonarqube")
     # Sonarqube server
     create_response = server_sq.create_project(name, project_key)
 
@@ -41,21 +46,23 @@ def load_new_data():
         return Response(json.dumps(create_response.json()), status=create_response.status_code, mimetype="application/json")
 
     # Sonar scanner
+    print("Waiting for sonarscanner...")
     scanner(project_key, local_sq.project_path)
+    print("Sonarscanner has been executed successfully")
 
     # Retrieve metrics
-    qualities = retrieve_metrics(project_key, wait=True)
+    print("Waiting for pending tasks...")
+    measures = anita_sq_api.measures(project_key, wait=True)
+    print("Metrics retrieved")
 
+    print("Save info on db")
     # Sonarqube Database
-    response_metric = server_sq.metric_list()
-    metric_list = server_sq.get_json_content(response_metric)
+    sq_table = SonarqubeTable()
+    if not sq_table.exist():
+        sq_table.create()
 
-    # Create the table, if it does not exist
-    quality_table = QualityTable()
-    if not quality_table.exist():
-        quality_table.create_quality_table(metric_list)
-
-    quality_table.insert_qualities(metric_list, qualities)
+    sq_beans = get_beans(name, measures)
+    sq_table.insert_values(sq_beans)
 
     local_sq.delete_raw()
 

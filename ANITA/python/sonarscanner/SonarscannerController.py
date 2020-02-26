@@ -24,7 +24,8 @@ def run_sonarscanner(project_key, project_path):
 
         # Run sonar scanner
         command.append("-Dsonar.projectKey=" + project_key + "_" + key)
-        process = subprocess.Popen(command, cwd=sq_local.buffer_path)
+        process = subprocess.Popen(command, cwd=sq_local.buffer_path, shell=False, stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE)
         process.wait()
 
         sq_local.clear_buffer_folder()

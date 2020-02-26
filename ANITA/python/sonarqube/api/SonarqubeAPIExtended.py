@@ -77,6 +77,9 @@ class SonarqubeAPIExtended(SonarqubeAPI):
             response = super().measures(new_project_key, metric_normalized, page_number)
             response_json = SonarqubeAPI.get_json_content(response)
 
+            print(response_json)
+            print()
+
             if not response_json["components"]:
                 actual_key_split = response_json["baseComponent"]["key"].split("_")
                 missed_project = "".join(actual_key_split[len(actual_key_split) - 1:])
@@ -106,7 +109,7 @@ class SonarqubeAPIExtended(SonarqubeAPI):
 
         return Response(json.dumps(final_response_json), status=200, mimetype="application/json")
 
-    def task_list(self, project_key):
+    def tasks(self, project_key):
         project = sq_utils.get_project("Key", project_key)
 
         total_files = project["TotalFiles"]
@@ -121,7 +124,7 @@ class SonarqubeAPIExtended(SonarqubeAPI):
         final_content = {}
         for i in range(project_numbers):
             new_project_key = project_key + "_" + str(i + 1)
-            response = super().task_list(new_project_key)
+            response = super().tasks(new_project_key)
             content = SonarqubeAPI.get_json_content(response)
 
             if "queue" in content:

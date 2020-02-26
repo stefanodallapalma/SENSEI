@@ -45,7 +45,7 @@ class SonarqubeAPI:
 
         return Response(response.content, response.status_code, response.headers.items())
 
-    def task_list(self, project_key):
+    def tasks(self, project_key):
         api = "/api/ce/component"
 
         url = self._parameters.url + api + "?component=" + project_key
@@ -54,7 +54,7 @@ class SonarqubeAPI:
 
         return Response(response.content, response.status_code, response.headers.items())
 
-    def metric_list(self):
+    def metrics(self):
         api = "/api/metrics/search"
 
         url = self._parameters.url + api

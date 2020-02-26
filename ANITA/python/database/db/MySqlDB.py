@@ -49,7 +49,7 @@ class MySqlDB(DB):
 
     def insert(self, query, value):
         try:
-            db = self.init_connection()
+            db = self.connect()
             cursor = db.cursor()
 
             if type(value) is list:
@@ -71,26 +71,3 @@ class MySqlDB(DB):
 
     def delete(self, query):
         pass
-
-    def create_table(self, name, columns):
-        pk_query = "PRIMARY KEY (`timestamp`, `name`)"
-        for column in columns:
-            if column.pk:
-                pk_query += column.name + ", "
-
-        pk_query = pk_query[:-2]
-        pk_query += ")"
-
-        query = "CREATE TABLE " + name + "("
-
-        for column in columns:
-            query += column.name + " " + column.type
-            if column.not_null:
-                query += " NOT NULL"
-            query += ", "
-
-        query += pk_query + ")"
-
-        res = self.search(query)
-
-        return res

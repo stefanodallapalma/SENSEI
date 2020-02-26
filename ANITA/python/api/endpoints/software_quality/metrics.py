@@ -23,8 +23,8 @@ def metrics():
         return Response(json.dumps(msg), status=400, mimetype="application/json")
 
     # Check if there are any background tasks to this project with a status different from "SUCCESS"
-    project_tasks = server_sq.task_list(project_key)
-    project_tasks_content = server_sq.get_content(project_tasks)
+    project_tasks = server_sq.tasks(project_key)
+    project_tasks_content = SonarqubeAPIExtended.get_json_content(project_tasks)
     if "queue" in project_tasks_content:
         queues = project_tasks_content["queue"]
         for queue in queues:
@@ -44,7 +44,7 @@ def metrics():
 
         response = server_sq.measures(project_key, metric_normalized)
 
-        number_html_pages = server_sq.get_content(response)["paging"]["total"]
+        number_html_pages = SonarqubeAPIExtended.get_json_content(response)["paging"]["total"]
         max_pages = number_of_pages(number_html_pages, MAX_ELEMENTS_FOR_PAGE)
 
         print("Total html files: " + str(number_html_pages))
@@ -52,7 +52,7 @@ def metrics():
 
         for x in range(max_pages):
             response = server_sq.measures(project_key, metric_normalized, (x+1))
-            components = server_sq.get_content(response)["components"]
+            components = SonarqubeAPIExtended.get_json_content(response)["components"]
 
             for component in components:
                 metric_dict = metrict_dict_template(metric_list)
