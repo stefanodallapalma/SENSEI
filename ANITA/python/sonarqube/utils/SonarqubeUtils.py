@@ -137,13 +137,3 @@ def set_token(token):
 
     with open(sonarqube_setup_path, 'w') as outfile:
         json.dump(sq_parameters.data, outfile)
-
-
-def get_bufferlist(name):
-    project_path = os.path.join(html_pages_path, name)
-    projectbufferjson_path = os.path.join(project_path, (name + jsonbuffer_suffix))
-
-    with open(projectbufferjson_path) as json_file:
-        buffers = json.loads(json_file.read())
-
-    return buffers

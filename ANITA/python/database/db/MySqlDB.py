@@ -2,6 +2,7 @@ import mysql.connector
 from database.db.DB import DB
 from database.db.structure.DBType import DBType
 from database.utils.DBUtils import get_db_parameters
+from database.exception.DBException import DBException
 
 
 class MySqlDB(DB):
@@ -23,7 +24,7 @@ class MySqlDB(DB):
                 host=self.parameters.host,
                 user=self.parameters.user,
                 passwd=self.parameters.password,
-                database=self.parameters.database,
+                database=self.parameters.database_name,
                 charset='utf8'
             )
 
@@ -33,7 +34,11 @@ class MySqlDB(DB):
         try:
             db = self.connect()
             cursor = db.cursor()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            return None
 
+        try:
             cursor.execute(query)
 
             result = cursor.fetchall()
@@ -48,10 +53,20 @@ class MySqlDB(DB):
         return result
 
     def insert(self, query, value):
+        return self.execute_with_value(query, value)
+
+    def delete(self, query, value):
+        return self.execute_with_value(query, value)
+
+    def execute_with_value(self, query, value):
         try:
             db = self.connect()
             cursor = db.cursor()
+        except mysql.connector.Error as err:
+            print("Something went wrong: {}".format(err))
+            raise DBException("Something went wrong: {}".format(err))
 
+        try:
             if type(value) is list:
                 for val in value:
                     cursor.execute(query, val)
@@ -61,13 +76,10 @@ class MySqlDB(DB):
             db.commit()
         except mysql.connector.Error as err:
             print("Something went wrong: {}".format(err))
-            return False
+            raise DBException("Something went wrong: {}".format(err))
         finally:
             if db.is_connected():
                 cursor.close()
                 db.close()
 
         return True
-
-    def delete(self, query):
-        pass

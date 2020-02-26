@@ -17,7 +17,7 @@ class SonarqubeTable(AnitaTable):
         # Attributes
         attribute_names = SonarqubeBean.__prop__()
         attribute_names.remove("metrics")
-        pk_attribute_names = attribute_names
+        pk_attribute_names = list(attribute_names)
 
         anita_sq_api = SonarqubeAnitaAPI()
         metrics = anita_sq_api.metrics()
@@ -36,9 +36,7 @@ class SonarqubeTable(AnitaTable):
         self.attributes = attributes
 
     def insert_values(self, values):
-        attribute_names = []
-        for attribute in self.attributes:
-            attribute_names.append(attribute.name)
+        attribute_names = [attribute.name for attribute in self.attributes]
 
         # Query generation
         insert_query = self.generate_insert_query(attribute_names)

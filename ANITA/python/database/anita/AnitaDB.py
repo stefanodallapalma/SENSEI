@@ -41,9 +41,9 @@ class AnitaDB:
 
     def create(self):
         if self.exist():
-            raise Exception("Database \"anita\" already created")
+            raise Exception("Database `anita` already created")
 
-        create_query = "CREATE SCHEMA " + self.database_name
+        create_query = "CREATE SCHEMA `" + self.database_name + "`"
         self.mysql_db.search(create_query)
 
         db_utils.add_database_name(DBType.MYSQL, self.database_name)

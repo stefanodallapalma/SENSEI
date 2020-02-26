@@ -25,8 +25,7 @@ def add_database_name(db_type, database_name):
     if db_type == DBType.MYSQL:
         path = join(res_db_path, mysql_name)
 
-    data = load_json(path)
-    db_param = DBParametersBean(data)
+    db_param = get_db_parameters(db_type)
     db_param.database_name = database_name
 
     save_json(path, db_param.data)

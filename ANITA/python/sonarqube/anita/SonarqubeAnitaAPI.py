@@ -5,7 +5,7 @@ from utils.ListUtils import array_split
 from exception.ServerError import ServerError
 from exception.PendingTaskException import PendingTaskException
 
-TIMEOUT = 600   # sec
+TIMEOUT = 600  # sec
 LIMIT_METRICS_API = 15
 MAX_ELEMENTS_FOR_PAGE = 100
 
@@ -58,28 +58,31 @@ class SonarqubeAnitaAPI:
         if pending:
             raise PendingTaskException("Pending tasks. Impossible to retrieve metrics")
 
-        # TO DO: Check which metrics generate an error (one by one)
-        self.get_error_metrics(metrics)
-        
+        # Remove from the metric list all metrics that cannot be processed by sonarqube
+        error_metrics = self.get_error_metrics(project_key, metrics)
+        # print("Error metrics: " + str(error_metrics))
+        # print("--------------------------------------------------")
+        metrics = [x for x in metrics if x not in error_metrics]
+
         # The api accepts only 15 metrics for call
         metrics_split = array_split(metrics, LIMIT_METRICS_API)
 
         html_list = []
 
         # Retrieve 15 metrics at time and add to the list of dict
-        for metric in metrics_split:
-            metric_normalized = ",".join(metric)
-            response = self.sq_api.measures(project_key, metric_normalized)
+        for metrics_15 in metrics_split:
+            metrics_normalized = ",".join(metrics_15)
+            response = self.sq_api.measures(project_key, metrics_normalized)
 
             number_html_pages = SonarqubeAPIExtended.get_json_content(response)["paging"]["total"]
             max_pages = number_of_pages(number_html_pages, MAX_ELEMENTS_FOR_PAGE)
 
             for x in range(max_pages):
-                response = self.sq_api.measures(project_key, metric_normalized, (x + 1))
+                response = self.sq_api.measures(project_key, metrics_normalized, (x + 1))
                 components = self.sq_api.get_json_content(response)["components"]
 
                 for component in components:
-                    metric_dict = metric_dict_template(metric)
+                    metric_dict = metric_dict_template(metrics_15)
 
                     file_name = "".join(component["key"].split(":")[1:])
                     metric_dict["Name"] = file_name
@@ -112,9 +115,16 @@ class SonarqubeAnitaAPI:
 
         return False
 
-    def get_error_metrics(self, metrics):
-        # TO DO
-        pass
+    def get_error_metrics(self, project_key, metrics):
+        error_metrics = []
+        for metric in metrics:
+            response = self.sq_api.measures(project_key, metric)
+            content = SonarqubeAPIExtended.get_json_content(response)
+
+            if "errors" in content:
+                error_metrics.append(metric)
+
+        return error_metrics
 
 
 # General methods: future refactoring

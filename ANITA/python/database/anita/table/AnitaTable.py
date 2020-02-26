@@ -4,12 +4,15 @@ from database.anita.AnitaDB import AnitaDB
 from database.db.structure.ColumnDB import ColumnDB
 from database.db.MySqlDB import MySqlDB
 from database.db.structure.DBType import DBType
+from database.exception import DBException
 
 
 class AnitaTable(ABC):
     def __init__(self, name):
         self._table_name = name
-        self._mysql_db = MySqlDB(get_db_name(DBType.MYSQL))
+        self._database_name = get_db_name(DBType.MYSQL)
+        print("Database name: " + self._database_name)
+        self._mysql_db = MySqlDB(self._database_name)
 
     @property
     def table_name(self):
@@ -40,8 +43,8 @@ class AnitaTable(ABC):
         pass
 
     def exist(self):
-        query = "SELECT * FROM information_schema.tables WHERE table_schema = " + self.database_name + \
-                " AND table_name = " + self.table_name
+        query = "SELECT * FROM information_schema.tables WHERE table_schema = \"" + self._database_name + \
+                "\" AND table_name = \"" + self.table_name + "\""
 
         res = self.mysql_db.search(query)
 
@@ -51,24 +54,18 @@ class AnitaTable(ABC):
         return True
 
     def create(self):
-        pk_query = "PRIMARY KEY ("
-        for attribute in self.attributes:
-            if attribute.pk:
-                pk_query += attribute.name + ", "
-
-        pk_query = pk_query[:-2]
-        pk_query += ")"
-
-        query = "CREATE TABLE " + self.table_name + "("
+        pk_attribute_names = ["`" + attribute.name + "`" for attribute in self.attributes if attribute.pk is True]
+        pk_query = "PRIMARY KEY (" + ", ".join(pk_attribute_names) + ")"
+        query = "CREATE TABLE `" + self._database_name + "`.`" + self.table_name + "` ("
 
         for attribute in self.attributes:
             # Datatype
             datatype = attribute.type
             str_type = datatype.type.name
             if datatype.param is not None:
-                str_type += "(" + datatype.param + ")"
+                str_type += "(" + str(datatype.param) + ")"
 
-            query += attribute.name + " " + str_type
+            query += "`" + attribute.name + "` " + str_type
             if attribute.not_null:
                 query += " NOT NULL"
             query += ", "
@@ -90,14 +87,38 @@ class AnitaTable(ABC):
     def delete_values(self, values):
         pass
 
+    def delete_rows(self, parameters_dict):
+        """Delete rows that satisfied all parameter passed as imput (and)"""
+        attribute_names = [key for key in parameters_dict]
+        values = [parameters_dict[key] for key in parameters_dict]
+        values = tuple(values)
+
+        delete_query = self.generate_delete_query(attribute_names)
+
+        self.mysql_db.delete(delete_query, values)
+
     def delete(self):
         """Delete the table from the database"""
         pass
 
     def generate_insert_query(self, attribute_names):
-        insert_query = "INSERT INTO " + self.table_name + " "
-        attribute_query = "(" + ", ".join(attribute_names) + ")"
-        value_query = "VALUES (" + ", ".join(["%s"] * len(attribute_names)) + ")"
+        quote_attribute_names = [("`" + attribute + "`") for attribute in attribute_names]
+
+        insert_query = "INSERT INTO `" + self._database_name + "`.`" + self.table_name + "` "
+        attribute_query = "(" + ", ".join(quote_attribute_names) + ")"
+        value_query = "VALUES (" + ", ".join(["%s"] * len(quote_attribute_names)) + ")"
         insert_query += attribute_query + " " + value_query
 
         return insert_query
+
+    def generate_delete_query(self, attribute_names):
+        quote_attribute_names = [("`" + attribute + "`") for attribute in attribute_names]
+
+        delete_query = "DELETE FROM `" + self._database_name + "`.`" + self.table_name + "` WHERE "
+
+        where_list = [(quote_attribute_name + " = %s") for quote_attribute_name in quote_attribute_names]
+        where_query = " AND ".join(where_list)
+
+        delete_query += where_query
+
+        return delete_query

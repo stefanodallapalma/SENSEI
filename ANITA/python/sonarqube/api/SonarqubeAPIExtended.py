@@ -1,5 +1,6 @@
 from flask import Response, json
 from sonarqube.api.SonarqubeAPI import SonarqubeAPI
+from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 import sonarqube.utils.SonarqubeUtils as sq_utils
 
 html_pages_path = "../resources/html_pages/"
@@ -61,6 +62,8 @@ class SonarqubeAPIExtended(SonarqubeAPI):
 
     def measures(self, project_key, metric_normalized, page_number=1):
         project = sq_utils.get_project("Key", project_key)
+        project_name = project["Name"]
+        sq_local = SonarqubeLocalProject(project_name)
 
         total_files = project["TotalFiles"]
         project_size = project["ProjectSize"]
@@ -77,8 +80,9 @@ class SonarqubeAPIExtended(SonarqubeAPI):
             response = super().measures(new_project_key, metric_normalized, page_number)
             response_json = SonarqubeAPI.get_json_content(response)
 
-            print(response_json)
-            print()
+            # Handle the possible error
+            if "errors" in response_json:
+                return Response(json.dumps(response_json), status=response.status_code, mimetype="application/json")
 
             if not response_json["components"]:
                 actual_key_split = response_json["baseComponent"]["key"].split("_")
@@ -98,8 +102,7 @@ class SonarqubeAPIExtended(SonarqubeAPI):
 
         # Retrive the pages not analyzed
         missed_pages = []
-        project_name = sq_utils.get_name(project_key)
-        buffers = sq_utils.get_bufferlist(project_name)
+        buffers = sq_local.get_buffers()
 
         for missed_project in missed_projects:
             html_pages = buffers[str(missed_project)]

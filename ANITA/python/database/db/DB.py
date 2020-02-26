@@ -23,6 +23,6 @@ class DB(ABC):
         pass
 
     @abstractmethod
-    def delete(self, query):
+    def delete(self, query, value):
         pass
 

@@ -56,6 +56,7 @@ def check_preconditions():
     else:
         print("MySQL ANITA DB: not found. Creation of a new db")
         db.create()
+        db_utils.add_database_name(DBType.MYSQL, db.database_name)
 
     print()
 
