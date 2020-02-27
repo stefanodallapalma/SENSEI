@@ -55,8 +55,8 @@ def load_new_data():
     measures = anita_sq_api.measures(project_key, wait=True)
     print("Metrics retrieved")
 
-    print("Save info on db")
     # Sonarqube Database
+    print("Save info on db")
     sq_table = SonarqubeTable()
     if not sq_table.exist():
         sq_table.create()
@@ -64,6 +64,16 @@ def load_new_data():
     sq_beans = get_beans(name, measures)
     sq_table.insert_values(sq_beans)
 
+    # Clear local raw files
+    print("Clear local raw files")
     local_sq.delete_raw()
+
+    # Remove the project from sonarqube
+    print("Remove the project from sonarqube")
+    remove_response = server_sq.delete_project(project_key)
+    if remove_response.status_code < 400:
+        print("OK")
+    else:
+        print("FAIL")
 
     return Response(json.dumps("Operation successful"), status=200, mimetype="application/json")

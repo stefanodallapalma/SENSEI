@@ -32,7 +32,7 @@ class AnitaDB:
     def exist(self):
         query = "SHOW DATABASES"
 
-        databases = self.mysql_db.search(query)
+        fields, databases = self.mysql_db.search(query)
         for database in databases:
             if self.database_name == database[0]:
                 return True

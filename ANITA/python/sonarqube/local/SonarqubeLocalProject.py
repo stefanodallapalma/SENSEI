@@ -29,6 +29,10 @@ class SonarqubeLocalProject:
     def buffer_path(self):
         return self._tmp_path
 
+    @property
+    def jsonbuffer_path(self):
+        return self._jsonbuffer_path
+
     def create_project(self):
         try:
             mkdir(self._project_path)
@@ -43,7 +47,7 @@ class SonarqubeLocalProject:
         time = now.strftime("%Y-%m-%dT%H-%M-%S")
 
         zip_name = self._name + "_" + time + ".zip"
-        zip_path = join(self._raw_path, zip_name)
+        zip_path = join(self._project_path, zip_name)
 
         # Save zip
         zip_file.save(zip_path)

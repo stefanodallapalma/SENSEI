@@ -1,5 +1,6 @@
 from database.anita.table.AnitaTable import AnitaTable
 from database.anita.bean.SonarqubeBean import SonarqubeBean
+from database.anita.controller.SonarqubeController import get_beans_from_db
 from database.db.structure.ColumnDB import ColumnDB
 from database.db.structure.DataType import DataType
 from database.db.structure.Type import Type
@@ -67,5 +68,21 @@ class SonarqubeTable(AnitaTable):
         self.mysql_db.insert(insert_query, elements)
 
     def delete_values(self, values):
-        # TO DO
         pass
+
+    def select_by_project_name(self, project_name):
+        select_query = "SELECT * FROM `" + self._database_name + "`.`" + self.table_name \
+                + "` WHERE `project_name` = %s"
+
+        value = (project_name,)
+
+        header, results = self.select(select_query, value)
+        return get_beans_from_db(header, results)
+
+    def delete_by_project_name(self, project_name):
+        delete_query = "DELETE FROM `" + self._database_name + "`.`" + self.table_name \
+                       + "` WHERE `project_name` = %s"
+
+        value = (project_name,)
+
+        self.mysql_db.delete(delete_query, value)

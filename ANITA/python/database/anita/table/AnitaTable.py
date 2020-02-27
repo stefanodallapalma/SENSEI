@@ -14,6 +14,7 @@ class AnitaTable(ABC):
         print("Database name: " + self._database_name)
         self._mysql_db = MySqlDB(self._database_name)
 
+    # Properties
     @property
     def table_name(self):
         return self._table_name
@@ -38,15 +39,27 @@ class AnitaTable(ABC):
     def mysql_db(self, value):
         self._mysql_db = value
 
+    # Abstract methods
     @abstractmethod
     def init_attributes(self):
         pass
 
+    @abstractmethod
+    def insert_values(self, values):
+        """Insert a set of beans passed in input"""
+        pass
+
+    @abstractmethod
+    def delete_values(self, values):
+        """Delete a set of beans passed in input"""
+        pass
+
+    # Table methods
     def exist(self):
         query = "SELECT * FROM information_schema.tables WHERE table_schema = \"" + self._database_name + \
                 "\" AND table_name = \"" + self.table_name + "\""
 
-        res = self.mysql_db.search(query)
+        fields, res = self.mysql_db.search(query)
 
         if len(res) == 0:
             return False
@@ -54,6 +67,7 @@ class AnitaTable(ABC):
         return True
 
     def create(self):
+        """Create the table"""
         pk_attribute_names = ["`" + attribute.name + "`" for attribute in self.attributes if attribute.pk is True]
         pk_query = "PRIMARY KEY (" + ", ".join(pk_attribute_names) + ")"
         query = "CREATE TABLE `" + self._database_name + "`.`" + self.table_name + "` ("
@@ -75,20 +89,26 @@ class AnitaTable(ABC):
         # TEST
         print("CREATE TABLE QUERY: " + query)
 
-        res = self.mysql_db.search(query)
+        fields, res = self.mysql_db.search(query)
 
         return res
 
-    @abstractmethod
-    def insert_values(self, values):
-        pass
+    def delete(self):
+        """Delete the table from the database"""
+        query = "DROP TABLE `" + self._database_name + "`.`" + self.table_name
+        self.mysql_db.search(query)
 
-    @abstractmethod
-    def delete_values(self, values):
-        pass
+    # Table content methods - used to bypass the controls done by the concrete classes
+    def insert(self, query, value):
+        """Method used to directly executed an insert query"""
+        self.mysql_db.insert(query, value)
+
+    def select(self, query, values=None):
+        """Method used to directly executed a select query"""
+        return self.mysql_db.search(query, values)
 
     def delete_rows(self, parameters_dict):
-        """Delete rows that satisfied all parameter passed as imput (and)"""
+        """Delete rows that satisfied all parameter passed as input (and)"""
         attribute_names = [key for key in parameters_dict]
         values = [parameters_dict[key] for key in parameters_dict]
         values = tuple(values)
@@ -96,10 +116,6 @@ class AnitaTable(ABC):
         delete_query = self.generate_delete_query(attribute_names)
 
         self.mysql_db.delete(delete_query, values)
-
-    def delete(self):
-        """Delete the table from the database"""
-        pass
 
     def generate_insert_query(self, attribute_names):
         quote_attribute_names = [("`" + attribute + "`") for attribute in attribute_names]
