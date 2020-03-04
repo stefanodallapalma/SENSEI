@@ -12,10 +12,10 @@ basePath: "/v1/data"
 
 # Paths supported by the server application
 paths:
-  /load-new-html-files:
+  /load-new-project:
     post:
-      operationId: "api.endpoints.data.load_html_pages.load_new_data"
-      summary: "Endpoint used to load a zip containing html pages"
+      operationId: "api.endpoints.data.load_html_pages.load_new_project"
+      summary: "Endpoint used to load a new project"
       consumes:
         - "multipart/form-data"
       produces:
@@ -37,11 +37,10 @@ paths:
           schema:
             type: boolean
 
-
-  /load-marketplace:
+  /load-project:
     post:
-      operationId: "api.endpoints.data.load_marketplace.load_data"
-      summary: "Endpoint to load a zip file containing html marketplace's files"
+      operationId: "api.endpoints.data.load_html_pages.load_project"
+      summary: "Endpoint used to load a new project"
       consumes:
         - "multipart/form-data"
       produces:
@@ -49,13 +48,17 @@ paths:
 
       parameters:
         - in:  formData
-          name: file
+          name: sq_zip_html_pages
           required: true
           type: file
+        - in:  formData
+          name: resource_folder_name
+          required: true
+          type: string
 
       responses:
         200:
-          description: "Successful zip file sent"
+          description: "Successful sent html zip file"
           schema:
             type: boolean
 

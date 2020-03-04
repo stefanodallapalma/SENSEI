@@ -33,9 +33,10 @@ class SonarqubeLocalProject:
     def jsonbuffer_path(self):
         return self._jsonbuffer_path
 
-    def create_project(self):
+    def create_project(self, new_project=True):
         try:
-            mkdir(self._project_path)
+            if new_project:
+                mkdir(self._project_path)
             mkdir(self._raw_path)
         except OSError:
             return False

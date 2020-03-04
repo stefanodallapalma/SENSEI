@@ -1,0 +1,33 @@
+[2020-03-03 15:41:47,412: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 15:41:47,431: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 15:41:48,474: INFO/MainProcess] mingle: all alone
+[2020-03-03 15:41:48,510: INFO/MainProcess] celery@daniel-VirtualBox ready.
+[2020-03-03 15:43:33,830: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 15:43:33,845: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 15:43:34,887: INFO/MainProcess] mingle: all alone
+[2020-03-03 15:43:34,915: INFO/MainProcess] celery@daniel-VirtualBox ready.
+[2020-03-03 15:48:06,273: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 15:48:06,292: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 15:48:07,336: INFO/MainProcess] mingle: all alone
+[2020-03-03 15:48:07,353: INFO/MainProcess] celery@daniel-VirtualBox ready.
+[2020-03-03 16:09:49,413: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 16:09:49,428: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 16:09:50,461: INFO/MainProcess] mingle: all alone
+[2020-03-03 16:09:50,495: INFO/MainProcess] celery@daniel-VirtualBox ready.
+[2020-03-03 16:12:53,189: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 16:12:53,207: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 16:12:54,246: INFO/MainProcess] mingle: all alone
+[2020-03-03 16:12:54,264: INFO/MainProcess] celery@daniel-VirtualBox ready.
+[2020-03-03 16:14:49,458: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 16:14:49,473: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 16:14:50,512: INFO/MainProcess] mingle: all alone
+[2020-03-03 16:14:50,530: INFO/MainProcess] celery@daniel-VirtualBox ready.
+[2020-03-03 16:14:53,182: INFO/MainProcess] Received task: taskqueue.celery.tasks.quality.load_pages[1]  
+[2020-03-03 16:16:53,205: WARNING/ForkPoolWorker-7] Database name: anita
+[2020-03-03 16:16:53,540: WARNING/ForkPoolWorker-7] Clear local raw files
+[2020-03-03 16:16:53,545: WARNING/ForkPoolWorker-7] Remove the project from sonarqube
+[2020-03-03 16:16:57,944: INFO/ForkPoolWorker-7] Task taskqueue.celery.tasks.quality.load_pages[1] succeeded in 124.76069462799933s: {'steps': {'Save data': True, 'Sonarqube project - Setup': True, 'Sonarqube project - Sending pages': True, 'Sonarqube project - Processing': True, 'Save data on db': True, 'Sonarqube project - Delete project': True}, 'msg': ''}
+[2020-03-03 17:37:46,612: INFO/MainProcess] Connected to amqp://admin:**@127.0.0.1:5672/vhost
+[2020-03-03 17:37:46,629: INFO/MainProcess] mingle: searching for neighbors
+[2020-03-03 17:37:47,679: INFO/MainProcess] mingle: all alone
+[2020-03-03 17:37:47,696: INFO/MainProcess] celery@daniel-VirtualBox ready.

@@ -63,7 +63,7 @@ def load_data():
 
     print("DB STEP")
 
-    db = AnViProDB(db_parameters_path)
+    db = AnitaDB(db_parameters_path)
     db.insertVendors(vendors)
     print("VENDORS SAVED")
 

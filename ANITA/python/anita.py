@@ -1,22 +1,28 @@
-import connexion
-from flask_cors import CORS
-from check.precondition import check_preconditions
+import sys
+from signal import *
+from utils.ShellUtils import execute_python3_code
+from utils.ServerUtils import stop_server
 
-# Create the application instance
-app = connexion.App(__name__, specification_dir='./')
-CORS(app.app)
+flask_name = "flask_app.py"
+celery_name = "celery_app.py"
 
-# Read the swagger.yml file to configure the endpoints
-app.add_api("swagger/conf.yml")
-app.add_api("swagger/data.yml")
-app.add_api('swagger/swagger.yml')
-app.add_api('swagger/resources.yml')
-app.add_api("swagger/softwarequality.yml")
+
+def clean(*args):
+    stop_server(celery_name)
+    stop_server(flask_name)
+    sys.exit(0)
+
 
 if __name__ == "__main__":
-    status = check_preconditions()
+    SIGNAL_LIST = [SIGABRT, SIGILL, SIGINT, SIGSEGV, SIGTERM]
+    if sys.platform == "linux" or sys.platform == "darwin":
+        try:
+            SIGNAL_LIST.append(SIGBREAK)
+        except NameError:
+            pass
 
-    if status:
-        print("OK")
-        app.run(host='0.0.0.0', port=5000, debug=True)
+    for sig in SIGNAL_LIST:
+        signal(sig, clean)
 
+    execute_python3_code(celery_name)
+    execute_python3_code(flask_name)
