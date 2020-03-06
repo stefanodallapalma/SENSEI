@@ -1,0 +1,234 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api/v1/software-quality"
+
+# Paths supported by the server application
+paths:
+  /projects/:
+    post:
+      operationId: "api.endpoints.software_quality.projects.load_new_project"
+      summary: "Load a project for software quality module into the database"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_zip
+          required: true
+          type: file
+        - in:  formData
+          name: project_name
+          required: true
+          type: string
+        - in:  formData
+          name: known_dataset
+          required: false
+          type: string
+
+      responses:
+        200:
+          description: "Upload process has been executed successfully"
+        202:
+          description: "Upload process accepted (with indication on current status in the json content)"
+        400:
+          description: "Upload failed because a new project already exist in the database"
+        500:
+          description: "Upload process failed"
+    delete:
+      operationId: "api.endpoints.software_quality.projects.delete_projects"
+      summary: "Delete a list of projects used for the software quality module"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_list
+          required: true
+          type: array
+          items:
+            type: string
+
+      responses:
+        204:
+          description: "Projects removed"
+        404:
+          description: "Project(s) not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception \unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /projects/known-projects/:
+    get:
+      operationId: "api.endpoints.software_quality.projects.get_known_projects"
+      summary: "Get the list of known databases already preprocessed in the server"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing the list of all known databases"
+          schema:
+            type: boolean
+
+  /projects/{project_name}:
+    get:
+      operationId: "api.endpoints.software_quality.projects.get_project"
+      summary: "Endpoint used to obtain all the data related to a project from the db"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: project_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all information about the project sent by input"
+        404:
+          description: "Project not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+    put:
+      operationId: "api.endpoints.software_quality.projects.update_project"
+      summary: "Endpoint used to obtain all the data related to a project from the db"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_zip
+          required: true
+          type: file
+        - in:  path
+          name: project_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Upload process has been executed successfully"
+        202:
+          description: "Upload process accepted (with indication on current status in the json content)"
+        404:
+          description: "Project not found"
+        500:
+          description: "Upload process failed"
+    delete:
+      operationId: "api.endpoints.software_quality.delete.delete_project"
+      summary: "Delete a project used for the software quality module"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: project_name
+          required: true
+          type: string
+
+      responses:
+        204:
+          description: "Project removed"
+        404:
+          description: "Project not found"
+        500:
+          description: "Delete of the project has been executed successfully"
+        503:
+          description: "Delete of the project has been executed successfully"
+
+  /projects/{project_name}/experimentation/:
+    post:
+      operationId: "api.endpoints.software_quality.experimentation.run_all_experimentations"
+      summary: "Run all the experiments on a project"
+
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: project_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Experimentation executed successfully. Information of experimentation executed can be extracted from the json"
+        202:
+          description: "Request accepted. The json contains the status of the experimentation"
+        404:
+          description: "Project and/or experimentation not found. More information in the json"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+
+  /projects/{project_name}/experimentation/{experimentation_name}:
+    get:
+      operationId: "api.endpoints.software_quality.experimentation.run_experimentation"
+      summary: "Run all experimentations on a project"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: project_name
+          required: true
+          type: string
+        - in:  path
+          name: experimentation_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Experimentation executed successfully. Information of experimentation executed can be extracted from the json"
+        202:
+          description: "Request accepted. The json contains the status of the experimentation"
+        404:
+          description: "Project and/or experimentation not found. More information in the json"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+
+  /experimentation/:
+    get:
+      operationId: "api.endpoints.software_quality.experimentation.get_experimentation_list"
+      summary: "Get the list of all experimentations available"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: project_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all information about the project sent by input"

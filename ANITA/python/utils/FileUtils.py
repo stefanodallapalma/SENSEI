@@ -13,13 +13,29 @@ def get_dict_from_file(path):
     return parameters
 
 
-def getfiles(dir_path):
+def getfiles(dir_path, abs_path=False, ext_filter=None):
     onlyfiles = [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
+
+    if abs_path:
+        onlyfiles = [os.path.join(dir_path, f) for f in onlyfiles]
+
+    if ext_filter is not None:
+        if isinstance(ext_filter, (tuple, list, str)):
+            if isinstance(ext_filter, (list, str)):
+                ext_filter = tuple(ext_filter)
+
+            onlyfiles = [file for file in onlyfiles if file.endswith(ext_filter)]
+        else:
+            raise Exception("The extensions list must be of type list or tuple")
+
     return onlyfiles
 
 
-def getdirs(dir_path):
+def getdirs(dir_path, abs_path=False):
     onlydirs = [f for f in os.listdir(dir_path) if os.path.isdir(os.path.join(dir_path, f))]
+    if abs_path:
+        onlydirs = [os.path.join(dir_path, f) for f in onlydirs]
+
     return onlydirs
 
 

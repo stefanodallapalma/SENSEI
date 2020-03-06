@@ -1,0 +1,2 @@
+class NoDatasetFoundException(Exception):
+    pass

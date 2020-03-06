@@ -33,6 +33,10 @@ class SonarqubeLocalProject:
     def jsonbuffer_path(self):
         return self._jsonbuffer_path
 
+    @property
+    def raw_path(self):
+        return self._raw_path
+
     def create_project(self, new_project=True):
         try:
             if new_project:

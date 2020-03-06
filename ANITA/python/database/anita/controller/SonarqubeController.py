@@ -1,55 +1,42 @@
-from datetime import datetime
+from database.anita.controller.TableController import TableController
 from database.anita.bean.SonarqubeBean import SonarqubeBean
+from database.db.structure.ColumnDB import ColumnDB
+from database.db.structure.DataType import DataType
+from database.db.structure.Type import Type
+from sonarqube.anita.SonarqubeAnitaAPI import SonarqubeAnitaAPI
+
+TABLE_NAME = "sonarqube"
 
 
-def get_beans(project_name, metrics):
-    sonarqube_beans = []
+class SonarqubeController(TableController):
+    def __init__(self):
+        super().__init__(TABLE_NAME)
 
-    timestamp = int(datetime.now().timestamp())
-    for metric in metrics:
-        name = metric["Name"]
+    def __init_columns(self):
+        # Attributes
+        attribute_names = SonarqubeBean.__prop__()
+        pk_attribute_names = list(attribute_names)
 
-        tmp_metrics = metric
-        del tmp_metrics["Name"]
+        anita_sq_api = SonarqubeAnitaAPI()
+        metrics = anita_sq_api.metrics()
+        attribute_names += metrics
 
-        sonarqube_bean = SonarqubeBean(timestamp, project_name, name, tmp_metrics)
-        sonarqube_beans.append(sonarqube_bean)
-
-    return sonarqube_beans
-
-
-def get_bean(project_name, metric):
-    metrics = [metric]
-    sonarqube_beans = get_beans(project_name, metrics)
-    return sonarqube_beans[0]
-
-
-def get_beans_from_db(parameters, values):
-    sonarqube_pages = []
-
-    for value in values:
-        timestamp = None
-        project_name = None
-        page = None
-        metrics = {}
-
-        for i in range(len(parameters)):
-            if parameters[i] == "timestamp":
-                timestamp = value[i]
-            elif parameters[i] == "project_name":
-                project_name = value[i]
-            elif parameters[i] == "page":
-                page = value[i]
+        columns = []
+        for attribute_name in attribute_names:
+            if attribute_name in pk_attribute_names:
+                datatype = DataType(Type.VARCHAR, 50)
+                column = ColumnDB(attribute_name, datatype, pk=True, not_null=True)
             else:
-                metrics[parameters[i]] = value[i]
+                datatype = DataType(Type.DOUBLE)
+                column = ColumnDB(attribute_name, datatype)
+            columns.append(column)
 
-        sonarqube_page = SonarqubeBean(timestamp, project_name, page, metrics)
-        sonarqube_pages.append(sonarqube_page)
+        self.columns = columns
 
-    return sonarqube_pages
+    def select_by_project_name(self, project_name):
+        param_dict = {"project_name": project_name}
+        return self.select_by_params(param_dict)
 
-
-def get_bean_from_db(parameters, value):
-    values = [value]
-    sonarqube_beans = get_beans_from_db(parameters, values)
-    return sonarqube_beans[0]
+    def delete_by_project_name(self, project_name):
+        bean = SonarqubeBean(project_name=project_name)
+        return self.delete_beans(bean)
