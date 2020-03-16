@@ -3,8 +3,6 @@ from sonarqube.api.SonarqubeAPI import SonarqubeAPI
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 import sonarqube.utils.SonarqubeUtils as sq_utils
 
-html_pages_path = "../resources/html_pages/"
-
 
 class SonarqubeAPIExtended(SonarqubeAPI):
     def create_project(self, name, project_key):
@@ -37,6 +35,7 @@ class SonarqubeAPIExtended(SonarqubeAPI):
         return Response(json.dumps(response_dict), status=final_response.status_code, mimetype="application/json")
 
     def delete_project(self, project_key):
+        print(project_key)
         project = sq_utils.get_project("Key", project_key)
 
         total_files = project["TotalFiles"]

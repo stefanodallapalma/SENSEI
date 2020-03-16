@@ -1,12 +1,11 @@
 import json, shutil, os
 import utils.FileUtils as FileUtils
-from datetime import datetime
 from os import mkdir, remove
 from os.path import join, exists
 from zipfile import ZipFile
 from utils.ListUtils import array_split
 
-root_path = "../resources/html_pages/"
+root_path = "../resources/software_quality/"
 
 
 class SonarqubeLocalProject:
@@ -14,56 +13,86 @@ class SonarqubeLocalProject:
 
     def __init__(self, name):
         self._name = name
-        self._project_path = join(root_path, self._name)
-        self._raw_path = join(self._project_path, "raw")
-        self._tmp_path = join(self._raw_path, "tmp")
 
-        jsonbuffer_name = name + "_" + "buffers.json"
-        self._jsonbuffer_path = join(self._project_path, jsonbuffer_name)
+    @staticmethod
+    def root_path():
+        return root_path
 
     @property
     def project_path(self):
-        return self._project_path
+        return join(root_path, self._name)
 
     @property
     def buffer_path(self):
-        return self._tmp_path
+        return join(self.raw_path, "tmp")
 
     @property
     def jsonbuffer_path(self):
-        return self._jsonbuffer_path
+        jsonbuffer_name = self._name + "_" + "buffers.json"
+        return join(self.project_path, jsonbuffer_name)
 
     @property
     def raw_path(self):
-        return self._raw_path
+        return join(self.project_path, "raw")
 
     def create_project(self, new_project=True):
         try:
             if new_project:
-                mkdir(self._project_path)
-            mkdir(self._raw_path)
+                mkdir(self.project_path)
+            mkdir(self.raw_path)
         except OSError:
             return False
 
         return True
 
-    def save_and_extract(self, zip_file):
-        now = datetime.now()
-        time = now.strftime("%Y-%m-%dT%H-%M-%S")
+    def delete_project(self):
+        shutil.rmtree(self.project_path)
 
-        zip_name = self._name + "_" + time + ".zip"
-        zip_path = join(self._project_path, zip_name)
+    def projectdir_is_empty(self):
+        dirs = FileUtils.getdirs(self.project_path)
+        files = FileUtils.getfiles(self.project_path)
+
+        if len(dirs) + len(files) == 0:
+            return True
+
+        return False
+
+    def save_and_extract(self, zip_file, timestamp):
+        zip_name = self._name + "_" + timestamp + ".zip"
+        zip_path = join(self.project_path, zip_name)
 
         # Save zip
         zip_file.save(zip_path)
 
         # Extract
         zip = ZipFile(zip_path, "r")
-        zip.extractall(self._raw_path)
+        zip.extractall(self.raw_path)
+
+    def get_dumps(self):
+        dumps = FileUtils.getfiles(self.project_path, ext_filter="zip")
+        return [".".join(dump.split(".")[:-1]) for dump in dumps]
+
+    def delete_dump(self, timestamp):
+        dump_name = self._name + "_" + timestamp + ".zip"
+        print(dump_name)
+        dump_path = join(self.project_path, dump_name)
+        print(dump_path)
+        os.remove(dump_path)
+
+    def last_timestamp(self):
+        dump_list = FileUtils.getfiles(self.project_path, ext_filter="zip")
+
+        last = 0
+        for dump in dump_list:
+            timestamp = dump.split("_")[1]
+            if timestamp > last:
+                last = timestamp
+
+        return last
 
     def add_buffer_info(self):
         # Number of files loaded
-        onlyfiles = FileUtils.getfiles(self._raw_path)
+        onlyfiles = FileUtils.getfiles(self.raw_path)
 
         json_buffer = {}
         buffers = array_split(onlyfiles, self.BUFFER_SIZE)
@@ -73,57 +102,57 @@ class SonarqubeLocalProject:
             json_buffer[i] = buffer
             i += 1
 
-        with open(self._jsonbuffer_path, 'w') as outfile:
+        with open(self.jsonbuffer_path, 'w') as outfile:
             json.dump(json_buffer, outfile)
 
     def get_buffers(self):
-        if not exists(self._jsonbuffer_path):
+        if not exists(self.jsonbuffer_path):
             return None
 
-        return FileUtils.load_json(self._jsonbuffer_path)
+        return FileUtils.load_json(self.jsonbuffer_path)
 
     def create_buffer_folder(self):
-        mkdir(self._tmp_path)
+        mkdir(self.buffer_path)
 
     def move_buffer(self, index):
         buffers = self.get_buffers()
         pages = buffers[str(index)]
 
         for page in pages:
-            page_path = join(self._raw_path, page)
-            new_page_path = join(self._tmp_path, page)
+            page_path = join(self.raw_path, page)
+            new_page_path = join(self.buffer_path, page)
             shutil.copy(page_path, new_page_path)
 
     def clear_buffer_folder(self):
-        for root, dirs, files in os.walk(self._tmp_path):
+        for root, dirs, files in os.walk(self.buffer_path):
             for f in files:
                 os.unlink(join(root, f))
             for d in dirs:
                 shutil.rmtree(join(root, d))
 
     def delete_buffer_folder(self):
-        shutil.rmtree(self._tmp_path)
+        shutil.rmtree(self.buffer_path)
 
     def get_raw_files(self):
-        if not exists(self._raw_path) or not exists(self._jsonbuffer_path):
+        if not exists(self.raw_path) or not exists(self.jsonbuffer_path):
             return None
 
         files = []
-        if exists(self._jsonbuffer_path):
+        if exists(self.jsonbuffer_path):
             buffers = self.get_buffers()
             for key in buffers:
                 files += buffers[key]
         else:
-            files = FileUtils.load_json(self._raw_path)
+            files = FileUtils.load_json(self.raw_path)
 
         return files
 
     def delete_raw(self):
-        shutil.rmtree(self._raw_path)
-        remove(self._jsonbuffer_path)
+        shutil.rmtree(self.raw_path)
+        remove(self.jsonbuffer_path)
 
     def exist(self):
-        if exists(self._project_path):
+        if exists(self.project_path):
             return True
 
         return False

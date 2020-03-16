@@ -116,7 +116,7 @@ def check_preconditions():
 
 def resource_precondition():
     # Resource dir names
-    dirs = ["html_pages", "zip", "database", "sonar-scanner"]
+    dirs = ["software_quality", "zip", "database", "sonar-scanner"]
 
     # Resource direcories
     onlydirs = [f for f in os.listdir(resource_path) if os.path.isdir(join(resource_path, f))]

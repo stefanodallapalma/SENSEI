@@ -12,7 +12,10 @@ class SonarqubeController(TableController):
     def __init__(self):
         super().__init__(TABLE_NAME)
 
-    def __init_columns(self):
+        # Init attributes
+        self.init_columns()
+
+    def init_columns(self):
         # Attributes
         attribute_names = SonarqubeBean.__prop__()
         pk_attribute_names = list(attribute_names)
@@ -37,6 +40,22 @@ class SonarqubeController(TableController):
         param_dict = {"project_name": project_name}
         return self.select_by_params(param_dict)
 
+    def select_last_inserted(self, project_name):
+        param_dict = {"project_name": project_name}
+        results = self.select_by_params(param_dict)
+
+        last = []
+        last_timestamp = 0
+        for result in results:
+            if result["timestamp"] >= last_timestamp:
+                if result["timestamp"] > last_timestamp:
+                    last_timestamp = results["timestamp"]
+                    last.clear()
+                last.append(result)
+
+        return last
+
     def delete_by_project_name(self, project_name):
         bean = SonarqubeBean(project_name=project_name)
         return self.delete_beans(bean)
+

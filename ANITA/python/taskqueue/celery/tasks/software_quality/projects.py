@@ -15,14 +15,16 @@ from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 from sonarscanner.SonarscannerController import run_sonarscanner as scanner
 from database.anita.controller.SonarqubeController import SonarqubeController
-from database.anita.decoder.sonarqube_decoder import SonarqubeServerDecoder
+from database.anita.decoder.sonarqube_decoder import SonarqubeServerDecoder, SonarqubeDBDecoder
+from exception.PendingTaskException import PendingTaskException
 
 # Task ID
 LOAD_PAGE_TASK_ID = "1"
+REVERSE_LOAD_PAGE_TASK_ID = "2"
 
 
 @celery.task(bind=True)
-def load_pages(self, project_name, known_project_name):
+def load_pages(self, project_name, timestamp, known_project_name):
     # Response content
     content = load_pages_content_template()
     self.update_state(state=states.STARTED, meta=content)
@@ -40,56 +42,135 @@ def load_pages(self, project_name, known_project_name):
     create_response = sq_server.create_project(project_name, project_key)
 
     if 400 <= create_response.status_code < 500:
-        content["msg"] = create_response.json()
+        content["error"] = create_response.json()
         self.update_state(state=states.FAILURE, meta=content)
         return content
 
-    content["steps"]["Sonarqube project - Setup"] = True
+    content["steps"]["2 - Sonarqube project - Setup"] = True
     self.update_state(state='PROGRESS', meta=content)
 
     # STEP 3 - SONARQUBE PROJECT - SENDING PAGES
     scanner(project_key, sq_local.project_path)
-    content["steps"]["Sonarqube project - Sending pages"] = True
+    content["steps"]["3 - Sonarqube project - Sending pages"] = True
     self.update_state(state='PROGRESS', meta=content)
 
     # STEP 4 - SONARQUBE PROJECT - PROCESSING
-    measures = sq_api_anita.measures(project_key, wait=True)
-    content["steps"]["Sonarqube project - Processing"] = True
-    self.update_state(state='PROGRESS', meta=content)
+    try:
+        measures = sq_api_anita.measures(project_key, wait=True)
+        content["steps"]["4 - Sonarqube project - Processing"] = True
+        self.update_state(state='PROGRESS', meta=content)
+    except PendingTaskException as pte:
+        content["error"] = "PendingTaskException"
+        content["msg"] = str(pte)
+        self.update_state(states.FAILURE, meta=content)
+        return content
 
     # STEP 5 - SAVE DATA ON DB
     sq_controller = SonarqubeController()
-    if not sq_controller.exist():
+    try:
+        create_status = sq_controller.exist()
+    except Exception as e:
+        content["error"] = "Impossible to create the table into the db"
+        content["msg"] = str(e)
+        self.update_state(states.FAILURE, meta=content)
+        return content
+
+    if not create_status:
         sq_controller.create()
 
-    timestamp = int(datetime.now().timestamp())
-    bean_dict = {"project_name": project_name, "timestamp": timestamp, "pages": measures}
+    bean_dict = json.dumps({"project_name": project_name, "timestamp": timestamp, "pages": measures})
     sq_beans = json.loads(bean_dict, cls=SonarqubeServerDecoder)
-    sq_controller.insert_beans(sq_beans)
 
-    content["steps"]["Save data on db"] = True
+    try:
+        sq_controller.insert_beans(sq_beans)
+    except Exception as e:
+        content["error"] = "Impossible to insert beans into the db"
+        content["msg"] = str(e)
+        self.update_state(states.FAILURE, meta=content)
+        return content
+
+    content["steps"]["5 - Save data on db"] = True
     self.update_state(state='PROGRESS', meta=content)
 
     # Clear local raw files
     sq_local.delete_raw()
 
     # STEP 6 - SONARQUBE PROJECT - DELETE PROJECT
-    sq_utils.delete_project(project_name)
     remove_response = sq_server.delete_project(project_key)
     if remove_response.status_code >= 400:
-        content["msg"] = "Impossible to delete project on sonarqube"
+        content["error"] = "Impossible to delete project on sonarqube"
         self.update_state(state=states.FAILURE, meta=content)
         return content
 
-    content["steps"]["Sonarqube project - Delete project"] = True
+    sq_utils.delete_project(project_name)
+
+    content["steps"]["6 - Sonarqube project - Delete project"] = True
     self.update_state(state=states.SUCCESS, meta=content)
     return content
 
 
 def load_pages_content_template():
-    steps = {"Save data": True, "Sonarqube project - Setup": False, "Sonarqube project - Sending pages": False,
-             "Sonarqube project - Processing": False, "Save data on db": False,
-             "Sonarqube project - Delete project": False}
+    steps = {"1 - Save data": True, "2 - Sonarqube project - Setup": False, "3 - Sonarqube project - Sending pages": False,
+             "4 - Sonarqube project - Processing": False, "5 - Save data on db": False,
+             "6 - Sonarqube project - Delete project": False}
 
-    content = {"steps": steps, "msg": ""}
+    content = {"steps": steps}
     return content
+
+
+@celery.task(bind=True)
+def reverse_load_pages(self, steps, project_name, timestamp):
+    # First SETUP
+    reverse_steps = reverse_load_template(steps)
+    content = {"reverse steps": reverse_steps}
+    self.update_state(state=states.STARTED, meta=content)
+
+    # Parameter
+    sq_local = SonarqubeLocalProject(project_name)
+    sq_server = SonarqubeAPIExtended()
+    sq_controller = SonarqubeController()
+    project_key = sq_utils.get_project_key(project_name)
+
+    if "5 - Save data on db" in reverse_steps:
+        # Delete all last rows
+        results = sq_controller.select_by_project_name(project_name)
+        delete_beans = json.loads(results, cls=SonarqubeDBDecoder)
+        sq_controller.delete_beans(delete_beans)
+
+        content["reverse steps"]["5 - Save data on db"] = True
+        self.update_state(state='PROGRESS', meta=content)
+
+    if "4 - Sonarqube project - Processing" in reverse_steps:
+        remove_response = sq_server.delete_project(project_key)
+        if remove_response.status_code >= 400:
+            content["error"] = "Impossible to delete project on sonarqube"
+            self.update_state(state=states.FAILURE, meta=content)
+            return content
+
+        content["reverse steps"]["4 - Sonarqube project - Processing"] = True
+        self.update_state(state='PROGRESS', meta=content)
+
+    if "2 - Sonarqube project - Setup" in reverse_steps:
+        sq_utils.delete_project(project_name)
+        sq_local.delete_raw()
+        content["reverse steps"]["2 - Sonarqube project - Setup"] = True
+        self.update_state(state='PROGRESS', meta=content)
+
+    if "1 - Save data" in reverse_steps:
+        sq_local.delete_dump(timestamp)
+        if sq_local.projectdir_is_empty():
+            sq_local.delete_project()
+        content["reverse steps"]["1 - Save data"] = True
+        self.update_state(state='PROGRESS', meta=content)
+
+    self.update_state(state=states.SUCCESS, meta=content)
+    return content
+
+
+def reverse_load_template(steps):
+    reverse_steps = {}
+    for key in steps:
+        if steps[key] and not key.startswith("3"):
+            reverse_steps[key] = False
+
+    return reverse_steps

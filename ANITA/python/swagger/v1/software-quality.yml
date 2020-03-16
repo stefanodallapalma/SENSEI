@@ -8,42 +8,21 @@ consumes:
 produces:
   - "application/json"
 
-basePath: "/api/v1/software-quality"
+basePath: "/v1/software-quality"
 
 # Paths supported by the server application
 paths:
   /projects/:
-    post:
-      operationId: "api.endpoints.software_quality.projects.load_new_project"
-      summary: "Load a project for software quality module into the database"
-      consumes:
-        - "multipart/form-data"
+    get:
+      operationId: "api.endpoints.software_quality.projects.projects_list"
+      summary: "Get a list containing all the projects"
+
       produces:
         - "application/json"
 
-      parameters:
-        - in:  formData
-          name: project_zip
-          required: true
-          type: file
-        - in:  formData
-          name: project_name
-          required: true
-          type: string
-        - in:  formData
-          name: known_dataset
-          required: false
-          type: string
-
       responses:
         200:
-          description: "Upload process has been executed successfully"
-        202:
-          description: "Upload process accepted (with indication on current status in the json content)"
-        400:
-          description: "Upload failed because a new project already exist in the database"
-        500:
-          description: "Upload process failed"
+          description: "The json containing all the projects"
     delete:
       operationId: "api.endpoints.software_quality.projects.delete_projects"
       summary: "Delete a list of projects used for the software quality module"
@@ -66,9 +45,33 @@ paths:
         404:
           description: "Project(s) not found"
         500:
-          description: "Internal server error: general error used if the server raises an exception \unmanaged by other 5xx status code"
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
         503:
           description: "Database unreachable"
+
+  /projects/status/:
+    get:
+      operationId: "api.endpoints.software_quality.projects.projects_status"
+      summary: "Get the upload status of all projects"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "The json contains the result and/or status  of all the upload project tasks"
+
+  /projects/info/:
+    get:
+      operationId: "api.endpoints.software_quality.projects.projects_info"
+      summary: "Get the info of a projects (number of files, dumps)"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Json containing the info of all projects"
 
   /projects/known-projects/:
     get:
@@ -88,8 +91,9 @@ paths:
     get:
       operationId: "api.endpoints.software_quality.projects.get_project"
       summary: "Endpoint used to obtain all the data related to a project from the db"
+
       consumes:
-        - "multipart/form-data"
+        - "application/xml"
       produces:
         - "application/json"
 
@@ -108,9 +112,38 @@ paths:
           description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
         503:
           description: "Database unreachable"
+    post:
+      operationId: "api.endpoints.software_quality.projects.load_new_project"
+      summary: "Load a new project for software quality module into the database"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: project_zip
+          required: true
+          type: file
+        - in: path
+          name: project_name
+          required: true
+          type: string
+        - in:  formData
+          name: known_dataset
+          required: false
+          type: string
+
+      responses:
+        202:
+          description: "Upload process accepted (to see the upload status, use the relative endpoint). The json contains the info of the project"
+        400:
+          description: "Project already created"
+        500:
+          description: "Upload process failed"
     put:
       operationId: "api.endpoints.software_quality.projects.update_project"
-      summary: "Endpoint used to obtain all the data related to a project from the db"
+      summary: "Update a project adding new pages"
       consumes:
         - "multipart/form-data"
       produces:
@@ -127,19 +160,18 @@ paths:
           type: string
 
       responses:
-        200:
-          description: "Upload process has been executed successfully"
         202:
-          description: "Upload process accepted (with indication on current status in the json content)"
+          description: "Upload process accepted (to see the upload status, use the relative endpoint). The json contains the info of the project"
         404:
           description: "Project not found"
         500:
           description: "Upload process failed"
     delete:
-      operationId: "api.endpoints.software_quality.delete.delete_project"
+      operationId: "api.endpoints.software_quality.projects.delete_project"
       summary: "Delete a project used for the software quality module"
+
       consumes:
-        - "multipart/form-data"
+        - "application/xml"
       produces:
         - "application/json"
 
@@ -155,80 +187,155 @@ paths:
         404:
           description: "Project not found"
         500:
-          description: "Delete of the project has been executed successfully"
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
         503:
-          description: "Delete of the project has been executed successfully"
+          description: "Database unreachable"
 
-  /projects/{project_name}/experimentation/:
-    post:
-      operationId: "api.endpoints.software_quality.experimentation.run_all_experimentations"
-      summary: "Run all the experiments on a project"
-
-      consumes:
-        - "multipart/form-data"
-      produces:
-        - "application/json"
-
-      parameters:
-        - in:  path
-          name: project_name
-          required: true
-          type: string
-
-      responses:
-        200:
-          description: "Experimentation executed successfully. Information of experimentation executed can be extracted from the json"
-        202:
-          description: "Request accepted. The json contains the status of the experimentation"
-        404:
-          description: "Project and/or experimentation not found. More information in the json"
-        500:
-          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
-
-  /projects/{project_name}/experimentation/{experimentation_name}:
+  /projects/{project_name}/info/:
     get:
-      operationId: "api.endpoints.software_quality.experimentation.run_experimentation"
-      summary: "Run all experimentations on a project"
+      operationId: "api.endpoints.software_quality.projects.project_info"
+      summary: "Get the info of a projects (number of files, dumps)"
+
       consumes:
-        - "multipart/form-data"
+        - "application/xml"
       produces:
         - "application/json"
 
       parameters:
-        - in:  path
+        - in: path
           name: project_name
-          required: true
-          type: string
-        - in:  path
-          name: experimentation_name
           required: true
           type: string
 
       responses:
         200:
-          description: "Experimentation executed successfully. Information of experimentation executed can be extracted from the json"
-        202:
-          description: "Request accepted. The json contains the status of the experimentation"
+          description: "Json containing the info of a project"
         404:
-          description: "Project and/or experimentation not found. More information in the json"
+          description: "Project not found"
+
+  /projects/{project_name}/status/:
+    get:
+      operationId: "api.endpoints.software_quality.projects.project_status_all"
+      summary: "Get the upload status of a projects"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: project_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Task executed successfully. The json contains the result of the upload project task"
+        202:
+          description: "Task is running. The json contains the status of the upload project task"
+        400:
+          description: "Project dump not found"
         500:
-          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+          description: "Task failed. The json contains the result of the upload project task"
+
+  /projects/{project_name}/status/{timestamp}:
+    get:
+      operationId: "api.endpoints.software_quality.projects.project_status"
+      summary: "Get the upload status of a projects"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: project_name
+          required: true
+          type: string
+        - in:  path
+          name: timestamp
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Task executed successfully. The json contains the result of the upload project task"
+        202:
+          description: "Task is running. The json contains the status of the upload project task"
+        400:
+          description: "Project dump not found"
+        500:
+          description: "Task failed. The json contains the result of the upload project task"
 
   /experimentation/:
     get:
       operationId: "api.endpoints.software_quality.experimentation.get_experimentation_list"
       summary: "Get the list of all experimentations available"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "The list of all experimentations available with their respective id"
+
+  /experimentation/{project_name}/{experimentation_id}:
+    get:
+      operationId: "api.endpoints.software_quality.experimentation.run_experimentation"
+      summary: "Run experimentation(s) on a project"
+
       consumes:
-        - "multipart/form-data"
+        - "application/xml"
       produces:
         - "application/json"
 
       parameters:
-        - in:  path
+        - in: path
           name: project_name
+          required: true
+          type: string
+        - in:  path
+          name: experimentation_id
+          required: true
+          type: string
+
+      responses:
+        202:
+          description: "Experimentation task started. To see the status and results, use the relative endpoint. The json content contains the info of the experimentation"
+        404:
+          description: "Project and/or experimentation not found. More information in the json"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+
+  /experimentation/{project_name}/{experimentation_id}/status/:
+    get:
+      operationId: "api.endpoints.software_quality.experimentation.experimentation_status"
+      summary: "Get the status of an experimentation"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: project_name
+          required: true
+          type: string
+        - in:  path
+          name: experimentation_id
           required: true
           type: string
 
       responses:
         200:
-          description: "A json containing all information about the project sent by input"
+          description: "Task executed successfully. The json contains the result of the experimentation project task"
+        202:
+          description: "Task is running. The json contains the status of the experimentation project task"
+        404:
+          description: "Experimentation task not found"
+        500:
+          description: "Task failed. The json contains the result of the experimentation project task"
+

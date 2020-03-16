@@ -10,6 +10,10 @@ class KnownDataset(ABC):
     def __init__(self, name=None):
         self._name = name
 
+    @staticmethod
+    def root_path():
+        return root_path
+
     @property
     def name(self):
         return self._name

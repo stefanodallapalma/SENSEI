@@ -4,10 +4,7 @@ from sonarqube.bean.SonarqubeParameters import SonarqubeParameters
 from exception.NoProjectException import NoProjectException
 from exception.DuplicateProjectException import DuplicateProjectException
 
-
 sonarqube_setup_path = "../resources/sonarqube_properties.json"
-html_pages_path = "../resources/html_pages/"
-jsonbuffer_suffix = "_infoBuffer.json"
 
 
 def get_sonarqube_properties():

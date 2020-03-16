@@ -37,9 +37,9 @@ class SonarqubeServerDecoder(JSONDecoder):
 
             for page in pages:
                 bean = SonarqubeBean(timestamp, project_name)
-                if "name" in page:
-                    bean.page = page["name"]
-                    del [page["name"]]
+                if "Name" in page:
+                    bean.page = page["Name"]
+                    del [page["Name"]]
 
                 for metric in page:
                     setattr(bean, metric, page[metric])

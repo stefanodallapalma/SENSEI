@@ -1,7 +1,7 @@
 from flask import Response, json
 import os
 
-html_page_path = "../resources/html_pages/"
+html_page_path = "../resources/software_quality/"
 
 def get_html_page_folders():
     folders = os.listdir(html_page_path)

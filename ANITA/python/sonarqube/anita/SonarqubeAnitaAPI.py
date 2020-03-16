@@ -5,7 +5,7 @@ from utils.ListUtils import array_split
 from exception.ServerError import ServerError
 from exception.PendingTaskException import PendingTaskException
 
-TIMEOUT = 600  # sec
+TIMEOUT = 6000  # sec
 LIMIT_METRICS_API = 15
 MAX_ELEMENTS_FOR_PAGE = 100
 

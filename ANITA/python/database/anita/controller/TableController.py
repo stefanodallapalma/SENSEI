@@ -16,9 +16,6 @@ class TableController(ABC):
         # Actual db implementation
         self._mysql_db = MySqlDB(self._database_name)
 
-        # Init attributes
-        self.__init_columns()
-
     # Properties
     @property
     def table_name(self):
@@ -44,7 +41,7 @@ class TableController(ABC):
 
     # Abstract methods
     @abstractmethod
-    def __init_columns(self):
+    def init_columns(self):
         """Init columns of a dataset"""
         pass
 
@@ -111,7 +108,7 @@ class TableController(ABC):
     # Operations with beans
     def insert_beans(self, beans):
         if type(beans) is not list:
-            beans = list(beans)
+            beans = [beans]
 
         """Insert a set of beans passed in input"""
         insert_query_map = self.__generate_insert_query_map(beans)
@@ -121,12 +118,14 @@ class TableController(ABC):
 
     def delete_beans(self, beans):
         if type(beans) is not list:
-            beans = list(beans)
+            beans = [beans]
 
         """Delete a set of beans passed in input"""
         delete_query_map = self.__generate_delete_query_map(beans)
         for query in delete_query_map:
+            print(query)
             values = delete_query_map[query]
+            print(str(values))
             self._mysql_db.delete(query, values)
 
     # Table content methods - used to bypass the controls done by the concrete classes
@@ -168,7 +167,8 @@ class TableController(ABC):
             return None
 
         for bean in beans:
-            bean_attributes = [attribute for attribute in self.attributes if hasattr(bean, attribute)]
+            bean_attributes = [attribute for attribute in self.attributes if hasattr(bean, attribute)
+                               and getattr(bean, attribute) is not None]
             quote_bean_attributes = [("`" + attribute + "`") for attribute in bean_attributes]
 
             # Query
@@ -177,7 +177,8 @@ class TableController(ABC):
                 value_query = "VALUES (" + ", ".join(["%s"] * len(quote_bean_attributes)) + ")"
                 query = start_query + attribute_query + " " + value_query
             elif query_type.upper() == "DELETE":
-                where_list = [(quote_bean_attribute + " = %s") for quote_bean_attribute in quote_bean_attributes]
+                where_list = [(quote_bean_attribute + " = %s") for quote_bean_attribute in quote_bean_attributes
+                              if quote_bean_attribute is not None]
                 where_query = " AND ".join(where_list)
                 query = start_query + where_query
             else:
@@ -188,8 +189,8 @@ class TableController(ABC):
                 values = map[query]
 
             # Get the actual list of values
-            value = [getattr(bean, attribute) for attribute in bean_attributes]
-            values.appends(tuple(value))
+            value = [getattr(bean, attribute) for attribute in bean_attributes if getattr(bean, attribute) is not None]
+            values.append(tuple(value))
             map[query] = values
 
         return map
