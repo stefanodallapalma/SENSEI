@@ -35,7 +35,6 @@ class SonarqubeAPIExtended(SonarqubeAPI):
         return Response(json.dumps(response_dict), status=final_response.status_code, mimetype="application/json")
 
     def delete_project(self, project_key):
-        print(project_key)
         project = sq_utils.get_project("Key", project_key)
 
         total_files = project["TotalFiles"]

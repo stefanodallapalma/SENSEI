@@ -1,25 +1,58 @@
+import traceback
+
 # Third party imports
 from flask import request, Response, json
 
-# Local application imports
-from modules.software_quality.experimentation.experimentation_enum import ExperimentationList
+from modules.software_quality.experimentation.experimentations import *
 
 
-def get_experimentation_list():
-    experimentations = []
-    for experimentation in ExperimentationList:
-        name = experimentation.value
-        id = experimentation.name.split("_")[1]
-
-        exp_dict = {"name": name, "id": id}
-        experimentations.append(exp_dict)
-
-    return Response(json.dumps(experimentations), status=200, mimetype="application/json")
+def algorithm_supported():
+    algorithms = ["knn", "random forest", "logistic regression", "svc"]
+    return Response(json.dumps(algorithms), status=200, mimetype="application/json")
 
 
-def run_experimentation(project_name, experimentation_id):
-    return Response(json.dumps("TO DO"), status=500, mimetype="application/json")
+def evaluate(project_name):
+    try:
+        status, content = evaluation(project_name)
+    except Exception as e:
+        error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
+        return Response(json.dumps(error_content), status=500, mimetype="application/json")
+
+    return Response(json.dumps(content), status=status, mimetype="application/json")
 
 
-def experimentation_status(project_name, experimentation_id):
-    return Response(json.dumps("TO DO"), status=500, mimetype="application/json")
+def evaluate_status(project_name):
+    try:
+        status, content = evaluation_status(project_name)
+    except Exception as e:
+        error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
+        return Response(json.dumps(error_content), status=500, mimetype="application/json")
+
+    return Response(json.dumps(content), status=status, mimetype="application/json")
+
+
+def predict(project_name):
+    algorithm = request.form["algorithm"]
+    save = bool(request.form["save"])
+    if save.upper() == "FALSE":
+        save = False
+    else:
+        save = True
+
+    try:
+        status, content = prediction(project_name, algorithm, save)
+    except Exception as e:
+        error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
+        return Response(json.dumps(error_content), status=500, mimetype="application/json")
+
+    return Response(json.dumps(content), status=status, mimetype="application/json")
+
+
+def predict_status(project_name):
+    try:
+        status, content = prediction_status(project_name)
+    except Exception as e:
+        error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
+        return Response(json.dumps(error_content), status=500, mimetype="application/json")
+
+    return Response(json.dumps(content), status=status, mimetype="application/json")

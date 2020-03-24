@@ -45,6 +45,12 @@ class MySqlDB(DB):
         else:
             return self.__execute_with_escape__(query, value, fetch_header=False, fetch_content=False)
 
+    def update(self, query, value=None):
+        if value is None:
+            return self.__execute__(query, fetch_header=False, fetch_content=False)
+        else:
+            return self.__execute_with_escape__(query, value, fetch_header=False, fetch_content=False)
+
     def delete(self, query, value=None):
         if value is None:
             return self.__execute__(query, fetch_header=False, fetch_content=False)

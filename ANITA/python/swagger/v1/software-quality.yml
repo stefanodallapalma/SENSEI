@@ -73,20 +73,6 @@ paths:
         200:
           description: "Json containing the info of all projects"
 
-  /projects/known-projects/:
-    get:
-      operationId: "api.endpoints.software_quality.projects.get_known_projects"
-      summary: "Get the list of known databases already preprocessed in the server"
-
-      produces:
-        - "application/json"
-
-      responses:
-        200:
-          description: "A json containing the list of all known databases"
-          schema:
-            type: boolean
-
   /projects/{project_name}:
     get:
       operationId: "api.endpoints.software_quality.projects.get_project"
@@ -130,8 +116,8 @@ paths:
           required: true
           type: string
         - in:  formData
-          name: known_dataset
-          required: false
+          name: additional_info
+          required: true
           type: string
 
       responses:
@@ -190,6 +176,34 @@ paths:
           description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
         503:
           description: "Database unreachable"
+
+  /projects/{project_name}/label/:
+    post:
+      operationId: "api.endpoints.software_quality.projects.label"
+      summary: "Add labels into a project"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: project_name
+          required: true
+          type: string
+        - in:  formData
+          name: label_csv
+          required: true
+          type: file
+
+      responses:
+        204:
+          description: "Information updated"
+        404:
+          description: "Project not found"
+        500:
+          description: "Internal server error"
+
 
   /projects/{project_name}/info/:
     get:
@@ -269,22 +283,22 @@ paths:
         500:
           description: "Task failed. The json contains the result of the upload project task"
 
-  /experimentation/:
+  /algorithms/:
     get:
-      operationId: "api.endpoints.software_quality.experimentation.get_experimentation_list"
-      summary: "Get the list of all experimentations available"
+      operationId: "api.endpoints.software_quality.experimentation.algorithm_supported"
+      summary: "Get the list of all algorithms supported"
 
       produces:
         - "application/json"
 
       responses:
         200:
-          description: "The list of all experimentations available with their respective id"
+          description: "The list of all algorithm supported"
 
-  /experimentation/{project_name}/{experimentation_id}:
+  /projects/{project_name}/evaluate/:
     get:
-      operationId: "api.endpoints.software_quality.experimentation.run_experimentation"
-      summary: "Run experimentation(s) on a project"
+      operationId: "api.endpoints.software_quality.experimentation.evaluate"
+      summary: "Evaluate a project with all algorithms supported"
 
       consumes:
         - "application/xml"
@@ -294,10 +308,6 @@ paths:
       parameters:
         - in: path
           name: project_name
-          required: true
-          type: string
-        - in:  path
-          name: experimentation_id
           required: true
           type: string
 
@@ -309,10 +319,10 @@ paths:
         500:
           description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
 
-  /experimentation/{project_name}/{experimentation_id}/status/:
+  /projects/{project_name}/evaluate/status/:
     get:
-      operationId: "api.endpoints.software_quality.experimentation.experimentation_status"
-      summary: "Get the status of an experimentation"
+      operationId: "api.endpoints.software_quality.experimentation.evaluate_status"
+      summary: "Evaluate a project with all algorithms supported"
 
       consumes:
         - "application/xml"
@@ -324,18 +334,71 @@ paths:
           name: project_name
           required: true
           type: string
-        - in:  path
-          name: experimentation_id
+
+      responses:
+        200:
+          description: "Evaluation completed"
+        202:
+          description: "Evaluation is still running"
+        404:
+          description: "Project not found"
+        500:
+          description: "Internal server error"
+
+  /projects/{project_name}/predict/:
+    get:
+      operationId: "api.endpoints.software_quality.experimentation.predict"
+      summary: "Evaluate a project with all algorithms supported"
+
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: project_name
+          required: true
+          type: string
+        - in: formData
+          name: algorithm
+          required: true
+          type: string
+        - in: formData
+          name: save
+          required: true
+          type: string
+
+      responses:
+        202:
+          description: "Experimentation task started. To see the status and results, use the relative endpoint. The json content contains the info of the experimentation"
+        404:
+          description: "Project and/or experimentation not found. More information in the json"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+
+  /projects/{project_name}/predict/status/:
+    get:
+      operationId: "api.endpoints.software_quality.experimentation.predict_status"
+      summary: "Evaluate a project with all algorithms supported"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: project_name
           required: true
           type: string
 
       responses:
         200:
-          description: "Task executed successfully. The json contains the result of the experimentation project task"
+          description: "Prediction completed"
         202:
-          description: "Task is running. The json contains the status of the experimentation project task"
+          description: "Prediction is still running"
         404:
-          description: "Experimentation task not found"
+          description: "Project not found"
         500:
-          description: "Task failed. The json contains the result of the experimentation project task"
-
+          description: "Internal server error"

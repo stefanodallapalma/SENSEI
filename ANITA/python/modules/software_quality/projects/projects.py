@@ -1,8 +1,6 @@
 # Standard library imports
-import shutil, os
+import shutil, os, pandas as pd
 from datetime import datetime
-
-from celery.exceptions import Ignore
 
 # Local application imports
 import taskqueue.celery.tasks.software_quality.projects as project_task
@@ -16,12 +14,13 @@ from utils.FileUtils import getdirs
 from .exceptions import UndefinedTaskStateException
 
 
-def load_data(project_name, timestamp, zip_file, known_project_name=None, new_project=False):
+def load_data(project_name, zip_file, new_project=False, additional_info=False):
     # Parameter
     local_sq = SonarqubeLocalProject(project_name)
+    timestamp = int(datetime.now().timestamp())
 
     # Unique id
-    plain_text = " ".join([project_name, timestamp, project_task.LOAD_PAGE_TASK_ID])
+    plain_text = " ".join([project_name, str(timestamp), project_task.LOAD_PAGE_TASK_ID])
     unique_id = encode(plain_text)
 
     # CELERY TASK
@@ -46,14 +45,16 @@ def load_data(project_name, timestamp, zip_file, known_project_name=None, new_pr
         error = {"error": "Creation of the project failed: impossible to create the folder (OSError)"}
         return 500, error
 
-    local_sq.save_and_extract(zip_file, timestamp)
+    local_sq.save_and_extract(zip_file, str(timestamp))
     local_sq.add_buffer_info()
 
     # Start the task
-    args = [project_name, timestamp, known_project_name]
+    args = [project_name, timestamp, additional_info]
     project_task.load_pages.apply_async(args, task_id=unique_id)
 
-    return 202, None
+    date = datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    info_project = {"project_name": project_name, "timestamp": timestamp, "dump": date}
+    return 202, info_project
 
 
 def upload_task(project_name, timestamp):
@@ -94,7 +95,7 @@ def upload_task(project_name, timestamp):
             elif reverse_task.state == "FAILURE" or (reverse_task.state == "SUCCESS" and "error" in reverse_task.result):
                 return 500, content
             elif reverse_task.state == "SUCCESS":
-                return 200, content
+                return 500, content
             else:
                 raise UndefinedTaskStateException()
         else:
@@ -102,6 +103,22 @@ def upload_task(project_name, timestamp):
 
     else:
         raise UndefinedTaskStateException()
+
+
+def add_label(project_name, label_csv):
+    label_frame = pd.read_csv(label_csv)
+
+    labels_dict = []
+    for index, row in label_frame.iterrows():
+        page = row['Page']
+        label = row['Label']
+        label_dict = {"page": page, "label": label}
+        labels_dict.append(label_dict)
+
+    sq_controller = SonarqubeController()
+    sq_controller.add_labels(project_name, labels_dict)
+
+    return 204, None
 
 
 def delete_project(project_name):

@@ -1,13 +1,13 @@
 from __future__ import absolute_import
 
 # Standard library imports
-import time, json
-from datetime import datetime
+import json
 
 # Third party imports
 from celery import states
 
 # Local application imports
+from modules.software_quality.projects.combining_data import extra_features
 from taskqueue.celery.config import celery
 import sonarqube.utils.SonarqubeUtils as sq_utils
 from sonarqube.anita.SonarqubeAnitaAPI import SonarqubeAnitaAPI
@@ -15,7 +15,7 @@ from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 from sonarscanner.SonarscannerController import run_sonarscanner as scanner
 from database.anita.controller.SonarqubeController import SonarqubeController
-from database.anita.decoder.sonarqube_decoder import SonarqubeServerDecoder, SonarqubeDBDecoder
+from database.anita.decoder.sonarqube_decoder import *
 from exception.PendingTaskException import PendingTaskException
 
 # Task ID
@@ -24,7 +24,7 @@ REVERSE_LOAD_PAGE_TASK_ID = "2"
 
 
 @celery.task(bind=True)
-def load_pages(self, project_name, timestamp, known_project_name):
+def load_pages(self, project_name, timestamp, additional_info):
     # Response content
     content = load_pages_content_template()
     self.update_state(state=states.STARTED, meta=content)
@@ -69,14 +69,13 @@ def load_pages(self, project_name, timestamp, known_project_name):
     sq_controller = SonarqubeController()
     try:
         create_status = sq_controller.exist()
+        if not create_status:
+            sq_controller.create()
     except Exception as e:
         content["error"] = "Impossible to create the table into the db"
         content["msg"] = str(e)
         self.update_state(states.FAILURE, meta=content)
         return content
-
-    if not create_status:
-        sq_controller.create()
 
     bean_dict = json.dumps({"project_name": project_name, "timestamp": timestamp, "pages": measures})
     sq_beans = json.loads(bean_dict, cls=SonarqubeServerDecoder)
@@ -92,10 +91,31 @@ def load_pages(self, project_name, timestamp, known_project_name):
     content["steps"]["5 - Save data on db"] = True
     self.update_state(state='PROGRESS', meta=content)
 
+    # STEP 6 - ADDITIONAL INFO
+    if additional_info:
+        try:
+            add_dicts = extra_features(project_name)
+            add_beans = []
+            for add_dict in add_dicts:
+                add_dict["timestamp"] = str(timestamp)
+                add_json = json.dumps(add_dict)
+                add_bean = json.loads(add_json, cls=SonarqubeAdditionalInfoDecoder)
+                add_beans.append(add_bean)
+
+            sq_controller.update_beans(add_beans)
+        except Exception as e:
+            content["error"] = "Impossible to insert further informations"
+            content["msg"] = str(e)
+            self.update_state(states.FAILURE, meta=content)
+            return content
+
+    content["steps"]["6 - Additional Info"] = True
+    self.update_state(state='PROGRESS', meta=content)
+
     # Clear local raw files
     sq_local.delete_raw()
 
-    # STEP 6 - SONARQUBE PROJECT - DELETE PROJECT
+    # STEP 7 - SONARQUBE PROJECT - DELETE PROJECT
     remove_response = sq_server.delete_project(project_key)
     if remove_response.status_code >= 400:
         content["error"] = "Impossible to delete project on sonarqube"
@@ -104,15 +124,16 @@ def load_pages(self, project_name, timestamp, known_project_name):
 
     sq_utils.delete_project(project_name)
 
-    content["steps"]["6 - Sonarqube project - Delete project"] = True
+    content["steps"]["7 - Sonarqube project - Delete project"] = True
     self.update_state(state=states.SUCCESS, meta=content)
+
     return content
 
 
 def load_pages_content_template():
     steps = {"1 - Save data": True, "2 - Sonarqube project - Setup": False, "3 - Sonarqube project - Sending pages": False,
              "4 - Sonarqube project - Processing": False, "5 - Save data on db": False,
-             "6 - Sonarqube project - Delete project": False}
+             "6 - Additional Info": False, "7 - Sonarqube project - Delete project": False}
 
     content = {"steps": steps}
     return content
@@ -133,8 +154,8 @@ def reverse_load_pages(self, steps, project_name, timestamp):
 
     if "5 - Save data on db" in reverse_steps:
         # Delete all last rows
-        results = sq_controller.select_by_project_name(project_name)
-        delete_beans = json.loads(results, cls=SonarqubeDBDecoder)
+        results = sq_controller.select_by_project_name_and_timestamp(project_name, timestamp)
+        delete_beans = json.loads(json.dumps(results), cls=SonarqubeDBDecoder)
         sq_controller.delete_beans(delete_beans)
 
         content["reverse steps"]["5 - Save data on db"] = True
