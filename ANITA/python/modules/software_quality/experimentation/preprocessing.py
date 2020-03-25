@@ -20,31 +20,35 @@ def three_classifiers(label_column):
         return 'Normal'
 
 
-def preprocessing(data, scaling=False):
+def preprocess(data):
     # 1) NULL preprocessing
 
     # Deleting columns with number of null > 9000
-    columns_to_drop = []
     for column in data.columns:
         if data[column].isnull().sum() > (data.shape[0]*0.9):
-            columns_to_drop.append(column)
-
-    columns_of_interest = [elem for elem in data.columns if elem not in columns_to_drop]
+            del data[column]
 
     # Deleting rows with nans
-    data = data[columns_of_interest].dropna()
+    data = data.dropna()
 
-    # 2) Useless columns preprocessing
+    if "label" not in data:
+        data["label"] = np.nan
 
+    return data
+
+
+def column_preprocess(data, scaling=False):
     # Dropping additional columns that will not be used for classification
     columns_not_to_use = ['timestamp', 'project_name', 'page']
-    columns_to_use = [elem for elem in data.columns if elem not in columns_not_to_use and elem != "label"]
     for column in columns_not_to_use:
-        del data[column]
+        if column in data:
+            del data[column]
+
+    columns = [column for column in list(data.columns.values) if column != "label"]
 
     if scaling:
         scaler = MinMaxScaler()
-        data[columns_to_use] = scaler.fit_transform(data[columns_to_use])
+        data[columns] = scaler.fit_transform(data[columns])
 
     return data
 
@@ -54,10 +58,9 @@ def label_encoder(data):
     le = preprocessing.LabelEncoder()
 
     le.fit(data['label'])
-    le_classes_cv = le.transform(le.classes_)
+    data['label'] = le.transform(data['label'])
 
-    cv_dict = dict(zip(le_classes_cv, le.classes_))
-    data['label'] = le_classes_cv
+    cv_dict = dict(zip(le.transform(le.classes_), le.classes_))
 
     return cv_dict
 
@@ -108,10 +111,11 @@ def evaluate(y_test, y_pred, cv_dict):
         cr[str(i)]["accuracy"] = cm.diagonal()[i]
 
     cr["accuracy"] = np.mean(cm.diagonal())
-    cr["Confusion Matric"] = str(cm)
+    #cr["Confusion Matrix"] = pd.Series(confusion_matrix(y_test, y_pred)).to_json(orient='records')
 
+    cr["Classes"] = {}
     for key in cv_dict:
-        cr[key] = cr.pop(str(cv_dict[key]))
+        cr["Classes"][cv_dict[key]] = cr.pop(str(key))
 
     return cr
 

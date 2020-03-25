@@ -7,7 +7,7 @@ from modules.software_quality.experimentation.experimentations import *
 
 
 def algorithm_supported():
-    algorithms = ["knn", "random forest", "logistic regression", "svc"]
+    algorithms = ["knn", "random-forest", "logistic-regression", "svc"]
     return Response(json.dumps(algorithms), status=200, mimetype="application/json")
 
 
@@ -33,7 +33,7 @@ def evaluate_status(project_name):
 
 def predict(project_name):
     algorithm = request.form["algorithm"]
-    save = bool(request.form["save"])
+    save = request.form["save"]
     if save.upper() == "FALSE":
         save = False
     else:
@@ -55,4 +55,4 @@ def predict_status(project_name):
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-    return Response(json.dumps(content), status=status, mimetype="application/json")
+    return Response(json.dumps(content, sort_keys=False), status=status, mimetype="application/json")

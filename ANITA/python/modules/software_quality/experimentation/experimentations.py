@@ -53,7 +53,7 @@ def evaluation_status(project_name):
 
 
 def prediction(project_name, algorithm, save):
-    algorithm_list = ["knn", "random_forest", "logistic_regression", "csv"]
+    algorithm_list = ["knn", "random-forest", "logistic-regression", "csv"]
     if algorithm not in algorithm_list:
         error = {"error": "alghorithm undefined"}
         return 500, error

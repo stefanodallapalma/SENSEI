@@ -11,6 +11,8 @@ from celery import states
 from modules.software_quality.projects.combining_data import extra_features
 from taskqueue.celery.config import celery
 from database.anita.controller.SonarqubeController import SonarqubeController
+from database.anita.decoder.sonarqube_decoder import SonarqubeDBDecoder
+from database.anita.model.SonarqubeBean import SonarqubeBean
 from modules.software_quality.experimentation.algorithm import *
 from modules.software_quality.experimentation.preprocessing import *
 
@@ -23,7 +25,7 @@ PREDICTION_TASK_ID = "4"
 def evaluation_task(self, project_name=None):
     # Response content
     content = train_content_template()
-    self.update_state(state='PROGRESS', meta=content)
+    self.update_state(state=states.STARTED, meta=content)
 
     # Load data
     sq_controller = SonarqubeController()
@@ -32,8 +34,7 @@ def evaluation_task(self, project_name=None):
     else:
         tmp_sq_models = sq_controller.select_by_project_name(project_name)
         sq_models = [model for model in tmp_sq_models if model["label"] is not None]
-    dict_models = json.dumps(sq_models)
-    project_dataframe = pd.DataFrame.from_dict(dict_models, orient='index')
+    project_dataframe = pd.DataFrame(sq_models)
 
     for i in range(2):
         df_copy = project_dataframe.copy()
@@ -43,13 +44,10 @@ def evaluation_task(self, project_name=None):
             df_copy["label"] = df_copy["label"].apply(three_classifiers)
         else:       # 26 classes
             key = "Train - 26 classes"
-            df_copy["label"] = df_copy["label"].apply(three_classifiers)
-
-        print("DATAFRAME")
-        print(df_copy.values)
 
         # Preprocessing
-        df_copy = preprocessing(df_copy, scaling=True)
+        df_copy = preprocess(df_copy)
+        df_copy - column_preprocess(df_copy, scaling=True)
         label_map = label_encoder(df_copy)
 
         y = df_copy["label"]
@@ -93,7 +91,7 @@ def train_content_template():
         },
         "Train - 26 classes": {
             "knn": None,
-            "random forest": None,
+            "Random forest": None,
             "Logistic regression": None,
             "SVC": None
         }
@@ -105,7 +103,7 @@ def prediction_task(self, project_name, algorithm, save):
     content = {}
     self.update_state(state=states.STARTED, meta=content)
 
-    algorithm_list = ["knn", "random_forest", "logistic_regression", "csv"]
+    algorithm_list = ["knn", "random-forest", "logistic-regression", "csv"]
     if algorithm not in algorithm_list:
         content = {"error": "algorithm undefined"}
         self.update_state(state=states.FAILURE, meta=content)
@@ -115,25 +113,9 @@ def prediction_task(self, project_name, algorithm, save):
     sq_models_labelled = sq_controller.select_all_labelled()
     sq_models = sq_controller.select_by_project_name(project_name)
 
-    # Check if the prediction has already done
-    null_labels = False
-    for sq_model in sq_models:
-        if sq_model["label"] is None:
-            null_labels = True
-            break
-
-    # Project already processed
-    if null_labels is False:
-        self.update_state(state=states.SUCCESS, meta=sq_models)
-        return sq_models
-
+    train_dataframe = pd.DataFrame(sq_models_labelled)
+    test_dataframe = pd.DataFrame(sq_models)
     self.update_state(state='PROGRESS', meta=content)
-
-    dict_models = json.dumps(sq_models)
-    test_dataframe = pd.DataFrame.from_dict(dict_models, orient='index')
-
-    dict_train = json.dumps(sq_models_labelled)
-    train_dataframe = pd.DataFrame.from_dict(dict_train, orient='index')
 
     for i in range(2):
         train_copy = train_dataframe.copy()
@@ -144,59 +126,69 @@ def prediction_task(self, project_name, algorithm, save):
             train_copy["label"] = train_copy["label"].apply(three_classifiers)
         else:  # 26 classes
             key = "Train - 26 classes"
-            train_copy["label"] = train_copy["label"].apply(three_classifiers)
 
         # Preprocessing
-        train_copy = preprocessing(train_copy)
-        test_copy = preprocessing(test_copy)
-        label_map = label_encoder(train_copy)
+        train_copy = preprocess(train_copy)
+        sub_train = column_preprocess(train_copy.copy(), scaling=True)
 
-        y_train = train_copy["label"]
+        test_copy = preprocess(test_copy)
+        sub_test = column_preprocess(test_copy.copy(), scaling=True)
 
-        del train_copy["label"]
-        X_train = train_copy
+        label_map = label_encoder(sub_train)
+
+        y_train = sub_train["label"]
+        del sub_train["label"]
+        X_train = sub_train
 
         best_features = feature_selection(X_train, y_train)
-        X_train = train_copy[best_features]
-        X_test = test_copy[best_features]
+
+        X_train = sub_train[best_features]
+        X_test = sub_test[best_features]
 
         # Oversampling
         X_train, y_train = oversampling(X_train, y_train)
 
         if algorithm == "knn":
             y_pred, best_model = knn(X_train, y_train, X_test)
-        elif algorithm == "random forest":
+        elif algorithm == "random-forest":
             y_pred, best_model = random_forest(X_train, y_train, X_test)
-        elif algorithm == "logistic regression":
+        elif algorithm == "logistic-regression":
             y_pred, best_model = logistic_regression(X_train, y_train, X_test)
         else:
             y_pred, best_model = svc(X_train, y_train, X_test)
 
-        final_df = test_dataframe.copy()
-        final_df["label"] = label_decoder(label_map, y_pred)
-        content[key] = json_dataframe(final_df)
+        test_copy["label"] = label_decoder(label_map, y_pred)
+
+        final_df = merge_df(test_dataframe, test_copy)
+        final_df_dict = final_df.to_dict(orient="records")
+        content[key] = final_df_dict
         self.update_state(state='PROGRESS', meta=content)
 
-    if save:
-        labels_dict = []
-        for row in final_df["Train - 26 classes"]:
-            label_dict = {row["page"]: row["label"]}
-            labels_dict.append(label_dict)
+        if save:
+            sq_models = []
+            for row in final_df_dict:
+                sq_model = SonarqubeBean(timestamp=row["timestamp"], project_name=row["project_name"],
+                                         page=row["page"], label=row["label"])
+                sq_models.append(sq_model)
 
-        sq_controller.add_labels(project_name, labels_dict)
+            sq_controller.update_beans(sq_models)
 
     self.update_state(state=states.SUCCESS, meta=content)
     return content
 
 
-def json_dataframe(df):
-    json_dataframe = []
+def merge_df(df, sub_df):
+    df_copy = df.copy()
 
-    header = df.columns.values.tolist()
-    for index, columns in df.iterrows():
-        elem = {}
-        for i in range(len(columns)):
-            elem[header[i]] = columns[i]
-        json_dataframe.append(elem)
+    for index, row in df_copy.iterrows():
+        # Check if the unique row is also in the subset
+        if row["page"] in sub_df["page"].values and row["timestamp"] in sub_df["timestamp"].values and \
+                row["project_name"] in sub_df["project_name"].values:
+            for sub_index, sub_row in sub_df.iterrows():
+                if sub_row["page"] == row["page"] and sub_row["timestamp"] == row["timestamp"] and \
+                        sub_row["project_name"] == row["project_name"]:
+                    df_copy["label"][index] = sub_df["label"][sub_index]
+                    break
 
-    return json_dataframe
+    return df_copy
+

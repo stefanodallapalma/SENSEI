@@ -106,16 +106,26 @@ def upload_task(project_name, timestamp):
 
 
 def add_label(project_name, label_csv):
+    sq_controller = SonarqubeController()
+    results = sq_controller.select_by_project_name(project_name)
+    pages = set()
+    for result in results:
+        pages.add(result["page"])
+
     label_frame = pd.read_csv(label_csv)
 
     labels_dict = []
     for index, row in label_frame.iterrows():
         page = row['Page']
-        label = row['Label']
-        label_dict = {"page": page, "label": label}
-        labels_dict.append(label_dict)
+        if not page.endswith(".html") and not page.endswith(".htm"):
+            page = page + ".html"
 
-    sq_controller = SonarqubeController()
+        if page in pages:
+            label = row['Label']
+            label_dict = {"page": page, "label": label}
+            labels_dict.append(label_dict)
+
+
     sq_controller.add_labels(project_name, labels_dict)
 
     return 204, None

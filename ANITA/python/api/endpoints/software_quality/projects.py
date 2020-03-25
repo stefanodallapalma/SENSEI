@@ -146,6 +146,7 @@ def label(project_name):
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
+    print(content)
     return Response(json.dumps(content), status=status, mimetype="application/json")
 
 

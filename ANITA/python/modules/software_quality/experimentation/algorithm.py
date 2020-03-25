@@ -35,12 +35,12 @@ def random_forest(X_train, y_train, X_test):
     clf = GridSearchCV(rf, hyperparameter)
 
     # Fit the model
-    clf.fit(X_train, y_train)
+    best_model = clf.fit(X_train, y_train)
 
     # Prediction
     y_pred = clf.predict(X_test)
 
-    return y_pred
+    return y_pred, best_model
 
 
 def logistic_regression(X_train, y_train, X_test):
@@ -54,11 +54,11 @@ def logistic_regression(X_train, y_train, X_test):
     clf = GridSearchCV(lr, hyperparameter)
 
     # Fit the model
-    clf.fit(X_train, y_train)
+    best_model = clf.fit(X_train, y_train)
 
     y_pred = clf.predict(X_test)
 
-    return y_pred
+    return y_pred, best_model
 
 
 def svc(X_train, y_train, X_test):
@@ -71,9 +71,9 @@ def svc(X_train, y_train, X_test):
     clf = GridSearchCV(svc, hyperparameter)
 
     # Fit the model
-    clf.fit(X_train, y_train)
+    best_model = clf.fit(X_train, y_train)
 
     # Prediction
     y_pred = clf.predict(X_test)
 
-    return y_pred
+    return y_pred, best_model

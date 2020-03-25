@@ -26,7 +26,6 @@ class SonarqubeController(TableController):
         metrics = anita_sq_api.metrics()
         attribute_names += metrics
 
-        print(attribute_names)
         columns = []
         for attribute_name in attribute_names:
             if attribute_name in pk_attribute_names:
@@ -70,6 +69,19 @@ class SonarqubeController(TableController):
 
     def select_all_labelled(self):
         query = "SELECT * FROM `" + self._database_name + "`.`" + self.table_name + "` WHERE `label` IS NOT NULL"
+        header, results = self.select(query)
+
+        results_dict = []
+        for result in results:
+            result_dict = {}
+            for i in range(len(header)):
+                result_dict[header[i]] = result[i]
+            results_dict.append(result_dict)
+
+        return results_dict
+
+    def select_all_not_labelled(self):
+        query = "SELECT * FROM `" + self._database_name + "`.`" + self.table_name + "` WHERE `label` IS NULL"
         header, results = self.select(query)
 
         results_dict = []
