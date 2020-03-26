@@ -4,7 +4,7 @@ connexion==2.6.0
 Flask==1.1.1
 Flask-Cors==3.0.8
 imbalanced-learn==0.6.2
-mysql-connector-python==8.0.19
+mysql-connector==2.2.9
 numpy==1.18.2
 pandas==1.0.3
 psutil==5.7.0

@@ -6,16 +6,17 @@ services:
     build: .
     ports:
       - "5000:5000"
+    expose:
+      - 5000
     networks:
       - anita-network
     entrypoint: python3
-    command: flask_app.py
+    command: server.py
     depends_on:
       - mysql
       - sonarqube
-      - rabbitmq
     volumes:
-      - ./ANITA:/ANITA
+      - ANITA:/ANITA
 
   sonarqube:
     container_name: sonarqube
@@ -59,17 +60,14 @@ services:
     networks:
       - anita-network
       
-  celery:
+  worker:
     container_name: celery
-    build:
-      context: .
-    environment:
-      - C_FORCE_ROOT=true
+    build: .
     hostname: worker
     entrypoint: celery
     command: -A taskqueue.celery.config.celery worker --loglevel=info
     volumes:
-      - ./ANITA:/ANITA
+      - ANITA:/ANITA
     links:
       - rabbitmq
     depends_on:
@@ -80,8 +78,6 @@ services:
   postgres:
     container_name: postgres
     image: postgres
-    networks:
-      - anita
     environment:
       - POSTGRES_USER=sonar
       - POSTGRES_PASSWORD=sonar
@@ -93,13 +89,9 @@ services:
   
   mysql:
     container_name: mysql
-    image: mysql
+    image: mysql:5.7
     restart: always
-    networks:
-      - anita
     environment:
-      MYSQL_USER: 'anita'
-      MYSQL_PASSWORD: 'gfT!-@sayUOO'
       MYSQL_ROOT_PASSWORD: "gfT!-@sayUOO"
     ports:
       - "3306:3306"
@@ -119,3 +111,4 @@ volumes:
   postgresql:
   postgresql_data:
   mysql-db:
+  ANITA:

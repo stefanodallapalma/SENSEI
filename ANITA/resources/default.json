@@ -1,7 +1,7 @@
 {
     "mysql_host": "mysql",
     "mysql_port": "3306",
-    "mysql_user": "anita",
+    "mysql_user": "root",
     "mysql_password": "gfT!-@sayUOO",
     "sonarqube_host": "sonarqube",
     "sonarqube_port": "9000",

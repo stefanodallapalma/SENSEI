@@ -2,7 +2,6 @@ from utils.PortScanner import scanner
 from sonarqube.utils import SonarqubeUtils as sq_utils
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from check.setup import *
-from check.servers import run_sonarnet
 from os.path import join, exists
 import os
 from database.anita.AnitaDB import AnitaDB
@@ -27,8 +26,6 @@ def check_preconditions():
     else:
         print("Resource folders: OK")
 
-    print()
-
     # Sonarqube parameters
     sonarqube_property_path = join(resource_path, sonarqube_name)
     if not exists(sonarqube_property_path):
@@ -36,18 +33,6 @@ def check_preconditions():
         sonarqube_setup()
     else:
         print("Sonarqube parameters: OK")
-
-    print()
-
-    # Sonarqube connection test
-    sonarqube_property = sq_utils.get_sonarqube_properties()
-    print(sonarqube_property.host + ":" + sonarqube_property.port)
-    if not scanner(sonarqube_property.host, sonarqube_property.port):
-        print("Sonarqube server status: UNREACHABLE. Please check the status of the server and try again")
-    else:
-        print("Sonarqube server status: OK")
-
-    print()
 
     # MySQL parameters
     mysql_property_path = join(database_resource_path, mysql_name)
@@ -57,19 +42,6 @@ def check_preconditions():
     else:
         print("MySQL parameters: OK")
 
-    print()
-
-    # Mysql connection test
-    mysql_property = db_utils.get_db_parameters(DBType.MYSQL)
-    print(mysql_property.host + ":" + mysql_property.port)
-    if not scanner(mysql_property.host, mysql_property.port):
-        print("MySQL server status: UNREACHABLE. Please check the status of the server and try again")
-        return False
-    else:
-        print("MySQL server status: OK")
-
-    print()
-
     # MySQL database
     db = AnitaDB(anonymous=True)
     if db.exist():
@@ -77,20 +49,18 @@ def check_preconditions():
     else:
         print("MySQL ANITA DB: not found. Creation of a new db")
         db.create()
+        print("MySQL ANITA DB: Created")
     db_utils.add_database_name(DBType.MYSQL, db.database_name)
-
-    print()
-
     
     # Sonarqube token
     server_sq = SonarqubeAPIExtended()
+    sonarqube_property = sq_utils.get_sonarqube_properties()
     if sonarqube_property.token == "":
         print("Sonarqube token not found: generation of a new one")
         response = server_sq.generate_token(sonarqube_property.user, "ANITA")
         content = server_sq.get_json_content(response)
         print(content)
         sq_utils.set_token(content["token"])
-        print()
 
     # Sonarscanner
     dirs = [f for f in os.listdir(sonarscanner_path) if os.path.isdir(join(sonarscanner_path, f))]
@@ -102,8 +72,6 @@ def check_preconditions():
         print("\nSonar-scanner has been installed successfully")
     else:
         print("Sonar-scanner status: OK")
-
-    print()
 
     return True
 

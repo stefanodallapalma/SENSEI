@@ -17,7 +17,6 @@ class MySqlDB(DB):
                 host=self.parameters.host,
                 user=self.parameters.user,
                 passwd=self.parameters.password,
-                auth_plugin='mysql_native_password',
                 charset='utf8'
             )
         else:
@@ -26,7 +25,6 @@ class MySqlDB(DB):
                 user=self.parameters.user,
                 passwd=self.parameters.password,
                 database=self.parameters.database_name,
-                auth_plugin='mysql_native_password',
                 charset='utf8'
             )
 
