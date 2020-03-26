@@ -107,15 +107,22 @@ def evaluate(y_test, y_pred, cv_dict):
     # Now the normalize the diagonal entries
     cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
-    for i in range(len(cv_dict)):
-        cr[str(i)]["accuracy"] = cm.diagonal()[i]
+    # Extract all cv
+    cvs = []
+    for key in cr:
+        try:
+            cv = int(key)
+            cvs.append(cv)
+        except:
+            pass
+
+    cr["Classes"] = {}
+    for i in range(len(cvs)):
+        cr[str(cvs[i])]["accuracy"] = cm.diagonal()[i]
+        cr["Classes"][cv_dict[cvs[i]]] = cr.pop(str(cvs[i]))
 
     cr["accuracy"] = np.mean(cm.diagonal())
     #cr["Confusion Matrix"] = pd.Series(confusion_matrix(y_test, y_pred)).to_json(orient='records')
-
-    cr["Classes"] = {}
-    for key in cv_dict:
-        cr["Classes"][cv_dict[key]] = cr.pop(str(key))
 
     return cr
 

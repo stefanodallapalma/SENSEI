@@ -1,3 +1,4 @@
+from datetime import datetime
 from taskqueue.celery.config import celery
 import taskqueue.celery.tasks.software_quality.experimentations as exp_task
 from utils.AES import encode
@@ -9,7 +10,7 @@ from ..projects.exceptions import UndefinedTaskStateException
 
 def evaluation(project_name):
     # Unique id
-    plain_text = " ".join([project_name, exp_task.EVALUATION_TASK_ID])
+    plain_text = " ".join([project_name, exp_task.EVALUATION_TASK_ID, str(int(datetime.now().timestamp()))])
     unique_id = encode(plain_text)
 
     # CELERY TASK
@@ -29,13 +30,10 @@ def evaluation(project_name):
     args = [project_name]
     exp_task.evaluation_task.apply_async(args, task_id=unique_id)
 
-    return 202, {}
+    return 202, {"unique_id": unique_id}
 
 
-def evaluation_status(project_name):
-    plain_text = " ".join([project_name, exp_task.EVALUATION_TASK_ID])
-    unique_id = encode(plain_text)
-
+def evaluation_status(unique_id):
     task = celery.AsyncResult(unique_id)
     print("LOAD TASK STATE: " + task.state)
 
@@ -59,7 +57,7 @@ def prediction(project_name, algorithm, save):
         return 500, error
 
     # Unique id
-    plain_text = " ".join([project_name, exp_task.PREDICTION_TASK_ID])
+    plain_text = " ".join([project_name, exp_task.PREDICTION_TASK_ID, str(int(datetime.now().timestamp()))])
     unique_id = encode(plain_text)
 
     # CELERY TASK
@@ -79,13 +77,10 @@ def prediction(project_name, algorithm, save):
     args = [project_name, algorithm, save]
     exp_task.prediction_task.apply_async(args, task_id=unique_id)
 
-    return 202, {}
+    return 202, {"unique_id": unique_id}
 
 
-def prediction_status(project_name):
-    plain_text = " ".join([project_name, exp_task.PREDICTION_TASK_ID])
-    unique_id = encode(plain_text)
-
+def prediction_status(unique_id):
     task = celery.AsyncResult(unique_id)
     print("LOAD TASK STATE: " + task.state)
 

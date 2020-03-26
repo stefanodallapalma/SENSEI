@@ -23,6 +23,6 @@ if __name__ == "__main__":
 
     for sig in SIGNAL_LIST:
         signal(sig, clean)
-
+    print("HELLO")
     execute_python3_code(celery_name)
     execute_python3_code(flask_name)

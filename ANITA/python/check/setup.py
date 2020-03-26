@@ -10,6 +10,18 @@ default_name = "default.json"
 
 
 def mysql_setup():
+    default_dict = load_json(join(resource_folder, default_name))
+    host = default_dict["host"]
+    if "https" in host:
+        host = host.replace("https://", "")
+    elif "http" in host:
+        host = host.replace("http://", "")
+
+    port = default_dict["mysql_port"]
+    user = default_dict["mysql_user"]
+    password = default_dict["mysql_password"]
+
+    """
     choose = input("Internal or external setup? (I/E): ")
 
     if choose.upper() == "I":
@@ -28,6 +40,7 @@ def mysql_setup():
         port = input("PORT")
         user = input("USER: ")
         password = input("PASSWORD: ")
+    """
 
     mysql_dict = {"host": host, "port": port, "user": user, "password": password, "database_name": ""}
 
@@ -36,6 +49,13 @@ def mysql_setup():
 
 
 def sonarqube_setup():
+    default_dict = load_json(join(resource_folder, default_name))
+    host = default_dict["host"]
+    port = default_dict["sonarqube_port"]
+    user = default_dict["sonarqube_user"]
+    password = default_dict["sonarqube_password"]
+
+    """
     choose = input("Internal or external setup? (I/E): ")
 
     if choose.upper() == "I":
@@ -49,7 +69,7 @@ def sonarqube_setup():
         port = input("PORT")
         user = input("USER: ")
         password = input("PASSWORD: ")
-
+    """
     sonarqube_dict = {"host": host, "port": port, "user": user, "password": password, "token": "", "projects": []}
 
     output_path = join(resource_folder, sonarqube_name)

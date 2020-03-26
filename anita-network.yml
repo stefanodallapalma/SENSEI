@@ -1,0 +1,116 @@
+version: "3"
+
+services:
+  web:
+    container_name: anita
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - anita-network
+    entrypoint: python3
+    command: flask_app.py
+    depends_on:
+      - mysql
+      - sonarqube
+      - worker
+      - rabbitmq
+    volumes:
+      - ./ANITA:/ANITA
+
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:7.9.2-community
+    expose:
+      - 9000
+    ports:
+      - "127.0.0.1:9000:9000"
+    networks:
+      - anita-network
+    environment:
+      - sonar.jdbc.username=sonar
+      - sonar.jdbc.password=sonar
+      - sonar.jdbc.url=jdbc:postgresql://postgres/sonar
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    depends_on:
+      - postgres
+
+  rabbitmq:
+    image: rabbitmq:3-alpine
+    ports:
+      - 127.0.0.1:5672:5672
+    environment:  
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+      RABBITMQ_DEFAULT_VHOST: vhost
+      RABBITMQ_NODE_PORT: 5672
+    healthcheck:
+      test: ['CMD', 'rabbitmqctl', 'status']
+      interval: 30s
+      timeout: 15s
+      retries: 3
+    networks:
+      - anita-network
+      
+  worker:
+    container_name: celery
+    build:
+      context: .
+    environment:
+      - C_FORCE_ROOT=true
+    hostname: worker
+    entrypoint: celery
+    command: -A taskqueue.celery.config.celery worker --loglevel=info
+    volumes:
+      - ./ANITA:/ANITA
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
+    networks:
+      - anita-network
+  
+  postgres:
+    container_name: postgres
+    image: postgres
+    networks:
+      - anita
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - anita-network
+  
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: always
+    networks:
+      - anita
+    environment:
+      MYSQL_ROOT_PASSWORD: "gfT!-@sayUOO"
+    ports:
+      - "127.0.0.1:3307:3307"
+    volumes:
+      - mysql-db:/var/lib/mysql
+    networks:
+      - anita-network
+
+networks:
+  anita-network:
+
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_bundled-plugins:
+  postgresql:
+  postgresql_data:
+  mysql-db:

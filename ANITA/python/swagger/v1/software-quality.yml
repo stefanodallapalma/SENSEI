@@ -319,7 +319,7 @@ paths:
         500:
           description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
 
-  /projects/{project_name}/evaluate/status/:
+  /projects/{project_name}/evaluate/status/{unique_id}:
     get:
       operationId: "api.endpoints.software_quality.experimentation.evaluate_status"
       summary: "Evaluate a project with all algorithms supported"
@@ -334,6 +334,11 @@ paths:
           name: project_name
           required: true
           type: string
+        - in: path
+          name: unique_id
+          required: true
+          type: string
+
 
       responses:
         200:
@@ -377,7 +382,7 @@ paths:
         500:
           description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
 
-  /projects/{project_name}/predict/status/:
+  /projects/{project_name}/predict/status/{unique_id}:
     get:
       operationId: "api.endpoints.software_quality.experimentation.predict_status"
       summary: "Evaluate a project with all algorithms supported"
@@ -390,6 +395,10 @@ paths:
       parameters:
         - in: path
           name: project_name
+          required: true
+          type: string
+        - in: path
+          name: unique_id
           required: true
           type: string
 

@@ -1,8 +1,8 @@
 {
     "host": "http://127.0.0.1",
-    "mysql_port": "3306",
+    "mysql_port": "3307",
     "mysql_user": "root",
-    "mysql_password": "Albus-4112",
+    "mysql_password": "gfT!-@sayUOO",
     "sonarqube_port": "9000",
     "sonarqube_user": "admin",
     "sonarqube_password": "admin"

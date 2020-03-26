@@ -11,8 +11,8 @@ CORS(app.app)
 app.add_api("swagger/v1/software-quality.yml")
 
 if __name__ == "__main__":
-    if is_running(__file__):
-        stop_server(__file__, os.getpid())
+    #if is_running(__file__):
+    #    stop_server(__file__, os.getpid())
 
     status = check_preconditions()
 

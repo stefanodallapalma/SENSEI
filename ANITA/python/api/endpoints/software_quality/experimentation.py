@@ -21,9 +21,9 @@ def evaluate(project_name):
     return Response(json.dumps(content), status=status, mimetype="application/json")
 
 
-def evaluate_status(project_name):
+def evaluate_status(project_name, unique_id):
     try:
-        status, content = evaluation_status(project_name)
+        status, content = evaluation_status(unique_id)
     except Exception as e:
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
@@ -48,9 +48,9 @@ def predict(project_name):
     return Response(json.dumps(content), status=status, mimetype="application/json")
 
 
-def predict_status(project_name):
+def predict_status(project_name, unique_id):
     try:
-        status, content = prediction_status(project_name)
+        status, content = prediction_status(unique_id)
     except Exception as e:
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")

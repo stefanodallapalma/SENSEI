@@ -2,6 +2,7 @@ from socket import *
 
 
 def scanner(host, port):
+    print(host + ":" + str(port))
     if "https" in host:
         host = host.replace("https://", "")
     elif "http" in host:

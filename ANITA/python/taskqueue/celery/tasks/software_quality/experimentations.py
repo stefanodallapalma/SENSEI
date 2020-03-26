@@ -36,7 +36,7 @@ def evaluation_task(self, project_name=None):
         sq_models = [model for model in tmp_sq_models if model["label"] is not None]
     project_dataframe = pd.DataFrame(sq_models)
 
-    for i in range(2):
+    for i in range(1):
         df_copy = project_dataframe.copy()
 
         if i == 0:  # 3 classes
@@ -47,7 +47,7 @@ def evaluation_task(self, project_name=None):
 
         # Preprocessing
         df_copy = preprocess(df_copy)
-        df_copy - column_preprocess(df_copy, scaling=True)
+        df_copy = column_preprocess(df_copy, scaling=True)
         label_map = label_encoder(df_copy)
 
         y = df_copy["label"]
@@ -88,12 +88,6 @@ def train_content_template():
             "Random forest": None,
             "Logistic regression": None,
             "SVC": None
-        },
-        "Train - 26 classes": {
-            "knn": None,
-            "Random forest": None,
-            "Logistic regression": None,
-            "SVC": None
         }
     }
 
@@ -117,7 +111,7 @@ def prediction_task(self, project_name, algorithm, save):
     test_dataframe = pd.DataFrame(sq_models)
     self.update_state(state='PROGRESS', meta=content)
 
-    for i in range(2):
+    for i in range(1):
         train_copy = train_dataframe.copy()
         test_copy = test_dataframe.copy()
 
@@ -160,6 +154,7 @@ def prediction_task(self, project_name, algorithm, save):
         test_copy["label"] = label_decoder(label_map, y_pred)
 
         final_df = merge_df(test_dataframe, test_copy)
+        print(final_df["label"])
         final_df_dict = final_df.to_dict(orient="records")
         content[key] = final_df_dict
         self.update_state(state='PROGRESS', meta=content)
@@ -187,7 +182,9 @@ def merge_df(df, sub_df):
             for sub_index, sub_row in sub_df.iterrows():
                 if sub_row["page"] == row["page"] and sub_row["timestamp"] == row["timestamp"] and \
                         sub_row["project_name"] == row["project_name"]:
+                    print(sub_df["label"][sub_index])
                     df_copy["label"][index] = sub_df["label"][sub_index]
+                    print(df_copy["label"][index])
                     break
 
     return df_copy
