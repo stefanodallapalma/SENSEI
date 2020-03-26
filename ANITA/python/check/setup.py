@@ -11,7 +11,7 @@ default_name = "default.json"
 
 def mysql_setup():
     default_dict = load_json(join(resource_folder, default_name))
-    host = default_dict["host"]
+    host = default_dict["mysql_host"]
     if "https" in host:
         host = host.replace("https://", "")
     elif "http" in host:
@@ -50,7 +50,7 @@ def mysql_setup():
 
 def sonarqube_setup():
     default_dict = load_json(join(resource_folder, default_name))
-    host = default_dict["host"]
+    host = default_dict["sonarqube_host"]
     port = default_dict["sonarqube_port"]
     user = default_dict["sonarqube_user"]
     password = default_dict["sonarqube_password"]

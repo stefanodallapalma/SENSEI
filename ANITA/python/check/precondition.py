@@ -29,6 +29,26 @@ def check_preconditions():
 
     print()
 
+    # Sonarqube parameters
+    sonarqube_property_path = join(resource_path, sonarqube_name)
+    if not exists(sonarqube_property_path):
+        print("Sonarqube parameters: file not found. Starting sonarqube setup")
+        sonarqube_setup()
+    else:
+        print("Sonarqube parameters: OK")
+
+    print()
+
+    # Sonarqube connection test
+    sonarqube_property = sq_utils.get_sonarqube_properties()
+    print(sonarqube_property.host + ":" + sonarqube_property.port)
+    if not scanner(sonarqube_property.host, sonarqube_property.port):
+        print("Sonarqube server status: UNREACHABLE. Please check the status of the server and try again")
+    else:
+        print("Sonarqube server status: OK")
+
+    print()
+
     # MySQL parameters
     mysql_property_path = join(database_resource_path, mysql_name)
     if not exists(mysql_property_path):
@@ -41,6 +61,7 @@ def check_preconditions():
 
     # Mysql connection test
     mysql_property = db_utils.get_db_parameters(DBType.MYSQL)
+    print(mysql_property.host + ":" + mysql_property.port)
     if not scanner(mysql_property.host, mysql_property.port):
         print("MySQL server status: UNREACHABLE. Please check the status of the server and try again")
         return False
@@ -60,34 +81,7 @@ def check_preconditions():
 
     print()
 
-    # Sonarqube parameters
-    sonarqube_property_path = join(resource_path, sonarqube_name)
-    if not exists(sonarqube_property_path):
-        print("Sonarqube parameters: file not found. Starting sonarqube setup")
-        sonarqube_setup()
-    else:
-        print("Sonarqube parameters: OK")
-
-    print()
-
-    # Sonarqube connection test
-    sonarqube_property = sq_utils.get_sonarqube_properties()
-    if not scanner(sonarqube_property.host, sonarqube_property.port):
-        if sonarqube_property.host == "127.0.0.1":
-            run_sonarnet()
-            if not scanner(sonarqube_property.host, sonarqube_property.port):
-                print("Sonarqube server status: UNREACHABLE. Please check the status of the server and try again")
-                return False
-            else:
-                print("Sonarqube server status: OK")
-        else:
-            print("Sonarqube server status: UNREACHABLE. Please check the status of the server and try again")
-            return False
-    else:
-        print("Sonarqube server status: OK")
-
-    print()
-
+    
     # Sonarqube token
     server_sq = SonarqubeAPIExtended()
     if sonarqube_property.token == "":

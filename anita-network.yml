@@ -13,7 +13,6 @@ services:
     depends_on:
       - mysql
       - sonarqube
-      - worker
       - rabbitmq
     volumes:
       - ./ANITA:/ANITA
@@ -24,7 +23,11 @@ services:
     expose:
       - 9000
     ports:
-      - "127.0.0.1:9000:9000"
+      - "9000:9000"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     networks:
       - anita-network
     environment:
@@ -42,7 +45,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-alpine
     ports:
-      - 127.0.0.1:5672:5672
+      - 5672:5672
     environment:  
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
@@ -56,7 +59,7 @@ services:
     networks:
       - anita-network
       
-  worker:
+  celery:
     container_name: celery
     build:
       context: .
@@ -95,9 +98,11 @@ services:
     networks:
       - anita
     environment:
+      MYSQL_USER: 'anita'
+      MYSQL_PASSWORD: 'gfT!-@sayUOO'
       MYSQL_ROOT_PASSWORD: "gfT!-@sayUOO"
     ports:
-      - "127.0.0.1:3307:3307"
+      - "3306:3306"
     volumes:
       - mysql-db:/var/lib/mysql
     networks:
