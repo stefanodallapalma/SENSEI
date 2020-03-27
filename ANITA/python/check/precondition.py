@@ -3,10 +3,11 @@ from sonarqube.utils import SonarqubeUtils as sq_utils
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from check.setup import *
 from os.path import join, exists
-import os
+import os, datetime, time
 from database.anita.AnitaDB import AnitaDB
 from database.utils import DBUtils as db_utils
 from database.db.structure.DBType import DBType
+from sonarqube.api.SonarqubeAPI import SonarqubeAPI
 
 resource_path = "../resources/"
 database_resource_path = join(resource_path, "database")
@@ -14,6 +15,8 @@ sonarscanner_path = join(resource_path, "sonar-scanner")
 mysql_name = "mysql.json"
 sonarqube_name = "sonarqube_properties.json"
 default_name = "default.json"
+
+LIMIT_TIME = 120     # sec
 
 
 def check_preconditions():
@@ -26,44 +29,81 @@ def check_preconditions():
     else:
         print("Resource folders: OK")
 
+    # Parameters
+    print("PARAMETERS")
     # Sonarqube parameters
     sonarqube_property_path = join(resource_path, sonarqube_name)
     if not exists(sonarqube_property_path):
-        print("Sonarqube parameters: file not found. Starting sonarqube setup")
+        print("Sonarqube: parameters not found. Starting sonarqube setup")
         sonarqube_setup()
-    else:
-        print("Sonarqube parameters: OK")
+    print("Sonarqube: OK")
 
-    # Sonarqube connection test
-    sonarqube_property = sq_utils.get_sonarqube_properties()
-    if not scanner(sonarqube_property.host, sonarqube_property.port):
-        print("Sonarqube server status: UNREACHABLE. Please check the status of the server and try again")
-    else:
-        print("Sonarqube server status: OK")
-        
     # MySQL parameters
     mysql_property_path = join(database_resource_path, mysql_name)
     if not exists(mysql_property_path):
-        print("MySQL parameters: File not found. Starting mysql setup")
+        print("MySQL: parameters not found. Starting mysql setup")
         mysql_setup()
-    else:
-        print("MySQL parameters: OK")
+    print("MySQL: OK")
+
+    # Connection test
+    print("CONNECTION TEST")
 
     # Mysql connection test
     mysql_property = db_utils.get_db_parameters(DBType.MYSQL)
     if not scanner(mysql_property.host, mysql_property.port):
-        print("MySQL server status: UNREACHABLE. Please check the status of the server and try again")
-    else:
-        print("MySQL server status: OK")
-    
+        print("MySQL: waiting...")
+        start = int(datetime.datetime.now().timestamp())
+        actual = int(datetime.datetime.now().timestamp())
+        while (actual - start) < LIMIT_TIME and scanner(mysql_property.host, mysql_property.port):
+            time.sleep(1)
+            actual = int(datetime.datetime.now().timestamp())
+
+        if (actual - start) >= LIMIT_TIME:
+            print("MySQL: server UNREACHABLE")
+            return False
+    print("MySQL server status: OK")
+
+    # Sonarqube connection test
+    sonarqube_property = sq_utils.get_sonarqube_properties()
+    if not scanner(sonarqube_property.host, sonarqube_property.port):
+        print("Sonarqube: waiting...")
+        start = int(datetime.datetime.now().timestamp())
+        actual = int(datetime.datetime.now().timestamp())
+        while (actual - start) < LIMIT_TIME and scanner(sonarqube_property.host, sonarqube_property.port):
+            time.sleep(1)
+            actual = int(datetime.datetime.now().timestamp())
+
+        if (actual - start) >= LIMIT_TIME:
+            print("Sonarqube: server UNREACHABLE")
+            return False
+    print("Sonarqube: OK")
+
+    print("Waiting that the server is up")
+    # Wait that the server is up
+    sq_api = SonarqubeAPI()
+    response = sq_api.server_status()
+    status = SonarqubeAPI.get_json_content(response)["status"]
+    if status != "UP":
+        print("Sonarqube: waiting... (server status: " + status + ")")
+        start = int(datetime.datetime.now().timestamp())
+        actual = int(datetime.datetime.now().timestamp())
+        while (actual - start) < LIMIT_TIME and status != "UP":
+            time.sleep(1)
+            actual = int(datetime.datetime.now().timestamp())
+
+        if (actual - start) >= LIMIT_TIME:
+            print("Sonarqube: server not ready")
+            return False
+
+    # Database
     # MySQL database
     db = AnitaDB(anonymous=True)
     if db.exist():
-        print("MySQL ANITA DB: OK")
+        print("Database already created")
     else:
-        print("MySQL ANITA DB: not found. Creation of a new db")
+        print("Database not found. Creation of a new db")
         db.create()
-        print("MySQL ANITA DB: Created")
+        print("Database created")
     db_utils.add_database_name(DBType.MYSQL, db.database_name)
     
     # Sonarqube token
@@ -83,7 +123,7 @@ def check_preconditions():
         zip_path = download()
         extract_content(zip_path, "sonar-scanner")
         os.remove(zip_path)
-        print("\nSonar-scanner has been installed successfully")
+        print("\nSonar-scanner has been successfully installed")
     else:
         print("Sonar-scanner status: OK")
 

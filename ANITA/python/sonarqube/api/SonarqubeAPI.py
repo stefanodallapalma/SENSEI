@@ -79,6 +79,14 @@ class SonarqubeAPI:
 
         return Response(response.content, response.status_code, response.headers.items())
 
+    def server_status(self):
+        api = "/api/system/status"
+        url = self._parameters.url + api
+
+        response = requests.get(url)
+
+        return Response(response.content, response.status_code, response.headers.items())
+
     @staticmethod
     def get_json_content(response):
         return json.loads(response.get_data(as_text=True))
