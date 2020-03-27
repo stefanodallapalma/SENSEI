@@ -34,6 +34,13 @@ def check_preconditions():
     else:
         print("Sonarqube parameters: OK")
 
+    # Sonarqube connection test
+    sonarqube_property = sq_utils.get_sonarqube_properties()
+    if not scanner(sonarqube_property.host, sonarqube_property.port):
+        print("Sonarqube server status: UNREACHABLE. Please check the status of the server and try again")
+    else:
+        print("Sonarqube server status: OK")
+        
     # MySQL parameters
     mysql_property_path = join(database_resource_path, mysql_name)
     if not exists(mysql_property_path):
@@ -42,6 +49,13 @@ def check_preconditions():
     else:
         print("MySQL parameters: OK")
 
+    # Mysql connection test
+    mysql_property = db_utils.get_db_parameters(DBType.MYSQL)
+    if not scanner(mysql_property.host, mysql_property.port):
+        print("MySQL server status: UNREACHABLE. Please check the status of the server and try again")
+    else:
+        print("MySQL server status: OK")
+    
     # MySQL database
     db = AnitaDB(anonymous=True)
     if db.exist():

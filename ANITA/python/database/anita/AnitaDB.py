@@ -33,6 +33,8 @@ class AnitaDB:
         query = "SHOW DATABASES"
 
         fields, databases = self.mysql_db.search(query)
+        print("FIELDS: " + str(fields))
+        print("VALUES: " + str(databases))
         for database in databases:
             if self.database_name == database[0]:
                 return True
@@ -44,7 +46,10 @@ class AnitaDB:
             raise Exception("Database `anita` already created")
 
         create_query = "CREATE SCHEMA `" + self.database_name + "`"
-        self.mysql_db.search(create_query)
+        print("CREATE DB QUERY")
+        print(create_query)
+
+        self.mysql_db.insert(create_query)
 
         db_utils.add_database_name(DBType.MYSQL, self.database_name)
 

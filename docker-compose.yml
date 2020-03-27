@@ -102,6 +102,7 @@ services:
 
 networks:
   anita-network:
+    external: true
 
 volumes:
   sonarqube_conf:
