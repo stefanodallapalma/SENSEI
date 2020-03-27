@@ -31,7 +31,7 @@ class SonarqubeParameters:
 
     @property
     def url(self):
-        return self._data["host"] + ":" + self._data["port"]
+        return "http://" + self._data["host"] + ":" + self._data["port"]
 
     @property
     def token(self):

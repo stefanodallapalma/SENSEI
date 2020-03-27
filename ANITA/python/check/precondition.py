@@ -65,6 +65,7 @@ def check_preconditions():
 
     # Sonarqube connection test
     sonarqube_property = sq_utils.get_sonarqube_properties()
+    print(sonarqube_property.url)
     if not scanner(sonarqube_property.host, sonarqube_property.port):
         print("Sonarqube: waiting...")
         start = int(datetime.datetime.now().timestamp())
