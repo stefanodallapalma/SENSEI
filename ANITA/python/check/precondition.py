@@ -16,7 +16,7 @@ mysql_name = "mysql.json"
 sonarqube_name = "sonarqube_properties.json"
 default_name = "default.json"
 
-LIMIT_TIME = 120     # sec
+LIMIT_TIME = 300     # sec
 
 
 def check_preconditions():
@@ -82,7 +82,22 @@ def check_preconditions():
     print("Waiting that the server is up")
     # Wait that the server is up
     sq_api = SonarqubeAPI()
-    response = sq_api.server_status()
+
+    # Fix for docker connection status
+    conn = False
+    start = int(datetime.datetime.now().timestamp())
+    actual = int(datetime.datetime.now().timestamp())
+    while not conn and (actual - start) < LIMIT_TIME:
+        try:
+            response = sq_api.server_status()
+            conn = True
+        except:
+            time.sleep(1)
+
+    if (actual - start) >= LIMIT_TIME:
+        print("Sonarqube server unreachable")
+        return False
+
     status = SonarqubeAPI.get_json_content(response)["status"]
     if status != "UP":
         print("Sonarqube: waiting... (server status: " + status + ")")

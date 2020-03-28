@@ -31,6 +31,9 @@ class SonarqubeParameters:
 
     @property
     def url(self):
+        if self._data["host"].startswith("http"):
+            return self._data["host"] + ":" + self._data["port"]
+
         return "http://" + self._data["host"] + ":" + self._data["port"]
 
     @property
