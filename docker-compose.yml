@@ -12,6 +12,11 @@ services:
       - anita-network
     entrypoint: python3
     command: server.py
+    healthcheck:
+      test: ["CMD-SHELL", "sonarqube-test.sh"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
     depends_on:
       - mysql
       - sonarqube
@@ -71,6 +76,11 @@ services:
     hostname: worker
     entrypoint: celery
     command: -A taskqueue.celery.config.celery worker --loglevel=info
+    healthcheck:
+      test: ["CMD-SHELL", "sonarqube-test.sh"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
     volumes:
       - ANITA:/ANITA
     links:

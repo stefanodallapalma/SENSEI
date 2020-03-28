@@ -16,7 +16,7 @@ mysql_name = "mysql.json"
 sonarqube_name = "sonarqube_properties.json"
 default_name = "default.json"
 
-LIMIT_TIME = 300     # sec
+LIMIT_TIME = 60     # sec
 
 
 def check_preconditions():
