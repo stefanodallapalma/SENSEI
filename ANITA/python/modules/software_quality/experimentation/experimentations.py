@@ -10,8 +10,7 @@ from ..projects.exceptions import UndefinedTaskStateException
 
 def evaluation(project_name):
     # Unique id
-    plain_text = " ".join([project_name, exp_task.EVALUATION_TASK_ID, str(int(datetime.now().timestamp()))])
-    unique_id = encode(plain_text)
+    unique_id = "-".join([project_name, str(int(datetime.now().timestamp())), exp_task.EVALUATION_TASK_ID])
 
     # CELERY TASK
     task = celery.AsyncResult(unique_id)
@@ -57,8 +56,7 @@ def prediction(project_name, algorithm, save):
         return 500, error
 
     # Unique id
-    plain_text = " ".join([project_name, exp_task.PREDICTION_TASK_ID, str(int(datetime.now().timestamp()))])
-    unique_id = encode(plain_text)
+    unique_id = " ".join([project_name, str(int(datetime.now().timestamp())), exp_task.PREDICTION_TASK_ID])
 
     # CELERY TASK
     task = celery.AsyncResult(unique_id)

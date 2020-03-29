@@ -2,8 +2,8 @@ version: "3"
 
 services:
   web:
-    container_name: anita
-    build: .
+    container_name: web
+    image: anita
     ports:
       - "5000:5000"
     expose:
@@ -12,16 +12,12 @@ services:
       - anita-network
     entrypoint: python3
     command: server.py
-    healthcheck:
-      test: ["CMD-SHELL", "sonarqube-test.sh"]
-      interval: 5s
-      timeout: 10s
-      retries: 10
     depends_on:
+      - celery
       - mysql
       - sonarqube
     volumes:
-      - ANITA:/ANITA
+      - ./ANITA:/ANITA
 
   sonarqube:
     container_name: sonarqube
@@ -70,19 +66,15 @@ services:
     networks:
       - anita-network
       
-  worker:
+  celery:
     container_name: celery
+    image: anita
     build: .
     hostname: worker
     entrypoint: celery
     command: -A taskqueue.celery.config.celery worker --loglevel=info
-    healthcheck:
-      test: ["CMD-SHELL", "sonarqube-test.sh"]
-      interval: 5s
-      timeout: 10s
-      retries: 10
     volumes:
-      - ANITA:/ANITA
+      - ./ANITA:/ANITA
     links:
       - rabbitmq
     depends_on:
@@ -132,4 +124,3 @@ volumes:
   postgresql:
   postgresql_data:
   mysql-db:
-  ANITA:

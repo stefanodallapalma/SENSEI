@@ -1,10 +1,11 @@
 class SonarqubeBean:
-    def __init__(self, timestamp=None, project_name=None, page=None, label=None, number_links=None, number_of_words=None,
+    def __init__(self, timestamp=None, project_name=None, page=None, label=None, label_three=None, number_links=None, number_of_words=None,
                  min_words_in_sentence=None, max_words_in_sentence=None, bitcoin=None, deep_web=None):
         self._timestamp = timestamp
         self._project_name = project_name
         self._page = page
         self._label = label
+        self._label = label_three
         self._number_links = number_links
         self._number_of_words = number_of_words
         self._min_words_in_sentence = min_words_in_sentence
@@ -43,6 +44,14 @@ class SonarqubeBean:
     @label.setter
     def label(self, value):
         self._label = value
+
+    @property
+    def label_three(self):
+        return self._label_three
+
+    @label_three.setter
+    def label_three(self, value):
+        self._label_three = value
 
     @property
     def number_links(self):

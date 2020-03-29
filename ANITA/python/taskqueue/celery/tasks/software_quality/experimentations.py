@@ -17,33 +17,43 @@ from modules.software_quality.experimentation.algorithm import *
 from modules.software_quality.experimentation.preprocessing import *
 
 # Task ID
-EVALUATION_TASK_ID = "3"
-PREDICTION_TASK_ID = "4"
+EVALUATION_TASK_ID = "EVALUATION"
+PREDICTION_TASK_ID = "PREDICTION"
 
 
 @celery.task(bind=True)
-def evaluation_task(self, project_name=None):
+def evaluation_task(self, project_name):
     # Response content
-    content = train_content_template()
-    self.update_state(state=states.STARTED, meta=content)
+    result = {"3_classes": {}, "26_classes": {}}
+    self.update_state(state=states.STARTED, meta=result)
+
+    if project_name is None:
+        error = {"error": "Project not valid"}
+        self.update_state(state=states.FAILURE, meta=error)
+        return error
 
     # Load data
     sq_controller = SonarqubeController()
-    if project_name is None:
-        sq_models = sq_controller.select_all_labelled()
-    else:
-        tmp_sq_models = sq_controller.select_by_project_name(project_name)
-        sq_models = [model for model in tmp_sq_models if model["label"] is not None]
+    tmp_sq_models = sq_controller.select_by_project_name(project_name)
+    sq_models = [model for model in tmp_sq_models if model["label"] is not None]
+
+    if not sq_models:
+        error = {"error": "The project selected is not labelled"}
+        self.update_state(state=states.FAILURE, meta=error)
+        return error
+
     project_dataframe = pd.DataFrame(sq_models)
 
-    for i in range(1):
+    for i in range(2):
         df_copy = project_dataframe.copy()
 
         if i == 0:  # 3 classes
-            key = "Train - 3 classes"
-            df_copy["label"] = df_copy["label"].apply(three_classifiers)
+            key = "3_classes"
+            del df_copy["label"]
+            df_copy.rename(columns={"label_three": "label"}, inplace=True)
         else:       # 26 classes
-            key = "Train - 26 classes"
+            key = "26_classes"
+            del df_copy["label_three"]
 
         # Preprocessing
         df_copy = preprocess(df_copy)
@@ -62,64 +72,60 @@ def evaluation_task(self, project_name=None):
         X_train, y_train = oversampling(X_train, y_train)
 
         y_pred_knn, best_model = knn(X_train, y_train, X_test)
-        content[key]["knn"] = evaluate(y_test, y_pred_knn, label_map)
-        self.update_state(state='PROGRESS', meta=content)
+        result[key]["knn"] = evaluate(y_test, y_pred_knn, label_map)
+        self.update_state(state='PROGRESS', meta=result)
 
         y_pred_rf, best_model = random_forest(X_train, y_train, X_test)
-        content[key]["Random forest"] = evaluate(y_test, y_pred_rf, label_map)
-        self.update_state(state='PROGRESS', meta=content)
+        result[key]["Random forest"] = evaluate(y_test, y_pred_rf, label_map)
+        self.update_state(state='PROGRESS', meta=result)
 
         y_pred_lr, best_model = logistic_regression(X_train, y_train, X_test)
-        content[key]["Logistic regression"] = evaluate(y_test, y_pred_lr, label_map)
-        self.update_state(state='PROGRESS', meta=content)
+        result[key]["Logistic regression"] = evaluate(y_test, y_pred_lr, label_map)
+        self.update_state(state='PROGRESS', meta=result)
 
         y_pred_svc, best_model = svc(X_train, y_train, X_test)
-        content[key]["SVC"] = evaluate(y_test, y_pred_svc, label_map)
-        self.update_state(state='PROGRESS', meta=content)
+        result[key]["SVC"] = evaluate(y_test, y_pred_svc, label_map)
+        self.update_state(state='PROGRESS', meta=result)
 
-    self.update_state(state=states.SUCCESS, meta=content)
-    return content
-
-
-def train_content_template():
-    return {
-        "Train - 3 classes": {
-            "knn": None,
-            "Random forest": None,
-            "Logistic regression": None,
-            "SVC": None
-        }
-    }
+    self.update_state(state=states.SUCCESS, meta=result)
+    return result
 
 
 @celery.task(bind=True)
 def prediction_task(self, project_name, algorithm, save):
-    content = {}
+    content = []
     self.update_state(state=states.STARTED, meta=content)
 
     algorithm_list = ["knn", "random-forest", "logistic-regression", "csv"]
     if algorithm not in algorithm_list:
-        content = {"error": "algorithm undefined"}
-        self.update_state(state=states.FAILURE, meta=content)
-        return content
+        error = {"error": "algorithm undefined"}
+        self.update_state(state=states.FAILURE, meta=error)
+        return error
 
     sq_controller = SonarqubeController()
     sq_models_labelled = sq_controller.select_all_labelled()
     sq_models = sq_controller.select_by_project_name(project_name)
 
+    for sq_model in sq_models:
+        no_label_model = dict(sq_model)
+        no_label_model["label"] = None
+        no_label_model["label_three"] = None
+        content.append(no_label_model)
+
     train_dataframe = pd.DataFrame(sq_models_labelled)
-    test_dataframe = pd.DataFrame(sq_models)
+    test_dataframe = pd.DataFrame(content)
     self.update_state(state='PROGRESS', meta=content)
 
-    for i in range(1):
+    keys = ["label", "label_three"]
+    for key in keys:
         train_copy = train_dataframe.copy()
         test_copy = test_dataframe.copy()
 
-        if i == 0:  # 3 classes
-            key = "Train - 3 classes"
-            train_copy["label"] = train_copy["label"].apply(three_classifiers)
+        if key == "label_three":  # 3 classes
+            del train_copy["label"]
+            train_copy.rename(columns={"label_three": "label"}, inplace=True)
         else:  # 26 classes
-            key = "Train - 26 classes"
+            del train_copy["label_three"]
 
         # Preprocessing
         train_copy = preprocess(train_copy)
@@ -152,23 +158,40 @@ def prediction_task(self, project_name, algorithm, save):
             y_pred, best_model = svc(X_train, y_train, X_test)
 
         test_copy["label"] = label_decoder(label_map, y_pred)
+        content = add_label_to_content(content, test_copy, key)
 
-        final_df = merge_df(test_dataframe, test_copy)
-        print(final_df["label"])
-        final_df_dict = final_df.to_dict(orient="records")
-        content[key] = final_df_dict
         self.update_state(state='PROGRESS', meta=content)
 
         if save:
-            sq_models = []
-            for row in final_df_dict:
-                sq_model = SonarqubeBean(timestamp=row["timestamp"], project_name=row["project_name"],
-                                         page=row["page"], label=row["label"])
-                sq_models.append(sq_model)
+            for page in content:
+                if page[key] is not None:
+                    sq_model = SonarqubeBean(timestamp=page["timestamp"], project_name=page["project_name"],
+                                         page=page["page"])
+                    if key == "label":
+                        sq_model.label = page[key]
+                    else:
+                        sq_model.label_three = page[key]
+                    sq_models.append(sq_model)
 
             sq_controller.update_beans(sq_models)
 
     self.update_state(state=states.SUCCESS, meta=content)
+    return content
+
+
+def add_label_to_content(content, df, key):
+    for index, row in df.iterrows():
+        timestamp = row["timestamp"]
+        project_name = row["project_name"]
+        page = row["page"]
+        label = row["label"]
+        for i in range(len(content)):
+            page_content = content[i]
+            if page_content["timestamp"] == timestamp and page_content["project_name"] == project_name and \
+                    page_content["page"] == page:
+                content[key] = label
+                break
+
     return content
 
 

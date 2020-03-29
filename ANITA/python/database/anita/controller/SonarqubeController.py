@@ -19,7 +19,7 @@ class SonarqubeController(TableController):
         # Attributes
         attribute_names = SonarqubeBean.__prop__()
         pk_attribute_names = ["timestamp", "project_name", "page"]
-        label_attribute = "label"
+        label_attributes = ["label", "label_three"]
         bool_attributes = ["bitcoin", "deep_web"]
 
         anita_sq_api = SonarqubeAnitaAPI()
@@ -34,7 +34,7 @@ class SonarqubeController(TableController):
             elif attribute_name in bool_attributes:
                 datatype = DataType(Type.BIT, 1)
                 column = ColumnDB(attribute_name, datatype)
-            elif attribute_name == label_attribute:
+            elif attribute_name in label_attributes:
                 datatype = DataType(Type.VARCHAR, 50)
                 column = ColumnDB(attribute_name, datatype)
             else:
@@ -95,11 +95,11 @@ class SonarqubeController(TableController):
 
     def add_labels(self, project_name, labels_dict):
         query = "UPDATE `" + self._database_name + "`.`" + self.table_name + \
-                "` SET `label` = %s WHERE `project_name` = %s AND `page` = %s"
+                "` SET `label` = %s, `label_three` = %s WHERE `project_name` = %s AND `page` = %s"
 
         values = []
         for label_dict in labels_dict:
-            value = (label_dict["label"], project_name, label_dict["page"])
+            value = (label_dict["label"], label_dict["label_three"], project_name, label_dict["page"])
             values.append(value)
 
         self.update(query, values)

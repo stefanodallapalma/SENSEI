@@ -8,7 +8,7 @@ from taskqueue.celery.config import celery
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 from database.anita.controller.SonarqubeController import SonarqubeController
 import sonarqube.utils.SonarqubeUtils as sq_utils
-from utils.AES import encode
+from ..experimentation.preprocessing import three_classifiers
 from utils.FileUtils import getdirs
 
 from .exceptions import UndefinedTaskStateException
@@ -20,8 +20,7 @@ def load_data(project_name, zip_file, new_project=False, additional_info=False):
     timestamp = int(datetime.now().timestamp())
 
     # Unique id
-    plain_text = " ".join([project_name, str(timestamp), project_task.LOAD_PAGE_TASK_ID])
-    unique_id = encode(plain_text)
+    unique_id = "-".join([project_name, str(timestamp), project_task.LOAD_PAGE_TASK_ID])
 
     # CELERY TASK
     task = celery.AsyncResult(unique_id)
@@ -58,8 +57,7 @@ def load_data(project_name, zip_file, new_project=False, additional_info=False):
 
 
 def upload_task(project_name, timestamp):
-    plain_text = " ".join([project_name, timestamp, project_task.LOAD_PAGE_TASK_ID])
-    unique_id = encode(plain_text)
+    unique_id = "-".join([project_name, timestamp, project_task.LOAD_PAGE_TASK_ID])
 
     task = celery.AsyncResult(unique_id)
     print("LOAD TASK STATE: " + task.state)
@@ -72,8 +70,7 @@ def upload_task(project_name, timestamp):
     elif task.state == "SUCCESS" and "error" not in task.result:
         return 200, task.result
     elif task.state == "FAILURE" or (task.state == "SUCCESS" and "error" in task.result):
-        plain_reverse_text = " ".join([project_name, timestamp, project_task.REVERSE_LOAD_PAGE_TASK_ID])
-        unique_reverse_id = encode(plain_reverse_text)
+        unique_reverse_id = "-".join([project_name, timestamp, project_task.REVERSE_LOAD_PAGE_TASK_ID])
 
         # DELETE ALL STEPS DONE
         reverse_task = celery.AsyncResult(unique_reverse_id)
@@ -122,7 +119,8 @@ def add_label(project_name, label_csv):
 
         if page in pages:
             label = row['Label']
-            label_dict = {"page": page, "label": label}
+            label_three = three_classifiers(label)
+            label_dict = {"page": page, "label": label, "label_three": label_three}
             labels_dict.append(label_dict)
 
 

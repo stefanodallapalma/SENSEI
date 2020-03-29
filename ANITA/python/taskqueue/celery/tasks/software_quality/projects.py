@@ -19,8 +19,8 @@ from database.anita.decoder.sonarqube_decoder import *
 from exception.PendingTaskException import PendingTaskException
 
 # Task ID
-LOAD_PAGE_TASK_ID = "1"
-REVERSE_LOAD_PAGE_TASK_ID = "2"
+LOAD_PAGE_TASK_ID = "UPLOAD"
+REVERSE_LOAD_PAGE_TASK_ID = "UNDO_UPLOAD"
 
 
 @celery.task(bind=True)

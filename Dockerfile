@@ -1,6 +1,6 @@
 FROM python:3.7.1
 
-RUN apt-get update && apt-get install -y default-jdk && apt-get install -y curl && apt-get install -y jq
+RUN apt-get update && apt-get install -y default-jdk
 RUN mkdir /ANITA
 COPY /ANITA/python/requirements.txt /ANITA/requirements.txt
 
@@ -12,4 +12,3 @@ RUN pip install connexion[swagger-ui]
 
 WORKDIR /ANITA/python/
 COPY /ANITA /ANITA
-COPY sonarqube-test.sh /ANITA/python/sonarqube-test.sh

@@ -47,6 +47,8 @@ class SonarqubeDBDecoder(JSONDecoder):
                 bean.page = dct["page"]
             elif key == "label":
                 bean.label = dct["label"]
+            elif key == "label_three":
+                bean.label_three = dct["label_three"]
             elif key == "number_links":
                 bean.number_links = dct["number_links"]
             elif key == "number_of_words":

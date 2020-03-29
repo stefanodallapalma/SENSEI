@@ -16,11 +16,11 @@ mysql_name = "mysql.json"
 sonarqube_name = "sonarqube_properties.json"
 default_name = "default.json"
 
-LIMIT_TIME = 60     # sec
+LIMIT_TIME = 150     # sec
 
 
 def check_preconditions():
-    print("PRECONDITION CHECKING\n")
+    print("PRECONDITION CHECKING\n", flush=True)
 
     # Resource folders
     folders = resource_precondition()
@@ -46,7 +46,7 @@ def check_preconditions():
     print("MySQL: OK")
 
     # Connection test
-    print("CONNECTION TEST")
+    print("CONNECTION TEST", flush=True)
 
     # Mysql connection test
     mysql_property = db_utils.get_db_parameters(DBType.MYSQL)
@@ -61,7 +61,7 @@ def check_preconditions():
         if (actual - start) >= LIMIT_TIME:
             print("MySQL: server UNREACHABLE")
             return False
-    print("MySQL server status: OK")
+    print("MySQL: OK", flush=True)
 
     # Sonarqube connection test
     sonarqube_property = sq_utils.get_sonarqube_properties()
@@ -77,56 +77,53 @@ def check_preconditions():
         if (actual - start) >= LIMIT_TIME:
             print("Sonarqube: server UNREACHABLE")
             return False
-    print("Sonarqube: OK")
+    print("Sonarqube: OK", flush=True)
 
-    print("Waiting that the server is up")
     # Wait that the server is up
-    sq_api = SonarqubeAPI()
-
-    # Fix for docker connection status
+    print("Sonarqube status: Waiting that the server is up...", flush=True)
     conn = False
+    sq_api = SonarqubeAPI()
     start = int(datetime.datetime.now().timestamp())
     actual = int(datetime.datetime.now().timestamp())
     while not conn and (actual - start) < LIMIT_TIME:
         try:
             response = sq_api.server_status()
-            conn = True
+            status = SonarqubeAPI.get_json_content(response)["status"]
+            if status == "UP":
+                conn = True
         except:
             time.sleep(1)
+        actual = int(datetime.datetime.now().timestamp())
 
     if (actual - start) >= LIMIT_TIME:
-        print("Sonarqube server unreachable")
+        print("Sonarqube: server not ready")
         return False
-
-    status = SonarqubeAPI.get_json_content(response)["status"]
-    if status != "UP":
-        print("Sonarqube: waiting... (server status: " + status + ")")
-        start = int(datetime.datetime.now().timestamp())
-        actual = int(datetime.datetime.now().timestamp())
-        while (actual - start) < LIMIT_TIME and status != "UP":
-            time.sleep(1)
-            actual = int(datetime.datetime.now().timestamp())
-
-        if (actual - start) >= LIMIT_TIME:
-            print("Sonarqube: server not ready")
-            return False
 
     # Database
     # MySQL database
     db = AnitaDB(anonymous=True)
     if db.exist():
-        print("Database already created")
+        print("Database already created", flush=True)
     else:
         print("Database not found. Creation of a new db")
         db.create()
-        print("Database created")
+        print("Database created", flush=True)
     db_utils.add_database_name(DBType.MYSQL, db.database_name)
     
     # Sonarqube token
     server_sq = SonarqubeAPIExtended()
     sonarqube_property = sq_utils.get_sonarqube_properties()
     if sonarqube_property.token == "":
-        print("Sonarqube token not found: generation of a new one")
+        response = server_sq.search_tokens(sonarqube_property.user)
+        search_content = server_sq.get_json_content(response)
+        print(search_content)
+        if "userTokens" in search_content and len(search_content["userTokens"]) > 0:
+            for user_token in search_content["userTokens"]:
+                if user_token["name"] == "ANITA":
+                    server_sq.revoke_token(sonarqube_property.user, "ANITA")
+                    print("Sonarqube old token revoked", flush=True)
+
+        print("Sonarqube: generation of a new token", flush=True)
         response = server_sq.generate_token(sonarqube_property.user, "ANITA")
         content = server_sq.get_json_content(response)
         print(content)
@@ -135,13 +132,13 @@ def check_preconditions():
     # Sonarscanner
     dirs = [f for f in os.listdir(sonarscanner_path) if os.path.isdir(join(sonarscanner_path, f))]
     if not dirs:
-        print("Sonar-scanner status: not found. Sonar-scanner will be installed in a few seconds")
+        print("Sonar-scanner status: not found. Sonar-scanner will be installed in a few seconds", flush=True)
         zip_path = download()
         extract_content(zip_path, "sonar-scanner")
         os.remove(zip_path)
-        print("\nSonar-scanner has been successfully installed")
+        print("\nSonar-scanner has been successfully installed", flush=True)
     else:
-        print("Sonar-scanner status: OK")
+        print("Sonar-scanner status: OK", flush=True)
 
     return True
 

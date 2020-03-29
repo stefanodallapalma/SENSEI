@@ -79,6 +79,34 @@ class SonarqubeAPI:
 
         return Response(response.content, response.status_code, response.headers.items())
 
+    def revoke_token(self, login, name):
+        api = "/api/user_tokens/revoke"
+
+        # Parameter setup
+        param = {"login": login, "name": name}
+
+        url = self._parameters.url + api
+
+        # Basic Auth parameters
+        user = self._parameters.user
+        password = self._parameters.password
+
+        response = requests.post(url, data=param, auth=HTTPBasicAuth(user, password))
+
+        return Response(response.content, response.status_code, response.headers.items())
+
+    def search_tokens(self, login_user):
+        api = "/api/user_tokens/search"
+        url = self._parameters.url + api
+
+        # Basic Auth parameters
+        user = self._parameters.user
+        password = self._parameters.password
+
+        response = requests.get(url, auth=HTTPBasicAuth(user, password))
+
+        return Response(response.content, response.status_code, response.headers.items())
+
     def server_status(self):
         api = "/api/system/status"
         url = self._parameters.url + api
