@@ -88,6 +88,8 @@ def feature_selection(X, y):
 
 def train_test(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0, stratify=y)
+    print(y_train)
+    print(y_test)
     return X_train, X_test, y_train, y_test
 
 

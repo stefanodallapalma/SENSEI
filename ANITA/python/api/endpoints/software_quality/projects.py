@@ -223,12 +223,12 @@ def projects_status():
         for timestamp in timestamps:
             # noinspection PyBroadException
             try:
-                status, content = projects.upload_task(project_name, int(timestamp))
+                status, content = projects.upload_task(project_name, timestamp)
             except Exception as e:
                 error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
                 return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-            date = datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d %H:%M:%S')
+            date = datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d %H:%M:%S')
             dumps_status[date] = content
 
         status_projects[project_name] = dumps_status
