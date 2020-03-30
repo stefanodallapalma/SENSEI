@@ -127,7 +127,7 @@ def project_status_all(project_name):
             error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
             return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-        date = datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d %H:%M:%S')
+        date = datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d %H:%M:%S')
         dumps_status[date] = content
 
     return Response(json.dumps(dumps_status, sort_keys=False), status=200, mimetype="application/json")
