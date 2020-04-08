@@ -1,19 +1,16 @@
 import requests
-from io import StringIO
-import os, sys
+import os, sys, logging
 from sys import platform
-import subprocess
 from zipfile import ZipFile
 
-from exception.NoJDKFoundException import NoJDKFoundException
-
 sonarscanner_path = "../resources/sonar-scanner/"
+sonarscanner_filename = "sonarscanner.zip"
 
 linux_download_path = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip"
 windows_download_path = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-windows.zip"
 mac_download_path = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-macosx.zip"
 
-sonarscanner_filename = "sonarscanner.zip"
+logger = logging.getLogger("sonarscanner")
 
 
 def download():

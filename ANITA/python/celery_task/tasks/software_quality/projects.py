@@ -8,7 +8,7 @@ from celery import states
 
 # Local application imports
 from modules.software_quality.projects.combining_data import extra_features
-from taskqueue.celery.config import celery
+from celery_task.celery_app import celery
 import sonarqube.utils.SonarqubeUtils as sq_utils
 from sonarqube.anita.SonarqubeAnitaAPI import SonarqubeAnitaAPI
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
@@ -16,6 +16,7 @@ from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 from sonarscanner.SonarscannerController import run_sonarscanner as scanner
 from database.anita.controller.SonarqubeController import SonarqubeController
 from database.anita.decoder.sonarqube_decoder import *
+
 from exception.PendingTaskException import PendingTaskException
 
 # Task ID

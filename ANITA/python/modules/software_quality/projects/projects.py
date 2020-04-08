@@ -3,8 +3,8 @@ import shutil, os, pandas as pd
 from datetime import datetime
 
 # Local application imports
-import taskqueue.celery.tasks.software_quality.projects as project_task
-from taskqueue.celery.config import celery
+import celery_task.tasks.software_quality.projects as project_task
+from celery_task.celery_app import celery
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 from database.anita.controller.SonarqubeController import SonarqubeController
 import sonarqube.utils.SonarqubeUtils as sq_utils

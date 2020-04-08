@@ -1,3 +1,4 @@
 virtualenvs/ANITA/
+ANITA/resources/
 .idea/
 *.pyc

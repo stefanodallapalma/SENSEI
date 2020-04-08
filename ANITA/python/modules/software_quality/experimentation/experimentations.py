@@ -1,7 +1,6 @@
 from datetime import datetime
-from taskqueue.celery.config import celery
-import taskqueue.celery.tasks.software_quality.experimentations as exp_task
-from utils.AES import encode
+from celery_task.celery_app import celery
+import celery_task.tasks.software_quality.experimentations as exp_task
 
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 

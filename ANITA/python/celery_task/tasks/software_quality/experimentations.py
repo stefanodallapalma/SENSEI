@@ -9,7 +9,7 @@ from celery import states
 
 # Local application imports
 from modules.software_quality.projects.combining_data import extra_features
-from taskqueue.celery.config import celery
+from celery_task.celery_app import celery
 from database.anita.controller.SonarqubeController import SonarqubeController
 from database.anita.decoder.sonarqube_decoder import SonarqubeDBDecoder
 from database.anita.model.SonarqubeBean import SonarqubeBean

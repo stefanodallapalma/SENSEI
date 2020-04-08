@@ -33,8 +33,6 @@ class AnitaDB:
         query = "SHOW DATABASES"
 
         fields, databases = self.mysql_db.search(query)
-        print("FIELDS: " + str(fields))
-        print("VALUES: " + str(databases))
         for database in databases:
             if self.database_name == database[0]:
                 return True

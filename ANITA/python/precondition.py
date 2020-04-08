@@ -1,13 +1,18 @@
-from utils.PortScanner import scanner
-from sonarqube.utils import SonarqubeUtils as sq_utils
-from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
-from check.setup import *
+import datetime
+import logging
+import os
+import time
 from os.path import join, exists
-import os, datetime, time
+
 from database.anita.AnitaDB import AnitaDB
-from database.utils import DBUtils as db_utils
 from database.db.structure.DBType import DBType
+from database.utils import DBUtils as db_utils
 from sonarqube.api.SonarqubeAPI import SonarqubeAPI
+from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
+from sonarqube.utils import SonarqubeUtils as sq_utils
+from sonarscanner.SonarscannerUtils import *
+from utils.PortScanner import scanner
+from utils.FileUtils import *
 
 resource_path = "../resources/"
 database_resource_path = join(resource_path, "database")
@@ -20,38 +25,39 @@ LIMIT_TIME = 150     # sec
 
 
 def check_preconditions():
-    print("PRECONDITION CHECKING\n", flush=True)
+    logger = logging.getLogger("precondition")
+    logger.info("PRECONDITION CHECKING")
 
     # Resource folders
     folders = resource_precondition()
     if folders:
-        print("Resource folders: OK (" + str(folders) + " created)")
+        logger.info("Resource folders: OK (" + str(folders) + " created)")
     else:
-        print("Resource folders: OK")
+        logger.info("Resource folders: OK")
 
     # Parameters
-    print("PARAMETERS")
+    logger.info("PARAMETERS")
     # Sonarqube parameters
     sonarqube_property_path = join(resource_path, sonarqube_name)
     if not exists(sonarqube_property_path):
-        print("Sonarqube: parameters not found. Starting sonarqube setup")
+        logger.info("Sonarqube: parameters not found. Starting sonarqube setup")
         sonarqube_setup()
-    print("Sonarqube: OK")
+    logger.info("Sonarqube: OK")
 
     # MySQL parameters
     mysql_property_path = join(database_resource_path, mysql_name)
     if not exists(mysql_property_path):
-        print("MySQL: parameters not found. Starting mysql setup")
+        logger.info("MySQL: parameters not found. Starting mysql setup")
         mysql_setup()
-    print("MySQL: OK")
+    logger.info("MySQL: OK")
 
     # Connection test
-    print("CONNECTION TEST", flush=True)
+    logger.info("CONNECTION TEST")
 
     # Mysql connection test
     mysql_property = db_utils.get_db_parameters(DBType.MYSQL)
     if not scanner(mysql_property.host, mysql_property.port):
-        print("MySQL: waiting...")
+        logger.info("MySQL: waiting...")
         start = int(datetime.datetime.now().timestamp())
         actual = int(datetime.datetime.now().timestamp())
         while (actual - start) < LIMIT_TIME and scanner(mysql_property.host, mysql_property.port):
@@ -59,15 +65,14 @@ def check_preconditions():
             actual = int(datetime.datetime.now().timestamp())
 
         if (actual - start) >= LIMIT_TIME:
-            print("MySQL: server UNREACHABLE")
+            logger.error("MySQL: server UNREACHABLE")
             return False
-    print("MySQL: OK", flush=True)
+    logger.info("MySQL: OK")
 
     # Sonarqube connection test
     sonarqube_property = sq_utils.get_sonarqube_properties()
-    print(sonarqube_property.url)
     if not scanner(sonarqube_property.host, sonarqube_property.port):
-        print("Sonarqube: waiting...")
+        logger.info("Sonarqube: waiting...")
         start = int(datetime.datetime.now().timestamp())
         actual = int(datetime.datetime.now().timestamp())
         while (actual - start) < LIMIT_TIME and scanner(sonarqube_property.host, sonarqube_property.port):
@@ -75,12 +80,12 @@ def check_preconditions():
             actual = int(datetime.datetime.now().timestamp())
 
         if (actual - start) >= LIMIT_TIME:
-            print("Sonarqube: server UNREACHABLE")
+            logger.error("Sonarqube: server UNREACHABLE")
             return False
-    print("Sonarqube: OK", flush=True)
+    logger.info("Sonarqube: OK")
 
     # Wait that the server is up
-    print("Sonarqube status: Waiting that the server is up...", flush=True)
+    logger.info("Sonarqube status: Waiting that the server is up...")
     conn = False
     sq_api = SonarqubeAPI()
     start = int(datetime.datetime.now().timestamp())
@@ -91,23 +96,26 @@ def check_preconditions():
             status = SonarqubeAPI.get_json_content(response)["status"]
             if status == "UP":
                 conn = True
+            else:
+                time.sleep(1)
         except:
             time.sleep(1)
+
         actual = int(datetime.datetime.now().timestamp())
 
     if (actual - start) >= LIMIT_TIME:
-        print("Sonarqube: server not ready")
+        logger.error("Sonarqube: server not ready")
         return False
 
     # Database
     # MySQL database
     db = AnitaDB(anonymous=True)
     if db.exist():
-        print("Database already created", flush=True)
+        logger.info("Database already created")
     else:
-        print("Database not found. Creation of a new db")
+        logger.info("Database not found. Creation of a new db")
         db.create()
-        print("Database created", flush=True)
+        logger.info("Database created")
     db_utils.add_database_name(DBType.MYSQL, db.database_name)
     
     # Sonarqube token
@@ -116,29 +124,27 @@ def check_preconditions():
     if sonarqube_property.token == "":
         response = server_sq.search_tokens(sonarqube_property.user)
         search_content = server_sq.get_json_content(response)
-        print(search_content)
         if "userTokens" in search_content and len(search_content["userTokens"]) > 0:
             for user_token in search_content["userTokens"]:
                 if user_token["name"] == "ANITA":
                     server_sq.revoke_token(sonarqube_property.user, "ANITA")
-                    print("Sonarqube old token revoked", flush=True)
+                    logger.info("Sonarqube: old token revoked")
 
-        print("Sonarqube: generation of a new token", flush=True)
+        logger.info("Sonarqube: generation of a new token")
         response = server_sq.generate_token(sonarqube_property.user, "ANITA")
         content = server_sq.get_json_content(response)
-        print(content)
         sq_utils.set_token(content["token"])
 
     # Sonarscanner
     dirs = [f for f in os.listdir(sonarscanner_path) if os.path.isdir(join(sonarscanner_path, f))]
     if not dirs:
-        print("Sonar-scanner status: not found. Sonar-scanner will be installed in a few seconds", flush=True)
+        logger.info("Sonar-scanner status: not found. Sonar-scanner will be installed in a few seconds")
         zip_path = download()
         extract_content(zip_path, "sonar-scanner")
         os.remove(zip_path)
-        print("\nSonar-scanner has been successfully installed", flush=True)
+        logger.info("Sonar-scanner has been successfully installed")
     else:
-        print("Sonar-scanner status: OK", flush=True)
+        logger.info("Sonar-scanner status: OK")
 
     return True
 
@@ -159,3 +165,38 @@ def resource_precondition():
     return folders_created
 
 
+def mysql_setup():
+    default_dict = load_json(join(resource_path, default_name))
+    host = default_dict["mysql_host"]
+    if "https" in host:
+        host = host.replace("https://", "")
+    elif "http" in host:
+        host = host.replace("http://", "")
+
+    port = default_dict["mysql_port"]
+    user = default_dict["mysql_user"]
+    password = default_dict["mysql_password"]
+
+    mysql_dict = {"host": host, "port": port, "user": user, "password": password, "database_name": ""}
+
+    output_path = join(database_resource_path, "mysql.json")
+    save_json(output_path, mysql_dict)
+
+
+def sonarqube_setup():
+    default_dict = load_json(join(resource_path, default_name))
+    host = default_dict["sonarqube_host"]
+    port = default_dict["sonarqube_port"]
+    user = default_dict["sonarqube_user"]
+    password = default_dict["sonarqube_password"]
+
+    sonarqube_dict = {"host": host, "port": port, "user": user, "password": password, "token": "", "projects": []}
+
+    output_path = join(resource_path, sonarqube_name)
+    save_json(output_path, sonarqube_dict)
+
+
+def sonarscanner_setup():
+    zip_path = download()
+    extract_content(zip_path, "sonar-scanner")
+    os.remove(zip_path)
