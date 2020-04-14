@@ -1,0 +1,29 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/v1/trend-analysis"
+
+# Paths supported by the server application
+paths:
+  /products/:
+    get:
+      operationId: "api.endpoints.trend_analysis.trend_analysis.get_products"
+      summary: "Get all marketplace's products"
+
+  /vendors/:
+    get:
+      operationId: "api.endpoints.trend_analysis.trend_analysis.get_vendors"
+      summary: "Get all marketplace's vendors"
+
+  /vendors/{vendor_name}:
+    get:
+      operationId: "api.endpoints.trend_analysis.trend_analysis.get_vendor"
+      summary: "Get all info of a vendor"
+
