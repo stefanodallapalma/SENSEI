@@ -50,328 +50,180 @@ class WebPage:
 
 
 class Product:
-    """Parse the soup and extracts the features for the product"""
+    """Product model"""
 
-    def __init__(self, soup, scraper, file_date):
-        self.scraper = scraper
-        self.name = self.get_name(soup)
-        self.vendor = self.get_vendor(soup)
-        self.ships_from = self.get_ships_from(soup)
-        self.ships_to = self.get_ships_to(soup)
-        self.price = self.get_price(soup)
-        self.price_eur = Product.get_price_eur(self.price, file_date)
-        self.info = self.get_info(soup)
-        self.feedback = self.get_feedback(soup, file_date)
+    def __init__(self, product_name, vendor, ships_from, ships_to, price, price_eur, info, feedback):
+        self.product_name = product_name
+        self.vendor = vendor
+        self.ships_from = ships_from
+        self.ships_to = ships_to
+        self.ships_to = ships_to
+        self.price = price
+        self.price_eur = price_eur
+        self.info = info
+        self.feedback = feedback
 
-    def get_name(self, soup):
-        """Returns the name of the product"""
-        try:
-            return self.scraper.p_product_name(soup)
-        except:
-            return None
+    @property
+    def product_name(self):
+        return self._product_name
 
-    def get_vendor(self, soup):
-        """Returns the name of the vendor"""
-        try:
-            return self.scraper.p_vendor(soup)
-        except:
-            return None
+    @product_name.setter
+    def product_name(self, value):
+        self._product_name = value
 
-    def get_ships_from(self, soup):
-        """Returns the country/area where is shipped from"""
-        try:
-            return self.scraper.p_ships_from(soup)
-        except:
-            return None
+    @property
+    def vendor(self):
+        return self._vendor
 
-    def get_ships_to(self, soup):
-        """Returns a list of countries where shipped to"""
-        try:
-            ship_to = self.scraper.p_ships_to(soup)
-            # return in a list if only one country is known
-            if type(ship_to) == str:
-                ship_to = [ship_to]
+    @vendor.setter
+    def vendor(self, value):
+        self._vendor = value
 
-            # Change abbreviations of countries into country names
-            for n, country in enumerate(ship_to):
-                if len(country) == 2:
-                    ship_to[n] = Product.get_country(country)
-            return ship_to
+    @property
+    def ships_from(self):
+        return self._ships_from
 
-        except:
-            return None
+    @ships_from.setter
+    def ships_from(self, value):
+        self._ships_from = value
 
-    def get_price(self, soup):
-        """Returns the price in dict or str/float/int"""
-        try:
-            return self.scraper.p_price(soup)
-        except:
-            return None
+    @property
+    def ships_to(self):
+        return self._ships_to
 
-    @staticmethod
-    def get_price_eur(price, file_date):
-        """This function handles to conversion into euro's, this happens in three different ways:
-        1. The price is already in euros, keep it that way
-        2. The price is in dollars, will be converted to euro's via API (function: convert_usd_to_eur)
-        3. The price is in bitcoin, bitcoin will be converted to dollars and dollars to euro's.
-        The conversion rates of the given dates of the files are used for the conversion"""
+    @ships_to.setter
+    def ships_to(self, value):
+        self._ships_to = value
 
-        # Conversion for the pages that contain only one price
-        if type(price) == str or type(price) == float or type(price) == int:
-            if 'usd' in price.lower():
-                price_dollar = float(''.join(c for c in price if c.isdigit() or c == '.'))
-                return round(Product.convert_usd_to_eur(price_dollar, file_date), 2)
-            if 'eur' in price.lower():
-                price_euro = float(''.join(c for c in price if c.isdigit() or c == '.'))
-                return round(price_euro, 2)
-            if '฿' in price:
-                price_bitcoin = float(''.join(c for c in price if c.isdigit() or c == '.'))
-                price_dollar = round(Product.convert_btc_to_usd(price_bitcoin, file_date), 2)
-                return round(Product.convert_usd_to_eur(price_dollar, file_date), 2)
+    @property
+    def price(self):
+        return self._price
 
-        # Conversion for the pages that contain multiple prices and are given in a dict
-        if type(price) == dict:
-            new_price_dict = {}
-            for item in price:
-                if 'usd' in price[item].lower():
-                    price_dollar = float(''.join(c for c in price[item] if c.isdigit() or c == '.'))
-                    price_eur = Product.convert_usd_to_eur(price_dollar, file_date)
-                    new_price_dict[item] = round(price_eur, 2)
-                elif 'eur' in price[item].lower():
-                    price_eur = float(''.join(c for c in price[item] if c.isdigit() or c == '.'))
-                    new_price_dict[item] = round(price_eur, 2)
-                elif '฿' in price:
-                    price_bitcoin = float(''.join(c for c in price[item] if c.isdigit() or c == '.'))
-                    price_dollar = round(Product.convert_btc_to_usd(price_bitcoin, file_date), 2)
-                    price_eur = round(Product.convert_usd_to_eur(price_dollar, file_date), 2)
-                    new_price_dict[item] = price_eur
-                else:
-                    new_price_dict[item] = None
-            return new_price_dict
+    @price.setter
+    def price(self, value):
+        self._price = value
 
-    def get_info(self, soup):
-        """Returns the info as str"""
-        try:
-            return self.scraper.p_info(soup)
-        except:
-            return None
+    @property
+    def price_eur(self):
+        return self._price_eur
 
-    def get_feedback(self, soup, file_date):
-        """Returns the feedback on the product
-        uses the feedback_handles to handle all feedback"""
-        try:
-            feedback_list = self.scraper.p_feedback(soup)
-            return Product.feedback_handler(feedback_list, file_date)
-        except:
-            return None
+    @price_eur.setter
+    def price_eur(self, value):
+        self._price_eur = value
 
-    @staticmethod
-    def feedback_handler(feedback_list, file_date):
-        """Static method to export all the feedback
-        Feedback_list is the list of given feedback.
-        Returns the feedback list with appropriate formatted time"""
-        for p, feedback in enumerate(feedback_list):
-            if type(feedback['date']) == datetime.datetime:
-                date = feedback['date'].date()
-                # calculate the precision of the given time, this the possible deviation there is
-                feedback_list[p]['date_deviation'] = Vendor.determine_date_deviation(feedback['date'])
-                # Give the date in appropriate time format
-                feedback_list[p]['date'] = time.mktime(date.timetuple())
-            elif type(feedback['date']) == str:
-                date = Vendor.calculate_time_since(feedback['date'], file_date)
-                # calculate the precision of the given time, this the possible deviation there is
-                feedback_list[p]['date_deviation'] = Vendor.determine_date_deviation(feedback['date'])
-                # Give the date in appropriate time format
-                feedback_list[p]['date'] = time.mktime(date.timetuple())
-            else:
-                # calculate the precision of the given time, this the possible deviation there is
-                feedback_list[p]['date_deviation'] = None
-                # Give the date in appropriate time format
-                feedback_list[p]['date'] = None
+    @property
+    def info(self):
+        return self._info
 
-        return feedback_list
+    @info.setter
+    def info(self, value):
+        self._info = value
 
-    @staticmethod
-    def get_country(abbreviation):
-        """Return the right country when abbreviations were used. Returns the country as a string"""
-        try:
-            if abbreviation == 'ZZ':
-                return 'Unspecified'
-            else:
-                return pycountry.countries.get(alpha_2=abbreviation).name
-        except:
-            return 'Country_naming_error'
+    @property
+    def feedback(self):
+        return self._feedback
 
-    @staticmethod
-    def convert_usd_to_eur(price, date):
-        """Converts the price of dollar to eur on a specific date using an API"""
-        date = datetime.datetime.fromtimestamp(date).date()  # convert unix to datetime
-        if type(date) == datetime.date and (type(price) == float or type(price) == int):
-            # two dates needed to find the exchange (USD/EUR) rate in that period
-            date_2 = date - datetime.timedelta(days=-1)
-            date_1 = date.strftime('%Y-%m-%d')
-            date_2 = date_2.strftime('%Y-%m-%d')
-
-            # Use the exchangeratesapi to find the right exchange rate
-            response = requests.get(
-                'https://api.exchangeratesapi.io/history?start_at=' + date_1 + '&end_at=' + date_2 + '&symbols=USD')
-            assert response.status_code == 200
-            if response.status_code == 200:
-                conversion_rate = response.json()['rates'][date_1]['USD']
-                return price / conversion_rate
-            else:
-                print('error: Request went wrong, exchangerates api status code: ' + str(response.status_code))
-                return None
-        else:
-            if type(date) != datetime.date:
-                print('error: Wrong format of date, no datetime object')
-            if type(price) != float:
-                print('error: Wrong format of price, no float')
-
-        return None
-
-    @staticmethod
-    def convert_btc_to_usd(price, date):
-        """Converts the price of dollar to eur on a specific date using an API"""
-        date = datetime.datetime.fromtimestamp(date).date()  # convert unix to datetime
-
-        if type(date) == datetime.date and (type(price) == float or type(price) == int):
-            # two dates needed to find the exchange (USD/EUR) rate in that period
-            date = date.strftime('%Y-%m-%d')
-
-            # Use the coindesk to find the right exchange rate
-            response = requests.get(
-                'https://api.coindesk.com/v1/bpi/historical/close.json?start=' + date + '&end=' + date)
-            assert response.status_code == 200
-            if response.status_code == 200:
-                conversion_rate = response.json()['bpi'][date]
-                return price * conversion_rate
-            else:
-                print('error: Request went wrong, coindesk status code: ' + str(response.status_code))
-                return None
-        else:
-            if type(date) != datetime.date:
-                print('error: Wrong format of date, no datetime object')
-            if type(price) != float:
-                print('error: Wrong format of price, no float')
-
-        return None
+    @feedback.setter
+    def feedback(self, value):
+        self._feedback = value
 
 
 class Vendor:
     """Scrape the soup for product"""
 
-    def __init__(self, soup, scraper, file_date):
-        self.scraper = scraper
-        self.name = self.get_name(soup)
-        self.score = self.get_score(soup)
-        self.score_normalized = Vendor.get_score_normalized(self.score)
-        registration_extracted = self.get_registration(soup)
-        self.registration = Vendor.normalize_date(registration_extracted, file_date)
-        self.registration_deviation = self.determine_date_deviation(registration_extracted)
-        last_login_extracted = self.get_last_login(soup)
-        self.last_login = Vendor.normalize_date(last_login_extracted, file_date)
-        self.last_login_deviation = self.determine_date_deviation(last_login_extracted)
-        self.sales = self.get_sales(soup)
-        self.info = self.get_info(soup)
-        self.feedback = self.get_feedback(soup, file_date)
+    def __init__(self, name, score, score_normalized, registration, registration_deviation, last_login,
+                 last_login_deviation, sales, info, feedback):
+        self.name = name
+        self.score = score
+        self.score_normalized = score_normalized
+        self.registration = registration
+        self.registration_deviation = registration_deviation
+        self.last_login = last_login
+        self.last_login_deviation = last_login_deviation
+        self.sales = sales
+        self.info = info
+        self.feedback = feedback
 
-    def get_name(self, soup):
-        """Returns the name of the vendor as a string"""
-        try:
-            return self.scraper.v_vendor_name(soup)
-        except:
-            return None
+    @property
+    def name(self):
+        return self._name
 
-    def get_score(self, soup):
-        """Returns the score of the Vendor"""
-        try:
-            return self.scraper.v_score(soup)
-        except:
-            return None
+    @name.setter
+    def name(self, value):
+        self._name = value
 
-    @staticmethod
-    def get_score_normalized(score):
-        """Returns the normalized score of the vendor"""
+    @property
+    def score(self):
+        return self._score
 
-        if type(score) == tuple:  # Example: (1,5) means 1 point on scale up to 5
-            return round(float(score[0]) / float(score[1]), 2)
-        if type(score) == list:  # Example: [1,2] means 1 positive and 2 negatives
-            score_sum = float(score[0]) + float(score[1])
-            if score_sum > 0:
-                return round(float(score[0]) / score_sum, 2)
-        return None
+    @score.setter
+    def score(self, value):
+        self._score = value
 
-    def get_registration(self, soup):
-        """Returns the registration date of the Vendor"""
-        try:
-            return self.scraper.v_registration(soup)
-        except:
-            return None
+    @property
+    def score_normalized(self):
+        return self._score_normalized
 
-    # @staticmethod
-    # def get_registration_normalized(registration, date):
-    #     """ Returns the registration date in the right UNIX format"""
-    #     try:
-    #         if type(registration) == datetime.datetime:
-    #             date = registration.date()
-    #         # if the date is not given as a string, the date needs to converted to a datetime object
-    #         # the Vendor.calculate_time_since function is used for this
-    #         if type(registration) == str:
-    #             date = Vendor.calculate_time_since(registration, date)
-    #         return time.mktime(date.timetuple())
-    #     except:
-    #         return None
+    @score_normalized.setter
+    def score_normalized(self, value):
+        self._score_normalized = value
 
-    def get_last_login(self, soup):
-        """Returns the last login of the Vendor"""
-        try:
-            return self.scraper.v_last_login(soup)
-        except:
-            return None
+    @property
+    def registration(self):
+        return self._registration
 
-    # @staticmethod
-    # def get_last_login_normalized(last_login, date):
-    #     try:
-    #         if type(last_login) == datetime.datetime:
-    #             date = last_login.date()
-    #         if type(last_login) == str:
-    #             date = Vendor.calculate_time_since(last_login, date)
-    #         return time.mktime(date.timetuple())
-    #     except:
-    #         return None
+    @registration.setter
+    def registration(self, value):
+        self._registration = value
 
-    @staticmethod
-    def normalize_date(date_to_normalize, file_creation_date):
-        """Normalizes the date given the date to normalize and the file creation date"""
-        try:
-            # if the date is a datetime object, only keep the date
-            if type(date_to_normalize) == datetime.datetime:
-                date = date_to_normalize.date()
-            # if the date is a string, the relative date needs to be calculated
-            elif type(date_to_normalize) == str:
-                date = Vendor.calculate_time_since(date_to_normalize, file_creation_date)
-            else:
-                date = None
+    @property
+    def registration_deviation(self):
+        return self._registration_deviation
 
-            # return a unix time
-            return time.mktime(date.timetuple())
-        except:
-            return None
+    @registration_deviation.setter
+    def registration_deviation(self, value):
+        self._registration_deviation = value
 
-    def get_sales(self, soup):
-        """Returns the number of sales in int"""
-        try:
-            return int(self.scraper.v_sales(soup))
-        except:
-            return None
+    @property
+    def last_login(self):
+        return self._last_login
 
-    def get_info(self, soup):
-        """Returns the Vendor info as a string"""
-        try:
-            return self.scraper.v_info(soup)
-        except:
-            return None
+    @last_login.setter
+    def last_login(self, value):
+        self._last_login = value
+
+    @property
+    def last_login_deviation(self):
+        return self._last_login_deviation
+
+    @last_login_deviation.setter
+    def last_login_deviation(self, value):
+        self._last_login_deviation = value
+
+    @property
+    def sales(self):
+        return self._sales
+
+    @sales.setter
+    def sales(self, value):
+        self._sales = value
+
+    @property
+    def info(self):
+        return self._info
+
+    @info.setter
+    def info(self, value):
+        self._info = value
+
+    @property
+    def feedback(self):
+        return self._feedback
+
+    @feedback.setter
+    def feedback(self, value):
+        self._feedback = value
+
 
     def get_feedback(self, soup, file_date):
         """Returns the feedback"""
@@ -420,31 +272,4 @@ class Vendor:
         time_since = timestamp - time_since_unix
         return datetime.datetime.fromtimestamp(time_since).date()
 
-    @staticmethod
-    def determine_date_deviation(date):
-        """Calculate the precision of the relative time.
-        For example if the relative time was: 2 months ago, then the date is precise up to a month
-        If it says 1 day ago, the precision is a day"""
-        if type(date) == str:
-            date = date.lower().split()
-            length_idx = len(date) - 1
-            while length_idx >= 0:
-                if 'year' in date[length_idx]:
-                    return 'year'
-                if 'month' in date[length_idx]:
-                    return 'month'
-                if 'week' in date[length_idx]:
-                    return 'week'
-                if 'day' in date[length_idx]:
-                    return 'day'
-                if 'hour' in date[length_idx]:
-                    return 'day'
-                if 'minute' in date[length_idx]:
-                    return 'day'
-                if 'second' in date[length_idx]:
-                    return 'day'
 
-                length_idx -= 1
-        if type(date) == datetime.date:
-
-            return 'exact date'
