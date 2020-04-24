@@ -11,6 +11,7 @@ from sonarqube.api.SonarqubeAPI import SonarqubeAPI
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.utils import SonarqubeUtils as sq_utils
 from sonarscanner.SonarscannerUtils import *
+from modules.trend_analysis.markets import markets
 from utils.PortScanner import scanner
 from utils.FileUtils import *
 
@@ -151,9 +152,9 @@ def check_preconditions():
 
 def resource_precondition():
     # Resource dir names
-    dirs = ["software_quality", "zip", "database", "sonar-scanner"]
+    dirs = ["software_quality", "trend_analysis", "zip", "database", "sonar-scanner"]
 
-    # Resource direcories
+    # Resource directories
     onlydirs = [f for f in os.listdir(resource_path) if os.path.isdir(join(resource_path, f))]
 
     folders_created = []
@@ -161,6 +162,15 @@ def resource_precondition():
         if dir not in onlydirs:
             os.mkdir(os.path.join(resource_path, dir))
             folders_created.append(dir)
+
+            if dir == "trend_analysis":
+                ta_path = os.path.join(resource_path, dir)
+                markets_path = os.path.join(ta_path, "markets")
+                os.mkdir(markets_path)
+
+                market_list = markets.get_markets()
+                for market in market_list:
+                    os.mkdir(os.path.join(markets_path, market))
 
     return folders_created
 

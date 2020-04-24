@@ -14,8 +14,8 @@ basePath: "/v1/marketplaces"
 paths:
   /:
     get:
-      operationId: "api.endpoints.trend_analysis.markets.markets_list"
-      summary: "Get all markets implemented"
+      operationId: "api.endpoints.trend_analysis.market.markets_list"
+      summary: "Get all market implemented"
 
       produces:
         - "application/json"

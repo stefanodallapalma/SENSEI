@@ -42,7 +42,7 @@ def load_data():
     vendors = []
 
     for html_page in html_pages:
-        # Detect the markets to use
+        # Detect the market to use
         # TESTED ONLY WITH BERLUSCONI SCRAPER
 
         if html_page.marketplace == Marketplace.BERLUSCONI:

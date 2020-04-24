@@ -6,10 +6,8 @@ from bs4 import BeautifulSoup
 from abc import ABC, abstractmethod
 
 # Local imports
-from ..models import *
-from ..market_detector import identify_market
-from ..market_handler import get_scraper_instance
-from ..market_enum import Market
+from modules.trend_analysis.scraper.market.models import *
+from modules.trend_analysis.scraper.market.enum import Market
 
 
 class Scraper(ABC):
@@ -322,7 +320,7 @@ class VendorScraper(ABC):
                 date = date_to_normalize.date()
             # if the date is a string, the relative date needs to be calculated
             elif type(date_to_normalize) == str:
-                date = Vendor.calculate_time_since(date_to_normalize, file_creation_date)
+                date = calculate_time_since(date_to_normalize, file_creation_date)
             else:
                 date = None
 
@@ -372,7 +370,7 @@ def feedback_handler(feedback_list, file_date):
             # Give the date in appropriate time format
             feedback_list[p]['date'] = time.mktime(date.timetuple())
         elif type(feedback['date']) == str:
-            date = Vendor.calculate_time_since(feedback['date'], file_date)
+            date = calculate_time_since(feedback['date'], file_date)
             # calculate the precision of the given time, this the possible deviation there is
             feedback_list[p]['date_deviation'] = determine_date_deviation(feedback['date'])
             # Give the date in appropriate time format
@@ -412,3 +410,41 @@ def determine_date_deviation(date):
             length_idx -= 1
     if type(date) == datetime.date:
         return 'exact date'
+
+
+def calculate_time_since(since, file_date):
+    """Calculates the date in a timestamp
+    since is the string with the relative date, mostly in this format: '2 months ago'
+    file_date is the date of the file itself"""
+    since = since.lower().split()
+    timestamp = file_date
+    time_since_unix = 0
+
+    # add the time mentioned in the string to the unix time
+    for p, item in enumerate(since):
+        if 'today' in item:
+            return file_date
+
+        if 'years' in item:
+            years = since[p - 1]
+            time_since_unix += 31556926 * int(years)
+        elif 'year' in item:
+            time_since_unix += 31556926
+        if 'months' in item:
+            months = since[p - 1]
+            time_since_unix += 2629743.83 * int(months)
+        elif 'month' in item:
+            time_since_unix += 2629743.83
+        if 'weeks' in item:
+            weeks = since[p - 1]
+            time_since_unix += 604800 * int(weeks)
+        elif 'week' in item:
+            time_since_unix += 604800
+        if 'days' in item:
+            days = since[p - 1]
+            time_since_unix += 86400 * int(days)
+        elif 'day' in item:
+            time_since_unix += 86400
+    # calculate the relative time
+    time_since = timestamp - time_since_unix
+    return datetime.datetime.fromtimestamp(time_since).date()

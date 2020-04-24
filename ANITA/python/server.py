@@ -16,7 +16,7 @@ def config_log():
     logname = "anita.log"
 
     # Create logger
-    logging.basicConfig(filename=logname, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+    logging.basicConfig(filename=logname, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.ERROR)
 
     # set up logging to console
     console = logging.StreamHandler()
@@ -43,4 +43,4 @@ if __name__ == "__main__":
         logger.info("INFO")
         logger.info("HOST: " + os.environ["FLASK_HOST"])
         logger.info("PORT: " + os.environ["FLASK_PORT"])
-        app.run(host=os.environ["FLASK_HOST"], port=os.environ["FLASK_PORT"], debug=True, use_reloader=False)
+        app.run(host=os.environ["FLASK_HOST"], port=int(os.environ["FLASK_PORT"]), debug=True, use_reloader=False)

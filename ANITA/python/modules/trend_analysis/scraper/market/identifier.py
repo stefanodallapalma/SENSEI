@@ -1,5 +1,5 @@
 # ----------------------------------------------------------
-# This is a module that identifies markets
+# This is a module that identifies market
 # To add a market, add an if statement.
 # find a specific field in the page that uniquely identifies the market
 # ----------------------------------------------------------

@@ -1,76 +1,35 @@
-from database.anita import AnitaDB
-from markets.bean.Product import Product
+from ..controller.TableController import TableController
+from ..model.market_models import Product
+from ...db.structure.ColumnDB import ColumnDB
+from ...db.structure.DataType import DataType
+from ...db.structure.Type import Type
+
+TABLE_NAME = "product"
 
 
-class ProductController(AnitaDB):
-    def get_products(self):
-        products = []
+class ProductController(TableController):
+    def __init__(self):
+        super().__init__(TABLE_NAME)
 
-        sql = "SELECT * FROM product"
-        results = self._mysqlDB.search(sql)
+        # Init attributes
+        self.init_columns()
 
-        for result in results:
-            product = Product()
+    def init_columns(self):
+        columns = []
+        attribute_names = Product.__prop__()
+        pk_attribute_names = ["timestamp", "market", "name"]
+        double_attribute_names = ["price", "price_eur"]
 
-            product.timestamp = result[0]
-            product.market = result[1]
-            product.name = result[3]
-            product.category = result[4]
-            product.subcategory = result[5]
-            product.vendor = result[6]
-            product.price_eur = result[7]
-            product.price_btc = result[8]
-            product.stock = result[9]
+        for attribute_name in attribute_names:
+            if attribute_name in pk_attribute_names:
+                datatype = DataType(Type.VARCHAR, 200)
+                column = ColumnDB(attribute_name, datatype, pk=True, not_null=True)
+            elif attribute_name in double_attribute_names:
+                datatype = DataType(Type.DOUBLE)
+                column = ColumnDB(attribute_name, datatype)
+            else:
+                datatype = DataType(Type.VARCHAR, 200)
+                column = ColumnDB(attribute_name, datatype)
+            columns.append(column)
 
-            product.shipping_options = []
-            shipping_options = [x for x in result[10].split(',')]
-            for shipping_option in shipping_options:
-                product.shipping_options.append(shipping_option.lstrip())
-
-            product.product_class = result[11]
-            product.escrow_type = result[12]
-            product.ships_from = result[13]
-
-            product.ships_to = []
-            ships_to = [x for x in result[14].split(',')]
-            for ship_to in ships_to:
-                product.ships_to.append(ship_to.lstrip())
-
-            product.items_sold = result[15]
-            product.orders_sold_since = result[16]
-            product.details = result[17]
-            product.terms_and_conditions = result[18]
-
-            products.append(product)
-
-        return products
-
-    def insert_product(self, product):
-        sql = "INSERT INTO product (timestamp, market, name, category, subcategory, vendor_name, price_eur, " \
-              "price_btc, stock, shipping_options, product_class, escrow_type, ships_from, ships_to, items_sold, " \
-              "orders_sold_since, details, terms_and_conditions) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, " \
-              "%s, %s, %s, %s, %s, %s, %s)"
-
-        val = (product.timestamp, product.market, product.name, product.category, product.subcategory, product.vendor,
-               product.price_eur, product.price_btc, product.stock, self.list_to_string(product.shipping_options),
-               product.product_class, product.escrow_type, product.ships_from, self.list_to_string(product.ships_to),
-               product.items_sold, product.orders_sold_since, product.details, product.terms_and_conditions)
-
-        self._mysqlDB.insert(sql, val)
-
-    def insert_products(self, products):
-        sql = "INSERT INTO product (timestamp, market, name, category, subcategory, vendor_name, price_eur, " \
-              "price_btc, stock, shipping_options, product_class, escrow_type, ships_from, ships_to, items_sold, " \
-              "orders_sold_since, details, terms_and_conditions) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, " \
-              "%s, %s, %s, %s, %s, %s, %s)"
-
-        values = []
-        for product in products:
-            val = (product.timestamp, product.market, product.name, product.category, product.subcategory, product.vendor,
-                   product.price_eur, product.price_btc, product.stock, self.list_to_string(product.shipping_options),
-                   product.product_class, product.escrow_type, product.ships_from, self.list_to_string(product.ships_to),
-                   product.items_sold, product.orders_sold_since, product.details, product.terms_and_conditions)
-
-            values.append(val)
-
-        self._mysqlDB.insert(sql, values)
+        self.columns = columns

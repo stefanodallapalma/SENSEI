@@ -1,17 +1,17 @@
-from .market_enum import Market
-from .markets.agartha import AgarthaScraper
-from .markets.apollon import ApollonScraper
-from .markets.berlusconi import BerlusconiScraper
-from .markets.cannahome import CannahomeScraper
-from .markets.cannazon import CannazonScraper
-from .markets.darkmarket import DarkmarketScraper
-from .markets.directdrugs import DirectdrugsScraper
-from .markets.drugscenter import DrugscenterScraper
-from .markets.drugsmedicine import DrugsmedicineScraper
-from .markets.empiremarket import EmpiremarketScraper
-from .markets.palmetto import PalmettoScraper
-from .markets.silkroad3 import Silkroad3Scraper
-from .markets.tochka import TochkaScraper
+from .enum import Market
+from modules.trend_analysis.scraper.market.markets.agartha import AgarthaScraper
+from modules.trend_analysis.scraper.market.markets.apollon import ApollonScraper
+from modules.trend_analysis.scraper.market.markets.berlusconi import BerlusconiScraper
+from modules.trend_analysis.scraper.market.markets.cannahome import CannahomeScraper
+from modules.trend_analysis.scraper.market.markets.cannazon import CannazonScraper
+from modules.trend_analysis.scraper.market.markets.darkmarket import DarkmarketScraper
+from modules.trend_analysis.scraper.market.markets.directdrugs import DirectdrugsScraper
+from modules.trend_analysis.scraper.market.markets.drugscenter import DrugscenterScraper
+from modules.trend_analysis.scraper.market.markets.drugsmedicine import DrugsmedicineScraper
+from modules.trend_analysis.scraper.market.markets.empiremarket import EmpiremarketScraper
+from modules.trend_analysis.scraper.market.markets.palmetto import PalmettoScraper
+from modules.trend_analysis.scraper.market.markets.silkroad3 import Silkroad3Scraper
+from modules.trend_analysis.scraper.market.markets.tochka import TochkaScraper
 
 
 def get_scraper_instance(market):

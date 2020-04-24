@@ -11,15 +11,15 @@ logger = logging.getLogger("Trend Analysis Endpoints")
 
 # Products
 def get_products():
-    pass
+    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
 
 
 # Vendors
 def get_vendors():
-    pass
+    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
 
 
 def get_vendor(vendor_name):
-    pass
+    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
 
 

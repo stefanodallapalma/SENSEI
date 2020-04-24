@@ -58,7 +58,7 @@ class TableController(ABC):
         return True
 
     def create(self):
-        """Create the controller"""
+        """Create the table"""
         pk_attribute_names = ["`" + column.name + "`" for column in self.columns if column.pk is True]
         pk_query = "PRIMARY KEY (" + ", ".join(pk_attribute_names) + ")"
         query = "CREATE TABLE `" + self._database_name + "`.`" + self.table_name + "` ("

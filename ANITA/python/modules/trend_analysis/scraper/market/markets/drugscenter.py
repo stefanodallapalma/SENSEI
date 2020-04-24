@@ -1,5 +1,5 @@
 # ----------------------------------------------------------
-# This is a template for new markets
+# This is a template for new market
 # Fill the indicated fields with answers, if you cannot
 # find the specific field in the market. Let the function return None.
 # ----------------------------------------------------------

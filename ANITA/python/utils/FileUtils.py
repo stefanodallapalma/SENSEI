@@ -13,8 +13,12 @@ def get_dict_from_file(path):
     return parameters
 
 
-def getfiles(dir_path, abs_path=False, ext_filter=None):
-    onlyfiles = [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
+def getfiles(dir_path, abs_path=False, ext_filter=None, recursive=False):
+    if not recursive:
+        onlyfiles = [f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))]
+    else:
+        onlyfiles = [os.path.join(dp, f) for dp, dn, filenames in os.walk(dir_path) for f in filenames if
+              os.path.isfile(os.path.join(dp, f))]
 
     if abs_path:
         onlyfiles = [os.path.join(dir_path, f) for f in onlyfiles]
