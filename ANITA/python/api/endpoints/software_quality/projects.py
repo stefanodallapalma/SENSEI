@@ -224,7 +224,6 @@ def project_status(project_name, timestamp):
         return Response(json.dumps({"error": "Unprocessable entity: invalid timestamp"}), status=422,
                         mimetype="application/json")
 
-    # noinspection PyBroadException
     try:
         status, content = projects.upload_task(project_name, timestamp)
     except Exception as e:

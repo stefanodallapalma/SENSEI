@@ -10,6 +10,8 @@ CORS(app.app)
 
 # Read the swagger.yml file to configure the endpoints
 app.add_api("swagger/v1/software-quality.yml")
+app.add_api("swagger/v1/marketplaces.yml")
+app.add_api("swagger/v1/status.yml")
 
 
 def config_log():

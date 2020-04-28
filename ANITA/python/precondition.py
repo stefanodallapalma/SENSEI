@@ -11,7 +11,7 @@ from sonarqube.api.SonarqubeAPI import SonarqubeAPI
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.utils import SonarqubeUtils as sq_utils
 from sonarscanner.SonarscannerUtils import *
-from modules.trend_analysis.markets import markets
+from modules.trend_analysis.scraper.market.enum import Market
 from utils.PortScanner import scanner
 from utils.FileUtils import *
 
@@ -168,7 +168,7 @@ def resource_precondition():
                 markets_path = os.path.join(ta_path, "markets")
                 os.mkdir(markets_path)
 
-                market_list = markets.get_markets()
+                market_list = [market.name.lower() for market in Market if market.value != 0]
                 for market in market_list:
                     os.mkdir(os.path.join(markets_path, market))
 

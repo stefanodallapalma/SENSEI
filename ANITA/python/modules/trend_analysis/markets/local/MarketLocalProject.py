@@ -1,4 +1,5 @@
 import os
+import shutil
 from zipfile import ZipFile
 
 # Local imports
@@ -50,6 +51,9 @@ class MarketLocalProject:
             return False
 
         return True
+
+    def delete_raw_folder(self):
+        shutil.rmtree(self.raw_path)
 
     def save_and_extract(self, zip_file, timestamp):
         zip_name = self.market_name + "_" + timestamp + ".zip"

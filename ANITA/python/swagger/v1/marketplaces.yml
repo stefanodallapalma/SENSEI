@@ -14,7 +14,7 @@ basePath: "/v1/marketplaces"
 paths:
   /:
     get:
-      operationId: "api.endpoints.trend_analysis.market.markets_list"
+      operationId: "api.endpoints.trend_analysis.markets.markets_list"
       summary: "Get all market implemented"
 
       produces:
@@ -28,18 +28,39 @@ paths:
 
   /dumps/:
     get:
-      operationId: "api.endpoints.trend_analysis.dumps.get_all_dumps"
+      operationId: "api.endpoints.trend_analysis.markets.get_all_dumps"
       summary: "Get all dumps stored for each market"
+      responses:
+        200:
+          description: "The json containing all the projects"
     delete:
-      operationId: "api.endpoints.trend_analysis.dumps.delete_all_dumps"
+      operationId: "api.endpoints.trend_analysis.markets.delete_all_dumps"
       summary: "Delete all dumps for each market passed as input"
+      responses:
+        200:
+          description: "The json containing all the projects"
 
   /dumps/{market}:
     get:
-      operationId: "api.endpoints.trend_analysis.dumps.get_dumps"
+      operationId: "api.endpoints.trend_analysis.markets.get_dumps"
       summary: "Get all dumps stored for the market passed as input"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: market
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "The json containing all the projects"
     post:
-      operationId: "api.endpoints.trend_analysis.dumps.load_dump"
+      operationId: "api.endpoints.trend_analysis.markets.load_dump"
       summary: "Upload a dump for the market selected"
       consumes:
         - "multipart/form-data"
@@ -68,6 +89,20 @@ paths:
         500:
           description: "Internal server error"
     delete:
-      operationId: "api.endpoints.trend_analysis.dumps.delete_dumps"
+      operationId: "api.endpoints.trend_analysis.markets.delete_dumps"
       summary: "Delete all dumps passed as input, for the given market"
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: market
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "The json containing all the projects"
 

@@ -1,5 +1,5 @@
 # Standard library imports
-import shutil, os, pandas as pd
+import shutil, pandas as pd
 from datetime import datetime
 
 # Local application imports
@@ -11,7 +11,7 @@ import sonarqube.utils.SonarqubeUtils as sq_utils
 from ..experimentation.preprocessing import three_classifiers
 from utils.FileUtils import getdirs
 
-from .exceptions import UndefinedTaskStateException
+from modules.exceptions.exceptions import UndefinedTaskStateException
 
 
 def load_data(project_name, zip_file, new_project=False, additional_info=False):

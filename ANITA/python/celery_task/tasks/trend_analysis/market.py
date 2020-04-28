@@ -76,4 +76,5 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
     content["db_insert"] = True
     self.update_state(state=states.SUCCESS, meta=content)
+
     return content
