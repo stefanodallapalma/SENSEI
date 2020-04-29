@@ -1,2 +1,132 @@
 2020-04-28 10:09:15,712 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 2020-04-28 10:59:56,456 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-04-28 11:31:08,675 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-04-28 13:19:32,699 - server - INFO - Start anita server
+2020-04-28 13:19:32,699 - precondition - INFO - PRECONDITION CHECKING
+2020-04-28 13:19:32,700 - precondition - INFO - Resource folders: OK
+2020-04-28 13:19:32,700 - precondition - INFO - PARAMETERS
+2020-04-28 13:19:32,701 - precondition - INFO - Sonarqube: OK
+2020-04-28 13:19:32,701 - precondition - INFO - MySQL: OK
+2020-04-28 13:19:32,701 - precondition - INFO - CONNECTION TEST
+2020-04-28 13:19:32,704 - precondition - INFO - MySQL: OK
+2020-04-28 13:19:32,705 - precondition - INFO - Sonarqube: waiting...
+2020-04-28 13:19:32,705 - precondition - INFO - Sonarqube: OK
+2020-04-28 13:19:32,706 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-04-28 13:20:09,745 - precondition - INFO - DATABASE
+2020-04-28 13:20:09,754 - precondition - INFO - Schema: OK
+2020-04-28 13:45:24,187 - server - INFO - Start anita server
+2020-04-28 13:45:24,190 - precondition - INFO - PRECONDITION CHECKING
+2020-04-28 13:45:24,190 - precondition - INFO - Resource folders: OK
+2020-04-28 13:45:24,191 - precondition - INFO - PARAMETERS
+2020-04-28 13:45:24,191 - precondition - INFO - Sonarqube: OK
+2020-04-28 13:45:24,191 - precondition - INFO - MySQL: OK
+2020-04-28 13:45:24,192 - precondition - INFO - CONNECTION TEST
+2020-04-28 13:45:24,194 - precondition - INFO - MySQL: OK
+2020-04-28 13:45:24,195 - precondition - INFO - Sonarqube: waiting...
+2020-04-28 13:45:24,196 - precondition - INFO - Sonarqube: OK
+2020-04-28 13:45:24,196 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-04-28 13:46:01,127 - precondition - INFO - DATABASE
+2020-04-28 13:46:01,133 - precondition - INFO - Schema: OK
+2020-04-28 13:49:07,062 - server - INFO - Start anita server
+2020-04-28 13:49:07,063 - precondition - INFO - PRECONDITION CHECKING
+2020-04-28 13:49:07,063 - precondition - INFO - Resource folders: OK
+2020-04-28 13:49:07,063 - precondition - INFO - PARAMETERS
+2020-04-28 13:49:07,064 - precondition - INFO - Sonarqube: OK
+2020-04-28 13:49:07,064 - precondition - INFO - MySQL: OK
+2020-04-28 13:49:07,064 - precondition - INFO - CONNECTION TEST
+2020-04-28 13:49:07,068 - precondition - INFO - MySQL: OK
+2020-04-28 13:49:07,073 - precondition - INFO - Sonarqube: waiting...
+2020-04-28 13:49:07,075 - precondition - INFO - Sonarqube: OK
+2020-04-28 13:49:07,075 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-04-28 13:49:41,619 - precondition - INFO - DATABASE
+2020-04-28 13:49:41,626 - precondition - INFO - Schema: OK
+2020-04-28 13:49:41,691 - precondition - INFO - SONARQUBE table: generation...
+2020-04-28 13:49:41,717 - precondition - INFO - SONARQUBE table generated
+2020-04-28 13:49:41,722 - precondition - INFO - PRODUCT table: generation...
+2020-04-28 13:49:41,743 - precondition - INFO - PRODUCT table generated
+2020-04-28 13:49:41,749 - precondition - INFO - VENDOR table: generation...
+2020-04-28 13:49:41,769 - precondition - INFO - VENDOR table generated
+2020-04-28 13:49:41,778 - precondition - INFO - FEEDBACK table: generation...
+2020-04-28 13:49:41,792 - precondition - INFO - FEEDBACK table generated
+2020-04-28 13:49:41,794 - precondition - INFO - Sonar-scanner status: OK
+2020-04-28 13:49:41,794 - server - INFO - INFO
+2020-04-28 13:49:41,794 - server - INFO - HOST: 0.0.0.0
+2020-04-28 13:49:41,795 - server - INFO - PORT: 5000
+2020-04-28 13:49:41,821 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-04-28 14:01:38,408 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 14:01:38] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-04-28 14:01:38,426 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 14:01:38] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-04-28 14:02:13,083 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 14:02:13] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-04-28 14:02:13,095 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 14:02:13] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-04-28 14:06:06,759 - server - INFO - Start anita server
+2020-04-28 14:06:06,759 - precondition - INFO - PRECONDITION CHECKING
+2020-04-28 14:06:06,760 - precondition - INFO - Resource folders: OK
+2020-04-28 14:06:06,760 - precondition - INFO - PARAMETERS
+2020-04-28 14:06:06,760 - precondition - INFO - Sonarqube: OK
+2020-04-28 14:06:06,761 - precondition - INFO - MySQL: OK
+2020-04-28 14:06:06,761 - precondition - INFO - CONNECTION TEST
+2020-04-28 14:06:06,765 - precondition - INFO - MySQL: OK
+2020-04-28 14:06:06,767 - precondition - INFO - Sonarqube: waiting...
+2020-04-28 14:06:06,768 - precondition - INFO - Sonarqube: OK
+2020-04-28 14:06:06,769 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-04-28 14:06:41,382 - precondition - INFO - DATABASE
+2020-04-28 14:06:41,388 - precondition - INFO - Schema: OK
+2020-04-28 14:06:41,477 - precondition - INFO - SONARQUBE table: OK
+2020-04-28 14:06:41,485 - precondition - INFO - PRODUCT table: OK
+2020-04-28 14:06:41,494 - precondition - INFO - VENDOR table: OK
+2020-04-28 14:06:41,502 - precondition - INFO - FEEDBACK table: OK
+2020-04-28 14:06:41,504 - precondition - INFO - Sonar-scanner status: OK
+2020-04-28 14:06:41,504 - server - INFO - INFO
+2020-04-28 14:06:41,505 - server - INFO - HOST: 0.0.0.0
+2020-04-28 14:06:41,505 - server - INFO - PORT: 5000
+2020-04-28 14:06:41,535 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-04-28 14:07:17,834 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 14:07:17] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-04-28 14:07:17,851 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 14:07:17] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-04-28 15:57:57,990 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 15:57:57] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-04-28 15:57:58,007 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 15:57:58] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-04-28 16:01:15,172 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 16:01:15] "[33mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 404 -
+2020-04-28 16:04:28,996 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 16:04:28] "[33mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 404 -
+2020-04-28 16:06:17,549 - server - INFO - Start anita server
+2020-04-28 16:06:17,550 - precondition - INFO - PRECONDITION CHECKING
+2020-04-28 16:06:17,550 - precondition - INFO - Resource folders: OK
+2020-04-28 16:06:17,550 - precondition - INFO - PARAMETERS
+2020-04-28 16:06:17,551 - precondition - INFO - Sonarqube: OK
+2020-04-28 16:06:17,551 - precondition - INFO - MySQL: OK
+2020-04-28 16:06:17,551 - precondition - INFO - CONNECTION TEST
+2020-04-28 16:06:17,556 - precondition - INFO - MySQL: OK
+2020-04-28 16:06:17,557 - precondition - INFO - Sonarqube: OK
+2020-04-28 16:06:17,558 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-04-28 16:06:17,570 - precondition - INFO - DATABASE
+2020-04-28 16:06:17,578 - precondition - INFO - Schema: OK
+2020-04-28 16:06:17,629 - precondition - INFO - SONARQUBE table: OK
+2020-04-28 16:06:17,635 - precondition - INFO - PRODUCT table: OK
+2020-04-28 16:06:17,642 - precondition - INFO - VENDOR table: OK
+2020-04-28 16:06:17,648 - precondition - INFO - FEEDBACK table: OK
+2020-04-28 16:06:17,649 - precondition - INFO - Sonar-scanner status: OK
+2020-04-28 16:06:17,649 - server - INFO - INFO
+2020-04-28 16:06:17,649 - server - INFO - HOST: 0.0.0.0
+2020-04-28 16:06:17,650 - server - INFO - PORT: 5000
+2020-04-28 16:06:17,667 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-04-28 16:06:36,903 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 16:06:36] "[33mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 404 -
+2020-04-28 16:07:55,079 - server - INFO - Start anita server
+2020-04-28 16:07:55,079 - precondition - INFO - PRECONDITION CHECKING
+2020-04-28 16:07:55,080 - precondition - INFO - Resource folders: OK
+2020-04-28 16:07:55,080 - precondition - INFO - PARAMETERS
+2020-04-28 16:07:55,080 - precondition - INFO - Sonarqube: OK
+2020-04-28 16:07:55,081 - precondition - INFO - MySQL: OK
+2020-04-28 16:07:55,081 - precondition - INFO - CONNECTION TEST
+2020-04-28 16:07:55,083 - precondition - INFO - MySQL: OK
+2020-04-28 16:07:55,085 - precondition - INFO - Sonarqube: OK
+2020-04-28 16:07:55,086 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-04-28 16:07:55,099 - precondition - INFO - DATABASE
+2020-04-28 16:07:55,106 - precondition - INFO - Schema: OK
+2020-04-28 16:07:55,148 - precondition - INFO - SONARQUBE table: OK
+2020-04-28 16:07:55,157 - precondition - INFO - PRODUCT table: OK
+2020-04-28 16:07:55,173 - precondition - INFO - VENDOR table: OK
+2020-04-28 16:07:55,181 - precondition - INFO - FEEDBACK table: OK
+2020-04-28 16:07:55,182 - precondition - INFO - Sonar-scanner status: OK
+2020-04-28 16:07:55,182 - server - INFO - INFO
+2020-04-28 16:07:55,183 - server - INFO - HOST: 0.0.0.0
+2020-04-28 16:07:55,183 - server - INFO - PORT: 5000
+2020-04-28 16:07:55,199 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-04-28 16:08:09,470 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-04-28 16:08:09,500 - werkzeug - INFO - 172.18.0.1 - - [28/Apr/2020 16:08:09] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -

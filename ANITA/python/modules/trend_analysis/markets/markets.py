@@ -21,7 +21,7 @@ def get_markets():
 
 def load_dump(market, dump_zip, timestamp):
     # Preconditions
-    markets = get_markets()
+    markets = [market.name.lower() for market in Market if market.value != 0]
     market_local = MarketLocalProject(market)
 
     if market is None or market.lower() not in markets:

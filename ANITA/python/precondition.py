@@ -5,6 +5,8 @@ import time
 from os.path import join, exists
 
 from database.anita.AnitaDB import AnitaDB
+from database.anita.controller_handler import get_controller_instance
+from database.anita.controller.TableController import TableController
 from database.db.structure.DBType import DBType
 from database.utils import DBUtils as db_utils
 from sonarqube.api.SonarqubeAPI import SonarqubeAPI
@@ -109,16 +111,29 @@ def check_preconditions():
         return False
 
     # Database
-    # MySQL database
+    logger.info("DATABASE")
+
+    # MySQL schema
     db = AnitaDB(anonymous=True)
     if db.exist():
-        logger.info("Database already created")
+        logger.info("Schema: OK")
     else:
-        logger.info("Database not found. Creation of a new db")
+        logger.info("Schema: generation...")
         db.create()
-        logger.info("Database created")
+        logger.info("Schema generated")
     db_utils.add_database_name(DBType.MYSQL, db.database_name)
-    
+
+    # MySQL tables
+    tables = ["sonarqube", "product", "vendor", "feedback"]
+    for table in tables:
+        controller = get_controller_instance(table)
+        if controller.exist():
+            logger.info(table.upper() + " table: OK")
+        else:
+            logger.info(table.upper() + " table: generation...")
+            controller.create()
+            logger.info(table.upper() + " table generated")
+
     # Sonarqube token
     server_sq = SonarqubeAPIExtended()
     sonarqube_property = sq_utils.get_sonarqube_properties()

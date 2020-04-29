@@ -8,10 +8,10 @@ from flask import request, Response, json
 
 # Local imports
 from modules.trend_analysis.markets import markets
-from modules.trend_analysis.scraper import scraper
+from modules.trend_analysis.scraper.market.enum import Market
 from utils.validators import timestamp_validator
 
-logger = logging.getLogger("Dump endpoint")
+logger = logging.getLogger("Markets endpoint")
 
 
 # Markets
@@ -54,9 +54,9 @@ def load_dump(market):
         logger.debug("Endpoint Load dump - END")
         return Response(json.dumps(error_content), status=400, mimetype="application/json")
 
-    market_list = markets.get_markets()
+    market_list = [market.name.lower() for market in Market if market.value != 0]
     if market is None or market not in market_list:
-        error_content = {"error": "MArket not found"}
+        error_content = {"error": "Market not found"}
         logger.debug("Endpoint Load dump - END")
         return Response(json.dumps(error_content), status=404, mimetype="application/json")
 

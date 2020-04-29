@@ -18,11 +18,11 @@ def config_log():
     logname = "anita.log"
 
     # Create logger
-    logging.basicConfig(filename=logname, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.ERROR)
+    logging.basicConfig(filename=logname, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
     # set up logging to console
     console = logging.StreamHandler()
-    console.setLevel(logging.DEBUG)
+    console.setLevel(logging.INFO)
 
     # set a format which is simpler for console use
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
