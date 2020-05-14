@@ -35,4 +35,4 @@ def status(unique_id):
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
     logger.info("Endpoint Status: END")
-    return Response(json.dumps(content), status=status, mimetype="application/json")
+    return Response(json.dumps(content, sort_keys=False), status=status, mimetype="application/json")

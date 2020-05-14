@@ -56,7 +56,7 @@ class MarketLocalProject:
         shutil.rmtree(self.raw_path)
 
     def save_and_extract(self, zip_file, timestamp):
-        zip_name = self.market_name + "_" + timestamp + ".zip"
+        zip_name = self.market_name + "_" + str(timestamp) + ".zip"
         zip_path = os.path.join(self.market_path, zip_name)
 
         # Save zip

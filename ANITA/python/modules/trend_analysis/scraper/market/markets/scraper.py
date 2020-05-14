@@ -38,7 +38,7 @@ class Scraper(ABC):
         except:
             raise Exception("BS4 Problem!!!")
 
-        # Check if the html refers to a product or a vendor pahe
+        # Check if the html refers to a product or a vendor page
         page_type = self.pagetype(soup)
 
         # Market detection
@@ -51,23 +51,18 @@ class Scraper(ABC):
 
         # Page data for vendor or product pages
         if web_page_information.page_type == 'product':
-            page_specific_data = self.product_scraper.scrape(timestamp)
+            page_specific_data, irretrievable_info_json = self.product_scraper.scrape(timestamp, soup)
         elif web_page_information.page_type == 'vendor':
-            page_specific_data = self.vendor_scraper.scraoe(timestamp)
+            page_specific_data, irretrievable_info_json = self.vendor_scraper.scrape(timestamp, soup)
         else:
             raise Exception("Invalid page type")
 
         # add all info to a list
-        return {'web_page': web_page_information, 'page_data': page_specific_data}
+        return {'web_page': web_page_information.__dict__, 'page_data': page_specific_data.__dict__,
+                "irretrievable_pages": irretrievable_info_json}
 
 
 class ProductScraper(ABC):
-    def __init__(self, html_path):
-        try:
-            self._soup = BeautifulSoup(open(html_path), "html.parser")
-        except:
-            raise Exception("BS4 Problem!!!")
-
     @property
     def soup(self):
         return self._soup
@@ -108,29 +103,73 @@ class ProductScraper(ABC):
         """ Return the feedback for the product"""
         pass
 
-    def scrape(self, timestamp):
-        product_name = self.product_name()
-        vendor = self.vendor()
-        ships_from = self.ships_from()
+    def scrape(self, timestamp, soup):
+        self._soup = soup
+        tot_params = 8
+        irretrievable_params = 0
+        exception_messages = {}
 
-        ships_to = self.ships_to()
-        ships_to = contry_list(ships_to)
-
-        price = self.price()
-        price_eur = ProductScraper.get_price_eur(price, timestamp)
-
-        info = self.info()
+        try:
+            product_name = self.product_name()
+        except Exception as e:
+            product_name = None
+            irretrievable_params += 1
+            exception_messages["product_name"] = str(e)
+        
+        try:
+            vendor = self.vendor()
+        except Exception as e:
+            vendor = None
+            irretrievable_params += 1
+            exception_messages["vendor"] = str(e)
+        
+        try:
+            ships_from = self.ships_from()
+        except Exception as e:
+            ships_from = None
+            irretrievable_params += 1
+            exception_messages["ships_from"] = str(e)
+        
+        try:
+            ships_to = self.ships_to()
+            ships_to = contry_list(ships_to)
+        except Exception as e:
+            ships_to = None
+            irretrievable_params += 1
+            exception_messages["ships_to"] = str(e)
+        
+        try:
+            price = self.price()
+            price_eur = ProductScraper.get_price_eur(price, timestamp)
+        except Exception as e:
+            price = None
+            price_eur = None
+            irretrievable_params += 2
+            exception_messages["price/price_eur"] = str(e)
+        
+        try:
+            info = self.info()
+        except Exception as e:
+            info = None
+            irretrievable_params += 1
+            exception_messages["info"] = str(e)
 
         try:
             feedback_list = self.feedback()
-            return feedback_handler(feedback_list, timestamp)
-        except:
+            feedback_list = feedback_handler(feedback_list, timestamp)
+        except Exception as e:
             feedback_list = None
+            irretrievable_params += 1
+            exception_messages["feedback_list"] = str(e)
 
         page_specific_data = Product(product_name, vendor, ships_from, ships_to, price, price_eur, info,
                                      feedback_list)
-
-        return page_specific_data
+        
+        irretrievable_info_json = {"irretrievable_params": irretrievable_params, "tot_params": tot_params,
+                                   "irretrievable_rate": (irretrievable_params/tot_params),
+                                   "exception_params": exception_messages}
+        
+        return page_specific_data, irretrievable_info_json
 
     @staticmethod
     def get_price_eur(price, file_date):
@@ -230,12 +269,6 @@ class ProductScraper(ABC):
 
 
 class VendorScraper(ABC):
-    def __init__(self, html_path):
-        try:
-            self._soup = BeautifulSoup(open(html_path), "html.parser")
-        except:
-            raise Exception("BS4 Problem!!!")
-
     @property
     def soup(self):
         return self._soup
@@ -275,29 +308,78 @@ class VendorScraper(ABC):
         """ Return the feedback for the vendors"""
         pass
 
-    def scrape(self, timestamp):
-        vendor_name = self.vendor_name()
-        score = self.score()
-        score_normalized = VendorScraper.get_score_normalized(score)
+    def scrape(self, timestamp, soup):
+        self._soup = soup
+        tot_params = 10
+        irretrievable_params = 0
+        exception_messages = {}
 
-        registration = self.registration()
-        registration = VendorScraper.normalize_date(registration, timestamp)
+        try:
+            vendor_name = self.vendor_name()
+        except Exception as e:
+            vendor_name = None
+            irretrievable_params += 1
+            exception_messages["vendor_name"] = str(e)
 
-        registration_deviation = determine_date_deviation(registration)
+        try:
+            score = self.score()
+            score_normalized = VendorScraper.get_score_normalized(score)
+        except Exception as e:
+            score = None
+            score_normalized = None
+            irretrievable_params += 2
+            exception_messages["score/score_normalized"] = str(e)
 
-        last_login = self.last_login()
-        last_login - VendorScraper.normalize_date(last_login, timestamp)
+        try:
+            registration = self.registration()
+            registration = VendorScraper.normalize_date(registration, timestamp)
+            registration_deviation = determine_date_deviation(registration)
+        except Exception as e:
+            registration = None
+            registration_deviation = None
+            irretrievable_params += 2
+            exception_messages["registration/registration_deviation"] = str(e)
 
-        last_login_deviation = determine_date_deviation(last_login)
+        try:
+            last_login = self.last_login()
+            last_login - VendorScraper.normalize_date(last_login, timestamp)
+            last_login_deviation = determine_date_deviation(last_login)
+        except Exception as e:
+            last_login = None
+            last_login_deviation = None
+            irretrievable_params += 2
+            exception_messages["last_login/last_login_deviation"] = str(e)
 
-        sales = self.sales()
-        info = self.info()
+        try:
+            sales = self.sales()
+        except Exception as e:
+            sales = None
+            irretrievable_params += 1
+            exception_messages["sales"] = str(e)
 
-        feedback_list = self.feedback()
-        feedback_list = feedback_handler(feedback_list, timestamp)
+        try:
+            info = self.info()
+        except Exception as e:
+            info = None
+            irretrievable_params += 1
+            exception_messages["info"] = str(e)
 
-        return Vendor(vendor_name, score, score_normalized, registration, registration_deviation, last_login,
-                      last_login_deviation, sales, info, feedback_list)
+        try:
+            feedback_list = self.feedback()
+            feedback_list = feedback_handler(feedback_list, timestamp)
+        except Exception as e:
+            feedback_list = None
+            irretrievable_params += 1
+            exception_messages["feedback_list"] = str(e)
+
+        page_specific_data = Vendor(vendor_name, score, score_normalized, registration, registration_deviation,
+                                    last_login, last_login_deviation, sales, info, feedback_list)
+
+        irretrievable_info_json = {"irretrievable_params": irretrievable_params, "tot_params": tot_params,
+                                   "irretrievable_rate": (irretrievable_params / tot_params),
+                                   "exception_params": exception_messages}
+
+        return page_specific_data, irretrievable_info_json
 
     @staticmethod
     def get_score_normalized(score):

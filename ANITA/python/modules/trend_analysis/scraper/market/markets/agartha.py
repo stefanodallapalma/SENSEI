@@ -2,22 +2,28 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class AgarthaScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = AgarthaProductScraper()
+        self.vendor_scraper = AgarthaVendorScraper()
 
     def pagetype(self, soup):
         """Define how to distinguish vendor pages from product pages"""
         try:
             if soup.find_all('a', {'class': 'btn btn-link btn-xs'})[1].text == 'Listings':
                 return 'product'
+        except:
+            pass
+
+        try:
             if soup.find('span', {'class': 'user-class-hint'}).find('strong').text == 'Vendor':
                 return 'vendor'
         except:
-            raise Exception("Unknown type")
+            pass
+
+        raise Exception("Unknown type")
 
 
 class AgarthaProductScraper(ProductScraper):
-    def __init__(self, html_path):
-        super().__init__(html_path)
-
     def product_name(self):
         return self.soup.find('h2').text
 
@@ -53,9 +59,6 @@ class AgarthaProductScraper(ProductScraper):
 
 
 class AgarthaVendorScraper(VendorScraper):
-    def __init__(self, html_path):
-        super().__init__(html_path)
-
     def vendor_name(self):
         return self.soup.find('div', {'style' : 'margin: 0px 20px;'}).find('strong').text
 

@@ -21,7 +21,10 @@ def getfiles(dir_path, abs_path=False, ext_filter=None, recursive=False):
               os.path.isfile(os.path.join(dp, f))]
 
     if abs_path:
-        onlyfiles = [os.path.join(dir_path, f) for f in onlyfiles]
+        if not recursive:
+            onlyfiles = [os.path.join(dir_path, f) for f in onlyfiles]
+        else:
+            onlyfiles = [os.path.abspath(f) for f in onlyfiles]
 
     if ext_filter is not None:
         if isinstance(ext_filter, (tuple, list, str)):

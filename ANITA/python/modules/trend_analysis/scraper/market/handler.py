@@ -16,6 +16,7 @@ from modules.trend_analysis.scraper.market.markets.tochka import TochkaScraper
 
 def get_scraper_instance(market):
     if market == Market.AGARTHA or (isinstance(market, str) and market.upper() == Market.AGARTHA.name):
+        print(Market.AGARTHA.name)
         return AgarthaScraper()
 
     elif market == Market.APOLLON or (isinstance(market, str) and market.upper() == Market.APOLLON.name):

@@ -38,7 +38,7 @@ def get_dumps(market):
 
 
 def load_dump(market):
-    logger.debug("Endpoint Load dump - START")
+    logger.info("Endpoint Load dump - START")
 
     # Parameters
     market_zip = request.files["market_zip"]
@@ -51,13 +51,13 @@ def load_dump(market):
         logger.error("Timestamp error")
         logger.error(str(e))
         error_content = {"error": "Timestamp error", "msg": str(e)}
-        logger.debug("Endpoint Load dump - END")
+        logger.info("Endpoint Load dump - END")
         return Response(json.dumps(error_content), status=400, mimetype="application/json")
 
     market_list = [market.name.lower() for market in Market if market.value != 0]
     if market is None or market not in market_list:
         error_content = {"error": "Market not found"}
-        logger.debug("Endpoint Load dump - END")
+        logger.info("Endpoint Load dump - END")
         return Response(json.dumps(error_content), status=404, mimetype="application/json")
 
     try:
@@ -71,7 +71,7 @@ def load_dump(market):
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
     logger.info("Endpoint Load dump - END")
-    return Response(json.dumps(content), status=202, mimetype="application/json")
+    return Response(json.dumps(content, sort_keys=False), status=202, mimetype="application/json")
 
 
 def delete_dumps(market):

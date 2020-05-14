@@ -32,7 +32,7 @@ def load_dump(market, dump_zip, timestamp):
         error = {"error": "Dump already loaded"}
         return 404, error
 
-    logger.info("Analysing {} dump".format(market + "-" + timestamp))
+    logger.info("Analysing {} dump".format(market + "-" + str(timestamp)))
 
     if timestamp is None:
         # Check if the folder name contains the date

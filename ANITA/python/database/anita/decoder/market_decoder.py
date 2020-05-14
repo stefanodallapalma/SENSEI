@@ -7,7 +7,7 @@ class ProductScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["web_page", "page_data"]
+        keys = ["web_page", "page_data", "irretrievable_pages"]
         if all(key in dct for key in keys):
             timestamp = dct["web_page"]["date"]
             market = dct["web_page"]["market"]
@@ -30,7 +30,7 @@ class VendorScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["web_page", "page_data"]
+        keys = ["web_page", "page_data", "irretrievable_pages"]
         if all(key in dct for key in keys):
             timestamp = dct["web_page"]["date"]
             market = dct["web_page"]["market"]
@@ -56,7 +56,7 @@ class FeedbackScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["web_page", "page_data"]
+        keys = ["web_page", "page_data", "irretrievable_pages"]
         if all(key in dct for key in keys):
             feedback_models = []
 
