@@ -7,10 +7,10 @@ class ProductScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["web_page", "page_data", "irretrievable_pages"]
+        keys = Product.__dict__.keys()
         if all(key in dct for key in keys):
-            timestamp = dct["web_page"]["date"]
-            market = dct["web_page"]["market"]
+            # timestamp = dct["web_page"]["date"]
+            # market = dct["web_page"]["market"]
             name = dct["page_data"]["name"]
             vendor = dct["page_data"]["vendor"]
             ships_from = dct["page_data"]["ships_from"]
@@ -20,7 +20,7 @@ class ProductScraperDecoder(JSONDecoder):
             info = dct["page_data"]["info"]
             feedback = dct["page_data"]["feedback"]
 
-            return Product(timestamp, market, name, vendor, ships_from, ships_to, price, price_eur, info, feedback)
+            return Product(None, None, name, vendor, ships_from, ships_to, price, price_eur, info, feedback)
         else:
             return dct
 
@@ -30,10 +30,10 @@ class VendorScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["web_page", "page_data", "irretrievable_pages"]
+        keys = Vendor.__dict__.keys()
         if all(key in dct for key in keys):
-            timestamp = dct["web_page"]["date"]
-            market = dct["web_page"]["market"]
+            # timestamp = dct["web_page"]["date"]
+            # market = dct["web_page"]["market"]
             name = dct["page_data"]["name"]
             score = dct["page_data"]["score"]
             score_normalized = dct["page_data"]["score_normalized"]
@@ -45,7 +45,7 @@ class VendorScraperDecoder(JSONDecoder):
             info = dct["page_data"]["info"]
             feedback = dct["page_data"]["feedback"]
 
-            return Vendor(timestamp, market, name, score, score_normalized, registration, registration_deviation,
+            return Vendor(None, None, name, score, score_normalized, registration, registration_deviation,
                           last_login, last_login_deviation, sales, info, feedback)
         else:
             return dct

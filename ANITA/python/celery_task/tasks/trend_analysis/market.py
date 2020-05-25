@@ -12,7 +12,7 @@ from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController
 from database.anita.controller.FeedbackController import FeedbackController
 
-DEBUG = False
+DEBUG = True
 MESSAGE_LIMIT = 100
 
 # Task ID
@@ -51,30 +51,36 @@ def load_dump(self, dump_folder_path, market, timestamp):
     for page in pages:
         # Extract info from an html page
         try:
-            data = scraper.extract_data(page, timestamp, market)
+            web_page_information, page_specific_data, irretrievable_info_json = scraper.extract_data(page, timestamp, market)
 
             if DEBUG:
                 # Irretrievable rate and exceptions raised
-                irretrievable_rate = data["irretrievable_pages"]["irretrievable_rate"]
+                irretrievable_rate = irretrievable_info_json["irretrievable_rate"]
                 irretrievable_page_rate = {"page": page, "rate": irretrievable_rate}
                 content["irretrievable_pages_rate"].append(irretrievable_page_rate)
 
-                exceptions = data["irretrievable_pages"]["exception_params"]
+                exceptions = irretrievable_info_json["exception_params"]
                 irretrievable_page = {"page": page, "exception_params": exceptions}
                 content["irretrievable_parameters_page"].append(irretrievable_page)
 
             # Convert the information extracted into db models
-            if data["web_page"]["page_type"].lower() == "product":
-                #product = json.loads(data, cls=ProductScraperDecoder)
-                #products.append(product)
-                content["#products"] = content["#products"] + 1
+            market = web_page_information["market"]
+            timestamp = web_page_information["date"]
+            if web_page_information["page_type"].lower() == "product":
+                product = json.loads(page_specific_data, cls=ProductScraperDecoder)
+                product.market = market
+                product.timestamp = timestamp
+                products.append(product)
+                content["#products"] = len(products)
             else:
-                #vendor = json.loads(data, cls=VendorScraperDecoder)
-                #vendors.append(vendor)
-                content["#vendors"] = content["#vendors"] + 1
+                vendor = json.loads(page_specific_data, cls=VendorScraperDecoder)
+                vendor.market = market
+                vendor.timestamp = timestamp
+                vendors.append(vendor)
+                content["#vendors"] = len(vendors)
 
-            #feedback = json.loads(data, cls=FeedbackScraperDecoder)
-            #feedback_list += feedback
+            # feedback = json.loads(data, cls=FeedbackScraperDecoder)
+            # feedback_list += feedback
 
             successfull_pages += 1
             content["successfull_pages"] = successfull_pages
@@ -97,8 +103,12 @@ def load_dump(self, dump_folder_path, market, timestamp):
         if (page_analyzed % update_value) == 0 or page_analyzed == len(pages):
             self.update_state(state='PROGRESS', meta=content)
 
-    #content["#products"] = len(products)
-    #content["#vendors"] = len(vendors)
+    print("Products: {}".format(len(products)))
+    print("Vendors: {}".format(len(vendors)))
+    content["#products"] = len(products)
+    content["#vendors"] = len(vendors)
+    print("Products: {}".format(content["#products"]))
+    print("Vendors: {}".format(content["#vendors"]))
 
     if DEBUG:
         # Rates
@@ -108,7 +118,6 @@ def load_dump(self, dump_folder_path, market, timestamp):
         content["failure_rate"] = str(failure_rate) + "%"
     self.update_state(state='PROGRESS', meta=content)
 
-    """
     product_controller = ProductController()
     vendor_controller = VendorController()
     feedback_controller = FeedbackController()
@@ -130,13 +139,13 @@ def load_dump(self, dump_folder_path, market, timestamp):
         if vendors:
             vendor_controller.insert_beans(vendors)
 
-        if feedback_list:
-            feedback_controller.insert_beans(feedback_list)
+        #if feedback_list:
+            #feedback_controller.insert_beans(feedback_list)
     except Exception as e:
         content["error"] = str(e)
         self.update_state(state=states.FAILURE, meta=content)
         return content
-    """
+
     content["db_insert"] = True
     self.update_state(state=states.SUCCESS, meta=content)
 

@@ -47,7 +47,7 @@ class Scraper(ABC):
             market_name = market.name.lower()
 
         # Create overview object of the main information about the page
-        web_page_information = WebPage(html_path, market_name, page_type, timestamp, soup)
+        web_page_information = WebPage(html_path, market_name, page_type, timestamp)
 
         # Page data for vendor or product pages
         if web_page_information.page_type == 'product':
@@ -57,9 +57,7 @@ class Scraper(ABC):
         else:
             raise Exception("Invalid page type")
 
-        # add all info to a list
-        return {'web_page': web_page_information.__dict__, 'page_data': page_specific_data.__dict__,
-                "irretrievable_pages": irretrievable_info_json}
+        return web_page_information.__dict__(), page_specific_data.__dict__(), irretrievable_info_json
 
 
 class ProductScraper(ABC):

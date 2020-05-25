@@ -25,7 +25,7 @@ class VendorController(TableController):
                 datatype = DataType(Type.VARCHAR, 200)
                 column = ColumnDB(attribute_name, datatype, pk=True, not_null=True)
             elif attribute_name in double_attribute_names:
-                datatype = DataType(Type.DOUBLE)
+                datatype = DataType(Type.VARCHAR, 200) # BEFORE DOUBLE
                 column = ColumnDB(attribute_name, datatype)
             else:
                 datatype = DataType(Type.VARCHAR, 200)
