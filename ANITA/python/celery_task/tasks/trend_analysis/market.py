@@ -12,7 +12,7 @@ from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController
 from database.anita.controller.FeedbackController import FeedbackController
 
-DEBUG = True
+DEBUG = False
 MESSAGE_LIMIT = 100
 
 # Task ID
@@ -64,16 +64,15 @@ def load_dump(self, dump_folder_path, market, timestamp):
                 content["irretrievable_parameters_page"].append(irretrievable_page)
 
             # Convert the information extracted into db models
-            market = web_page_information["market"]
-            timestamp = web_page_information["date"]
-            if web_page_information["page_type"].lower() == "product":
-                product = json.loads(page_specific_data, cls=ProductScraperDecoder)
+            timestamp = web_page_information.date
+            if web_page_information.page_type.lower() == "product":
+                product = json.loads(json.dumps(page_specific_data.__dict__), cls=ProductScraperDecoder)
                 product.market = market
                 product.timestamp = timestamp
                 products.append(product)
                 content["#products"] = len(products)
             else:
-                vendor = json.loads(page_specific_data, cls=VendorScraperDecoder)
+                vendor = json.loads(json.dumps(page_specific_data.__dict__), cls=VendorScraperDecoder)
                 vendor.market = market
                 vendor.timestamp = timestamp
                 vendors.append(vendor)
@@ -85,14 +84,13 @@ def load_dump(self, dump_folder_path, market, timestamp):
             successfull_pages += 1
             content["successfull_pages"] = successfull_pages
         except Exception as e:
-            if DEBUG:
-                if "error_pages" not in content:
-                    content["error_pages"] = {}
+            if "error_pages" not in content:
+                content["error_pages"] = {}
 
-                if str(e) not in content["error_pages"]:
-                    content["error_pages"][str(e)] = 1
-                else:
-                    content["error_pages"][str(e)] = content["error_pages"][str(e)] + 1
+            if str(e) not in content["error_pages"]:
+                content["error_pages"][str(e)] = 1
+            else:
+                content["error_pages"][str(e)] = content["error_pages"][str(e)] + 1
 
             failed_pages += 1
             content["failed_pages"] = failed_pages
@@ -130,8 +128,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
         if not vendor_controller.exist():
             vendor_controller.create()
 
-        if not feedback_controller.exist():
-            feedback_controller.create()
+        """if not feedback_controller.exist():
+            feedback_controller.create()"""
 
         if products:
             product_controller.insert_beans(products)
@@ -139,8 +137,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
         if vendors:
             vendor_controller.insert_beans(vendors)
 
-        #if feedback_list:
-            #feedback_controller.insert_beans(feedback_list)
+        """if feedback_list:
+            feedback_controller.insert_beans(feedback_list)"""
     except Exception as e:
         content["error"] = str(e)
         self.update_state(state=states.FAILURE, meta=content)

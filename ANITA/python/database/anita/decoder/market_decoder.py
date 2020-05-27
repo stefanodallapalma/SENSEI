@@ -7,20 +7,38 @@ class ProductScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = Product.__dict__.keys()
+        keys = ["product_name", "vendor", "ships_from", "ships_to", "price", "price_eur", "info", "feedback"]
         if all(key in dct for key in keys):
-            # timestamp = dct["web_page"]["date"]
-            # market = dct["web_page"]["market"]
-            name = dct["page_data"]["name"]
-            vendor = dct["page_data"]["vendor"]
-            ships_from = dct["page_data"]["ships_from"]
-            ships_to = dct["page_data"]["ships_to"]
-            price = dct["page_data"]["price"]
-            price_eur = dct["page_data"]["price_eur"]
-            info = dct["page_data"]["info"]
-            feedback = dct["page_data"]["feedback"]
+            name = None
+            vendor = None
+            ships_from = None
+            ships_to = None
+            price = None
+            price_eur = None
+            info = None
 
-            return Product(None, None, name, vendor, ships_from, ships_to, price, price_eur, info, feedback)
+            if "product_name" in dct:
+                name = dct["product_name"]
+
+            if "vendor" in dct:
+                vendor = dct["vendor"]
+
+            if "ships_from" in dct:
+                ships_from = dct["ships_from"]
+
+            if "ships_to" in dct:
+                ships_to = dct["ships_to"]
+
+            if "price" in dct:
+                price = dct["price"]
+
+            if "price_eur" in dct:
+                price_eur = dct["price_eur"]
+
+            if "info" in dct:
+                info = dct["info"]
+
+            return Product(None, None, name, vendor, ships_from, ships_to, price, price_eur, info, None)
         else:
             return dct
 
@@ -30,23 +48,48 @@ class VendorScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = Vendor.__dict__.keys()
+        keys = ["name", "score", "score_normalized", "registration", "registration_deviation", "last_login",
+                 "last_login_deviation", "sales", "info", "feedback"]
         if all(key in dct for key in keys):
-            # timestamp = dct["web_page"]["date"]
-            # market = dct["web_page"]["market"]
-            name = dct["page_data"]["name"]
-            score = dct["page_data"]["score"]
-            score_normalized = dct["page_data"]["score_normalized"]
-            registration = dct["page_data"]["registration"]
-            registration_deviation = dct["page_data"]["registration_deviation"]
-            last_login = dct["page_data"]["last_login"]
-            last_login_deviation = dct["page_data"]["last_login_deviation"]
-            sales = dct["page_data"]["sales"]
-            info = dct["page_data"]["info"]
-            feedback = dct["page_data"]["feedback"]
+            name = None
+            score = None
+            score_normalized = None
+            registration = None
+            registration_deviation = None
+            last_login = None
+            last_login_deviation = None
+            sales = None
+            info = None
+
+            if "name" in dct:
+                name = dct["name"]
+
+            if "score" in dct:
+                score = dct["score"]
+
+            if "score_normalized" in dct:
+                score_normalized = dct["score_normalized"]
+
+            if "registration" in dct:
+                registration = dct["registration"]
+
+            if "registration_deviation" in dct:
+                registration_deviation = dct["registration_deviation"]
+
+            if "last_login" in dct:
+                last_login = dct["last_login"]
+
+            if "last_login_deviation" in dct:
+                last_login_deviation = dct["last_login_deviation"]
+
+            if "sales" in dct:
+                sales = dct["sales"]
+
+            if "info" in dct:
+                info = dct["info"]
 
             return Vendor(None, None, name, score, score_normalized, registration, registration_deviation,
-                          last_login, last_login_deviation, sales, info, feedback)
+                          last_login, last_login_deviation, sales, info, None)
         else:
             return dct
 

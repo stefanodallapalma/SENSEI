@@ -2,6 +2,7 @@ import time
 import pycountry
 import requests
 import datetime
+import json
 from bs4 import BeautifulSoup
 from abc import ABC, abstractmethod
 
@@ -57,7 +58,7 @@ class Scraper(ABC):
         else:
             raise Exception("Invalid page type")
 
-        return web_page_information.__dict__(), page_specific_data.__dict__(), irretrievable_info_json
+        return web_page_information, page_specific_data, irretrievable_info_json
 
 
 class ProductScraper(ABC):
