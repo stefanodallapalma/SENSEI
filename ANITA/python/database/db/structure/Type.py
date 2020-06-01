@@ -8,4 +8,5 @@ class Type(Enum):
     DATETIME = 4
     BIT = 5
     TIMESTAMP = 6
+    LONGTEXT = 7
     UNDEFINED = 0

@@ -28,9 +28,27 @@ class VendorController(TableController):
                 datatype = DataType(Type.VARCHAR, 200) # BEFORE DOUBLE
                 column = ColumnDB(attribute_name, datatype)
             else:
-                datatype = DataType(Type.VARCHAR, 200)
+                if attribute_name == "info":
+                    datatype = DataType(Type.LONGTEXT)
+                else:
+                    datatype = DataType(Type.VARCHAR, 200)
                 column = ColumnDB(attribute_name, datatype)
             columns.append(column)
 
         self.columns = columns
 
+    def insert_beans(self, beans):
+        attributes = ["timestamp", "market", "name", "score", "score_normalized", "registration",
+                      "registration_deviation", "last_login", "last_login_deviation", "sales", "info",
+                      "feedback"]
+
+        new_beans = []
+        for bean in beans:
+            for attr in attributes:
+                val = getattr(bean, attr)
+                if isinstance(val, list):
+                    val = ", ".join(val)
+                    setattr(bean, attr, val)
+            new_beans.append(bean)
+
+        super(VendorController, self).insert_beans(new_beans)

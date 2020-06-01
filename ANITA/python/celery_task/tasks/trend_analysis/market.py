@@ -5,7 +5,7 @@ from celery import states
 
 # Local application imports
 from celery_task.celery_app import celery
-from utils.FileUtils import getfiles
+from utils.FileUtils import getfiles, save_json
 from modules.trend_analysis.scraper.market.handler import get_scraper_instance
 from database.anita.decoder.market_decoder import *
 from database.anita.controller.ProductController import ProductController
@@ -103,10 +103,16 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
     print("Products: {}".format(len(products)))
     print("Vendors: {}".format(len(vendors)))
+
+    print("REMOVING DUPLICATES...")
+    products = remove_products_duplicates(products)
+    vendors = remove_vendors_duplicates(vendors)
+    print("DUPLICATES REMOVED")
+
+    print("Products: {}".format(len(products)))
+    print("Vendors: {}".format(len(vendors)))
     content["#products"] = len(products)
     content["#vendors"] = len(vendors)
-    print("Products: {}".format(content["#products"]))
-    print("Vendors: {}".format(content["#vendors"]))
 
     if DEBUG:
         # Rates
@@ -148,3 +154,40 @@ def load_dump(self, dump_folder_path, market, timestamp):
     self.update_state(state=states.SUCCESS, meta=content)
 
     return content
+
+
+def remove_products_duplicates(products):
+    new_products = []
+
+    i = 0
+    for product in products:
+        i = 0
+        while i < len(new_products) and not \
+                (new_products[i].timestamp == product.timestamp and
+                 new_products[i].market == product.market and
+                 new_products[i].name == product.name and
+                 new_products[i].vendor == product.vendor):
+            i += 1
+
+        if i >= len(new_products):
+            new_products.append(product)
+
+    return new_products
+
+
+def remove_vendors_duplicates(vendors):
+    new_vendors = []
+
+    i = 0
+    for vendor in vendors:
+        i = 0
+        while i < len(new_vendors) and not \
+                (new_vendors[i].timestamp == vendor.timestamp and
+                 new_vendors[i].market == vendor.market and
+                 new_vendors[i].name == vendor.name):
+            i += 1
+
+        if i >= len(new_vendors):
+            new_vendors.append(vendor)
+
+    return new_vendors
