@@ -4631,3 +4631,1658 @@ celery.backends.rpc.BacklogLimitExceeded: TA-agartha-1585679761-1588861982-UPLOA
 2020-06-01 11:47:21,822 - Status endpoints - INFO - Endpoint Status: START
 2020-06-01 11:47:22,688 - Status endpoints - INFO - Endpoint Status: END
 2020-06-01 11:47:22,689 - werkzeug - INFO - 172.18.0.1 - - [01/Jun/2020 11:47:22] "[35m[1mGET /v1/status/TA-agartha-1585679761-1591011203-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-11 12:50:02,338 - server - INFO - Start anita server
+2020-06-11 12:50:02,338 - precondition - INFO - PRECONDITION CHECKING
+2020-06-11 12:50:02,339 - precondition - INFO - Resource folders: OK
+2020-06-11 12:50:02,339 - precondition - INFO - PARAMETERS
+2020-06-11 12:50:02,339 - precondition - INFO - Sonarqube: OK
+2020-06-11 12:50:02,339 - precondition - INFO - MySQL: OK
+2020-06-11 12:50:02,340 - precondition - INFO - CONNECTION TEST
+2020-06-11 12:50:02,344 - precondition - INFO - MySQL: OK
+2020-06-11 12:50:02,345 - precondition - INFO - Sonarqube: waiting...
+2020-06-11 12:50:02,346 - precondition - INFO - Sonarqube: OK
+2020-06-11 12:50:02,347 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-11 12:50:42,638 - precondition - INFO - DATABASE
+2020-06-11 12:50:42,649 - precondition - INFO - Schema: OK
+2020-06-11 12:50:42,734 - precondition - INFO - SONARQUBE table: OK
+2020-06-11 12:50:42,741 - precondition - INFO - PRODUCT table: OK
+2020-06-11 12:50:42,747 - precondition - INFO - VENDOR table: OK
+2020-06-11 12:50:42,755 - precondition - INFO - FEEDBACK table: OK
+2020-06-11 12:50:42,756 - precondition - INFO - Sonar-scanner status: OK
+2020-06-11 12:50:42,756 - server - INFO - INFO
+2020-06-11 12:50:42,757 - server - INFO - HOST: 0.0.0.0
+2020-06-11 12:50:42,757 - server - INFO - PORT: 5000
+2020-06-11 12:50:42,785 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-11 12:54:11,082 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:54:11] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-06-11 12:54:11,096 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:54:11] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-06-11 12:54:33,822 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-11 12:54:33,823 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-11 12:54:33,823 - market module - INFO - Timestamp - 1585679761
+2020-06-11 12:54:40,772 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-11 12:54:40,790 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:54:40] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-11 12:54:53,805 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:54:53] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 12:54:53,812 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 12:54:53,832 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 12:54:53,835 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:54:53] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 12:55:47,837 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:55:47] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 12:55:47,844 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 12:55:47,866 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 12:55:47,868 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:55:47] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 12:57:18,269 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:57:18] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 12:57:18,276 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 12:57:18,297 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 12:57:18,298 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:57:18] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 12:58:35,694 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:58:35] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 12:58:35,703 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 12:58:35,749 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 12:58:35,751 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 12:58:35] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:01:14,709 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:01:14] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:01:14,716 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:01:14,815 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:01:14,817 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:01:14] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:06:00,512 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:06:00] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:06:00,518 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:06:00,545 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:06:00,547 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:06:00] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:06:07,599 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:06:07] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:06:07,606 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:06:07,617 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:06:07,618 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:06:07] "[37mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:08:02,222 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:08:02] "[32mGET /v1//status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:08:02,229 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:08:02,958 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:08:03,027 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:08:03] "[35m[1mGET /v1/status/TA-agartha-1585679761-1591880073-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-11 13:13:01,010 - server - INFO - Start anita server
+2020-06-11 13:13:01,010 - precondition - INFO - PRECONDITION CHECKING
+2020-06-11 13:13:01,011 - precondition - INFO - Resource folders: OK
+2020-06-11 13:13:01,011 - precondition - INFO - PARAMETERS
+2020-06-11 13:13:01,011 - precondition - INFO - Sonarqube: OK
+2020-06-11 13:13:01,011 - precondition - INFO - MySQL: OK
+2020-06-11 13:13:01,012 - precondition - INFO - CONNECTION TEST
+2020-06-11 13:13:01,014 - precondition - INFO - MySQL: OK
+2020-06-11 13:13:01,016 - precondition - INFO - Sonarqube: waiting...
+2020-06-11 13:13:01,016 - precondition - INFO - Sonarqube: OK
+2020-06-11 13:13:01,017 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-11 13:13:37,792 - precondition - INFO - DATABASE
+2020-06-11 13:13:37,802 - precondition - INFO - Schema: OK
+2020-06-11 13:13:37,895 - precondition - INFO - SONARQUBE table: OK
+2020-06-11 13:13:37,905 - precondition - INFO - PRODUCT table: OK
+2020-06-11 13:13:37,913 - precondition - INFO - VENDOR table: OK
+2020-06-11 13:13:37,923 - precondition - INFO - FEEDBACK table: OK
+2020-06-11 13:13:37,924 - precondition - INFO - Sonar-scanner status: OK
+2020-06-11 13:13:37,924 - server - INFO - INFO
+2020-06-11 13:13:37,925 - server - INFO - HOST: 0.0.0.0
+2020-06-11 13:13:37,925 - server - INFO - PORT: 5000
+2020-06-11 13:13:37,981 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-11 13:20:36,531 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:20:36] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-06-11 13:20:36,543 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:20:36] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-06-11 13:20:50,887 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-11 13:20:50,888 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-11 13:20:50,888 - market module - INFO - Timestamp - 1585679761
+2020-06-11 13:20:57,984 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-11 13:20:57,998 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:20:57] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-11 13:21:12,112 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:21:12] "[32mGET /v1//status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:21:12,120 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:21:12,136 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:21:12,137 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:21:12] "[37mGET /v1/status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:25:59,282 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:25:59] "[32mGET /v1//status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:25:59,291 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:25:59,372 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:25:59,373 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:25:59] "[37mGET /v1/status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:27:12,686 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:27:12] "[32mGET /v1//status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:27:12,697 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:27:12,745 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:27:12,746 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:27:12] "[37mGET /v1/status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 13:28:27,295 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:28:27] "[32mGET /v1//status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 13:28:27,303 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 13:28:27,324 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 13:28:27,325 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 13:28:27] "[37mGET /v1/status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-11 14:36:01,782 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 14:36:01] "[32mGET /v1//status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-11 14:36:01,793 - Status endpoints - INFO - Endpoint Status: START
+2020-06-11 14:36:02,512 - Status endpoints - INFO - Endpoint Status: END
+2020-06-11 14:36:02,514 - werkzeug - INFO - 172.18.0.1 - - [11/Jun/2020 14:36:02] "[35m[1mGET /v1/status/TA-agartha-1585679761-1591881650-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-24 12:46:46,274 - server - INFO - Start anita server
+2020-06-24 12:46:46,275 - precondition - INFO - PRECONDITION CHECKING
+2020-06-24 12:46:46,276 - precondition - INFO - Resource folders: OK
+2020-06-24 12:46:46,276 - precondition - INFO - PARAMETERS
+2020-06-24 12:46:46,277 - precondition - INFO - Sonarqube: OK
+2020-06-24 12:46:46,277 - precondition - INFO - MySQL: OK
+2020-06-24 12:46:46,277 - precondition - INFO - CONNECTION TEST
+2020-06-24 12:46:46,280 - precondition - INFO - MySQL: OK
+2020-06-24 12:46:46,281 - precondition - INFO - Sonarqube: waiting...
+2020-06-24 12:46:46,282 - precondition - INFO - Sonarqube: OK
+2020-06-24 12:46:46,282 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-24 12:47:32,890 - precondition - INFO - DATABASE
+2020-06-24 12:47:32,922 - precondition - INFO - Schema: OK
+2020-06-24 12:47:33,084 - precondition - INFO - SONARQUBE table: OK
+2020-06-24 12:47:33,094 - precondition - INFO - PRODUCT table: OK
+2020-06-24 12:47:33,105 - precondition - INFO - VENDOR table: OK
+2020-06-24 12:47:33,114 - precondition - INFO - FEEDBACK table: OK
+2020-06-24 12:47:33,115 - precondition - INFO - Sonar-scanner status: OK
+2020-06-24 12:47:33,116 - server - INFO - INFO
+2020-06-24 12:47:33,116 - server - INFO - HOST: 0.0.0.0
+2020-06-24 12:47:33,116 - server - INFO - PORT: 5000
+2020-06-24 12:47:33,158 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-24 12:48:12,662 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-24 12:48:12,664 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-24 12:48:12,664 - market module - INFO - Timestamp - 1585679761
+2020-06-24 12:48:21,628 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-24 12:48:21,646 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 12:48:21] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-24 12:48:34,290 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 12:48:34] "[32mGET /v1//status/TA-agartha-1585679761-1593002892-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-24 12:48:34,305 - Status endpoints - INFO - Endpoint Status: START
+2020-06-24 12:48:34,332 - Status endpoints - INFO - Endpoint Status: END
+2020-06-24 12:48:34,334 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 12:48:34] "[37mGET /v1/status/TA-agartha-1585679761-1593002892-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-24 13:03:26,004 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 13:03:26] "[32mGET /v1//status/TA-agartha-1585679761-1593002892-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-24 13:03:26,027 - Status endpoints - INFO - Endpoint Status: START
+2020-06-24 13:03:27,027 - Status endpoints - INFO - Endpoint Status: END
+2020-06-24 13:03:27,030 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 13:03:27] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593002892-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-24 14:21:59,844 - server - INFO - Start anita server
+2020-06-24 14:21:59,844 - precondition - INFO - PRECONDITION CHECKING
+2020-06-24 14:21:59,845 - precondition - INFO - Resource folders: OK
+2020-06-24 14:21:59,846 - precondition - INFO - PARAMETERS
+2020-06-24 14:21:59,846 - precondition - INFO - Sonarqube: OK
+2020-06-24 14:21:59,847 - precondition - INFO - MySQL: OK
+2020-06-24 14:21:59,847 - precondition - INFO - CONNECTION TEST
+2020-06-24 14:21:59,850 - precondition - INFO - MySQL: OK
+2020-06-24 14:21:59,852 - precondition - INFO - Sonarqube: waiting...
+2020-06-24 14:21:59,854 - precondition - INFO - Sonarqube: OK
+2020-06-24 14:21:59,855 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-24 14:22:50,116 - precondition - INFO - DATABASE
+2020-06-24 14:22:50,177 - precondition - INFO - Schema: OK
+2020-06-24 14:22:50,315 - precondition - INFO - SONARQUBE table: OK
+2020-06-24 14:22:50,325 - precondition - INFO - PRODUCT table: OK
+2020-06-24 14:22:50,342 - precondition - INFO - VENDOR table: OK
+2020-06-24 14:22:50,354 - precondition - INFO - FEEDBACK table: OK
+2020-06-24 14:22:50,355 - precondition - INFO - Sonar-scanner status: OK
+2020-06-24 14:22:50,355 - server - INFO - INFO
+2020-06-24 14:22:50,355 - server - INFO - HOST: 0.0.0.0
+2020-06-24 14:22:50,356 - server - INFO - PORT: 5000
+2020-06-24 14:22:50,408 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-24 14:37:17,539 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-24 14:37:17,544 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-24 14:37:17,544 - market module - INFO - Timestamp - 1585679761
+2020-06-24 14:37:25,672 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-24 14:37:25,683 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 14:37:25] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-24 14:37:36,279 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 14:37:36] "[32mGET /v1//status/TA-agartha-1585679761-1593009437-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-24 14:37:36,294 - Status endpoints - INFO - Endpoint Status: START
+2020-06-24 14:37:36,312 - Status endpoints - INFO - Endpoint Status: END
+2020-06-24 14:37:36,314 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 14:37:36] "[37mGET /v1/status/TA-agartha-1585679761-1593009437-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-24 15:21:40,847 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 15:21:40] "[32mGET /v1//status/TA-agartha-1585679761-1593009437-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-24 15:21:40,909 - Status endpoints - INFO - Endpoint Status: START
+2020-06-24 15:21:41,886 - Status endpoints - INFO - Endpoint Status: END
+2020-06-24 15:21:41,887 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 15:21:41] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593009437-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-24 15:25:14,323 - server - INFO - Start anita server
+2020-06-24 15:25:14,323 - precondition - INFO - PRECONDITION CHECKING
+2020-06-24 15:25:14,324 - precondition - INFO - Resource folders: OK
+2020-06-24 15:25:14,324 - precondition - INFO - PARAMETERS
+2020-06-24 15:25:14,325 - precondition - INFO - Sonarqube: OK
+2020-06-24 15:25:14,325 - precondition - INFO - MySQL: OK
+2020-06-24 15:25:14,326 - precondition - INFO - CONNECTION TEST
+2020-06-24 15:25:14,331 - precondition - INFO - MySQL: OK
+2020-06-24 15:25:14,333 - precondition - INFO - Sonarqube: waiting...
+2020-06-24 15:25:14,335 - precondition - INFO - Sonarqube: OK
+2020-06-24 15:25:14,335 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-24 15:26:07,196 - precondition - INFO - DATABASE
+2020-06-24 15:26:07,240 - precondition - INFO - Schema: OK
+2020-06-24 15:26:07,378 - precondition - INFO - SONARQUBE table: OK
+2020-06-24 15:26:07,387 - precondition - INFO - PRODUCT table: OK
+2020-06-24 15:26:07,398 - precondition - INFO - VENDOR table: OK
+2020-06-24 15:26:07,408 - precondition - INFO - FEEDBACK table: OK
+2020-06-24 15:26:07,410 - precondition - INFO - Sonar-scanner status: OK
+2020-06-24 15:26:07,411 - server - INFO - INFO
+2020-06-24 15:26:07,412 - server - INFO - HOST: 0.0.0.0
+2020-06-24 15:26:07,412 - server - INFO - PORT: 5000
+2020-06-24 15:26:07,483 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-24 15:44:01,490 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-24 15:44:01,548 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-24 15:44:01,548 - market module - INFO - Timestamp - 1585679761
+2020-06-24 15:44:09,914 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-24 15:44:09,924 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 15:44:09] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-24 15:44:21,746 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 15:44:21] "[32mGET /v1//status/TA-agartha-1585679761-1593013441-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-24 15:44:21,765 - Status endpoints - INFO - Endpoint Status: START
+2020-06-24 15:44:21,795 - Status endpoints - INFO - Endpoint Status: END
+2020-06-24 15:44:21,796 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 15:44:21] "[37mGET /v1/status/TA-agartha-1585679761-1593013441-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-24 16:02:59,098 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 16:02:59] "[32mGET /v1//status/TA-agartha-1585679761-1593013441-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-24 16:02:59,108 - Status endpoints - INFO - Endpoint Status: START
+2020-06-24 16:03:00,039 - Status endpoints - INFO - Endpoint Status: END
+2020-06-24 16:03:00,041 - werkzeug - INFO - 172.18.0.1 - - [24/Jun/2020 16:03:00] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593013441-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-25 09:08:41,299 - server - INFO - Start anita server
+2020-06-25 09:08:41,300 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 09:08:41,301 - precondition - INFO - Resource folders: OK
+2020-06-25 09:08:41,301 - precondition - INFO - PARAMETERS
+2020-06-25 09:08:41,301 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:08:41,302 - precondition - INFO - MySQL: OK
+2020-06-25 09:08:41,302 - precondition - INFO - CONNECTION TEST
+2020-06-25 09:08:41,305 - precondition - INFO - MySQL: OK
+2020-06-25 09:08:41,309 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 09:08:41,310 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:08:41,310 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 09:09:24,722 - precondition - INFO - DATABASE
+2020-06-25 09:09:24,815 - precondition - INFO - Schema: OK
+2020-06-25 09:09:24,940 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 09:09:24,950 - precondition - INFO - PRODUCT table: OK
+2020-06-25 09:09:24,958 - precondition - INFO - VENDOR table: OK
+2020-06-25 09:09:24,968 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 09:09:24,970 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 09:09:24,971 - server - INFO - INFO
+2020-06-25 09:09:24,971 - server - INFO - HOST: 0.0.0.0
+2020-06-25 09:09:24,971 - server - INFO - PORT: 5000
+2020-06-25 09:09:25,061 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 09:12:34,863 - server - INFO - Start anita server
+2020-06-25 09:12:34,864 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 09:12:34,865 - precondition - INFO - Resource folders: OK
+2020-06-25 09:12:34,865 - precondition - INFO - PARAMETERS
+2020-06-25 09:12:34,865 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:12:34,866 - precondition - INFO - MySQL: OK
+2020-06-25 09:12:34,866 - precondition - INFO - CONNECTION TEST
+2020-06-25 09:12:34,869 - precondition - INFO - MySQL: OK
+2020-06-25 09:12:34,870 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 09:12:34,871 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:12:34,872 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 09:13:15,532 - precondition - INFO - DATABASE
+2020-06-25 09:13:15,578 - precondition - INFO - Schema: OK
+2020-06-25 09:13:15,705 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 09:13:15,713 - precondition - INFO - PRODUCT table: OK
+2020-06-25 09:13:15,720 - precondition - INFO - VENDOR table: OK
+2020-06-25 09:13:15,728 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 09:13:15,732 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 09:13:15,732 - server - INFO - INFO
+2020-06-25 09:13:15,732 - server - INFO - HOST: 0.0.0.0
+2020-06-25 09:13:15,733 - server - INFO - PORT: 5000
+2020-06-25 09:13:15,819 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 09:13:38,987 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:13:38] "[31m[1mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 400 -
+2020-06-25 09:14:12,572 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 09:14:12,575 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 09:14:12,575 - market module - INFO - Timestamp - 1585679761
+2020-06-25 09:14:20,734 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 09:14:20,745 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:14:20] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 09:14:36,842 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:14:36] "[32mGET /v1//status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:14:36,868 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:14:36,884 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:14:36,886 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:14:36] "[37mGET /v1/status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 09:14:39,136 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:14:39] "[32mGET /v1//status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:14:39,144 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:14:39,158 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:14:39,160 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:14:39] "[37mGET /v1/status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 09:23:58,224 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:23:58] "[32mGET /v1//status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:23:58,248 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:23:58,577 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:23:58,626 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:23:58] "[37mGET /v1/status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 09:26:40,240 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:26:40] "[32mGET /v1//status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:26:40,251 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:26:40,420 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:26:40,456 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:26:40] "[37mGET /v1/status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 09:26:49,709 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:26:49] "[32mGET /v1//status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:26:49,717 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:26:49,862 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:26:49,901 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:26:49] "[37mGET /v1/status/TA-agartha-1585679761-1593076452-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 09:41:30,832 - server - INFO - Start anita server
+2020-06-25 09:41:30,832 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 09:41:30,833 - precondition - INFO - Resource folders: OK
+2020-06-25 09:41:30,834 - precondition - INFO - PARAMETERS
+2020-06-25 09:41:30,834 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:41:30,834 - precondition - INFO - MySQL: OK
+2020-06-25 09:41:30,835 - precondition - INFO - CONNECTION TEST
+2020-06-25 09:41:30,838 - precondition - INFO - MySQL: OK
+2020-06-25 09:41:30,841 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 09:41:30,842 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:41:30,842 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 09:42:42,637 - precondition - INFO - DATABASE
+2020-06-25 09:42:42,660 - precondition - INFO - Schema: OK
+2020-06-25 09:42:42,768 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 09:42:42,779 - precondition - INFO - PRODUCT table: OK
+2020-06-25 09:42:42,791 - precondition - INFO - VENDOR table: OK
+2020-06-25 09:42:42,802 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 09:42:42,803 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 09:42:42,803 - server - INFO - INFO
+2020-06-25 09:42:42,803 - server - INFO - HOST: 0.0.0.0
+2020-06-25 09:42:42,804 - server - INFO - PORT: 5000
+2020-06-25 09:42:42,864 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 09:44:54,327 - server - INFO - Start anita server
+2020-06-25 09:44:54,328 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 09:44:54,330 - precondition - INFO - Resource folders: OK
+2020-06-25 09:44:54,330 - precondition - INFO - PARAMETERS
+2020-06-25 09:44:54,330 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:44:54,331 - precondition - INFO - MySQL: OK
+2020-06-25 09:44:54,331 - precondition - INFO - CONNECTION TEST
+2020-06-25 09:44:54,335 - precondition - INFO - MySQL: OK
+2020-06-25 09:44:54,336 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 09:44:54,337 - precondition - INFO - Sonarqube: OK
+2020-06-25 09:44:54,338 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 09:45:34,719 - precondition - INFO - DATABASE
+2020-06-25 09:45:34,743 - precondition - INFO - Schema: OK
+2020-06-25 09:45:34,874 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 09:45:34,892 - precondition - INFO - PRODUCT table: OK
+2020-06-25 09:45:34,901 - precondition - INFO - VENDOR table: OK
+2020-06-25 09:45:34,908 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 09:45:34,909 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 09:45:34,910 - server - INFO - INFO
+2020-06-25 09:45:34,910 - server - INFO - HOST: 0.0.0.0
+2020-06-25 09:45:34,911 - server - INFO - PORT: 5000
+2020-06-25 09:45:34,957 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 09:52:06,345 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 09:52:06,346 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 09:52:06,347 - market module - INFO - Timestamp - 1585679761
+2020-06-25 09:52:14,345 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 09:52:14,374 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:52:14] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 09:52:26,959 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:52:26] "[32mGET /v1//status/TA-agartha-1585679761-1593078726-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:52:26,971 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:52:26,989 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:52:26,991 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:52:26] "[37mGET /v1/status/TA-agartha-1585679761-1593078726-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 09:52:29,429 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:52:29] "[32mGET /v1//status/TA-agartha-1585679761-1593078726-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 09:52:29,438 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 09:52:29,480 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 09:52:29,482 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 09:52:29] "[37mGET /v1/status/TA-agartha-1585679761-1593078726-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 10:36:56,819 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 10:36:56] "[32mGET /v1//status/TA-agartha-1585679761-1593078726-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 10:36:56,831 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 10:36:57,846 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 10:36:57,848 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 10:36:57] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593078726-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-25 12:52:19,646 - server - INFO - Start anita server
+2020-06-25 12:52:19,646 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 12:52:19,648 - precondition - INFO - Resource folders: OK
+2020-06-25 12:52:19,648 - precondition - INFO - PARAMETERS
+2020-06-25 12:52:19,648 - precondition - INFO - Sonarqube: OK
+2020-06-25 12:52:19,649 - precondition - INFO - MySQL: OK
+2020-06-25 12:52:19,649 - precondition - INFO - CONNECTION TEST
+2020-06-25 12:52:19,653 - precondition - INFO - MySQL: OK
+2020-06-25 12:52:19,655 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 12:52:19,657 - precondition - INFO - Sonarqube: OK
+2020-06-25 12:52:19,657 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 12:53:03,109 - precondition - INFO - DATABASE
+2020-06-25 12:53:03,124 - precondition - INFO - Schema: OK
+2020-06-25 12:53:03,239 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 12:53:03,247 - precondition - INFO - PRODUCT table: OK
+2020-06-25 12:53:03,257 - precondition - INFO - VENDOR table: OK
+2020-06-25 12:53:03,272 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 12:53:03,274 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 12:53:03,274 - server - INFO - INFO
+2020-06-25 12:53:03,274 - server - INFO - HOST: 0.0.0.0
+2020-06-25 12:53:03,275 - server - INFO - PORT: 5000
+2020-06-25 12:53:03,345 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 13:14:33,889 - server - INFO - Start anita server
+2020-06-25 13:14:33,890 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 13:14:33,891 - precondition - INFO - Resource folders: OK
+2020-06-25 13:14:33,891 - precondition - INFO - PARAMETERS
+2020-06-25 13:14:33,892 - precondition - INFO - Sonarqube: OK
+2020-06-25 13:14:33,892 - precondition - INFO - MySQL: OK
+2020-06-25 13:14:33,893 - precondition - INFO - CONNECTION TEST
+2020-06-25 13:14:33,896 - precondition - INFO - MySQL: OK
+2020-06-25 13:14:33,897 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 13:14:33,898 - precondition - INFO - Sonarqube: OK
+2020-06-25 13:14:33,899 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 13:15:16,829 - precondition - INFO - DATABASE
+2020-06-25 13:15:16,837 - precondition - INFO - Schema: OK
+2020-06-25 13:15:16,966 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 13:15:16,976 - precondition - INFO - PRODUCT table: OK
+2020-06-25 13:15:16,985 - precondition - INFO - VENDOR table: OK
+2020-06-25 13:15:16,999 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 13:15:17,000 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 13:15:17,000 - server - INFO - INFO
+2020-06-25 13:15:17,000 - server - INFO - HOST: 0.0.0.0
+2020-06-25 13:15:17,001 - server - INFO - PORT: 5000
+2020-06-25 13:15:17,059 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 13:19:58,124 - server - INFO - Start anita server
+2020-06-25 13:19:58,125 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 13:19:58,125 - precondition - INFO - Resource folders: OK
+2020-06-25 13:19:58,126 - precondition - INFO - PARAMETERS
+2020-06-25 13:19:58,126 - precondition - INFO - Sonarqube: OK
+2020-06-25 13:19:58,127 - precondition - INFO - MySQL: OK
+2020-06-25 13:19:58,127 - precondition - INFO - CONNECTION TEST
+2020-06-25 13:19:58,130 - precondition - INFO - MySQL: OK
+2020-06-25 13:19:58,132 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 13:19:58,133 - precondition - INFO - Sonarqube: OK
+2020-06-25 13:19:58,134 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 13:20:40,194 - precondition - INFO - DATABASE
+2020-06-25 13:20:40,205 - precondition - INFO - Schema: OK
+2020-06-25 13:20:40,311 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 13:20:40,322 - precondition - INFO - PRODUCT table: OK
+2020-06-25 13:20:40,338 - precondition - INFO - VENDOR table: OK
+2020-06-25 13:20:40,353 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 13:20:40,355 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 13:20:40,355 - server - INFO - INFO
+2020-06-25 13:20:40,356 - server - INFO - HOST: 0.0.0.0
+2020-06-25 13:20:40,356 - server - INFO - PORT: 5000
+2020-06-25 13:20:40,408 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 13:22:16,080 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 13:22:16,081 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 13:22:16,081 - market module - INFO - Timestamp - 1585679761
+2020-06-25 13:22:24,576 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 13:22:24,600 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:22:24] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 13:22:36,718 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:22:36] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:22:36,729 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:22:36,748 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:22:36,750 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:22:36] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:22:39,517 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:22:39] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:22:39,527 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:22:39,547 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:22:39,549 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:22:39] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:33:01,179 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:33:01] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:33:01,188 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:33:01,332 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:33:01,334 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:33:01] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:33:35,601 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:33:35] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:33:35,610 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:33:35,633 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:33:35,635 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:33:35] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:34:17,823 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:34:17] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:34:17,831 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:34:17,852 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:34:17,854 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:34:17] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:34:23,619 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:34:23] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:34:23,626 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:34:23,644 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:34:23,646 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:34:23] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:34:46,009 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:34:46] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:34:46,021 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:34:46,036 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:34:46,037 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:34:46] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:35:12,948 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:12] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:35:12,964 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:35:12,996 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:35:12,999 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:12] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:35:21,636 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:21] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:35:21,646 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:35:21,663 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:35:21,665 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:21] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:35:24,358 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:24] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:35:24,366 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:35:24,387 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:35:24,389 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:24] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:35:45,057 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:45] "[32mGET /v1//status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:35:45,065 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:35:45,082 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:35:45,084 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:35:45] "[37mGET /v1/status/TA-agartha-1585679761-1593091336-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:51:56,901 - server - INFO - Start anita server
+2020-06-25 13:51:56,901 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 13:51:56,902 - precondition - INFO - Resource folders: OK
+2020-06-25 13:51:56,902 - precondition - INFO - PARAMETERS
+2020-06-25 13:51:56,902 - precondition - INFO - Sonarqube: OK
+2020-06-25 13:51:56,903 - precondition - INFO - MySQL: OK
+2020-06-25 13:51:56,903 - precondition - INFO - CONNECTION TEST
+2020-06-25 13:51:56,912 - precondition - INFO - MySQL: OK
+2020-06-25 13:51:56,914 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 13:51:56,915 - precondition - INFO - Sonarqube: OK
+2020-06-25 13:51:56,915 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 13:52:41,169 - precondition - INFO - DATABASE
+2020-06-25 13:52:41,191 - precondition - INFO - Schema: OK
+2020-06-25 13:52:41,278 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 13:52:41,286 - precondition - INFO - PRODUCT table: generation...
+2020-06-25 13:52:41,308 - precondition - INFO - PRODUCT table generated
+2020-06-25 13:52:41,319 - precondition - INFO - VENDOR table: generation...
+2020-06-25 13:52:41,348 - precondition - INFO - VENDOR table generated
+2020-06-25 13:52:41,363 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 13:52:41,364 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 13:52:41,365 - server - INFO - INFO
+2020-06-25 13:52:41,365 - server - INFO - HOST: 0.0.0.0
+2020-06-25 13:52:41,366 - server - INFO - PORT: 5000
+2020-06-25 13:52:41,443 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 13:53:41,552 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 13:53:41,553 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 13:53:41,554 - market module - INFO - Timestamp - 1585679761
+2020-06-25 13:53:49,764 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 13:53:49,773 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:53:49] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 13:54:00,430 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:54:00] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:54:00,441 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:54:00,455 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:54:00,456 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:54:00] "[37mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:54:02,154 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:54:02] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:54:02,175 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:54:02,199 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:54:02,201 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:54:02] "[37mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:55:16,965 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:55:16] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:55:16,972 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:55:17,004 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:55:17,005 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:55:17] "[37mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 13:57:49,194 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:57:49] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 13:57:49,203 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 13:57:49,250 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 13:57:49,251 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 13:57:49] "[37mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 14:00:04,640 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:00:04] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:00:04,648 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:00:04,779 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:00:04,781 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:00:04] "[37mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 14:01:22,629 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:01:22] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:01:22,639 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:01:22,655 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:01:22,657 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:01:22] "[37mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 14:08:04,207 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:08:04] "[32mGET /v1//status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:08:04,220 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:08:05,033 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:08:05,035 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:08:05] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593093221-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-25 14:16:19,539 - server - INFO - Start anita server
+2020-06-25 14:16:19,539 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 14:16:19,540 - precondition - INFO - Resource folders: OK
+2020-06-25 14:16:19,540 - precondition - INFO - PARAMETERS
+2020-06-25 14:16:19,541 - precondition - INFO - Sonarqube: OK
+2020-06-25 14:16:19,542 - precondition - INFO - MySQL: OK
+2020-06-25 14:16:19,543 - precondition - INFO - CONNECTION TEST
+2020-06-25 14:16:19,548 - precondition - INFO - MySQL: OK
+2020-06-25 14:16:19,549 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 14:16:19,550 - precondition - INFO - Sonarqube: OK
+2020-06-25 14:16:19,551 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 14:17:12,817 - precondition - INFO - DATABASE
+2020-06-25 14:17:12,866 - precondition - INFO - Schema: OK
+2020-06-25 14:17:12,981 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 14:17:13,005 - precondition - INFO - PRODUCT table: OK
+2020-06-25 14:17:13,021 - precondition - INFO - VENDOR table: OK
+2020-06-25 14:17:13,037 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 14:17:13,038 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 14:17:13,038 - server - INFO - INFO
+2020-06-25 14:17:13,039 - server - INFO - HOST: 0.0.0.0
+2020-06-25 14:17:13,039 - server - INFO - PORT: 5000
+2020-06-25 14:17:13,090 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 14:18:58,140 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 14:18:58,143 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 14:18:58,144 - market module - INFO - Timestamp - 1585679761
+2020-06-25 14:19:06,581 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 14:19:06,594 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:19:06] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 14:19:22,006 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:19:22] "[32mGET /v1//status/TA-agartha-1585679761-1593094738-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:19:22,019 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:19:22,910 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:19:22,913 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:19:22] "[37mGET /v1/status/TA-agartha-1585679761-1593094738-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-06-25 14:19:32,232 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:19:32] "[32mGET /v1//status/TA-agartha-1585679761-1593094738-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:19:32,242 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:19:32,246 - Status endpoints - ERROR - Internal server error
+2020-06-25 14:19:32,246 - Status endpoints - ERROR - [Errno 2] No such file or directory: '../resources/trend_analysis/markets/agartha/raw'
+2020-06-25 14:19:32,255 - Status endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/status.py", line 25, in status
+    status, content = markets.load_dump_status(unique_id)
+  File "/ANITA/python/modules/trend_analysis/markets/markets.py", line 82, in load_dump_status
+    market_local.delete_raw_folder()
+  File "/ANITA/python/modules/trend_analysis/markets/local/MarketLocalProject.py", line 56, in delete_raw_folder
+    shutil.rmtree(self.raw_path)
+  File "/usr/local/lib/python3.7/shutil.py", line 476, in rmtree
+    onerror(os.lstat, path, sys.exc_info())
+  File "/usr/local/lib/python3.7/shutil.py", line 474, in rmtree
+    orig_st = os.lstat(path)
+FileNotFoundError: [Errno 2] No such file or directory: '../resources/trend_analysis/markets/agartha/raw'
+
+2020-06-25 14:19:32,255 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:19:32,257 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:19:32] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593094738-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-25 14:21:08,118 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 14:21:08,120 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 14:21:08,120 - market module - INFO - Timestamp - 1585679761
+2020-06-25 14:21:15,510 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 14:21:15,531 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:21:15] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 14:21:35,367 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:21:35] "[32mGET /v1//status/TA-agartha-1585679761-1593094868-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:21:35,374 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:21:36,157 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:21:36,158 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:21:36] "[37mGET /v1/status/TA-agartha-1585679761-1593094868-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-06-25 14:28:42,648 - server - INFO - Start anita server
+2020-06-25 14:28:42,649 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 14:28:42,650 - precondition - INFO - Resource folders: OK
+2020-06-25 14:28:42,650 - precondition - INFO - PARAMETERS
+2020-06-25 14:28:42,650 - precondition - INFO - Sonarqube: OK
+2020-06-25 14:28:42,651 - precondition - INFO - MySQL: OK
+2020-06-25 14:28:42,651 - precondition - INFO - CONNECTION TEST
+2020-06-25 14:28:42,658 - precondition - INFO - MySQL: OK
+2020-06-25 14:28:42,659 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 14:28:42,660 - precondition - INFO - Sonarqube: OK
+2020-06-25 14:28:42,661 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 14:29:29,332 - precondition - INFO - DATABASE
+2020-06-25 14:29:29,380 - precondition - INFO - Schema: OK
+2020-06-25 14:29:29,505 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 14:29:29,513 - precondition - INFO - PRODUCT table: OK
+2020-06-25 14:29:29,522 - precondition - INFO - VENDOR table: OK
+2020-06-25 14:29:29,535 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 14:29:29,536 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 14:29:29,536 - server - INFO - INFO
+2020-06-25 14:29:29,537 - server - INFO - HOST: 0.0.0.0
+2020-06-25 14:29:29,537 - server - INFO - PORT: 5000
+2020-06-25 14:29:29,605 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 14:29:50,777 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 14:29:50,782 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 14:29:50,782 - market module - INFO - Timestamp - 1585679761
+2020-06-25 14:29:58,566 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 14:29:58,578 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:29:58] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 14:30:15,766 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:30:15] "[32mGET /v1//status/TA-agartha-1585679761-1593095390-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:30:15,776 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:30:15,795 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:30:15,797 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:30:15] "[37mGET /v1/status/TA-agartha-1585679761-1593095390-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 14:35:25,769 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:35:25] "[32mGET /v1//status/TA-agartha-1585679761-1593095390-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:35:25,797 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:35:25,892 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:35:25,894 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:35:25] "[37mGET /v1/status/TA-agartha-1585679761-1593095390-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 14:47:22,700 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:47:22] "[32mGET /v1//status/TA-agartha-1585679761-1593095390-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 14:47:22,715 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 14:47:23,678 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 14:47:23,681 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 14:47:23] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593095390-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-06-25 15:35:39,601 - server - INFO - Start anita server
+2020-06-25 15:35:39,602 - precondition - INFO - PRECONDITION CHECKING
+2020-06-25 15:35:39,602 - precondition - INFO - Resource folders: OK
+2020-06-25 15:35:39,603 - precondition - INFO - PARAMETERS
+2020-06-25 15:35:39,603 - precondition - INFO - Sonarqube: OK
+2020-06-25 15:35:39,604 - precondition - INFO - MySQL: OK
+2020-06-25 15:35:39,604 - precondition - INFO - CONNECTION TEST
+2020-06-25 15:35:39,624 - precondition - INFO - MySQL: OK
+2020-06-25 15:35:39,626 - precondition - INFO - Sonarqube: waiting...
+2020-06-25 15:35:39,627 - precondition - INFO - Sonarqube: OK
+2020-06-25 15:35:39,627 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-06-25 15:36:26,370 - precondition - INFO - DATABASE
+2020-06-25 15:36:26,404 - precondition - INFO - Schema: OK
+2020-06-25 15:36:26,598 - precondition - INFO - SONARQUBE table: OK
+2020-06-25 15:36:26,611 - precondition - INFO - PRODUCT table: OK
+2020-06-25 15:36:26,620 - precondition - INFO - VENDOR table: OK
+2020-06-25 15:36:26,632 - precondition - INFO - FEEDBACK table: OK
+2020-06-25 15:36:26,635 - precondition - INFO - Sonar-scanner status: OK
+2020-06-25 15:36:26,635 - server - INFO - INFO
+2020-06-25 15:36:26,636 - server - INFO - HOST: 0.0.0.0
+2020-06-25 15:36:26,637 - server - INFO - PORT: 5000
+2020-06-25 15:36:26,697 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-06-25 15:48:06,203 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-06-25 15:48:06,207 - market module - INFO - Analysing agartha-1585679761 dump
+2020-06-25 15:48:06,207 - market module - INFO - Timestamp - 1585679761
+2020-06-25 15:48:13,652 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-06-25 15:48:13,661 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 15:48:13] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-06-25 15:48:28,038 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 15:48:28] "[32mGET /v1//status/TA-agartha-1585679761-1593100086-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 15:48:28,051 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 15:48:28,070 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 15:48:28,071 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 15:48:28] "[37mGET /v1/status/TA-agartha-1585679761-1593100086-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-06-25 15:54:23,544 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 15:54:23] "[32mGET /v1//status/TA-agartha-1585679761-1593100086-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-06-25 15:54:23,555 - Status endpoints - INFO - Endpoint Status: START
+2020-06-25 15:54:23,646 - Status endpoints - INFO - Endpoint Status: END
+2020-06-25 15:54:23,647 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2020 15:54:23] "[37mGET /v1/status/TA-agartha-1585679761-1593100086-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-01 17:14:52,328 - server - INFO - Start anita server
+2020-07-01 17:14:52,328 - precondition - INFO - PRECONDITION CHECKING
+2020-07-01 17:14:52,329 - precondition - INFO - Resource folders: OK
+2020-07-01 17:14:52,329 - precondition - INFO - PARAMETERS
+2020-07-01 17:14:52,330 - precondition - INFO - Sonarqube: OK
+2020-07-01 17:14:52,330 - precondition - INFO - MySQL: OK
+2020-07-01 17:14:52,330 - precondition - INFO - CONNECTION TEST
+2020-07-01 17:14:52,333 - precondition - INFO - MySQL: OK
+2020-07-01 17:14:52,336 - precondition - INFO - Sonarqube: waiting...
+2020-07-01 17:14:52,337 - precondition - INFO - Sonarqube: OK
+2020-07-01 17:14:52,338 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-01 17:15:38,951 - precondition - INFO - DATABASE
+2020-07-01 17:15:38,987 - precondition - INFO - Schema: OK
+2020-07-01 17:15:39,118 - precondition - INFO - SONARQUBE table: OK
+2020-07-01 17:15:39,129 - precondition - INFO - PRODUCT table: OK
+2020-07-01 17:15:39,138 - precondition - INFO - VENDOR table: OK
+2020-07-01 17:15:39,177 - precondition - INFO - FEEDBACK table: OK
+2020-07-01 17:15:39,180 - precondition - INFO - Sonar-scanner status: OK
+2020-07-01 17:15:39,181 - server - INFO - INFO
+2020-07-01 17:15:39,181 - server - INFO - HOST: 0.0.0.0
+2020-07-01 17:15:39,182 - server - INFO - PORT: 5000
+2020-07-01 17:15:39,224 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-01 18:15:24,291 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-01 18:15:24,293 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-01 18:15:24,293 - market module - INFO - Timestamp - 1585679761
+2020-07-01 18:15:32,284 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-01 18:15:32,298 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:15:32] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-01 18:15:44,183 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:15:44] "[32mGET /v1//status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-01 18:15:44,197 - Status endpoints - INFO - Endpoint Status: START
+2020-07-01 18:15:44,215 - Status endpoints - INFO - Endpoint Status: END
+2020-07-01 18:15:44,217 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:15:44] "[37mGET /v1/status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-01 18:15:59,292 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:15:59] "[32mGET /v1//status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-01 18:15:59,300 - Status endpoints - INFO - Endpoint Status: START
+2020-07-01 18:15:59,351 - Status endpoints - INFO - Endpoint Status: END
+2020-07-01 18:15:59,352 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:15:59] "[37mGET /v1/status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-01 18:21:51,920 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:21:51] "[32mGET /v1//status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-01 18:21:51,929 - Status endpoints - INFO - Endpoint Status: START
+2020-07-01 18:21:52,019 - Status endpoints - INFO - Endpoint Status: END
+2020-07-01 18:21:52,021 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:21:52] "[37mGET /v1/status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-01 18:22:18,172 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:22:18] "[32mGET /v1//status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-01 18:22:18,181 - Status endpoints - INFO - Endpoint Status: START
+2020-07-01 18:22:18,208 - Status endpoints - INFO - Endpoint Status: END
+2020-07-01 18:22:18,210 - werkzeug - INFO - 172.18.0.1 - - [01/Jul/2020 18:22:18] "[37mGET /v1/status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 01:59:38,922 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 01:59:38] "[32mGET /v1//status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 01:59:38,956 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 01:59:39,913 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 01:59:39,915 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 01:59:39] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593627324-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 02:03:28,909 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 02:03:28,913 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 02:03:28,913 - market module - INFO - Timestamp - 1585679761
+2020-07-02 02:03:36,685 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 02:03:36,700 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:03:36] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 02:05:31,015 - server - INFO - Start anita server
+2020-07-02 02:05:31,015 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 02:05:31,017 - precondition - INFO - Resource folders: OK
+2020-07-02 02:05:31,017 - precondition - INFO - PARAMETERS
+2020-07-02 02:05:31,018 - precondition - INFO - Sonarqube: OK
+2020-07-02 02:05:31,019 - precondition - INFO - MySQL: OK
+2020-07-02 02:05:31,019 - precondition - INFO - CONNECTION TEST
+2020-07-02 02:05:31,026 - precondition - INFO - MySQL: OK
+2020-07-02 02:05:31,028 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 02:05:31,029 - precondition - INFO - Sonarqube: OK
+2020-07-02 02:05:31,029 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 02:06:13,762 - precondition - INFO - DATABASE
+2020-07-02 02:06:13,789 - precondition - INFO - Schema: OK
+2020-07-02 02:06:13,924 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 02:06:13,934 - precondition - INFO - PRODUCT table: OK
+2020-07-02 02:06:13,944 - precondition - INFO - VENDOR table: OK
+2020-07-02 02:06:13,967 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 02:06:13,972 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 02:06:13,973 - server - INFO - INFO
+2020-07-02 02:06:13,973 - server - INFO - HOST: 0.0.0.0
+2020-07-02 02:06:13,974 - server - INFO - PORT: 5000
+2020-07-02 02:06:14,019 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 02:06:32,883 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 02:06:32,885 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 02:06:32,885 - market module - INFO - Timestamp - 1585679761
+2020-07-02 02:06:41,324 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 02:06:41,335 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:06:41] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 02:06:53,414 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:06:53] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:06:53,452 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:06:53,468 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:06:53,469 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:06:53] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:09:18,314 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:09:18] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:09:18,322 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:09:18,351 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:09:18,352 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:09:18] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:10:37,121 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:10:37] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:10:37,130 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:10:37,179 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:10:37,181 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:10:37] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:12:23,903 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:12:23] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:12:23,920 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:12:23,967 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:12:23,969 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:12:23] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:13:23,838 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:13:23] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:13:23,848 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:13:23,910 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:13:23,912 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:13:23] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:14:49,606 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:14:49] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:14:49,617 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:14:49,661 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:14:49,662 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:14:49] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:16:57,371 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:16:57] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:16:57,381 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:16:57,412 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:16:57,414 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:16:57] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:18:20,685 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:18:20] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:18:20,695 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:18:20,744 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:18:20,746 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:18:20] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:18:53,113 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:18:53] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:18:53,124 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:18:53,155 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:18:53,157 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:18:53] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:18:57,049 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:18:57] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:18:57,057 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:18:57,076 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:18:57,078 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:18:57] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:19:46,952 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:19:46] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:19:46,961 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:19:46,988 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:19:46,989 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:19:46] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:20:06,730 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:20:06] "[32mGET /v1//status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:20:06,740 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:20:06,759 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:20:06,760 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:20:06] "[37mGET /v1/status/TA-agartha-1585679761-1593655592-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:26:20,552 - server - INFO - Start anita server
+2020-07-02 02:26:20,553 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 02:26:20,554 - precondition - INFO - Resource folders: OK
+2020-07-02 02:26:20,554 - precondition - INFO - PARAMETERS
+2020-07-02 02:26:20,554 - precondition - INFO - Sonarqube: OK
+2020-07-02 02:26:20,555 - precondition - INFO - MySQL: OK
+2020-07-02 02:26:20,555 - precondition - INFO - CONNECTION TEST
+2020-07-02 02:26:20,562 - precondition - INFO - MySQL: OK
+2020-07-02 02:26:20,571 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 02:26:20,573 - precondition - INFO - Sonarqube: OK
+2020-07-02 02:26:20,573 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 02:27:02,524 - precondition - INFO - DATABASE
+2020-07-02 02:27:02,547 - precondition - INFO - Schema: OK
+2020-07-02 02:27:02,634 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 02:27:02,641 - precondition - INFO - PRODUCT table: OK
+2020-07-02 02:27:02,649 - precondition - INFO - VENDOR table: OK
+2020-07-02 02:27:02,657 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 02:27:02,658 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 02:27:02,659 - server - INFO - INFO
+2020-07-02 02:27:02,659 - server - INFO - HOST: 0.0.0.0
+2020-07-02 02:27:02,660 - server - INFO - PORT: 5000
+2020-07-02 02:27:02,705 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 02:27:19,322 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 02:27:19,324 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 02:27:19,324 - market module - INFO - Timestamp - 1585679761
+2020-07-02 02:27:27,268 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 02:27:27,281 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:27:27] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 02:27:43,520 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:27:43] "[32mGET /v1//status/TA-agartha-1585679761-1593656839-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:27:43,529 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:27:43,551 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:27:43,553 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:27:43] "[37mGET /v1/status/TA-agartha-1585679761-1593656839-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 02:54:15,600 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:54:15] "[32mGET /v1//status/TA-agartha-1585679761-1593656839-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 02:54:15,613 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 02:54:16,477 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 02:54:16,478 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 02:54:16] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593656839-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 02:59:09,297 - server - INFO - Start anita server
+2020-07-02 02:59:09,298 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 02:59:09,299 - precondition - INFO - Resource folders: OK
+2020-07-02 02:59:09,299 - precondition - INFO - PARAMETERS
+2020-07-02 02:59:09,300 - precondition - INFO - Sonarqube: OK
+2020-07-02 02:59:09,300 - precondition - INFO - MySQL: OK
+2020-07-02 02:59:09,300 - precondition - INFO - CONNECTION TEST
+2020-07-02 02:59:09,304 - precondition - INFO - MySQL: OK
+2020-07-02 02:59:09,306 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 02:59:09,307 - precondition - INFO - Sonarqube: OK
+2020-07-02 02:59:09,308 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 02:59:52,368 - precondition - INFO - DATABASE
+2020-07-02 02:59:52,404 - precondition - INFO - Schema: OK
+2020-07-02 02:59:52,511 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 02:59:52,539 - precondition - INFO - PRODUCT table: OK
+2020-07-02 02:59:52,547 - precondition - INFO - VENDOR table: OK
+2020-07-02 02:59:52,561 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 02:59:52,562 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 02:59:52,562 - server - INFO - INFO
+2020-07-02 02:59:52,563 - server - INFO - HOST: 0.0.0.0
+2020-07-02 02:59:52,563 - server - INFO - PORT: 5000
+2020-07-02 02:59:52,629 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 03:00:24,737 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 03:00:24,739 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 03:00:24,739 - market module - INFO - Timestamp - 1585679761
+2020-07-02 03:00:32,223 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 03:00:32,233 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:00:32] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 03:00:49,516 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:00:49] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:00:49,530 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:00:49,553 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:00:49,555 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:00:49] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:04:16,268 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:04:16] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:04:16,276 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:04:16,375 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:04:16,376 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:04:16] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:07:32,742 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:07:32] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:07:32,750 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:07:32,821 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:07:32,823 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:07:32] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:08:35,223 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:08:35] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:08:35,233 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:08:35,250 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:08:35,252 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:08:35] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:09:25,715 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:09:25] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:09:25,723 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:09:25,741 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:09:25,742 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:09:25] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:09:29,752 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:09:29] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:09:29,761 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:09:29,777 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:09:29,778 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:09:29] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:10:05,979 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:10:05] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:10:05,999 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:10:06,056 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:10:06,060 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:10:06] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:10:34,919 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:10:34] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:10:34,925 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:10:34,940 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:10:34,941 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:10:34] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:10:56,249 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:10:56] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:10:56,257 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:10:56,273 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:10:56,274 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:10:56] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:11:02,873 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:02] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:11:02,881 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:11:02,897 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:11:02,898 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:02] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:11:04,509 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:04] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:11:04,517 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:11:04,566 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:11:04,567 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:04] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:11:36,342 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:36] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:11:36,350 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:11:36,368 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:11:36,369 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:36] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:11:49,884 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:49] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:11:49,894 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:11:49,910 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:11:49,912 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:11:49] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:12:50,543 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:12:50] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:12:50,550 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:12:50,567 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:12:50,569 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:12:50] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:13:23,598 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:13:23] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:13:23,605 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:13:23,625 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:13:23,627 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:13:23] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:13:33,215 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:13:33] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:13:33,225 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:13:33,249 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:13:33,251 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:13:33] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 03:13:55,144 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:13:55] "[32mGET /v1//status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 03:13:55,154 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 03:13:55,174 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 03:13:55,175 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 03:13:55] "[37mGET /v1/status/TA-agartha-1585679761-1593658824-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:08:06,626 - server - INFO - Start anita server
+2020-07-02 07:08:06,627 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 07:08:06,627 - precondition - INFO - Resource folders: OK
+2020-07-02 07:08:06,628 - precondition - INFO - PARAMETERS
+2020-07-02 07:08:06,629 - precondition - INFO - Sonarqube: OK
+2020-07-02 07:08:06,629 - precondition - INFO - MySQL: OK
+2020-07-02 07:08:06,630 - precondition - INFO - CONNECTION TEST
+2020-07-02 07:08:06,634 - precondition - INFO - MySQL: OK
+2020-07-02 07:08:06,637 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 07:08:06,639 - precondition - INFO - Sonarqube: OK
+2020-07-02 07:08:06,639 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 07:08:51,875 - precondition - INFO - DATABASE
+2020-07-02 07:08:51,901 - precondition - INFO - Schema: OK
+2020-07-02 07:08:52,012 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 07:08:52,022 - precondition - INFO - PRODUCT table: OK
+2020-07-02 07:08:52,031 - precondition - INFO - VENDOR table: OK
+2020-07-02 07:08:52,046 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 07:08:52,047 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 07:08:52,047 - server - INFO - INFO
+2020-07-02 07:08:52,047 - server - INFO - HOST: 0.0.0.0
+2020-07-02 07:08:52,048 - server - INFO - PORT: 5000
+2020-07-02 07:08:52,106 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 07:09:42,828 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 07:09:42,830 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 07:09:42,830 - market module - INFO - Timestamp - 1585679761
+2020-07-02 07:09:50,810 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 07:09:50,826 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:09:50] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 07:10:37,030 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:10:37] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:10:37,049 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:10:37,086 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:10:37,089 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:10:37] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:12:09,595 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:12:09] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:12:09,608 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:12:09,664 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:12:09,665 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:12:09] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:13:15,810 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:13:15] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:13:15,819 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:13:15,875 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:13:15,876 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:13:15] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:15:07,867 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:15:07] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:15:07,875 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:15:07,936 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:15:07,938 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:15:07] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:17:12,990 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:17:12] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:17:12,997 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:17:13,056 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:17:13,057 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:17:13] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:18:15,547 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:18:15] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:18:15,556 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:18:15,580 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:18:15,582 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:18:15] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:18:51,615 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:18:51] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:18:51,642 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:18:51,678 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:18:51,680 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:18:51] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:19:42,551 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:19:42] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:19:42,559 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:19:42,577 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:19:42,579 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:19:42] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:20:14,832 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:20:14] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:20:14,839 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:20:14,857 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:20:14,859 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:20:14] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:21:05,190 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:21:05] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:21:05,197 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:21:05,212 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:21:05,213 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:21:05] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:21:37,126 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:21:37] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:21:37,135 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:21:37,149 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:21:37,150 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:21:37] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:21:57,196 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:21:57] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:21:57,204 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:21:57,218 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:21:57,220 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:21:57] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:22:08,444 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:22:08] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:22:08,456 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:22:08,497 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:22:08,499 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:22:08] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:22:22,777 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:22:22] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:22:22,783 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:22:22,797 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:22:22,799 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:22:22] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:23:07,684 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:23:07] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:23:07,699 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:23:07,762 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:23:07,763 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:23:07] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:23:21,212 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:23:21] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:23:21,223 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:23:21,256 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:23:21,258 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:23:21] "[37mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:23:58,941 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:23:58] "[32mGET /v1//status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:23:58,949 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:23:59,726 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:23:59,728 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:23:59] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593673782-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 07:26:05,608 - server - INFO - Start anita server
+2020-07-02 07:26:05,609 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 07:26:05,610 - precondition - INFO - Resource folders: OK
+2020-07-02 07:26:05,610 - precondition - INFO - PARAMETERS
+2020-07-02 07:26:05,611 - precondition - INFO - Sonarqube: OK
+2020-07-02 07:26:05,611 - precondition - INFO - MySQL: OK
+2020-07-02 07:26:05,612 - precondition - INFO - CONNECTION TEST
+2020-07-02 07:26:05,616 - precondition - INFO - MySQL: OK
+2020-07-02 07:26:05,621 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 07:26:05,624 - precondition - INFO - Sonarqube: OK
+2020-07-02 07:26:05,624 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 07:26:49,140 - precondition - INFO - DATABASE
+2020-07-02 07:26:49,171 - precondition - INFO - Schema: OK
+2020-07-02 07:26:49,273 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 07:26:49,281 - precondition - INFO - PRODUCT table: OK
+2020-07-02 07:26:49,289 - precondition - INFO - VENDOR table: OK
+2020-07-02 07:26:49,301 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 07:26:49,302 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 07:26:49,302 - server - INFO - INFO
+2020-07-02 07:26:49,303 - server - INFO - HOST: 0.0.0.0
+2020-07-02 07:26:49,303 - server - INFO - PORT: 5000
+2020-07-02 07:26:49,372 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 07:27:35,934 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 07:27:35,939 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 07:27:35,939 - market module - INFO - Timestamp - 1585679761
+2020-07-02 07:27:43,964 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 07:27:43,973 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:27:43] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 07:28:05,888 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:28:05] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:28:05,908 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:28:05,942 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:28:05,945 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:28:05] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:29:06,657 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:29:06] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:29:06,666 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:29:06,692 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:29:06,694 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:29:06] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:30:02,217 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:30:02] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:30:02,229 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:30:02,274 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:30:02,280 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:30:02] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:30:04,667 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:30:04] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:30:04,675 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:30:04,697 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:30:04,698 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:30:04] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:31:35,693 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:31:35] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:31:35,701 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:31:35,770 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:31:35,771 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:31:35] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:32:39,721 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:32:39] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:32:39,730 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:32:39,766 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:32:39,767 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:32:39] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:34:26,214 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:34:26] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:34:26,221 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:34:26,289 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:34:26,291 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:34:26] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:38:37,619 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:38:37] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:38:37,629 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:38:37,664 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:38:37,665 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:38:37] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:39:54,223 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:39:54] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:39:54,230 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:39:54,247 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:39:54,249 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:39:54] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:40:36,765 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:40:36] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:40:36,772 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:40:36,791 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:40:36,793 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:40:36] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:40:38,998 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:40:38] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:40:39,006 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:40:39,027 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:40:39,029 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:40:39] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:40:52,903 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:40:52] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:40:52,920 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:40:52,965 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:40:52,976 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:40:52] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:41:37,577 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:41:37] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:41:37,587 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:41:37,616 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:41:37,617 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:41:37] "[37mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 07:41:53,032 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:41:53] "[32mGET /v1//status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 07:41:53,039 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 07:41:53,761 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 07:41:53,763 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:41:53] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593674855-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 07:58:41,453 - server - INFO - Start anita server
+2020-07-02 07:58:41,453 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 07:58:41,454 - precondition - INFO - Resource folders: OK
+2020-07-02 07:58:41,454 - precondition - INFO - PARAMETERS
+2020-07-02 07:58:41,455 - precondition - INFO - Sonarqube: OK
+2020-07-02 07:58:41,455 - precondition - INFO - MySQL: OK
+2020-07-02 07:58:41,455 - precondition - INFO - CONNECTION TEST
+2020-07-02 07:58:41,458 - precondition - INFO - MySQL: OK
+2020-07-02 07:58:41,459 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 07:58:41,460 - precondition - INFO - Sonarqube: OK
+2020-07-02 07:58:41,461 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 07:59:27,280 - precondition - INFO - DATABASE
+2020-07-02 07:59:27,318 - precondition - INFO - Schema: OK
+2020-07-02 07:59:27,435 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 07:59:27,443 - precondition - INFO - PRODUCT table: OK
+2020-07-02 07:59:27,451 - precondition - INFO - VENDOR table: OK
+2020-07-02 07:59:27,462 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 07:59:27,463 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 07:59:27,463 - server - INFO - INFO
+2020-07-02 07:59:27,463 - server - INFO - HOST: 0.0.0.0
+2020-07-02 07:59:27,464 - server - INFO - PORT: 5000
+2020-07-02 07:59:27,523 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 07:59:50,937 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 07:59:50,943 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 07:59:50,944 - market module - INFO - Timestamp - 1585679761
+2020-07-02 07:59:58,798 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 07:59:58,808 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 07:59:58] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 08:00:17,355 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:00:17] "[32mGET /v1//status/TA-agartha-1585679761-1593676790-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:00:17,364 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:00:17,380 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:00:17,381 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:00:17] "[37mGET /v1/status/TA-agartha-1585679761-1593676790-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:03:51,333 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:03:51] "[32mGET /v1//status/TA-agartha-1585679761-1593676790-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:03:51,389 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:03:51,456 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:03:51,458 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:03:51] "[37mGET /v1/status/TA-agartha-1585679761-1593676790-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:05:03,592 - server - INFO - Start anita server
+2020-07-02 08:05:03,592 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 08:05:03,593 - precondition - INFO - Resource folders: OK
+2020-07-02 08:05:03,593 - precondition - INFO - PARAMETERS
+2020-07-02 08:05:03,593 - precondition - INFO - Sonarqube: OK
+2020-07-02 08:05:03,594 - precondition - INFO - MySQL: OK
+2020-07-02 08:05:03,594 - precondition - INFO - CONNECTION TEST
+2020-07-02 08:05:03,598 - precondition - INFO - MySQL: OK
+2020-07-02 08:05:03,601 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 08:05:03,605 - precondition - INFO - Sonarqube: OK
+2020-07-02 08:05:03,605 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 08:05:49,637 - precondition - INFO - DATABASE
+2020-07-02 08:05:49,669 - precondition - INFO - Schema: OK
+2020-07-02 08:05:49,783 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 08:05:49,794 - precondition - INFO - PRODUCT table: OK
+2020-07-02 08:05:49,807 - precondition - INFO - VENDOR table: OK
+2020-07-02 08:05:49,819 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 08:05:49,820 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 08:05:49,821 - server - INFO - INFO
+2020-07-02 08:05:49,821 - server - INFO - HOST: 0.0.0.0
+2020-07-02 08:05:49,822 - server - INFO - PORT: 5000
+2020-07-02 08:05:49,889 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 08:06:30,888 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 08:06:30,894 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 08:06:30,895 - market module - INFO - Timestamp - 1585679761
+2020-07-02 08:06:39,167 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 08:06:39,178 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:06:39] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 08:06:53,856 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:06:53] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:06:53,869 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:06:53,886 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:06:53,888 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:06:53] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:09:09,511 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:09:09] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:09:09,521 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:09:09,562 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:09:09,564 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:09:09] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:09:11,803 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:09:11] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:09:11,811 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:09:11,837 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:09:11,838 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:09:11] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:13:05,523 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:13:05] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:13:05,533 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:13:05,647 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:13:05,649 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:13:05] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:16:14,892 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:16:14] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:16:14,905 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:16:14,939 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:16:14,941 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:16:14] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:17:36,115 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:17:36] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:17:36,130 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:17:36,153 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:17:36,155 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:17:36] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:19:01,119 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:19:01] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:19:01,127 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:19:01,156 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:19:01,158 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:19:01] "[37mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 08:21:49,942 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:21:49] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:21:49,951 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:21:50,632 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:21:50,634 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:21:50] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 08:49:31,109 - server - INFO - Start anita server
+2020-07-02 08:49:31,109 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 08:49:31,110 - precondition - INFO - Resource folders: OK
+2020-07-02 08:49:31,110 - precondition - INFO - PARAMETERS
+2020-07-02 08:49:31,111 - precondition - INFO - Sonarqube: OK
+2020-07-02 08:49:31,111 - precondition - INFO - MySQL: OK
+2020-07-02 08:49:31,111 - precondition - INFO - CONNECTION TEST
+2020-07-02 08:49:31,114 - precondition - INFO - MySQL: OK
+2020-07-02 08:49:31,115 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 08:49:31,116 - precondition - INFO - Sonarqube: OK
+2020-07-02 08:49:31,116 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 08:50:10,948 - precondition - INFO - DATABASE
+2020-07-02 08:50:10,973 - precondition - INFO - Schema: OK
+2020-07-02 08:50:11,063 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 08:50:11,070 - precondition - INFO - PRODUCT table: OK
+2020-07-02 08:50:11,077 - precondition - INFO - VENDOR table: OK
+2020-07-02 08:50:11,086 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 08:50:11,087 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 08:50:11,087 - server - INFO - INFO
+2020-07-02 08:50:11,087 - server - INFO - HOST: 0.0.0.0
+2020-07-02 08:50:11,087 - server - INFO - PORT: 5000
+2020-07-02 08:50:11,125 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 08:51:09,022 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:51:09] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:51:09,071 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:51:09,237 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:51:09,238 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:51:09] "[33mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 404 -
+2020-07-02 08:51:39,716 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:51:39] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:51:39,731 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:51:39,736 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:51:39,738 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:51:39] "[33mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 404 -
+2020-07-02 08:51:53,278 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:51:53] "[32mGET /v1//status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:51:53,284 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:51:53,288 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:51:53,289 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:51:53] "[33mGET /v1/status/TA-agartha-1585679761-1593677190-UPLOAD_DUMP HTTP/1.1[0m" 404 -
+2020-07-02 08:52:32,154 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 08:52:32,157 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 08:52:32,157 - market module - INFO - Timestamp - 1585679761
+2020-07-02 08:52:39,440 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 08:52:39,450 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:52:39] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 08:53:24,526 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:53:24] "[32mGET /v1//status/TA-agartha-1585679761-1593679952-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 08:53:24,534 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 08:53:24,553 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 08:53:24,554 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 08:53:24] "[37mGET /v1/status/TA-agartha-1585679761-1593679952-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 16:29:06,910 - server - INFO - Start anita server
+2020-07-02 16:29:06,911 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 16:29:06,911 - precondition - INFO - Resource folders: OK
+2020-07-02 16:29:06,912 - precondition - INFO - PARAMETERS
+2020-07-02 16:29:06,912 - precondition - INFO - Sonarqube: OK
+2020-07-02 16:29:06,913 - precondition - INFO - MySQL: OK
+2020-07-02 16:29:06,913 - precondition - INFO - CONNECTION TEST
+2020-07-02 16:29:06,916 - precondition - INFO - MySQL: OK
+2020-07-02 16:29:06,918 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 16:29:06,919 - precondition - INFO - Sonarqube: OK
+2020-07-02 16:29:06,919 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 16:29:59,882 - precondition - INFO - DATABASE
+2020-07-02 16:29:59,930 - precondition - INFO - Schema: OK
+2020-07-02 16:30:00,074 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 16:30:00,085 - precondition - INFO - PRODUCT table: OK
+2020-07-02 16:30:00,095 - precondition - INFO - VENDOR table: OK
+2020-07-02 16:30:00,118 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 16:30:00,119 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 16:30:00,119 - server - INFO - INFO
+2020-07-02 16:30:00,119 - server - INFO - HOST: 0.0.0.0
+2020-07-02 16:30:00,120 - server - INFO - PORT: 5000
+2020-07-02 16:30:00,208 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 16:58:51,057 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 16:58:51,058 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 16:58:51,059 - market module - INFO - Timestamp - 1585679761
+2020-07-02 16:58:58,689 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 16:58:58,701 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 16:58:58] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 16:59:09,306 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 16:59:09] "[32mGET /v1//status/TA-agartha-1585679761-1593709131-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 16:59:09,316 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 16:59:09,329 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 16:59:09,330 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 16:59:09] "[37mGET /v1/status/TA-agartha-1585679761-1593709131-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 17:34:44,375 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 17:34:44] "[32mGET /v1//status/TA-agartha-1585679761-1593709131-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 17:34:44,416 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 17:34:45,736 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 17:34:45,738 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 17:34:45] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593709131-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 17:42:16,782 - server - INFO - Start anita server
+2020-07-02 17:42:16,783 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 17:42:16,784 - precondition - INFO - Resource folders: OK
+2020-07-02 17:42:16,784 - precondition - INFO - PARAMETERS
+2020-07-02 17:42:16,784 - precondition - INFO - Sonarqube: OK
+2020-07-02 17:42:16,785 - precondition - INFO - MySQL: OK
+2020-07-02 17:42:16,785 - precondition - INFO - CONNECTION TEST
+2020-07-02 17:42:16,789 - precondition - INFO - MySQL: OK
+2020-07-02 17:42:16,792 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 17:42:16,793 - precondition - INFO - Sonarqube: OK
+2020-07-02 17:42:16,794 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 17:43:04,348 - precondition - INFO - DATABASE
+2020-07-02 17:43:04,384 - precondition - INFO - Schema: OK
+2020-07-02 17:43:04,512 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 17:43:04,523 - precondition - INFO - PRODUCT table: OK
+2020-07-02 17:43:04,534 - precondition - INFO - VENDOR table: OK
+2020-07-02 17:43:04,555 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 17:43:04,556 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 17:43:04,556 - server - INFO - INFO
+2020-07-02 17:43:04,557 - server - INFO - HOST: 0.0.0.0
+2020-07-02 17:43:04,557 - server - INFO - PORT: 5000
+2020-07-02 17:43:04,645 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 17:54:01,143 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 17:54:01,155 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 17:54:01,155 - market module - INFO - Timestamp - 1585679761
+2020-07-02 17:54:09,896 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 17:54:09,911 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 17:54:09] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 17:54:24,832 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 17:54:24] "[32mGET /v1//status/TA-agartha-1585679761-1593712441-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 17:54:24,842 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 17:54:24,852 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 17:54:24,854 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 17:54:24] "[37mGET /v1/status/TA-agartha-1585679761-1593712441-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 18:10:43,084 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:10:43] "[32mGET /v1//status/TA-agartha-1585679761-1593712441-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 18:10:43,094 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 18:10:44,027 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 18:10:44,029 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:10:44] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593712441-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 18:17:04,244 - server - INFO - Start anita server
+2020-07-02 18:17:04,245 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 18:17:04,246 - precondition - INFO - Resource folders: OK
+2020-07-02 18:17:04,246 - precondition - INFO - PARAMETERS
+2020-07-02 18:17:04,247 - precondition - INFO - Sonarqube: OK
+2020-07-02 18:17:04,247 - precondition - INFO - MySQL: OK
+2020-07-02 18:17:04,247 - precondition - INFO - CONNECTION TEST
+2020-07-02 18:17:04,251 - precondition - INFO - MySQL: OK
+2020-07-02 18:17:04,253 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 18:17:04,254 - precondition - INFO - Sonarqube: OK
+2020-07-02 18:17:04,254 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 18:17:50,805 - precondition - INFO - DATABASE
+2020-07-02 18:17:50,826 - precondition - INFO - Schema: OK
+2020-07-02 18:17:50,931 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 18:17:50,941 - precondition - INFO - PRODUCT table: OK
+2020-07-02 18:17:50,951 - precondition - INFO - VENDOR table: OK
+2020-07-02 18:17:50,963 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 18:17:50,964 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 18:17:50,965 - server - INFO - INFO
+2020-07-02 18:17:50,965 - server - INFO - HOST: 0.0.0.0
+2020-07-02 18:17:50,966 - server - INFO - PORT: 5000
+2020-07-02 18:17:51,029 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 18:23:21,629 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 18:23:21,635 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 18:23:21,635 - market module - INFO - Timestamp - 1585679761
+2020-07-02 18:23:30,525 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 18:23:30,546 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:23:30] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 18:23:43,928 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:23:43] "[32mGET /v1//status/TA-agartha-1585679761-1593714201-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 18:23:43,941 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 18:23:43,957 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 18:23:43,958 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:23:43] "[37mGET /v1/status/TA-agartha-1585679761-1593714201-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 18:29:40,841 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:29:40] "[32mGET /v1//status/TA-agartha-1585679761-1593714201-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 18:29:40,851 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 18:29:40,951 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 18:29:40,954 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:29:40] "[37mGET /v1/status/TA-agartha-1585679761-1593714201-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 18:44:47,115 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:44:47] "[32mGET /v1//status/TA-agartha-1585679761-1593714201-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 18:44:47,146 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 18:44:48,195 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 18:44:48,286 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:44:48] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593714201-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 18:50:47,784 - server - INFO - Start anita server
+2020-07-02 18:50:47,785 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 18:50:47,786 - precondition - INFO - Resource folders: OK
+2020-07-02 18:50:47,787 - precondition - INFO - PARAMETERS
+2020-07-02 18:50:47,787 - precondition - INFO - Sonarqube: OK
+2020-07-02 18:50:47,788 - precondition - INFO - MySQL: OK
+2020-07-02 18:50:47,788 - precondition - INFO - CONNECTION TEST
+2020-07-02 18:50:47,791 - precondition - INFO - MySQL: OK
+2020-07-02 18:50:47,794 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 18:50:47,796 - precondition - INFO - Sonarqube: OK
+2020-07-02 18:50:47,796 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 18:51:36,893 - precondition - INFO - DATABASE
+2020-07-02 18:51:36,922 - precondition - INFO - Schema: OK
+2020-07-02 18:51:37,164 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 18:51:37,176 - precondition - INFO - PRODUCT table: OK
+2020-07-02 18:51:37,190 - precondition - INFO - VENDOR table: OK
+2020-07-02 18:51:37,199 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 18:51:37,200 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 18:51:37,200 - server - INFO - INFO
+2020-07-02 18:51:37,201 - server - INFO - HOST: 0.0.0.0
+2020-07-02 18:51:37,201 - server - INFO - PORT: 5000
+2020-07-02 18:51:37,321 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 18:52:13,092 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 18:52:13,097 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 18:52:13,097 - market module - INFO - Timestamp - 1585679761
+2020-07-02 18:52:21,526 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 18:52:21,548 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:52:21] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 18:52:39,357 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:52:39] "[32mGET /v1//status/TA-agartha-1585679761-1593715933-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 18:52:39,368 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 18:52:39,383 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 18:52:39,384 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 18:52:39] "[37mGET /v1/status/TA-agartha-1585679761-1593715933-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 20:54:36,674 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 20:54:36] "[32mGET /v1//status/TA-agartha-1585679761-1593715933-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 20:54:36,702 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 20:54:37,482 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 20:54:37,556 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 20:54:37] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593715933-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-02 20:59:13,455 - server - INFO - Start anita server
+2020-07-02 20:59:13,456 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 20:59:13,457 - precondition - INFO - Resource folders: OK
+2020-07-02 20:59:13,457 - precondition - INFO - PARAMETERS
+2020-07-02 20:59:13,457 - precondition - INFO - Sonarqube: OK
+2020-07-02 20:59:13,458 - precondition - INFO - MySQL: OK
+2020-07-02 20:59:13,458 - precondition - INFO - CONNECTION TEST
+2020-07-02 20:59:13,464 - precondition - INFO - MySQL: OK
+2020-07-02 20:59:13,468 - precondition - INFO - Sonarqube: waiting...
+2020-07-02 20:59:13,470 - precondition - INFO - Sonarqube: OK
+2020-07-02 20:59:13,471 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 20:59:55,077 - precondition - INFO - DATABASE
+2020-07-02 20:59:55,111 - precondition - INFO - Schema: OK
+2020-07-02 20:59:55,214 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 20:59:55,222 - precondition - INFO - PRODUCT table: OK
+2020-07-02 20:59:55,229 - precondition - INFO - VENDOR table: OK
+2020-07-02 20:59:55,241 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 20:59:55,242 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 20:59:55,242 - server - INFO - INFO
+2020-07-02 20:59:55,243 - server - INFO - HOST: 0.0.0.0
+2020-07-02 20:59:55,243 - server - INFO - PORT: 5000
+2020-07-02 20:59:55,310 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 21:01:50,923 - server - INFO - Start anita server
+2020-07-02 21:01:50,924 - precondition - INFO - PRECONDITION CHECKING
+2020-07-02 21:01:50,925 - precondition - INFO - Resource folders: OK
+2020-07-02 21:01:50,925 - precondition - INFO - PARAMETERS
+2020-07-02 21:01:50,925 - precondition - INFO - Sonarqube: OK
+2020-07-02 21:01:50,926 - precondition - INFO - MySQL: OK
+2020-07-02 21:01:50,926 - precondition - INFO - CONNECTION TEST
+2020-07-02 21:01:50,935 - precondition - INFO - MySQL: OK
+2020-07-02 21:01:50,937 - precondition - INFO - Sonarqube: OK
+2020-07-02 21:01:50,938 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-02 21:01:50,953 - precondition - INFO - DATABASE
+2020-07-02 21:01:50,978 - precondition - INFO - Schema: OK
+2020-07-02 21:01:51,022 - precondition - INFO - SONARQUBE table: OK
+2020-07-02 21:01:51,030 - precondition - INFO - PRODUCT table: OK
+2020-07-02 21:01:51,038 - precondition - INFO - VENDOR table: OK
+2020-07-02 21:01:51,046 - precondition - INFO - FEEDBACK table: OK
+2020-07-02 21:01:51,047 - precondition - INFO - Sonar-scanner status: OK
+2020-07-02 21:01:51,047 - server - INFO - INFO
+2020-07-02 21:01:51,047 - server - INFO - HOST: 0.0.0.0
+2020-07-02 21:01:51,048 - server - INFO - PORT: 5000
+2020-07-02 21:01:51,080 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-02 21:02:09,923 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-02 21:02:09,930 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-02 21:02:09,930 - market module - INFO - Timestamp - 1585679761
+2020-07-02 21:02:17,295 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-02 21:02:17,315 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 21:02:17] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-02 21:02:29,410 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 21:02:29] "[32mGET /v1//status/TA-agartha-1585679761-1593723729-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 21:02:29,424 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 21:02:29,438 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 21:02:29,440 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 21:02:29] "[37mGET /v1/status/TA-agartha-1585679761-1593723729-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 21:02:44,795 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 21:02:44] "[32mGET /v1//status/TA-agartha-1585679761-1593723729-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 21:02:44,804 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 21:02:44,823 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 21:02:44,825 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 21:02:44] "[37mGET /v1/status/TA-agartha-1585679761-1593723729-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-02 23:52:04,504 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 23:52:04] "[32mGET /v1//status/TA-agartha-1585679761-1593723729-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-02 23:52:04,617 - Status endpoints - INFO - Endpoint Status: START
+2020-07-02 23:52:05,706 - Status endpoints - INFO - Endpoint Status: END
+2020-07-02 23:52:05,707 - werkzeug - INFO - 172.18.0.1 - - [02/Jul/2020 23:52:05] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593723729-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-03 12:58:15,291 - server - INFO - Start anita server
+2020-07-03 12:58:15,291 - precondition - INFO - PRECONDITION CHECKING
+2020-07-03 12:58:15,292 - precondition - INFO - Resource folders: OK
+2020-07-03 12:58:15,292 - precondition - INFO - PARAMETERS
+2020-07-03 12:58:15,293 - precondition - INFO - Sonarqube: OK
+2020-07-03 12:58:15,293 - precondition - INFO - MySQL: OK
+2020-07-03 12:58:15,293 - precondition - INFO - CONNECTION TEST
+2020-07-03 12:58:15,296 - precondition - INFO - MySQL: OK
+2020-07-03 12:58:15,297 - precondition - INFO - Sonarqube: waiting...
+2020-07-03 12:58:15,298 - precondition - INFO - Sonarqube: OK
+2020-07-03 12:58:15,299 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-03 12:59:02,972 - precondition - INFO - DATABASE
+2020-07-03 12:59:02,990 - precondition - INFO - Schema: generation...
+2020-07-03 12:59:03,023 - precondition - INFO - Schema generated
+2020-07-03 12:59:03,140 - precondition - INFO - SONARQUBE table: generation...
+2020-07-03 12:59:03,198 - precondition - INFO - SONARQUBE table generated
+2020-07-03 12:59:03,204 - precondition - INFO - PRODUCT table: generation...
+2020-07-03 12:59:03,220 - precondition - INFO - PRODUCT table generated
+2020-07-03 12:59:03,226 - precondition - INFO - VENDOR table: generation...
+2020-07-03 12:59:03,248 - precondition - INFO - VENDOR table generated
+2020-07-03 12:59:03,258 - precondition - INFO - FEEDBACK table: generation...
+2020-07-03 12:59:03,274 - precondition - INFO - FEEDBACK table generated
+2020-07-03 12:59:03,276 - precondition - INFO - Sonar-scanner status: OK
+2020-07-03 12:59:03,277 - server - INFO - INFO
+2020-07-03 12:59:03,277 - server - INFO - HOST: 0.0.0.0
+2020-07-03 12:59:03,277 - server - INFO - PORT: 5000
+2020-07-03 12:59:03,317 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-03 14:27:22,196 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-03 14:27:22,200 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-03 14:27:22,200 - market module - INFO - Timestamp - 1585679761
+2020-07-03 14:27:30,147 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-03 14:27:30,165 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:27:30] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-03 14:27:41,618 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:27:41] "[32mGET /v1//status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 14:27:41,661 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:27:41,686 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:27:41,688 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:27:41] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:29:47,465 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:29:47] "[32mGET /v1//status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 14:29:47,477 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:29:47,503 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:29:47,505 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:29:47] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:35:31,286 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:35:31] "[33mGET /status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 404 -
+2020-07-03 14:36:08,122 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:36:08,256 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:36:08,259 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:36:08] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:38:19,800 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:38:19,817 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:38:19,818 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:38:19] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:41:03,789 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:41:03,823 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:41:03,824 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:41:03] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:41:07,028 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:41:07,059 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:41:07,061 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:41:07] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:41:11,234 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:41:11,253 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:41:11,254 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:41:11] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:41:21,509 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:41:21,541 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:41:21,543 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:41:21] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 14:41:36,321 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:41:37,011 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:41:37,013 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:41:37] "[37mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-07-03 14:41:45,429 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 14:41:45,435 - Status endpoints - ERROR - Internal server error
+2020-07-03 14:41:45,435 - Status endpoints - ERROR - [Errno 2] No such file or directory: '../resources/trend_analysis/markets/agartha/raw'
+2020-07-03 14:41:45,448 - Status endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/status.py", line 25, in status
+    status, content = markets.load_dump_status(unique_id)
+  File "/ANITA/python/modules/trend_analysis/markets/markets.py", line 82, in load_dump_status
+    market_local.delete_raw_folder()
+  File "/ANITA/python/modules/trend_analysis/markets/local/MarketLocalProject.py", line 56, in delete_raw_folder
+    shutil.rmtree(self.raw_path)
+  File "/usr/local/lib/python3.7/shutil.py", line 476, in rmtree
+    onerror(os.lstat, path, sys.exc_info())
+  File "/usr/local/lib/python3.7/shutil.py", line 474, in rmtree
+    orig_st = os.lstat(path)
+FileNotFoundError: [Errno 2] No such file or directory: '../resources/trend_analysis/markets/agartha/raw'
+
+2020-07-03 14:41:45,448 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 14:41:45,450 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 14:41:45] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593786442-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-03 16:42:21,444 - server - INFO - Start anita server
+2020-07-03 16:42:21,445 - precondition - INFO - PRECONDITION CHECKING
+2020-07-03 16:42:21,445 - precondition - INFO - Resource folders: OK
+2020-07-03 16:42:21,446 - precondition - INFO - PARAMETERS
+2020-07-03 16:42:21,446 - precondition - INFO - Sonarqube: OK
+2020-07-03 16:42:21,446 - precondition - INFO - MySQL: OK
+2020-07-03 16:42:21,446 - precondition - INFO - CONNECTION TEST
+2020-07-03 16:42:21,455 - precondition - INFO - MySQL: OK
+2020-07-03 16:42:21,463 - precondition - INFO - Sonarqube: waiting...
+2020-07-03 16:42:21,464 - precondition - INFO - Sonarqube: OK
+2020-07-03 16:42:21,464 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-03 16:43:07,113 - precondition - INFO - DATABASE
+2020-07-03 16:43:07,126 - precondition - INFO - Schema: OK
+2020-07-03 16:43:07,316 - precondition - INFO - SONARQUBE table: OK
+2020-07-03 16:43:07,324 - precondition - INFO - PRODUCT table: OK
+2020-07-03 16:43:07,332 - precondition - INFO - VENDOR table: OK
+2020-07-03 16:43:07,340 - precondition - INFO - FEEDBACK table: OK
+2020-07-03 16:43:07,341 - precondition - INFO - Sonar-scanner status: OK
+2020-07-03 16:43:07,341 - server - INFO - INFO
+2020-07-03 16:43:07,341 - server - INFO - HOST: 0.0.0.0
+2020-07-03 16:43:07,341 - server - INFO - PORT: 5000
+2020-07-03 16:43:07,371 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-03 16:44:34,038 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-03 16:44:34,039 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-03 16:44:34,039 - market module - INFO - Timestamp - 1585679761
+2020-07-03 16:44:40,995 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-03 16:44:41,009 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 16:44:41] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-03 16:44:53,181 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 16:44:53] "[32mGET /v1//status/TA-agartha-1585679761-1593794674-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 16:44:53,220 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 16:44:53,236 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 16:44:53,238 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 16:44:53] "[37mGET /v1/status/TA-agartha-1585679761-1593794674-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 16:45:33,435 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 16:45:33] "[32mGET /v1//status/TA-agartha-1585679761-1593794674-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 16:45:33,444 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 16:45:33,464 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 16:45:33,465 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 16:45:33] "[37mGET /v1/status/TA-agartha-1585679761-1593794674-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 19:02:14,641 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:02:14] "[32mGET /v1//status/TA-agartha-1585679761-1593794674-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 19:02:14,648 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 19:02:14,771 - Status endpoints - ERROR - Internal server error
+2020-07-03 19:02:14,771 - Status endpoints - ERROR - 'str' object has no attribute 'raw_path'
+2020-07-03 19:02:14,773 - Status endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/status.py", line 25, in status
+    status, content = markets.load_dump_status(unique_id)
+  File "/ANITA/python/modules/trend_analysis/markets/markets.py", line 83, in load_dump_status
+    if os.path.exists(market.raw_path):
+AttributeError: 'str' object has no attribute 'raw_path'
+
+2020-07-03 19:02:14,774 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 19:02:14,776 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:02:14] "[35m[1mGET /v1/status/TA-agartha-1585679761-1593794674-UPLOAD_DUMP HTTP/1.1[0m" 500 -
+2020-07-03 19:05:04,067 - server - INFO - Start anita server
+2020-07-03 19:05:04,068 - precondition - INFO - PRECONDITION CHECKING
+2020-07-03 19:05:04,068 - precondition - INFO - Resource folders: OK
+2020-07-03 19:05:04,069 - precondition - INFO - PARAMETERS
+2020-07-03 19:05:04,069 - precondition - INFO - Sonarqube: OK
+2020-07-03 19:05:04,070 - precondition - INFO - MySQL: OK
+2020-07-03 19:05:04,070 - precondition - INFO - CONNECTION TEST
+2020-07-03 19:05:04,075 - precondition - INFO - MySQL: OK
+2020-07-03 19:05:04,077 - precondition - INFO - Sonarqube: OK
+2020-07-03 19:05:04,077 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-03 19:05:04,100 - precondition - INFO - DATABASE
+2020-07-03 19:05:04,107 - precondition - INFO - Schema: OK
+2020-07-03 19:05:04,172 - precondition - INFO - SONARQUBE table: OK
+2020-07-03 19:05:04,180 - precondition - INFO - PRODUCT table: OK
+2020-07-03 19:05:04,187 - precondition - INFO - VENDOR table: OK
+2020-07-03 19:05:04,193 - precondition - INFO - FEEDBACK table: OK
+2020-07-03 19:05:04,194 - precondition - INFO - Sonar-scanner status: OK
+2020-07-03 19:05:04,194 - server - INFO - INFO
+2020-07-03 19:05:04,195 - server - INFO - HOST: 0.0.0.0
+2020-07-03 19:05:04,195 - server - INFO - PORT: 5000
+2020-07-03 19:05:04,236 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-03 19:05:26,410 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-03 19:05:26,411 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-03 19:05:26,411 - market module - INFO - Timestamp - 1585679761
+2020-07-03 19:05:35,888 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-03 19:05:35,899 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:05:35] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-03 19:05:46,147 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:05:46] "[32mGET /v1//status/TA-agartha-1585679761-1593803126-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 19:05:46,157 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 19:05:46,173 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 19:05:46,174 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:05:46] "[37mGET /v1/status/TA-agartha-1585679761-1593803126-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-03 19:44:49,073 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:44:49] "[32mGET /v1//status/TA-agartha-1585679761-1593803126-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-03 19:44:49,081 - Status endpoints - INFO - Endpoint Status: START
+2020-07-03 19:44:49,950 - Status endpoints - INFO - Endpoint Status: END
+2020-07-03 19:44:49,952 - werkzeug - INFO - 172.18.0.1 - - [03/Jul/2020 19:44:49] "[37mGET /v1/status/TA-agartha-1585679761-1593803126-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-07-15 12:44:51,045 - server - INFO - Start anita server
+2020-07-15 12:44:51,045 - precondition - INFO - PRECONDITION CHECKING
+2020-07-15 12:44:51,046 - precondition - INFO - Resource folders: OK
+2020-07-15 12:44:51,046 - precondition - INFO - PARAMETERS
+2020-07-15 12:44:51,047 - precondition - INFO - Sonarqube: OK
+2020-07-15 12:44:51,047 - precondition - INFO - MySQL: OK
+2020-07-15 12:44:51,047 - precondition - INFO - CONNECTION TEST
+2020-07-15 12:44:51,077 - precondition - INFO - MySQL: OK
+2020-07-15 12:44:51,079 - precondition - INFO - Sonarqube: waiting...
+2020-07-15 12:44:51,079 - precondition - INFO - Sonarqube: OK
+2020-07-15 12:44:51,080 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-15 12:45:49,228 - precondition - INFO - DATABASE
+2020-07-15 12:45:49,244 - precondition - INFO - Schema: OK
+2020-07-15 12:45:49,336 - precondition - INFO - SONARQUBE table: OK
+2020-07-15 12:45:49,348 - precondition - INFO - PRODUCT table: OK
+2020-07-15 12:45:49,358 - precondition - INFO - VENDOR table: OK
+2020-07-15 12:45:49,369 - precondition - INFO - FEEDBACK table: OK
+2020-07-15 12:45:49,371 - precondition - INFO - Sonar-scanner status: OK
+2020-07-15 12:45:49,371 - server - INFO - INFO
+2020-07-15 12:45:49,372 - server - INFO - HOST: 0.0.0.0
+2020-07-15 12:45:49,373 - server - INFO - PORT: 5000
+2020-07-15 12:45:49,415 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-15 13:07:40,938 - server - INFO - Start anita server
+2020-07-15 13:07:40,938 - precondition - INFO - PRECONDITION CHECKING
+2020-07-15 13:07:40,939 - precondition - INFO - Resource folders: OK
+2020-07-15 13:07:40,939 - precondition - INFO - PARAMETERS
+2020-07-15 13:07:40,940 - precondition - INFO - Sonarqube: OK
+2020-07-15 13:07:40,940 - precondition - INFO - MySQL: OK
+2020-07-15 13:07:40,940 - precondition - INFO - CONNECTION TEST
+2020-07-15 13:07:40,949 - precondition - INFO - MySQL: OK
+2020-07-15 13:07:40,950 - precondition - INFO - Sonarqube: waiting...
+2020-07-15 13:07:40,951 - precondition - INFO - Sonarqube: OK
+2020-07-15 13:07:40,951 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-15 13:08:29,969 - precondition - INFO - DATABASE
+2020-07-15 13:08:29,979 - precondition - INFO - Schema: OK
+2020-07-15 13:08:30,074 - precondition - INFO - SONARQUBE table: OK
+2020-07-15 13:08:30,084 - precondition - INFO - PRODUCT table: OK
+2020-07-15 13:08:30,094 - precondition - INFO - VENDOR table: OK
+2020-07-15 13:08:30,105 - precondition - INFO - FEEDBACK table: OK
+2020-07-15 13:08:30,106 - precondition - INFO - Sonar-scanner status: OK
+2020-07-15 13:08:30,107 - server - INFO - INFO
+2020-07-15 13:08:30,107 - server - INFO - HOST: 0.0.0.0
+2020-07-15 13:08:30,108 - server - INFO - PORT: 5000
+2020-07-15 13:08:30,146 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-20 09:57:29,293 - server - INFO - Start anita server
+2020-07-20 09:57:29,294 - precondition - INFO - PRECONDITION CHECKING
+2020-07-20 09:57:29,295 - precondition - INFO - Resource folders: OK
+2020-07-20 09:57:29,295 - precondition - INFO - PARAMETERS
+2020-07-20 09:57:29,295 - precondition - INFO - Sonarqube: OK
+2020-07-20 09:57:29,296 - precondition - INFO - MySQL: OK
+2020-07-20 09:57:29,296 - precondition - INFO - CONNECTION TEST
+2020-07-20 09:57:29,300 - precondition - INFO - MySQL: OK
+2020-07-20 09:57:29,301 - precondition - INFO - Sonarqube: waiting...
+2020-07-20 09:57:29,302 - precondition - INFO - Sonarqube: OK
+2020-07-20 09:57:29,303 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-20 09:58:09,986 - precondition - INFO - DATABASE
+2020-07-20 09:58:09,999 - precondition - INFO - Schema: OK
+2020-07-20 09:58:10,092 - precondition - INFO - SONARQUBE table: OK
+2020-07-20 09:58:10,101 - precondition - INFO - PRODUCT table: OK
+2020-07-20 09:58:10,118 - precondition - INFO - VENDOR table: OK
+2020-07-20 09:58:10,130 - precondition - INFO - FEEDBACK table: OK
+2020-07-20 09:58:10,131 - precondition - INFO - Sonar-scanner status: OK
+2020-07-20 09:58:10,131 - server - INFO - INFO
+2020-07-20 09:58:10,132 - server - INFO - HOST: 0.0.0.0
+2020-07-20 09:58:10,133 - server - INFO - PORT: 5000
+2020-07-20 09:58:10,172 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)

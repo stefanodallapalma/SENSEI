@@ -60,7 +60,7 @@ class AgarthaProductScraper(ProductScraper):
 
 class AgarthaVendorScraper(VendorScraper):
     def vendor_name(self):
-        return self.soup.find('div', {'style' : 'margin: 0px 20px;'}).find('strong').text
+        return self.soup.find_all('a', {'class' : 'btn btn-link btn-xs'})[1].text
 
     def score(self):
         return (float(self.soup.find('div', {'style' : 'margin: 0px 20px;'}).find('span').text.split()[1]),100)
@@ -119,10 +119,3 @@ class AgarthaVendorScraper(VendorScraper):
             feedback_list.append(feedback_json)
 
         return feedback_list
-
-
-# -- MAIN PAGE DATA
-
-
-
-

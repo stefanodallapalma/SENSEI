@@ -26,6 +26,22 @@ class TableController(ABC):
         self._table_name = value
 
     @property
+    def db_name(self):
+        return self._database_name
+
+    @db_name.setter
+    def db_name(self, value):
+        self._database_name = value
+
+    @property
+    def mysql_db(self):
+        return self._mysql_db
+
+    @mysql_db.setter
+    def mysql_db(self, value):
+        self._mysql_db = value
+
+    @property
     def attributes(self):
         """Name of controller attributes"""
         return [column.name for column in self._columns]
@@ -75,7 +91,7 @@ class TableController(ABC):
                 query += " NOT NULL"
             query += ", "
 
-        query += pk_query + ")"
+        query += pk_query + ") ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci"
 
         self._mysql_db.insert(query)
 
@@ -104,6 +120,9 @@ class TableController(ABC):
 
     # Operations with beans
     def insert_beans(self, beans):
+        pk = [column.name for column in self.columns if column.pk]
+        print(pk)
+
         if type(beans) is not list:
             beans = [beans]
 
@@ -191,8 +210,8 @@ class TableController(ABC):
                 value_query = "VALUES (" + ", ".join(["%s"] * len(quote_bean_attributes)) + ")"
                 query = start_query + attribute_query + " " + value_query
 
-                value = [getattr(bean, attribute) for attribute in bean_attributes if
-                         getattr(bean, attribute) is not None]
+                # REMOVED NONE CONDITION
+                value = [getattr(bean, attribute) for attribute in bean_attributes]
             elif query_type.upper() == "DELETE":
                 where_list = [(quote_bean_attribute + " = %s") for quote_bean_attribute in quote_bean_attributes
                               if quote_bean_attribute is not None]
@@ -200,8 +219,8 @@ class TableController(ABC):
                 where_query = " AND ".join(where_list)
                 query = start_query + where_query
 
-                value = [getattr(bean, attribute) for attribute in bean_attributes if
-                         getattr(bean, attribute) is not None]
+                # REMOVED NONE CONDITION
+                value = [getattr(bean, attribute) for attribute in bean_attributes]
             elif query_type.upper() == "UPDATE":
                 pk_bean_attributes = [column.name for column in self.columns if column.pk is True and column.name in
                                       bean_attributes]

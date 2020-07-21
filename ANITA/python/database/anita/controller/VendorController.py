@@ -52,3 +52,68 @@ class VendorController(TableController):
             new_beans.append(bean)
 
         super(VendorController, self).insert_beans(new_beans)
+
+    def retrieve_markets(self):
+        query = "SELECT {0}.market from {1}.{0} GROUP BY {0}.market".format(TABLE_NAME, self.db_name)
+        header, results = self.mysql_db.search(query)
+
+        markets = []
+        for result in results:
+            markets.append(result[0].lower())
+
+        return markets
+
+    def retrieve_vendors(self):
+        query = "SELECT DISTINCT {0}.timestamp, {0}.market, {0}.name FROM {1}.{0} ORDER BY {0}.timestamp DESC"\
+            .format(TABLE_NAME, self.db_name)
+
+        header, results = self.mysql_db.search(query)
+
+        markets = {}
+
+        for result in results:
+            timestamp = result[0]
+            market = result[1]
+            name = result[2]
+
+            if market not in markets:
+                markets[market] = {}
+
+            if timestamp not in markets[market]:
+                markets[market][timestamp] = []
+
+            markets[market][timestamp] = markets[market][timestamp].append(name)
+
+        return markets
+
+    def retrieve_vendor(self, vendor):
+        query = "SELECT * FROM {1}.{0} WHERE {0}.name = %s ORDER BY {0}.timestamp DESC" \
+            .format(TABLE_NAME, self.db_name)
+
+        values = (vendor,)
+
+        header, results = self.mysql_db.search(query, values)
+
+        markets = {}
+
+        for result in results:
+            vendor = {}
+            for i in range(len(header)):
+                attribute = header[i]
+                value = result[i]
+                vendor[attribute] = value
+
+            timestamp = vendor["timestamp"]
+            market = vendor["market"]
+            del vendor["timestamp"]
+            del vendor["market"]
+
+            if market not in markets:
+                markets[market] = {}
+
+            if timestamp not in markets[market]:
+                markets[market][timestamp] = []
+
+            markets[market][timestamp] = markets[market][timestamp].append(vendor)
+
+        return markets

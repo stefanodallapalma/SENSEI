@@ -79,14 +79,18 @@ def load_dump_status(unique_id):
         # Delete raw folder
         market = unique_id.split("-")[1]
         market_local = MarketLocalProject(market)
-        market_local.delete_raw_folder()
+
+        if os.path.exists(market_local.raw_path):
+            market_local.delete_raw_folder()
 
         return 200, task.result
     elif task.state == "FAILURE" or (task.state == "SUCCESS" and "error" in task.result):
         # Delete raw folder
         market = unique_id.split("-")[1]
         market_local = MarketLocalProject(market)
-        market_local.delete_raw_folder()
+
+        if os.path.exists(market_local.raw_path):
+            market_local.delete_raw_folder()
 
         return 500, task.result
     else:
