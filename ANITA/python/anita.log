@@ -6286,3 +6286,1069 @@ AttributeError: 'str' object has no attribute 'raw_path'
 2020-07-20 09:58:10,132 - server - INFO - HOST: 0.0.0.0
 2020-07-20 09:58:10,133 - server - INFO - PORT: 5000
 2020-07-20 09:58:10,172 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 11:18:32,193 - server - INFO - Start anita server
+2020-07-21 11:18:32,193 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 11:18:32,194 - precondition - INFO - Resource folders: OK
+2020-07-21 11:18:32,195 - precondition - INFO - PARAMETERS
+2020-07-21 11:18:32,195 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:18:32,196 - precondition - INFO - MySQL: OK
+2020-07-21 11:18:32,196 - precondition - INFO - CONNECTION TEST
+2020-07-21 11:18:32,202 - precondition - INFO - MySQL: OK
+2020-07-21 11:18:32,203 - precondition - INFO - Sonarqube: waiting...
+2020-07-21 11:18:32,204 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:18:32,205 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 11:19:21,319 - precondition - INFO - DATABASE
+2020-07-21 11:19:21,331 - precondition - INFO - Schema: OK
+2020-07-21 11:19:21,413 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 11:19:21,422 - precondition - INFO - PRODUCT table: OK
+2020-07-21 11:19:21,430 - precondition - INFO - VENDOR table: OK
+2020-07-21 11:19:21,438 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 11:19:21,439 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 11:19:21,439 - server - INFO - INFO
+2020-07-21 11:19:21,440 - server - INFO - HOST: 0.0.0.0
+2020-07-21 11:19:21,440 - server - INFO - PORT: 5000
+2020-07-21 11:19:21,483 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 11:24:53,011 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:24:53] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 11:24:53,027 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:24:53] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 11:27:20,309 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:27:20] "[33mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 404 -
+2020-07-21 11:40:46,296 - server - INFO - Start anita server
+2020-07-21 11:40:46,296 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 11:40:46,297 - precondition - INFO - Resource folders: OK
+2020-07-21 11:40:46,298 - precondition - INFO - PARAMETERS
+2020-07-21 11:40:46,298 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:40:46,299 - precondition - INFO - MySQL: OK
+2020-07-21 11:40:46,299 - precondition - INFO - CONNECTION TEST
+2020-07-21 11:40:46,304 - precondition - INFO - MySQL: OK
+2020-07-21 11:40:46,311 - precondition - INFO - Sonarqube: waiting...
+2020-07-21 11:40:46,312 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:40:46,312 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 11:41:25,217 - precondition - INFO - DATABASE
+2020-07-21 11:41:25,241 - precondition - INFO - Schema: OK
+2020-07-21 11:41:25,362 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 11:41:25,370 - precondition - INFO - PRODUCT table: OK
+2020-07-21 11:41:25,378 - precondition - INFO - VENDOR table: OK
+2020-07-21 11:41:25,387 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 11:41:25,388 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 11:41:25,389 - server - INFO - INFO
+2020-07-21 11:41:25,389 - server - INFO - HOST: 0.0.0.0
+2020-07-21 11:41:25,390 - server - INFO - PORT: 5000
+2020-07-21 11:41:25,427 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 11:42:20,812 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:42:20] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 11:42:20,855 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:42:20] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 11:42:24,893 - Trend Analysis Endpoints - ERROR - Internal server error
+2020-07-21 11:42:24,894 - Trend Analysis Endpoints - ERROR - 'NoneType' object has no attribute 'append'
+2020-07-21 11:42:24,896 - Trend Analysis Endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/trend_analysis/trend_analysis.py", line 31, in get_vendors
+    vendors = vendor_controller.retrieve_vendors()
+  File "/ANITA/python/database/anita/controller/VendorController.py", line 85, in retrieve_vendors
+    markets[market][timestamp] = markets[market][timestamp].append(name)
+AttributeError: 'NoneType' object has no attribute 'append'
+
+2020-07-21 11:42:24,898 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:42:24] "[35m[1mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 500 -
+2020-07-21 11:44:52,198 - server - INFO - Start anita server
+2020-07-21 11:44:52,198 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 11:44:52,199 - precondition - INFO - Resource folders: OK
+2020-07-21 11:44:52,199 - precondition - INFO - PARAMETERS
+2020-07-21 11:44:52,199 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:44:52,200 - precondition - INFO - MySQL: OK
+2020-07-21 11:44:52,200 - precondition - INFO - CONNECTION TEST
+2020-07-21 11:44:52,219 - precondition - INFO - MySQL: OK
+2020-07-21 11:44:52,220 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:44:52,221 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 11:44:52,252 - precondition - INFO - DATABASE
+2020-07-21 11:44:52,269 - precondition - INFO - Schema: OK
+2020-07-21 11:44:52,354 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 11:44:52,364 - precondition - INFO - PRODUCT table: OK
+2020-07-21 11:44:52,373 - precondition - INFO - VENDOR table: OK
+2020-07-21 11:44:52,383 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 11:44:52,384 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 11:44:52,385 - server - INFO - INFO
+2020-07-21 11:44:52,385 - server - INFO - HOST: 0.0.0.0
+2020-07-21 11:44:52,385 - server - INFO - PORT: 5000
+2020-07-21 11:44:52,405 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 11:44:58,254 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:44:58] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 11:44:58,268 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:44:58] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 11:45:02,007 - Trend Analysis Endpoints - ERROR - Internal server error
+2020-07-21 11:45:02,008 - Trend Analysis Endpoints - ERROR - 'NoneType' object has no attribute 'append'
+2020-07-21 11:45:02,009 - Trend Analysis Endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/trend_analysis/trend_analysis.py", line 31, in get_vendors
+    vendors = vendor_controller.retrieve_vendors()
+  File "/ANITA/python/database/anita/controller/VendorController.py", line 87, in retrieve_vendors
+    markets[market][timestamp] = markets[market][timestamp].append(name)
+AttributeError: 'NoneType' object has no attribute 'append'
+
+2020-07-21 11:45:02,011 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 11:45:02] "[35m[1mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 500 -
+2020-07-21 11:48:14,062 - server - INFO - Start anita server
+2020-07-21 11:48:14,063 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 11:48:14,063 - precondition - INFO - Resource folders: OK
+2020-07-21 11:48:14,063 - precondition - INFO - PARAMETERS
+2020-07-21 11:48:14,064 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:48:14,064 - precondition - INFO - MySQL: OK
+2020-07-21 11:48:14,064 - precondition - INFO - CONNECTION TEST
+2020-07-21 11:48:14,066 - precondition - INFO - MySQL: OK
+2020-07-21 11:48:14,067 - precondition - INFO - Sonarqube: OK
+2020-07-21 11:48:14,068 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 11:48:14,082 - precondition - INFO - DATABASE
+2020-07-21 11:48:14,090 - precondition - INFO - Schema: OK
+2020-07-21 11:48:14,133 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 11:48:14,140 - precondition - INFO - PRODUCT table: OK
+2020-07-21 11:48:14,149 - precondition - INFO - VENDOR table: OK
+2020-07-21 11:48:14,156 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 11:48:14,156 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 11:48:14,157 - server - INFO - INFO
+2020-07-21 11:48:14,157 - server - INFO - HOST: 0.0.0.0
+2020-07-21 11:48:14,157 - server - INFO - PORT: 5000
+2020-07-21 11:48:14,176 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:08:24,887 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:08:24] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 12:08:24,905 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:08:24] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 12:08:32,595 - Trend Analysis Endpoints - ERROR - Internal server error
+2020-07-21 12:08:32,595 - Trend Analysis Endpoints - ERROR - 'NoneType' object has no attribute 'append'
+2020-07-21 12:08:32,597 - Trend Analysis Endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/trend_analysis/trend_analysis.py", line 31, in get_vendors
+    vendors = vendor_controller.retrieve_vendors()
+  File "/ANITA/python/database/anita/controller/VendorController.py", line 93, in retrieve_vendors
+    markets[market][timestamp] = markets[market][timestamp].append(name)
+AttributeError: 'NoneType' object has no attribute 'append'
+
+2020-07-21 12:08:32,599 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:08:32] "[35m[1mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 500 -
+2020-07-21 12:12:31,869 - server - INFO - Start anita server
+2020-07-21 12:12:31,870 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 12:12:31,870 - precondition - INFO - Resource folders: OK
+2020-07-21 12:12:31,870 - precondition - INFO - PARAMETERS
+2020-07-21 12:12:31,870 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:12:31,871 - precondition - INFO - MySQL: OK
+2020-07-21 12:12:31,871 - precondition - INFO - CONNECTION TEST
+2020-07-21 12:12:31,874 - precondition - INFO - MySQL: OK
+2020-07-21 12:12:31,875 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:12:31,875 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 12:12:31,881 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:12:31,887 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-21 12:12:31,889 - precondition - INFO - DATABASE
+2020-07-21 12:12:31,894 - precondition - INFO - Schema: OK
+2020-07-21 12:12:31,898 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:12:31,922 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-21 12:12:31,937 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 12:12:31,949 - precondition - INFO - PRODUCT table: OK
+2020-07-21 12:12:31,956 - precondition - INFO - VENDOR table: OK
+2020-07-21 12:12:31,963 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 12:12:31,964 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 12:12:31,965 - server - INFO - INFO
+2020-07-21 12:12:31,965 - server - INFO - HOST: 0.0.0.0
+2020-07-21 12:12:31,966 - server - INFO - PORT: 5000
+2020-07-21 12:12:31,966 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-21 12:12:31,991 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:12:40,663 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:12:40] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 12:12:40,673 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:12:40,673 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-21 12:12:40,673 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-21 12:12:40,674 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-21 12:12:40,674 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-21 12:12:40,675 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:12:40,675 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:12:40,676 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:12:40] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 12:12:42,626 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:12:42,627 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:12:42,628 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:12:42,629 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:12:42,641 - Vendor Controller - DEBUG - Vendor Controller - Retrieve vendors
+2020-07-21 12:12:42,652 - Vendor Controller - DEBUG - {'agartha': {'1585679761': []}}
+2020-07-21 12:12:42,653 - Vendor Controller - DEBUG - {'agartha': {'1585679761': None}}
+2020-07-21 12:12:42,653 - Trend Analysis Endpoints - ERROR - Internal server error
+2020-07-21 12:12:42,654 - Trend Analysis Endpoints - ERROR - 'NoneType' object has no attribute 'append'
+2020-07-21 12:12:42,655 - Trend Analysis Endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/trend_analysis/trend_analysis.py", line 31, in get_vendors
+    vendors = vendor_controller.retrieve_vendors()
+  File "/ANITA/python/database/anita/controller/VendorController.py", line 93, in retrieve_vendors
+    markets[market][timestamp] = markets[market][timestamp].append(name)
+AttributeError: 'NoneType' object has no attribute 'append'
+
+2020-07-21 12:12:42,655 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): END
+2020-07-21 12:12:42,656 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:12:42,656 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:12:42,658 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:12:42] "[35m[1mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 500 -
+2020-07-21 12:15:41,985 - server - INFO - Start anita server
+2020-07-21 12:15:41,986 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 12:15:41,987 - precondition - INFO - Resource folders: OK
+2020-07-21 12:15:41,987 - precondition - INFO - PARAMETERS
+2020-07-21 12:15:41,987 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:15:41,987 - precondition - INFO - MySQL: OK
+2020-07-21 12:15:41,988 - precondition - INFO - CONNECTION TEST
+2020-07-21 12:15:41,991 - precondition - INFO - MySQL: OK
+2020-07-21 12:15:41,993 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:15:41,993 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 12:15:42,000 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:15:42,007 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-21 12:15:42,009 - precondition - INFO - DATABASE
+2020-07-21 12:15:42,016 - precondition - INFO - Schema: OK
+2020-07-21 12:15:42,022 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:15:42,043 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-21 12:15:42,056 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 12:15:42,064 - precondition - INFO - PRODUCT table: OK
+2020-07-21 12:15:42,072 - precondition - INFO - VENDOR table: OK
+2020-07-21 12:15:42,080 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 12:15:42,081 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 12:15:42,082 - server - INFO - INFO
+2020-07-21 12:15:42,082 - server - INFO - HOST: 0.0.0.0
+2020-07-21 12:15:42,082 - server - INFO - PORT: 5000
+2020-07-21 12:15:42,083 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-21 12:15:42,103 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:15:54,206 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:15:54] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 12:15:54,215 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:15:54,215 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-21 12:15:54,216 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-21 12:15:54,217 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-21 12:15:54,217 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-21 12:15:54,218 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:15:54,218 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:15:54,219 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:15:54] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 12:15:56,464 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:15:56,465 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:15:56,467 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:15:56,469 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:15:56,476 - Vendor Controller - DEBUG - Vendor Controller - Retrieve vendors
+2020-07-21 12:15:56,487 - Vendor Controller - DEBUG - {'agartha': {'1585679761': []}}
+2020-07-21 12:15:56,488 - Vendor Controller - DEBUG - {'agartha': {'1585679761': None}}
+2020-07-21 12:15:56,488 - Vendor Controller - DEBUG - {'agartha': {'1585679761': None}}
+2020-07-21 12:15:56,488 - Trend Analysis Endpoints - ERROR - Internal server error
+2020-07-21 12:15:56,488 - Trend Analysis Endpoints - ERROR - 'NoneType' object has no attribute 'append'
+2020-07-21 12:15:56,490 - Trend Analysis Endpoints - ERROR - Traceback (most recent call last):
+  File "/ANITA/python/api/endpoints/trend_analysis/trend_analysis.py", line 31, in get_vendors
+    vendors = vendor_controller.retrieve_vendors()
+  File "/ANITA/python/database/anita/controller/VendorController.py", line 93, in retrieve_vendors
+    markets[market][timestamp] = markets[market][timestamp].append(name)
+AttributeError: 'NoneType' object has no attribute 'append'
+
+2020-07-21 12:15:56,491 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): END
+2020-07-21 12:15:56,492 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:15:56,492 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:15:56,494 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:15:56] "[35m[1mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 500 -
+2020-07-21 12:17:31,855 - server - INFO - Start anita server
+2020-07-21 12:17:31,856 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 12:17:31,856 - precondition - INFO - Resource folders: OK
+2020-07-21 12:17:31,857 - precondition - INFO - PARAMETERS
+2020-07-21 12:17:31,857 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:17:31,857 - precondition - INFO - MySQL: OK
+2020-07-21 12:17:31,858 - precondition - INFO - CONNECTION TEST
+2020-07-21 12:17:31,860 - precondition - INFO - MySQL: OK
+2020-07-21 12:17:31,861 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:17:31,862 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 12:17:31,868 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:17:31,876 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-21 12:17:31,879 - precondition - INFO - DATABASE
+2020-07-21 12:17:31,887 - precondition - INFO - Schema: OK
+2020-07-21 12:17:31,892 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:17:31,913 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-21 12:17:31,926 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 12:17:31,936 - precondition - INFO - PRODUCT table: OK
+2020-07-21 12:17:31,954 - precondition - INFO - VENDOR table: OK
+2020-07-21 12:17:31,966 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 12:17:31,967 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 12:17:31,967 - server - INFO - INFO
+2020-07-21 12:17:31,967 - server - INFO - HOST: 0.0.0.0
+2020-07-21 12:17:31,968 - server - INFO - PORT: 5000
+2020-07-21 12:17:31,968 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-21 12:17:31,991 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:17:39,370 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:17:39,370 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:17:39,371 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:17:39,373 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:17:39,383 - Vendor Controller - DEBUG - Vendor Controller - Retrieve vendors
+2020-07-21 12:17:39,394 - Vendor Controller - DEBUG - {'agartha': {'1585679761': []}}
+2020-07-21 12:17:39,395 - Vendor Controller - DEBUG - NAME: williamsharry464
+2020-07-21 12:17:39,395 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464']}}
+2020-07-21 12:17:39,395 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464']}}
+2020-07-21 12:17:39,395 - Vendor Controller - DEBUG - NAME: Walgreens
+2020-07-21 12:17:39,396 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens']}}
+2020-07-21 12:17:39,396 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens']}}
+2020-07-21 12:17:39,396 - Vendor Controller - DEBUG - NAME: USA_PUSHER
+2020-07-21 12:17:39,396 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER']}}
+2020-07-21 12:17:39,397 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER']}}
+2020-07-21 12:17:39,397 - Vendor Controller - DEBUG - NAME: USA_PLUG
+2020-07-21 12:17:39,397 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG']}}
+2020-07-21 12:17:39,398 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG']}}
+2020-07-21 12:17:39,398 - Vendor Controller - DEBUG - NAME: Threebeard12
+2020-07-21 12:17:39,398 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12']}}
+2020-07-21 12:17:39,399 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12']}}
+2020-07-21 12:17:39,399 - Vendor Controller - DEBUG - NAME: swizzbeats
+2020-07-21 12:17:39,400 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats']}}
+2020-07-21 12:17:39,400 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats']}}
+2020-07-21 12:17:39,400 - Vendor Controller - DEBUG - NAME: soniabrito44
+2020-07-21 12:17:39,401 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44']}}
+2020-07-21 12:17:39,401 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44']}}
+2020-07-21 12:17:39,401 - Vendor Controller - DEBUG - NAME: sixxzeros
+2020-07-21 12:17:39,402 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros']}}
+2020-07-21 12:17:39,402 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros']}}
+2020-07-21 12:17:39,402 - Vendor Controller - DEBUG - NAME: sicario999
+2020-07-21 12:17:39,402 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999']}}
+2020-07-21 12:17:39,403 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999']}}
+2020-07-21 12:17:39,403 - Vendor Controller - DEBUG - NAME: Rodrigomendez
+2020-07-21 12:17:39,403 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez']}}
+2020-07-21 12:17:39,403 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez']}}
+2020-07-21 12:17:39,404 - Vendor Controller - DEBUG - NAME: private
+2020-07-21 12:17:39,404 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private']}}
+2020-07-21 12:17:39,404 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private']}}
+2020-07-21 12:17:39,404 - Vendor Controller - DEBUG - NAME: PrestigeVendor
+2020-07-21 12:17:39,405 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor']}}
+2020-07-21 12:17:39,405 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor']}}
+2020-07-21 12:17:39,405 - Vendor Controller - DEBUG - NAME: PHARMAHOUSE
+2020-07-21 12:17:39,406 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE']}}
+2020-07-21 12:17:39,406 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE']}}
+2020-07-21 12:17:39,406 - Vendor Controller - DEBUG - NAME: pestein
+2020-07-21 12:17:39,407 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein']}}
+2020-07-21 12:17:39,407 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein']}}
+2020-07-21 12:17:39,407 - Vendor Controller - DEBUG - NAME: Perfectsales
+2020-07-21 12:17:39,408 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales']}}
+2020-07-21 12:17:39,408 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales']}}
+2020-07-21 12:17:39,408 - Vendor Controller - DEBUG - NAME: Ozpalace
+2020-07-21 12:17:39,408 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace']}}
+2020-07-21 12:17:39,409 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace']}}
+2020-07-21 12:17:39,409 - Vendor Controller - DEBUG - NAME: NoLimitTrade
+2020-07-21 12:17:39,410 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade']}}
+2020-07-21 12:17:39,410 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade']}}
+2020-07-21 12:17:39,410 - Vendor Controller - DEBUG - NAME: NEO500
+2020-07-21 12:17:39,410 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500']}}
+2020-07-21 12:17:39,411 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500']}}
+2020-07-21 12:17:39,411 - Vendor Controller - DEBUG - NAME: Movingtrain
+2020-07-21 12:17:39,411 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain']}}
+2020-07-21 12:17:39,412 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain']}}
+2020-07-21 12:17:39,412 - Vendor Controller - DEBUG - NAME: MISDEBSTORE
+2020-07-21 12:17:39,412 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE']}}
+2020-07-21 12:17:39,412 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE']}}
+2020-07-21 12:17:39,413 - Vendor Controller - DEBUG - NAME: meetthesource
+2020-07-21 12:17:39,413 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource']}}
+2020-07-21 12:17:39,413 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource']}}
+2020-07-21 12:17:39,414 - Vendor Controller - DEBUG - NAME: masterpills420
+2020-07-21 12:17:39,414 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420']}}
+2020-07-21 12:17:39,414 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420']}}
+2020-07-21 12:17:39,414 - Vendor Controller - DEBUG - NAME: master
+2020-07-21 12:17:39,415 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master']}}
+2020-07-21 12:17:39,415 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master']}}
+2020-07-21 12:17:39,416 - Vendor Controller - DEBUG - NAME: MailForceUK
+2020-07-21 12:17:39,416 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK']}}
+2020-07-21 12:17:39,417 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK']}}
+2020-07-21 12:17:39,417 - Vendor Controller - DEBUG - NAME: lukydude
+2020-07-21 12:17:39,418 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude']}}
+2020-07-21 12:17:39,418 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude']}}
+2020-07-21 12:17:39,418 - Vendor Controller - DEBUG - NAME: Legalshop
+2020-07-21 12:17:39,419 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop']}}
+2020-07-21 12:17:39,419 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop']}}
+2020-07-21 12:17:39,419 - Vendor Controller - DEBUG - NAME: Landboy
+2020-07-21 12:17:39,420 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy']}}
+2020-07-21 12:17:39,420 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy']}}
+2020-07-21 12:17:39,420 - Vendor Controller - DEBUG - NAME: kerrystore
+2020-07-21 12:17:39,421 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore']}}
+2020-07-21 12:17:39,421 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore']}}
+2020-07-21 12:17:39,422 - Vendor Controller - DEBUG - NAME: jetlove
+2020-07-21 12:17:39,422 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove']}}
+2020-07-21 12:17:39,422 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove']}}
+2020-07-21 12:17:39,423 - Vendor Controller - DEBUG - NAME: inlandpro
+2020-07-21 12:17:39,423 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro']}}
+2020-07-21 12:17:39,423 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro']}}
+2020-07-21 12:17:39,424 - Vendor Controller - DEBUG - NAME: Hathacker
+2020-07-21 12:17:39,424 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker']}}
+2020-07-21 12:17:39,424 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker']}}
+2020-07-21 12:17:39,425 - Vendor Controller - DEBUG - NAME: HarryBrainman
+2020-07-21 12:17:39,425 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman']}}
+2020-07-21 12:17:39,425 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman']}}
+2020-07-21 12:17:39,426 - Vendor Controller - DEBUG - NAME: gem123
+2020-07-21 12:17:39,426 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123']}}
+2020-07-21 12:17:39,426 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123']}}
+2020-07-21 12:17:39,427 - Vendor Controller - DEBUG - NAME: expressshop
+2020-07-21 12:17:39,427 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop']}}
+2020-07-21 12:17:39,428 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop']}}
+2020-07-21 12:17:39,432 - Vendor Controller - DEBUG - NAME: easyways
+2020-07-21 12:17:39,433 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways']}}
+2020-07-21 12:17:39,433 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways']}}
+2020-07-21 12:17:39,434 - Vendor Controller - DEBUG - NAME: Dukeshop
+2020-07-21 12:17:39,434 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop']}}
+2020-07-21 12:17:39,434 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop']}}
+2020-07-21 12:17:39,435 - Vendor Controller - DEBUG - NAME: druglords
+2020-07-21 12:17:39,435 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords']}}
+2020-07-21 12:17:39,436 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords']}}
+2020-07-21 12:17:39,436 - Vendor Controller - DEBUG - NAME: drugload90
+2020-07-21 12:17:39,437 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90']}}
+2020-07-21 12:17:39,437 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90']}}
+2020-07-21 12:17:39,437 - Vendor Controller - DEBUG - NAME: DREAmMarkeTvendorTEAM
+2020-07-21 12:17:39,438 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM']}}
+2020-07-21 12:17:39,438 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM']}}
+2020-07-21 12:17:39,438 - Vendor Controller - DEBUG - NAME: dreamboss
+2020-07-21 12:17:39,439 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss']}}
+2020-07-21 12:17:39,439 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss']}}
+2020-07-21 12:17:39,439 - Vendor Controller - DEBUG - NAME: darkkings
+2020-07-21 12:17:39,440 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings']}}
+2020-07-21 12:17:39,440 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings']}}
+2020-07-21 12:17:39,440 - Vendor Controller - DEBUG - NAME: CHEMONICS
+2020-07-21 12:17:39,441 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS']}}
+2020-07-21 12:17:39,441 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS']}}
+2020-07-21 12:17:39,441 - Vendor Controller - DEBUG - NAME: CheebaChews
+2020-07-21 12:17:39,442 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews']}}
+2020-07-21 12:17:39,442 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews']}}
+2020-07-21 12:17:39,442 - Vendor Controller - DEBUG - NAME: carlosjuan
+2020-07-21 12:17:39,443 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan']}}
+2020-07-21 12:17:39,443 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan']}}
+2020-07-21 12:17:39,443 - Vendor Controller - DEBUG - NAME: caliscoties
+2020-07-21 12:17:39,444 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties']}}
+2020-07-21 12:17:39,444 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties']}}
+2020-07-21 12:17:39,445 - Vendor Controller - DEBUG - NAME: baileythom
+2020-07-21 12:17:39,445 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom']}}
+2020-07-21 12:17:39,445 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom']}}
+2020-07-21 12:17:39,446 - Vendor Controller - DEBUG - NAME: Asheleywilliams
+2020-07-21 12:17:39,446 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams']}}
+2020-07-21 12:17:39,446 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams']}}
+2020-07-21 12:17:39,447 - Vendor Controller - DEBUG - NAME: amumsbren
+2020-07-21 12:17:39,447 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams', 'amumsbren']}}
+2020-07-21 12:17:39,447 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams', 'amumsbren']}}
+2020-07-21 12:17:39,448 - Vendor Controller - DEBUG - NAME: Ammagold
+2020-07-21 12:17:39,448 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams', 'amumsbren', 'Ammagold']}}
+2020-07-21 12:17:39,448 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams', 'amumsbren', 'Ammagold']}}
+2020-07-21 12:17:39,449 - Vendor Controller - DEBUG - NAME: AmazingShop
+2020-07-21 12:17:39,449 - Vendor Controller - DEBUG - {'agartha': {'1585679761': ['williamsharry464', 'Walgreens', 'USA_PUSHER', 'USA_PLUG', 'Threebeard12', 'swizzbeats', 'soniabrito44', 'sixxzeros', 'sicario999', 'Rodrigomendez', 'private', 'PrestigeVendor', 'PHARMAHOUSE', 'pestein', 'Perfectsales', 'Ozpalace', 'NoLimitTrade', 'NEO500', 'Movingtrain', 'MISDEBSTORE', 'meetthesource', 'masterpills420', 'master', 'MailForceUK', 'lukydude', 'Legalshop', 'Landboy', 'kerrystore', 'jetlove', 'inlandpro', 'Hathacker', 'HarryBrainman', 'gem123', 'expressshop', 'easyways', 'Dukeshop', 'druglords', 'drugload90', 'DREAmMarkeTvendorTEAM', 'dreamboss', 'darkkings', 'CHEMONICS', 'CheebaChews', 'carlosjuan', 'caliscoties', 'baileythom', 'Asheleywilliams', 'amumsbren', 'Ammagold', 'AmazingShop']}}
+2020-07-21 12:17:39,450 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:17:39,450 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:17:39,452 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:17:39] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-21 12:21:10,001 - server - INFO - Start anita server
+2020-07-21 12:21:10,002 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 12:21:10,002 - precondition - INFO - Resource folders: OK
+2020-07-21 12:21:10,002 - precondition - INFO - PARAMETERS
+2020-07-21 12:21:10,003 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:21:10,003 - precondition - INFO - MySQL: OK
+2020-07-21 12:21:10,003 - precondition - INFO - CONNECTION TEST
+2020-07-21 12:21:10,005 - precondition - INFO - MySQL: OK
+2020-07-21 12:21:10,007 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:21:10,008 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 12:21:10,016 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:21:10,022 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-21 12:21:10,024 - precondition - INFO - DATABASE
+2020-07-21 12:21:10,031 - precondition - INFO - Schema: OK
+2020-07-21 12:21:10,036 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:21:10,054 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-21 12:21:10,069 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 12:21:10,078 - precondition - INFO - PRODUCT table: OK
+2020-07-21 12:21:10,086 - precondition - INFO - VENDOR table: OK
+2020-07-21 12:21:10,095 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 12:21:10,096 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 12:21:10,096 - server - INFO - INFO
+2020-07-21 12:21:10,097 - server - INFO - HOST: 0.0.0.0
+2020-07-21 12:21:10,097 - server - INFO - PORT: 5000
+2020-07-21 12:21:10,097 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-21 12:21:10,119 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:21:10,970 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:21:10] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 12:21:10,979 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:21:10,980 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-21 12:21:10,980 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-21 12:21:10,980 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-21 12:21:10,980 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-21 12:21:10,981 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:21:10,981 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:21:10,982 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:21:10] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 12:21:13,833 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:21:13,833 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:21:13,834 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:21:13,835 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:21:13,849 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:21:13,849 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:21:13,851 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:21:13] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-21 12:22:42,658 - server - INFO - Start anita server
+2020-07-21 12:22:42,659 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 12:22:42,659 - precondition - INFO - Resource folders: OK
+2020-07-21 12:22:42,660 - precondition - INFO - PARAMETERS
+2020-07-21 12:22:42,660 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:22:42,660 - precondition - INFO - MySQL: OK
+2020-07-21 12:22:42,661 - precondition - INFO - CONNECTION TEST
+2020-07-21 12:22:42,663 - precondition - INFO - MySQL: OK
+2020-07-21 12:22:42,666 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:22:42,667 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 12:22:42,673 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:22:42,681 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-21 12:22:42,683 - precondition - INFO - DATABASE
+2020-07-21 12:22:42,690 - precondition - INFO - Schema: OK
+2020-07-21 12:22:42,695 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:22:42,711 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-21 12:22:42,726 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 12:22:42,735 - precondition - INFO - PRODUCT table: OK
+2020-07-21 12:22:42,744 - precondition - INFO - VENDOR table: OK
+2020-07-21 12:22:42,750 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 12:22:42,750 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 12:22:42,750 - server - INFO - INFO
+2020-07-21 12:22:42,751 - server - INFO - HOST: 0.0.0.0
+2020-07-21 12:22:42,751 - server - INFO - PORT: 5000
+2020-07-21 12:22:42,751 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-21 12:22:42,767 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:22:42,824 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:22:42] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 12:22:42,837 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:22:42,838 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-21 12:22:42,838 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-21 12:22:42,838 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-21 12:22:42,839 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-21 12:22:42,839 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:22:42,839 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:22:42,841 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:22:42] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 12:22:45,508 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:22:45,508 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:22:45,510 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:22:45,511 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:22:45,528 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:22:45,528 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:22:45,529 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:22:45] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-21 12:22:47,404 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:22:47,405 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:22:47,406 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:22:47,406 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:22:47,423 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:22:47,424 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:22:47,425 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:22:47] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-21 12:30:48,678 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:30:48,679 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:30:48,679 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:30:48,680 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:30:48,698 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:30:48,699 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:30:48,700 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:30:48] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-21 12:31:48,942 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:31:48,943 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/williamsharry464 validating parameters...
+2020-07-21 12:31:48,944 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-21 12:31:48,944 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-21 12:31:48,960 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:31:48,960 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:31:48,962 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:31:48] "[37mGET /v1/trend-analysis/agartha/vendors/williamsharry464 HTTP/1.1[0m" 200 -
+2020-07-21 12:54:08,528 - server - INFO - Start anita server
+2020-07-21 12:54:08,529 - precondition - INFO - PRECONDITION CHECKING
+2020-07-21 12:54:08,530 - precondition - INFO - Resource folders: OK
+2020-07-21 12:54:08,530 - precondition - INFO - PARAMETERS
+2020-07-21 12:54:08,531 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:54:08,532 - precondition - INFO - MySQL: OK
+2020-07-21 12:54:08,532 - precondition - INFO - CONNECTION TEST
+2020-07-21 12:54:08,539 - precondition - INFO - MySQL: OK
+2020-07-21 12:54:08,540 - precondition - INFO - Sonarqube: OK
+2020-07-21 12:54:08,541 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-21 12:54:08,550 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:54:08,558 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-21 12:54:08,561 - precondition - INFO - DATABASE
+2020-07-21 12:54:08,576 - precondition - INFO - Schema: OK
+2020-07-21 12:54:08,581 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-21 12:54:08,601 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-21 12:54:08,615 - precondition - INFO - SONARQUBE table: OK
+2020-07-21 12:54:08,623 - precondition - INFO - PRODUCT table: OK
+2020-07-21 12:54:08,631 - precondition - INFO - VENDOR table: OK
+2020-07-21 12:54:08,639 - precondition - INFO - FEEDBACK table: OK
+2020-07-21 12:54:08,640 - precondition - INFO - Sonar-scanner status: OK
+2020-07-21 12:54:08,640 - server - INFO - INFO
+2020-07-21 12:54:08,641 - server - INFO - HOST: 0.0.0.0
+2020-07-21 12:54:08,642 - server - INFO - PORT: 5000
+2020-07-21 12:54:08,642 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-21 12:54:08,665 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-21 12:54:09,269 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:54:09] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-21 12:54:09,279 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:54:09,280 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-21 12:54:09,280 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-21 12:54:09,281 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-21 12:54:09,281 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-21 12:54:09,282 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:54:09,282 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:54:09,283 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:54:09] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-21 12:54:14,058 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:54:14,059 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-21 12:54:14,060 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:54:14,061 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 12:54:14,077 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:54:14,078 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:54:14,079 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:54:14] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-21 12:54:19,404 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:54:19,404 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/williamsharry464 validating parameters...
+2020-07-21 12:54:19,405 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-21 12:54:19,406 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-21 12:54:19,419 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:54:19,419 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:54:19,420 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:54:19] "[37mGET /v1/trend-analysis/agartha/vendors/williamsharry464 HTTP/1.1[0m" 200 -
+2020-07-21 12:55:40,151 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:55:40,151 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/products/ validating parameters...
+2020-07-21 12:55:40,152 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:55:40,152 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_products (GET): START
+2020-07-21 12:55:40,283 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:55:40,284 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:55:40,285 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:55:40] "[37mGET /v1/trend-analysis/agartha/products/ HTTP/1.1[0m" 200 -
+2020-07-21 12:56:42,104 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:56:42,104 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/product/ validating parameters...
+2020-07-21 12:56:42,106 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:56:42,107 - connexion.operations.swagger2 - DEBUG - FormData parameter 'name' not in function arguments
+2020-07-21 12:56:42,107 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_product (GET): START
+2020-07-21 12:56:42,127 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:56:42,128 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:56:42,129 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:56:42] "[37mPOST /v1/trend-analysis/agartha/product/ HTTP/1.1[0m" 200 -
+2020-07-21 12:57:31,253 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 12:57:31,254 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/product/ validating parameters...
+2020-07-21 12:57:31,256 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 12:57:31,256 - connexion.operations.swagger2 - DEBUG - FormData parameter 'name' not in function arguments
+2020-07-21 12:57:31,257 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_product (GET): START
+2020-07-21 12:57:31,284 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 12:57:31,285 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 12:57:31,286 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 12:57:31] "[37mPOST /v1/trend-analysis/agartha/product/ HTTP/1.1[0m" 200 -
+2020-07-21 15:11:09,879 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:11:09,879 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/product/ validating parameters...
+2020-07-21 15:11:09,880 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 15:11:09,881 - connexion.operations.swagger2 - DEBUG - FormData parameter 'name' not in function arguments
+2020-07-21 15:11:09,882 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_product (GET): START
+2020-07-21 15:11:09,904 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:11:09,905 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:11:09,907 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:11:09] "[37mPOST /v1/trend-analysis/agartha/product/ HTTP/1.1[0m" 200 -
+2020-07-21 15:11:28,919 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:11:28,920 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/product/ validating parameters...
+2020-07-21 15:11:28,921 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-21 15:11:28,922 - connexion.operations.swagger2 - DEBUG - FormData parameter 'name' not in function arguments
+2020-07-21 15:11:28,922 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_product (GET): START
+2020-07-21 15:11:28,959 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:11:28,959 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:11:28,961 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:11:28] "[37mPOST /v1/trend-analysis/agartha/product/ HTTP/1.1[0m" 200 -
+2020-07-21 15:13:12,658 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:13:12,658 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/williamsharry464/products validating parameters...
+2020-07-21 15:13:12,659 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-21 15:13:12,659 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor_products (GET): START
+2020-07-21 15:13:12,679 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:13:12,679 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:13:12,680 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:13:12] "[37mGET /v1/trend-analysis/agartha/vendors/williamsharry464/products HTTP/1.1[0m" 200 -
+2020-07-21 15:13:46,472 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:13:46,472 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/inlandpro/products validating parameters...
+2020-07-21 15:13:46,473 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-21 15:13:46,474 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor_products (GET): START
+2020-07-21 15:13:46,500 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:13:46,500 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:13:46,501 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:13:46] "[37mGET /v1/trend-analysis/agartha/vendors/inlandpro/products HTTP/1.1[0m" 200 -
+2020-07-21 15:14:46,243 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:14:46,244 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/inlandpro/product validating parameters...
+2020-07-21 15:14:46,245 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-21 15:14:46,246 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor_product (GET): START
+2020-07-21 15:14:46,265 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:14:46,266 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:14:46,267 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:14:46] "[37mPOST /v1/trend-analysis/agartha/vendors/inlandpro/product HTTP/1.1[0m" 200 -
+2020-07-21 15:15:44,016 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:15:44] "[32mGET /v1/trend-analysis/graph-analysis HTTP/1.1[0m" 308 -
+2020-07-21 15:15:44,028 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:15:44,028 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-21 15:15:44,029 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-21 15:15:44,039 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:15:44,039 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:15:44,041 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:15:44] "[37mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 200 -
+2020-07-21 15:16:22,171 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-21 15:16:22,172 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/inlandpro validating parameters...
+2020-07-21 15:16:22,172 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-21 15:16:22,173 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-21 15:16:22,179 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-21 15:16:22,180 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-21 15:16:22,180 - werkzeug - INFO - 172.18.0.1 - - [21/Jul/2020 15:16:22] "[37mGET /v1/trend-analysis/graph-analysis/inlandpro HTTP/1.1[0m" 200 -
+2020-07-22 14:31:01,545 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:31:01,547 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/inlandpro validating parameters...
+2020-07-22 14:31:01,547 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 14:31:01,548 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 14:31:01,577 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:31:01,577 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:31:01,578 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:31:01] "[37mGET /v1/trend-analysis/graph-analysis/inlandpro HTTP/1.1[0m" 200 -
+2020-07-22 14:37:48,126 - server - INFO - Start anita server
+2020-07-22 14:37:48,126 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:37:48,127 - precondition - INFO - Resource folders: OK
+2020-07-22 14:37:48,128 - precondition - INFO - PARAMETERS
+2020-07-22 14:37:48,128 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:37:48,129 - precondition - INFO - MySQL: OK
+2020-07-22 14:37:48,129 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:37:48,138 - precondition - INFO - MySQL: OK
+2020-07-22 14:37:48,139 - precondition - INFO - Sonarqube: waiting...
+2020-07-22 14:37:48,141 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:37:48,141 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:37:48,150 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:49,156 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:50,163 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:51,169 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:52,175 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:53,185 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:54,191 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:55,199 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:56,205 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:57,219 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:58,243 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:37:59,249 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:00,256 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:01,264 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:02,271 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:03,277 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:04,282 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:05,288 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:06,293 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:07,300 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:08,306 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:16,792 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:17,799 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:17,810 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:18,817 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:18,835 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:19,842 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:19,850 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:20,855 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:20,875 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:21,882 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:21,891 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:22,896 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:22,905 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:23,910 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:23,918 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:24,924 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:24,932 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:25,937 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:25,945 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:26,951 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:26,960 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:27,965 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:28,020 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:29,027 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:29,039 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:30,046 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:30,058 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:31,064 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:31,073 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-22 14:38:32,078 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:32,104 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:38:32,106 - precondition - INFO - DATABASE
+2020-07-22 14:38:32,147 - precondition - INFO - Schema: OK
+2020-07-22 14:38:32,154 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:38:32,202 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:38:32,239 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:38:32,250 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:38:32,268 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:38:32,288 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:38:32,289 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:38:32,289 - server - INFO - INFO
+2020-07-22 14:38:32,290 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:38:32,290 - server - INFO - PORT: 5000
+2020-07-22 14:38:32,291 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:38:32,327 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:39:03,727 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:39:03,729 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:39:03,730 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:39:03,844 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:39:03] "[35m[1mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 500 -
+2020-07-22 14:39:15,858 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:39:15,858 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:39:15,859 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:39:15,920 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:39:15] "[35m[1mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 500 -
+2020-07-22 14:41:13,501 - server - INFO - Start anita server
+2020-07-22 14:41:13,502 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:41:13,502 - precondition - INFO - Resource folders: OK
+2020-07-22 14:41:13,503 - precondition - INFO - PARAMETERS
+2020-07-22 14:41:13,503 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:41:13,504 - precondition - INFO - MySQL: OK
+2020-07-22 14:41:13,504 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:41:13,509 - precondition - INFO - MySQL: OK
+2020-07-22 14:41:13,511 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:41:13,511 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:41:13,518 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:41:13,529 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:41:13,531 - precondition - INFO - DATABASE
+2020-07-22 14:41:13,541 - precondition - INFO - Schema: OK
+2020-07-22 14:41:13,545 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:41:13,573 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:41:13,587 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:41:13,594 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:41:13,600 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:41:13,608 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:41:13,609 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:41:13,610 - server - INFO - INFO
+2020-07-22 14:41:13,610 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:41:13,611 - server - INFO - PORT: 5000
+2020-07-22 14:41:13,612 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:41:13,641 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:41:14,126 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:41:14] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:41:14,136 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:41:14,136 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:41:14,137 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:41:14,138 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:41:14,138 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:41:14,138 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:41:14,139 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:41:14,140 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:41:14] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:41:20,757 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:41:20,758 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:41:20,759 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:41:20,775 - Trend Analysis Endpoints - DEBUG - {'agartha': {'CheebaChews', 'master', 'NEO500', 'Landboy', 'NoLimitTrade', 'easyways', 'CHEMONICS', 'sicario999', 'Ammagold', 'expressshop', 'DREAmMarkeTvendorTEAM', 'MailForceUK', 'darkkings', 'baileythom', 'masterpills420', 'PHARMAHOUSE', 'MISDEBSTORE', 'Hathacker', 'amumsbren', 'USA_PLUG', 'drugload90', 'kerrystore', 'USA_PUSHER', 'PrestigeVendor', 'sixxzeros', 'jetlove', 'druglords', 'Walgreens', 'williamsharry464', 'soniabrito44', 'Perfectsales', 'AmazingShop', 'inlandpro', 'Rodrigomendez', 'gem123', 'Ozpalace', 'dreamboss', 'meetthesource', 'HarryBrainman', 'private', 'Legalshop', 'Dukeshop', 'lukydude', 'pestein', 'carlosjuan', 'Movingtrain', 'Asheleywilliams', 'Threebeard12', 'swizzbeats', 'caliscoties'}}
+2020-07-22 14:41:20,832 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:41:20] "[35m[1mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 500 -
+2020-07-22 14:42:55,535 - server - INFO - Start anita server
+2020-07-22 14:42:55,535 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:42:55,536 - precondition - INFO - Resource folders: OK
+2020-07-22 14:42:55,536 - precondition - INFO - PARAMETERS
+2020-07-22 14:42:55,536 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:42:55,536 - precondition - INFO - MySQL: OK
+2020-07-22 14:42:55,537 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:42:55,540 - precondition - INFO - MySQL: OK
+2020-07-22 14:42:55,541 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:42:55,542 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:42:55,548 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:42:55,555 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:42:55,557 - precondition - INFO - DATABASE
+2020-07-22 14:42:55,564 - precondition - INFO - Schema: OK
+2020-07-22 14:42:55,568 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:42:55,591 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:42:55,608 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:42:55,616 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:42:55,626 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:42:55,633 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:42:55,634 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:42:55,635 - server - INFO - INFO
+2020-07-22 14:42:55,635 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:42:55,635 - server - INFO - PORT: 5000
+2020-07-22 14:42:55,635 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:42:55,652 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:42:56,957 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:42:56] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:42:56,981 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:42:56,982 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:42:56,983 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:42:56,983 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:42:56,983 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:42:56,984 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:42:56,984 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:42:56,986 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:42:56] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:42:58,552 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:42:58] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:42:58,564 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:42:58,564 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:42:58,565 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:42:58,565 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:42:58,566 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:42:58,566 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:42:58,566 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:42:58,567 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:42:58] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:43:00,501 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:43:00,510 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:43:00,510 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:43:00,572 - Trend Analysis Endpoints - DEBUG - {'agartha': ['williamsharry464', 'Ammagold', 'MISDEBSTORE', 'kerrystore', 'Rodrigomendez', 'pestein', 'swizzbeats', 'AmazingShop', 'druglords', 'meetthesource', 'masterpills420', 'HarryBrainman', 'baileythom', 'carlosjuan', 'jetlove', 'Asheleywilliams', 'lukydude', 'gem123', 'caliscoties', 'USA_PUSHER', 'MailForceUK', 'DREAmMarkeTvendorTEAM', 'private', 'CheebaChews', 'Threebeard12', 'USA_PLUG', 'Hathacker', 'easyways', 'Movingtrain', 'soniabrito44', 'amumsbren', 'NoLimitTrade', 'Legalshop', 'CHEMONICS', 'master', 'sicario999', 'Landboy', 'NEO500', 'darkkings', 'Walgreens', 'PHARMAHOUSE', 'sixxzeros', 'inlandpro', 'drugload90', 'dreamboss', 'PrestigeVendor', 'expressshop', 'Dukeshop', 'Ozpalace', 'Perfectsales']}
+2020-07-22 14:43:00,575 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:43:00,575 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:43:00,576 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:43:00] "[37mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 200 -
+2020-07-22 14:47:12,129 - server - INFO - Start anita server
+2020-07-22 14:47:12,130 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:47:12,131 - precondition - INFO - Resource folders: OK
+2020-07-22 14:47:12,131 - precondition - INFO - PARAMETERS
+2020-07-22 14:47:12,131 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:47:12,132 - precondition - INFO - MySQL: OK
+2020-07-22 14:47:12,132 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:47:12,135 - precondition - INFO - MySQL: OK
+2020-07-22 14:47:12,137 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:47:12,137 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:47:12,144 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:47:12,155 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:47:12,158 - precondition - INFO - DATABASE
+2020-07-22 14:47:12,164 - precondition - INFO - Schema: OK
+2020-07-22 14:47:12,168 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:47:12,187 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:47:12,199 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:47:12,207 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:47:12,213 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:47:12,219 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:47:12,220 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:47:12,220 - server - INFO - INFO
+2020-07-22 14:47:12,220 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:47:12,221 - server - INFO - PORT: 5000
+2020-07-22 14:47:12,221 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:47:12,241 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:47:14,212 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:47:14] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:47:14,233 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:47:14,233 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:47:14,234 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:47:14,234 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:47:14,234 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:47:14,235 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:47:14,235 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:47:14,236 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:47:14] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:47:17,269 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:47:17,269 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:47:17,270 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:47:17,318 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:47:17] "[35m[1mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 500 -
+2020-07-22 14:51:42,561 - server - INFO - Start anita server
+2020-07-22 14:51:42,561 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:51:42,562 - precondition - INFO - Resource folders: OK
+2020-07-22 14:51:42,563 - precondition - INFO - PARAMETERS
+2020-07-22 14:51:42,563 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:51:42,563 - precondition - INFO - MySQL: OK
+2020-07-22 14:51:42,564 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:51:42,567 - precondition - INFO - MySQL: OK
+2020-07-22 14:51:42,568 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:51:42,568 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:51:42,574 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:51:42,581 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:51:42,583 - precondition - INFO - DATABASE
+2020-07-22 14:51:42,589 - precondition - INFO - Schema: OK
+2020-07-22 14:51:42,593 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:51:42,611 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:51:42,621 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:51:42,629 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:51:42,636 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:51:42,641 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:51:42,641 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:51:42,642 - server - INFO - INFO
+2020-07-22 14:51:42,642 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:51:42,642 - server - INFO - PORT: 5000
+2020-07-22 14:51:42,642 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:51:42,657 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:51:43,847 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:51:43] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:51:43,861 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:51:43,861 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:51:43,862 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:51:43,862 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:51:43,863 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:51:43,863 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:51:43,863 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:51:43,864 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:51:43] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:51:46,836 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:51:46,836 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:51:46,837 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:51:46,896 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:51:46] "[35m[1mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 500 -
+2020-07-22 14:52:55,765 - server - INFO - Start anita server
+2020-07-22 14:52:55,765 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:52:55,767 - precondition - INFO - Resource folders: OK
+2020-07-22 14:52:55,767 - precondition - INFO - PARAMETERS
+2020-07-22 14:52:55,767 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:52:55,768 - precondition - INFO - MySQL: OK
+2020-07-22 14:52:55,768 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:52:55,771 - precondition - INFO - MySQL: OK
+2020-07-22 14:52:55,772 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:52:55,773 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:52:55,781 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:52:55,790 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:52:55,793 - precondition - INFO - DATABASE
+2020-07-22 14:52:55,800 - precondition - INFO - Schema: OK
+2020-07-22 14:52:55,804 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:52:55,820 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:52:55,831 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:52:55,838 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:52:55,845 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:52:55,850 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:52:55,851 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:52:55,851 - server - INFO - INFO
+2020-07-22 14:52:55,851 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:52:55,851 - server - INFO - PORT: 5000
+2020-07-22 14:52:55,851 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:52:55,870 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:52:57,284 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:52:57] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:52:57,296 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:52:57,296 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:52:57,297 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:52:57,297 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:52:57,298 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:52:57,298 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:52:57,298 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:52:57,299 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:52:57] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:53:00,451 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:53:00,452 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:53:00,452 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:53:00,467 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:53:00,467 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:53:00,468 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:53:00] "[37mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 200 -
+2020-07-22 14:59:44,808 - server - INFO - Start anita server
+2020-07-22 14:59:44,808 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 14:59:44,809 - precondition - INFO - Resource folders: OK
+2020-07-22 14:59:44,809 - precondition - INFO - PARAMETERS
+2020-07-22 14:59:44,809 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:59:44,809 - precondition - INFO - MySQL: OK
+2020-07-22 14:59:44,810 - precondition - INFO - CONNECTION TEST
+2020-07-22 14:59:44,811 - precondition - INFO - MySQL: OK
+2020-07-22 14:59:44,812 - precondition - INFO - Sonarqube: OK
+2020-07-22 14:59:44,813 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 14:59:44,818 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:59:44,824 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 14:59:44,826 - precondition - INFO - DATABASE
+2020-07-22 14:59:44,839 - precondition - INFO - Schema: OK
+2020-07-22 14:59:44,843 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 14:59:44,859 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 14:59:44,870 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 14:59:44,876 - precondition - INFO - PRODUCT table: OK
+2020-07-22 14:59:44,882 - precondition - INFO - VENDOR table: OK
+2020-07-22 14:59:44,888 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 14:59:44,889 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 14:59:44,889 - server - INFO - INFO
+2020-07-22 14:59:44,890 - server - INFO - HOST: 0.0.0.0
+2020-07-22 14:59:44,890 - server - INFO - PORT: 5000
+2020-07-22 14:59:44,891 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 14:59:44,908 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 14:59:50,949 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:59:50] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-07-22 14:59:50,957 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:59:50,957 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:59:50,958 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-07-22 14:59:50,958 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-07-22 14:59:50,958 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-07-22 14:59:50,959 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:59:50,959 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:59:50,960 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:59:50] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-07-22 14:59:54,991 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 14:59:54,991 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-07-22 14:59:54,992 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-22 14:59:55,002 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 14:59:55,003 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 14:59:55,003 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 14:59:55] "[37mGET /v1/trend-analysis/graph-analysis/ HTTP/1.1[0m" 200 -
+2020-07-22 15:00:24,392 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:00:24,393 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/inlandpro validating parameters...
+2020-07-22 15:00:24,394 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:00:24,395 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:00:24,407 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:00:24,408 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:00:24,409 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:00:24] "[37mGET /v1/trend-analysis/graph-analysis/inlandpro HTTP/1.1[0m" 200 -
+2020-07-22 15:00:26,535 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:00:26,536 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/inlandpro validating parameters...
+2020-07-22 15:00:26,537 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:00:26,538 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:00:26,578 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:00:26,578 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:00:26,580 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:00:26] "[37mGET /v1/trend-analysis/graph-analysis/inlandpro HTTP/1.1[0m" 200 -
+2020-07-22 15:00:47,254 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:00:47,254 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/williamsharry464 validating parameters...
+2020-07-22 15:00:47,255 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:00:47,256 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:00:47,271 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:00:47,272 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:00:47,273 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:00:47] "[37mGET /v1/trend-analysis/graph-analysis/williamsharry464 HTTP/1.1[0m" 200 -
+2020-07-22 15:01:35,157 - server - INFO - Start anita server
+2020-07-22 15:01:35,158 - precondition - INFO - PRECONDITION CHECKING
+2020-07-22 15:01:35,158 - precondition - INFO - Resource folders: OK
+2020-07-22 15:01:35,158 - precondition - INFO - PARAMETERS
+2020-07-22 15:01:35,159 - precondition - INFO - Sonarqube: OK
+2020-07-22 15:01:35,159 - precondition - INFO - MySQL: OK
+2020-07-22 15:01:35,159 - precondition - INFO - CONNECTION TEST
+2020-07-22 15:01:35,163 - precondition - INFO - MySQL: OK
+2020-07-22 15:01:35,165 - precondition - INFO - Sonarqube: OK
+2020-07-22 15:01:35,165 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-22 15:01:35,171 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 15:01:35,181 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-22 15:01:35,183 - precondition - INFO - DATABASE
+2020-07-22 15:01:35,191 - precondition - INFO - Schema: OK
+2020-07-22 15:01:35,196 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-22 15:01:35,215 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-22 15:01:35,227 - precondition - INFO - SONARQUBE table: OK
+2020-07-22 15:01:35,234 - precondition - INFO - PRODUCT table: OK
+2020-07-22 15:01:35,247 - precondition - INFO - VENDOR table: OK
+2020-07-22 15:01:35,253 - precondition - INFO - FEEDBACK table: OK
+2020-07-22 15:01:35,254 - precondition - INFO - Sonar-scanner status: OK
+2020-07-22 15:01:35,254 - server - INFO - INFO
+2020-07-22 15:01:35,254 - server - INFO - HOST: 0.0.0.0
+2020-07-22 15:01:35,255 - server - INFO - PORT: 5000
+2020-07-22 15:01:35,255 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-22 15:01:35,282 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-22 15:01:35,439 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:01:35,439 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/inlandpro validating parameters...
+2020-07-22 15:01:35,440 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:01:35,442 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:01:35,459 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:01:35,459 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:01:35,460 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:01:35] "[37mGET /v1/trend-analysis/graph-analysis/inlandpro HTTP/1.1[0m" 200 -
+2020-07-22 15:01:46,180 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:01:46,180 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/williamsharry464 validating parameters...
+2020-07-22 15:01:46,181 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:01:46,182 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:01:46,199 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:01:46,200 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:01:46,202 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:01:46] "[37mGET /v1/trend-analysis/graph-analysis/williamsharry464 HTTP/1.1[0m" 200 -
+2020-07-22 15:01:49,424 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:01:49,424 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/williamsharry4644 validating parameters...
+2020-07-22 15:01:49,425 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:01:49,425 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:01:49,438 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:01:49,439 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:01:49,440 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:01:49] "[37mGET /v1/trend-analysis/graph-analysis/williamsharry4644 HTTP/1.1[0m" 200 -
+2020-07-22 15:01:52,564 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-22 15:01:52,564 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/graph-analysis/williamsharry464 validating parameters...
+2020-07-22 15:01:52,565 - connexion.decorators.parameter - DEBUG - Function Arguments: ['vendor']
+2020-07-22 15:01:52,566 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-22 15:01:52,582 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-22 15:01:52,582 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-22 15:01:52,584 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:01:52] "[37mGET /v1/trend-analysis/graph-analysis/williamsharry464 HTTP/1.1[0m" 200 -

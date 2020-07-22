@@ -12,17 +12,18 @@ CORS(app.app)
 app.add_api("swagger/v1/software-quality.yml")
 app.add_api("swagger/v1/marketplaces.yml")
 app.add_api("swagger/v1/status.yml")
+app.add_api("swagger/v1/trend-analysis.yml")
 
 
 def config_log():
     logname = "anita.log"
 
     # Create logger
-    logging.basicConfig(filename=logname, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+    logging.basicConfig(filename=logname, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
     # set up logging to console
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    console.setLevel(logging.DEBUG)
 
     # set a format which is simpler for console use
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

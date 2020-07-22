@@ -73,7 +73,7 @@ class ProductController(TableController):
             timestamp = result[0]
 
             if market in markets_timestamps:
-                markets_timestamps[market] = markets_timestamps[market].append(timestamp)
+                markets_timestamps[market].append(timestamp)
             else:
                 markets_timestamps[market] = [timestamp]
 
@@ -93,7 +93,7 @@ class ProductController(TableController):
 
             if market in markets_timestamps:
                 if timestamp in markets_timestamps[market]:
-                    markets_timestamps[market][timestamp] = markets_timestamps[market][timestamp].append(name)
+                    markets_timestamps[market][timestamp].append(name)
                 else:
                     markets_timestamps[market][timestamp] = [name]
             else:
@@ -129,7 +129,7 @@ class ProductController(TableController):
             if timestamp not in markets[market]:
                 markets[market][timestamp] = []
 
-            markets[market][timestamp] = markets[market][timestamp].append(name)
+            markets[market][timestamp].append(name)
 
         return {vendor: markets}
 
@@ -163,7 +163,7 @@ class ProductController(TableController):
             if timestamp not in markets[market]:
                 markets[market][timestamp] = []
 
-            markets[market][timestamp] = markets[market][timestamp].append(product)
+            markets[market][timestamp].append(product)
 
         return {vendor: markets}
 
@@ -191,7 +191,7 @@ class ProductController(TableController):
                 max_timestamp = timestamp
 
             if timestamp in timestamps:
-                timestamps[timestamp] = timestamps[timestamp].append(product)
+                timestamps[timestamp].append(product)
             else:
                 timestamps[timestamp] = [product]
 

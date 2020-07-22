@@ -1,8 +1,12 @@
+import logging
+
 from ..controller.TableController import TableController
 from ...db.structure.DataType import DataType
 from ...db.structure.Type import Type
 from ...db.structure.ColumnDB import ColumnDB
 from ..model.market_models import Vendor
+
+logger = logging.getLogger("Vendor Controller")
 
 TABLE_NAME = "vendor"
 
@@ -79,10 +83,10 @@ class VendorController(TableController):
             if market not in markets:
                 markets[market] = {}
 
-            if timestamp not in markets[market]:
+            if str(timestamp) not in markets[market]:
                 markets[market][timestamp] = []
 
-            markets[market][timestamp] = markets[market][timestamp].append(name)
+            markets[market][timestamp].append(name)
 
         return markets
 
@@ -111,9 +115,12 @@ class VendorController(TableController):
             if market not in markets:
                 markets[market] = {}
 
-            if timestamp not in markets[market]:
-                markets[market][timestamp] = []
+            #if timestamp not in markets[market]:
+            #    markets[market][timestamp] = []
 
-            markets[market][timestamp] = markets[market][timestamp].append(vendor)
+            # Get a single vendor for each timestamp
+            # MULTIPLE VENDOR: markets[market][timestamp].append(vendor)
+            markets[market][timestamp] = vendor
+
 
         return markets

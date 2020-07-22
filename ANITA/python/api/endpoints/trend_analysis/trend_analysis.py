@@ -29,7 +29,7 @@ def get_vendors(marketplace):
     # Get info from the db
     try:
         vendors = vendor_controller.retrieve_vendors()
-        vendors = vendors[marketplace]
+        vendors = {marketplace: vendors[marketplace]}
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -38,7 +38,7 @@ def get_vendors(marketplace):
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-    return Response(json.dumps(vendors), status=200, mimetype="application/json")
+    return Response(json.dumps(vendors, sort_keys=False), status=200, mimetype="application/json")
 
 
 def get_vendor(marketplace, vendor):
@@ -56,7 +56,7 @@ def get_vendor(marketplace, vendor):
     # Get info from the db
     try:
         vendor = vendor_controller.retrieve_vendor(vendor)
-        vendor = vendor[marketplace]
+        vendor = {marketplace: vendor[marketplace]}
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -83,7 +83,7 @@ def get_products(marketplace):
     # Get info from the db
     try:
         products = product_controller.retrieve_markets_timestamps_products()
-        products = products[marketplace]
+        products = {marketplace: products[marketplace]}
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -188,7 +188,7 @@ def graph_analysis():
 
     # Get info from the db
     try:
-        vendors = vendor_controller.retrieve_vendors()
+        market_timestamp_vendors = vendor_controller.retrieve_vendors()
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -197,7 +197,9 @@ def graph_analysis():
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-    return Response(json.dumps(vendors), status=200, mimetype="application/json")
+    vendors_markets = reverse_market_vendors(market_timestamp_vendors)
+
+    return Response(json.dumps(vendors_markets), status=200, mimetype="application/json")
 
 
 def graph_analysis_vendor(vendor):
@@ -206,7 +208,7 @@ def graph_analysis_vendor(vendor):
 
     # Get info from the db
     try:
-        vendor = vendor_controller.retrieve_vendor(vendor)
+        market_timestamp_vendors = vendor_controller.retrieve_vendors()
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -215,4 +217,34 @@ def graph_analysis_vendor(vendor):
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-    return Response(json.dumps(vendor), status=200, mimetype="application/json")
+    vendors_markets = reverse_market_vendors(market_timestamp_vendors)
+
+    vendor_markets = {}
+    if vendor in vendors_markets:
+        vendor_markets[vendor] = vendors_markets[vendor]
+    else:
+        return Response(json.dumps({"error": "Vendor not found"}), status=404, mimetype="application/json")
+
+    return Response(json.dumps(vendor_markets), status=200, mimetype="application/json")
+
+
+# Functions
+def reverse_market_vendors(markets_timestamps_vendors):
+    # Remove the timestamps
+    market_vendors = {}
+    for market in markets_timestamps_vendors:
+        vendors = set()
+        for timestamp in markets_timestamps_vendors[market]:
+            vendors.update(markets_timestamps_vendors[market][timestamp])
+        market_vendors[market] = list(vendors)
+
+    # Invert the association. NEW RELATION: vendor -> market
+    vendors_markets = {}
+    for market in market_vendors:
+        for vendor in market_vendors[market]:
+            if vendor not in vendors_markets:
+                vendors_markets[vendor] = []
+
+            vendors_markets[vendor].append(market)
+
+    return vendors_markets
