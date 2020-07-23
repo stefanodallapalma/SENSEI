@@ -100,7 +100,7 @@ class Product:
 
 class Vendor:
     def __init__(self, timestamp, market, name, score, score_normalized, registration, registration_deviation, last_login,
-                 last_login_deviation, sales, info, feedback):
+                 last_login_deviation, sales, info, feedback, pgp):
         self.timestamp = timestamp
         self.market = market
         self.name = name
@@ -113,6 +113,7 @@ class Vendor:
         self.sales = sales
         self.info = info
         self.feedback = feedback
+        self.pgp = pgp
 
     @property
     def timestamp(self):
@@ -209,6 +210,14 @@ class Vendor:
     @feedback.setter
     def feedback(self, value):
         self._feedback = value
+
+    @property
+    def pgp(self):
+        return self._pgp
+
+    @pgp.setter
+    def pgp(self, value):
+        self._pgp = value
 
     @staticmethod
     def __prop__():

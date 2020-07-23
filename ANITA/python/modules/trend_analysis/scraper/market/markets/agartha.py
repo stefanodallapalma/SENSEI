@@ -119,3 +119,6 @@ class AgarthaVendorScraper(VendorScraper):
             feedback_list.append(feedback_json)
 
         return feedback_list
+
+    def pgp(self):
+        return self.soup.find('pre', {'class' : 'small pre-scrollable pgpkeytoken'}).text

@@ -158,7 +158,5 @@ class DarkmarketVendorScraper(VendorScraper):
 
         return feedback_list
 
-
-def v_pgp(soup):
-    """ Return the pgp as a string"""
-    return soup.find("textarea")
+    def pgp(self):
+        return None

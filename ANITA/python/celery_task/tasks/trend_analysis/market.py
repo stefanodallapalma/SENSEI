@@ -120,10 +120,10 @@ def load_dump(self, dump_folder_path, market, timestamp):
         if (page_analyzed % update_value) == 0 or page_analyzed == len(pages):
             self.update_state(state='PROGRESS', meta=content)
 
-    d_products = [product.__dict__ for product in products]
+    """d_products = [product.__dict__ for product in products]
     d_vendors = [vendor.__dict__ for vendor in vendors]
     save_json("products.json", d_products)
-    save_json("vendors.json", d_vendors)
+    save_json("vendors.json", d_vendors)"""
 
     print("Products: {}".format(len(products)))
     print("Vendors: {}".format(len(vendors)))
@@ -138,10 +138,10 @@ def load_dump(self, dump_folder_path, market, timestamp):
     vendors = remove_vendors_duplicates(vendors)
     print("DUPLICATES REMOVED")
 
-    d_products = [product.__dict__ for product in products]
+    """d_products = [product.__dict__ for product in products]
     d_vendors = [vendor.__dict__ for vendor in vendors]
     save_json("products_filtered.json", d_products)
-    save_json("vendors_filtered.json", d_vendors)
+    save_json("vendors_filtered.json", d_vendors)"""
 
     print("Products: {}".format(len(products)))
     print("Vendors: {}".format(len(vendors)))

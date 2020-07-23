@@ -131,3 +131,5 @@ class TochkaVendorScraper(VendorScraper):
 
         return feedback_list
 
+    def pgp(self):
+        return None

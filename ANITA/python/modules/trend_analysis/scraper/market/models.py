@@ -151,7 +151,7 @@ class Vendor:
     """Scrape the soup for vendor"""
 
     def __init__(self, name, score, score_normalized, registration, registration_deviation, last_login,
-                 last_login_deviation, sales, info, feedback):
+                 last_login_deviation, sales, info, feedback, pgp):
         self.name = name
         self.score = score
         self.score_normalized = score_normalized
@@ -162,6 +162,7 @@ class Vendor:
         self.sales = sales
         self.info = info
         self.feedback = feedback
+        self.pgp = pgp
 
     """@property
     def name(self):

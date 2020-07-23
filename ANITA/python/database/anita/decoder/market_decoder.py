@@ -60,6 +60,7 @@ class VendorScraperDecoder(JSONDecoder):
             last_login_deviation = None
             sales = None
             info = None
+            pgp = None
 
             if "name" in dct:
                 name = dct["name"]
@@ -88,8 +89,11 @@ class VendorScraperDecoder(JSONDecoder):
             if "info" in dct:
                 info = dct["info"]
 
+            if "pgp" in dct:
+                pgp = dct["pgp"]
+
             return Vendor(None, None, name, score, score_normalized, registration, registration_deviation,
-                          last_login, last_login_deviation, sales, info, None)
+                          last_login, last_login_deviation, sales, info, None, pgp)
         else:
             return dct
 

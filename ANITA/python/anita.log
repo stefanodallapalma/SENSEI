@@ -7352,3 +7352,277 @@ AttributeError: 'NoneType' object has no attribute 'append'
 2020-07-22 15:01:52,582 - connexion.apis.abstract - DEBUG - Getting data and status code
 2020-07-22 15:01:52,582 - connexion.apis.abstract - DEBUG - Got framework response
 2020-07-22 15:01:52,584 - werkzeug - INFO - 172.18.0.1 - - [22/Jul/2020 15:01:52] "[37mGET /v1/trend-analysis/graph-analysis/williamsharry464 HTTP/1.1[0m" 200 -
+2020-07-23 02:07:39,801 - server - INFO - Start anita server
+2020-07-23 02:07:39,802 - precondition - INFO - PRECONDITION CHECKING
+2020-07-23 02:07:39,803 - precondition - INFO - Resource folders: OK
+2020-07-23 02:07:39,803 - precondition - INFO - PARAMETERS
+2020-07-23 02:07:39,804 - precondition - INFO - Sonarqube: OK
+2020-07-23 02:07:39,804 - precondition - INFO - MySQL: OK
+2020-07-23 02:07:39,805 - precondition - INFO - CONNECTION TEST
+2020-07-23 02:07:39,809 - precondition - INFO - MySQL: OK
+2020-07-23 02:07:39,811 - precondition - INFO - Sonarqube: waiting...
+2020-07-23 02:07:39,812 - precondition - INFO - Sonarqube: OK
+2020-07-23 02:07:39,813 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-23 02:07:39,824 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:40,831 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:41,843 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:42,849 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:43,854 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:44,863 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:45,877 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:46,884 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:47,892 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:48,898 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:49,904 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:50,911 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:51,919 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:52,926 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:53,932 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:54,937 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:55,944 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:07:56,950 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:05,412 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:06,421 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:06,433 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:07,439 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:07,449 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:08,459 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:08,481 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:09,486 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:09,495 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:10,501 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:10,510 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:11,517 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:11,532 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:12,539 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:12,546 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:13,552 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:13,560 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:14,565 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:14,574 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:15,580 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:15,591 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:16,596 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:16,615 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:17,621 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:17,632 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:18,638 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:18,646 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:19,651 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:19,683 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-07-23 02:08:20,689 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:20,710 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-23 02:08:20,713 - precondition - INFO - DATABASE
+2020-07-23 02:08:20,738 - precondition - INFO - Schema: OK
+2020-07-23 02:08:20,748 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:08:20,843 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-23 02:08:20,871 - precondition - INFO - SONARQUBE table: OK
+2020-07-23 02:08:20,889 - precondition - INFO - PRODUCT table: OK
+2020-07-23 02:08:20,917 - precondition - INFO - VENDOR table: OK
+2020-07-23 02:08:20,929 - precondition - INFO - FEEDBACK table: OK
+2020-07-23 02:08:20,930 - precondition - INFO - Sonar-scanner status: OK
+2020-07-23 02:08:20,931 - server - INFO - INFO
+2020-07-23 02:08:20,931 - server - INFO - HOST: 0.0.0.0
+2020-07-23 02:08:20,932 - server - INFO - PORT: 5000
+2020-07-23 02:08:20,932 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-23 02:08:20,971 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-23 02:13:44,113 - server - INFO - Start anita server
+2020-07-23 02:13:44,113 - precondition - INFO - PRECONDITION CHECKING
+2020-07-23 02:13:44,114 - precondition - INFO - Resource folders: OK
+2020-07-23 02:13:44,115 - precondition - INFO - PARAMETERS
+2020-07-23 02:13:44,115 - precondition - INFO - Sonarqube: OK
+2020-07-23 02:13:44,116 - precondition - INFO - MySQL: OK
+2020-07-23 02:13:44,116 - precondition - INFO - CONNECTION TEST
+2020-07-23 02:13:44,121 - precondition - INFO - MySQL: OK
+2020-07-23 02:13:44,122 - precondition - INFO - Sonarqube: OK
+2020-07-23 02:13:44,122 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-23 02:13:44,129 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:13:44,143 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-23 02:13:44,145 - precondition - INFO - DATABASE
+2020-07-23 02:13:44,155 - precondition - INFO - Schema: OK
+2020-07-23 02:13:44,159 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:13:44,188 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-23 02:13:44,211 - precondition - INFO - SONARQUBE table: OK
+2020-07-23 02:13:44,218 - precondition - INFO - PRODUCT table: OK
+2020-07-23 02:13:44,225 - precondition - INFO - VENDOR table: OK
+2020-07-23 02:13:44,232 - precondition - INFO - FEEDBACK table: OK
+2020-07-23 02:13:44,233 - precondition - INFO - Sonar-scanner status: OK
+2020-07-23 02:13:44,233 - server - INFO - INFO
+2020-07-23 02:13:44,234 - server - INFO - HOST: 0.0.0.0
+2020-07-23 02:13:44,234 - server - INFO - PORT: 5000
+2020-07-23 02:13:44,234 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-23 02:13:44,257 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-23 02:14:55,959 - server - INFO - Start anita server
+2020-07-23 02:14:55,960 - precondition - INFO - PRECONDITION CHECKING
+2020-07-23 02:14:55,960 - precondition - INFO - Resource folders: OK
+2020-07-23 02:14:55,961 - precondition - INFO - PARAMETERS
+2020-07-23 02:14:55,961 - precondition - INFO - Sonarqube: OK
+2020-07-23 02:14:55,961 - precondition - INFO - MySQL: OK
+2020-07-23 02:14:55,961 - precondition - INFO - CONNECTION TEST
+2020-07-23 02:14:55,965 - precondition - INFO - MySQL: OK
+2020-07-23 02:14:55,966 - precondition - INFO - Sonarqube: OK
+2020-07-23 02:14:55,966 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-07-23 02:14:55,972 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:14:55,980 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-07-23 02:14:55,982 - precondition - INFO - DATABASE
+2020-07-23 02:14:55,990 - precondition - INFO - Schema: generation...
+2020-07-23 02:14:56,002 - precondition - INFO - Schema generated
+2020-07-23 02:14:56,006 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-07-23 02:14:56,031 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-07-23 02:14:56,041 - precondition - INFO - SONARQUBE table: generation...
+2020-07-23 02:14:56,073 - precondition - INFO - SONARQUBE table generated
+2020-07-23 02:14:56,080 - precondition - INFO - PRODUCT table: generation...
+2020-07-23 02:14:56,099 - precondition - INFO - PRODUCT table generated
+2020-07-23 02:14:56,105 - precondition - INFO - VENDOR table: generation...
+2020-07-23 02:14:56,123 - precondition - INFO - VENDOR table generated
+2020-07-23 02:14:56,131 - precondition - INFO - FEEDBACK table: generation...
+2020-07-23 02:14:56,150 - precondition - INFO - FEEDBACK table generated
+2020-07-23 02:14:56,151 - precondition - INFO - Sonar-scanner status: OK
+2020-07-23 02:14:56,151 - server - INFO - INFO
+2020-07-23 02:14:56,151 - server - INFO - HOST: 0.0.0.0
+2020-07-23 02:14:56,151 - server - INFO - PORT: 5000
+2020-07-23 02:14:56,152 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-07-23 02:14:56,173 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-07-23 02:16:01,015 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:16:01,016 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/agartha validating parameters...
+2020-07-23 02:16:01,019 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-07-23 02:16:01,021 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-07-23 02:16:01,021 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-07-23 02:16:01,023 - market module - INFO - Analysing agartha-1585679761 dump
+2020-07-23 02:16:01,023 - market module - INFO - Timestamp - 1585679761
+2020-07-23 02:16:01,114 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-07-23 02:16:01,121 - amqp - DEBUG - using channel_id: 1
+2020-07-23 02:16:01,123 - amqp - DEBUG - Channel open
+2020-07-23 02:16:08,697 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-07-23 02:16:08,698 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:16:08,699 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:16:08,707 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:16:08] "[37mPOST /v1/marketplaces/dumps/agartha HTTP/1.1[0m" 202 -
+2020-07-23 02:16:18,427 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:16:18] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:16:18,441 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:16:18,441 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:16:18,442 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:16:18,443 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:16:18,458 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:16:18,459 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:16:18,460 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:16:18,462 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:16:18] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:22:59,197 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:22:59] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:22:59,218 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:22:59,219 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:22:59,220 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:22:59,220 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:22:59,326 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:22:59,327 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:22:59,327 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:22:59,329 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:22:59] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:23:06,002 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:23:06] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:23:06,009 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:23:06,009 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:23:06,011 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:23:06,011 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:23:06,040 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:23:06,041 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:23:06,041 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:23:06,042 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:23:06] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:24:35,401 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:24:35] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:24:35,413 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:24:35,413 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:24:35,414 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:24:35,414 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:24:35,478 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:24:35,479 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:24:35,479 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:24:35,481 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:24:35] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:24:43,415 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:24:43] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:24:43,424 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:24:43,424 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:24:43,425 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:24:43,425 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:24:43,455 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:24:43,455 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:24:43,456 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:24:43,457 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:24:43] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:24:45,181 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:24:45] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:24:45,188 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:24:45,188 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:24:45,189 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:24:45,190 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:24:45,220 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:24:45,221 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:24:45,222 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:24:45,223 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:24:45] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:26:56,334 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:26:56] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:26:56,345 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:26:56,345 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:26:56,346 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:26:56,346 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:26:56,423 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:26:56,424 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:26:56,425 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:26:56,426 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:26:56] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:29:38,891 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:38] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:29:38,918 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:29:38,918 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:29:38,919 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:29:38,919 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:29:38,946 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:29:38,946 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:29:38,947 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:29:38,948 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:38] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:29:42,491 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:42] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:29:42,501 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:29:42,501 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:29:42,502 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:29:42,503 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:29:42,521 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:29:42,521 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:29:42,522 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:29:42,523 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:42] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:29:44,511 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:44] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:29:44,522 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:29:44,522 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:29:44,523 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:29:44,523 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:29:44,541 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:29:44,541 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:29:44,542 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:29:44,543 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:44] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:29:46,726 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:46] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:29:46,734 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:29:46,735 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:29:46,735 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:29:46,736 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:29:46,753 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:29:46,754 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:29:46,754 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:29:46,755 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:46] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-07-23 02:29:49,439 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:49] "[32mGET /v1//status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-07-23 02:29:49,448 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:29:49,448 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP validating parameters...
+2020-07-23 02:29:49,450 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-07-23 02:29:49,450 - Status endpoints - INFO - Endpoint Status: START
+2020-07-23 02:29:50,146 - Status endpoints - INFO - Endpoint Status: END
+2020-07-23 02:29:50,147 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:29:50,148 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:29:50,149 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:29:50] "[37mGET /v1/status/TA-agartha-1585679761-1595470561-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-07-23 02:30:30,814 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:30:30,814 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2020-07-23 02:30:30,816 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2020-07-23 02:30:30,816 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2020-07-23 02:30:30,853 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:30:30,853 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:30:30,855 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:30:30] "[37mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 200 -
+2020-07-23 02:30:40,448 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:30:40,448 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/williamsharry464 validating parameters...
+2020-07-23 02:30:40,449 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-23 02:30:40,450 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-23 02:30:40,461 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:30:40,461 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:30:40,462 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:30:40] "[37mGET /v1/trend-analysis/agartha/vendors/williamsharry464 HTTP/1.1[0m" 200 -
+2020-07-23 02:31:08,436 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-07-23 02:31:08,437 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/Ammagold validating parameters...
+2020-07-23 02:31:08,438 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2020-07-23 02:31:08,438 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2020-07-23 02:31:08,456 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-07-23 02:31:08,457 - connexion.apis.abstract - DEBUG - Got framework response
+2020-07-23 02:31:08,459 - werkzeug - INFO - 172.18.0.1 - - [23/Jul/2020 02:31:08] "[37mGET /v1/trend-analysis/agartha/vendors/Ammagold HTTP/1.1[0m" 200 -

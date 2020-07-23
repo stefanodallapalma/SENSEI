@@ -307,6 +307,11 @@ class VendorScraper(ABC):
         """ Return the feedback for the vendors"""
         pass
 
+    @abstractmethod
+    def pgp(self):
+        """ Return the pgp key of the vendors"""
+        pass
+
     def scrape(self, timestamp, soup):
         self._soup = soup
         tot_params = 10
@@ -364,6 +369,13 @@ class VendorScraper(ABC):
             exception_messages["info"] = str(e)
 
         try:
+            pgp = self.pgp()
+        except Exception as e:
+            pgp = None
+            irretrievable_params += 1
+            exception_messages["pgp"] = str(e)
+
+        try:
             feedback_list = self.feedback()
             feedback_list = feedback_handler(feedback_list, timestamp)
         except Exception as e:
@@ -372,7 +384,7 @@ class VendorScraper(ABC):
             exception_messages["feedback_list"] = str(e)
 
         page_specific_data = Vendor(vendor_name, score, score_normalized, registration, registration_deviation,
-                                    last_login, last_login_deviation, sales, info, feedback_list)
+                                    last_login, last_login_deviation, sales, info, feedback_list, pgp)
 
         irretrievable_info_json = {"irretrievable_params": irretrievable_params, "tot_params": tot_params,
                                    "irretrievable_rate": (irretrievable_params / tot_params),

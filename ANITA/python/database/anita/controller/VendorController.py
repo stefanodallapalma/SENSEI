@@ -34,6 +34,8 @@ class VendorController(TableController):
             else:
                 if attribute_name == "info":
                     datatype = DataType(Type.LONGTEXT)
+                elif attribute_name == "pgp":
+                    datatype = DataType(Type.VARCHAR, 5000)
                 else:
                     datatype = DataType(Type.VARCHAR, 200)
                 column = ColumnDB(attribute_name, datatype)
@@ -44,7 +46,7 @@ class VendorController(TableController):
     def insert_beans(self, beans):
         attributes = ["timestamp", "market", "name", "score", "score_normalized", "registration",
                       "registration_deviation", "last_login", "last_login_deviation", "sales", "info",
-                      "feedback"]
+                      "feedback", "pgp"]
 
         new_beans = []
         for bean in beans:

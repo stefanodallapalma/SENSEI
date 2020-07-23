@@ -46,8 +46,5 @@ class EmpiremarketVendorScraper(VendorScraper):
     def feedback(self):
         return None
 
-
-def v_pgp(soup):
-    """ Returns the pgp as a string """
-    if soup.find('a', {'class': 'tablinks focus'}).text == 'PGP':
-        return soup.find('pre', {'style': "word-wrap: break-word; white-space: pre-wrap;"}).text
+    def pgp(self):
+        return None

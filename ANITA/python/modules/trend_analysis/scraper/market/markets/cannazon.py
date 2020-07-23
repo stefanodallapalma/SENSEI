@@ -145,16 +145,7 @@ class CannazonVendorScraper(VendorScraper):
 
         return feedback_list
 
-
-def v_pgp(soup):
-    """ Return the pgp as a string """
-    # example: return soup.find('div', {'class' : 'container container_large'}).text
-    return soup.find_all('div', {'class': 'content'})[3].text
-
-
-# -- VENDOR FEEDBACK DATA
-def v_feedback(soup):
-    """ Return the feedback for the vendors"""
-
+    def pgp(self):
+        return None
 
 

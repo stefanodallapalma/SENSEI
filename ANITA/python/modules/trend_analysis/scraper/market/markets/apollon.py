@@ -168,3 +168,6 @@ class ApollonVendorScraper(VendorScraper):
                 feedback_list.append(feedback_json)
 
             return feedback_list
+
+    def pgp(self):
+        return None
