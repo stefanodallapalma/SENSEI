@@ -29,6 +29,8 @@ class ProductController(TableController):
                     datatype = DataType(Type.LONGTEXT)
                 elif attribute_name == "ships_from" or attribute_name == "ships_to":
                     datatype = DataType(Type.VARCHAR, 2000)
+                elif attribute_name == "feedback":
+                    datatype = DataType(Type.INT)
                 else:
                     datatype = DataType(Type.VARCHAR, 200)
 
@@ -38,8 +40,10 @@ class ProductController(TableController):
         self.columns = columns
 
     def insert_beans(self, beans):
-        attributes = ["timestamp", "market", "name", "vendor", "ships_from", "ships_to", "price", "price_eur", "info"]
+        attributes = ["timestamp", "market", "name", "vendor", "ships_from", "ships_to", "price", "price_eur", "info",
+                      "feedback"]
 
+        # Preprocessing
         new_beans = []
         for bean in beans:
             for attr in attributes:

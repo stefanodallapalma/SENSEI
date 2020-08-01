@@ -1,9 +1,10 @@
 class ColumnDB:
-    def __init__(self, name, type, pk=False, not_null=False):
+    def __init__(self, name, type, pk=False, not_null=False, auto_increment=False):
         self.name = name
         self.type = type
         self.pk = pk
         self.not_null = not_null
+        self._auto_increment = auto_increment
 
     @property
     def name(self):
@@ -36,3 +37,11 @@ class ColumnDB:
     @not_null.setter
     def not_null(self, value):
         self._not_null = value
+
+    @property
+    def auto_increment(self):
+        return self._auto_increment
+
+    @auto_increment.setter
+    def auto_increment(self, value):
+        self._auto_increment = value

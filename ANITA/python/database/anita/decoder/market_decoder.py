@@ -103,23 +103,18 @@ class FeedbackScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["web_page", "page_data", "irretrievable_pages"]
+        keys = ["name", "score", "score_normalized", "registration", "registration_deviation", "last_login",
+                "last_login_deviation", "sales", "info", "feedback"]
         if all(key in dct for key in keys):
-            feedback_models = []
+            feedback_list = []
+            feedback_list_json = dct["feedback"]
 
-            type = dct["web_page"]["page_type"].lower()
-            timestamp = dct["web_page"]["date"]
-            market = dct["web_page"]["market"]
-            name = dct["page_data"]["name"]
+            for feedback_json in feedback_list_json:
+                feedback = Feedback(id=None, score=feedback_json["score"], message=feedback_json["message"],
+                                    date=feedback_json["date"], product=feedback_json["product"],
+                                    user=feedback_json["user"], deals=feedback_json["deals"])
+                feedback_list.append(feedback)
 
-            feedback_list = dct["page_data"]["feedback"]
-            if isinstance(feedback_list, str):
-                feedback_list = [feedback_list]
-
-            for feedback in feedback_list:
-                feedback_model = Feedback(type, timestamp, market, name, feedback)
-                feedback_models.append(feedback_model)
-
-            return feedback_models
+            return feedback_list
         else:
             return dct

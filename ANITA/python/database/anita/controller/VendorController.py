@@ -29,11 +29,13 @@ class VendorController(TableController):
                 datatype = DataType(Type.VARCHAR, 200)
                 column = ColumnDB(attribute_name, datatype, pk=True, not_null=True)
             elif attribute_name in double_attribute_names:
-                datatype = DataType(Type.VARCHAR, 200) # BEFORE DOUBLE
+                datatype = DataType(Type.VARCHAR, 200) # BEFORE IT WAS DOUBLE
                 column = ColumnDB(attribute_name, datatype)
             else:
                 if attribute_name == "info":
                     datatype = DataType(Type.LONGTEXT)
+                elif attribute_name == "feedback":
+                    datatype = DataType(Type.INT)
                 elif attribute_name == "pgp":
                     datatype = DataType(Type.VARCHAR, 5000)
                 else:
@@ -47,6 +49,8 @@ class VendorController(TableController):
         attributes = ["timestamp", "market", "name", "score", "score_normalized", "registration",
                       "registration_deviation", "last_login", "last_login_deviation", "sales", "info",
                       "feedback", "pgp"]
+
+        # Retrieve the greatest feedback id
 
         new_beans = []
         for bean in beans:

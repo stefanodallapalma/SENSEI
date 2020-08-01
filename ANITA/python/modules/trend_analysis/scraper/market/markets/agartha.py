@@ -90,10 +90,12 @@ class AgarthaVendorScraper(VendorScraper):
         # loop to walk through the feedback
         for item in self.soup.find('div', {'class': 'embedded-feedback-list'}).find('tbody').find_all('tr'):
             # Find the score, can be numerical score: (score, scale), or 'positive', 'negative' or 'neutral' for pos/neg scores.
-            score = (int(item('td')[0].text[0]), 5)
+            score = "{} of 5".format(int(item('td')[0].text[0]))
 
             # The message of the feedback in type str
             message = item('td')[1].text
+            message = message.encode("ascii", "ignore")
+            message = message.decode()
 
             # The time in datetime object or time ago in type str
             date = item('td')[3].text

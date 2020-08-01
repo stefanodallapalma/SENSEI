@@ -226,52 +226,70 @@ class Vendor:
 
 
 class Feedback:
-    def __init__(self, type, timestamp, market, name, feedback):
-        self.type = type
-        self.timestamp = timestamp
-        self.market = market
-        self.name = name
-        self.feedback = feedback
+    def __init__(self, id=None, score=None, message=None, date=None, product=None, user=None, deals=None):
+        self.id = id
+        self.score = score
+        self.message = message
+        self.date = date
+        self.product = product
+        self.user = user
+        self.deals = deals
 
     @property
-    def type(self):
-        return self._type
+    def id(self):
+        return self._id
 
-    @type.setter
-    def type(self, value):
-        self._type = value
-
-    @property
-    def timestamp(self):
-        return self._timestamp
-
-    @timestamp.setter
-    def timestamp(self, value):
-        self._timestamp = value
+    @id.setter
+    def id(self, value):
+        self._id = value
 
     @property
-    def market(self):
-        return self._market
+    def score(self):
+        return self._score
 
-    @market.setter
-    def market(self, value):
-        self._market = value
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, value):
-        self._name = value
+    @score.setter
+    def score(self, value):
+        self._score = value
 
     @property
-    def feedback(self):
-        return self._feedback
+    def message(self):
+        return self._message
 
-    @feedback.setter
-    def feedback(self, value):
-        self._feedback = value
+    @message.setter
+    def message(self, value):
+        self._message = value
+
+    @property
+    def date(self):
+        return self._date
+
+    @date.setter
+    def date(self, value):
+        self._date = value
+
+    @property
+    def product(self):
+        return self._product
+
+    @product.setter
+    def product(self, value):
+        self._product = value
+
+    @property
+    def user(self):
+        return self._user
+
+    @user.setter
+    def user(self, value):
+        self._user = value
+
+    @property
+    def deals(self):
+        return self._deals
+
+    @deals.setter
+    def deals(self, value):
+        self._deals = value
 
     @staticmethod
     def __prop__():

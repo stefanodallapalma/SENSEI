@@ -44,7 +44,7 @@ class TableController(ABC):
     @property
     def attributes(self):
         """Name of controller attributes"""
-        return [column.name for column in self._columns]
+        return [column.name for column in self._columns if not column.auto_increment]
 
     @property
     def columns(self):
@@ -73,7 +73,7 @@ class TableController(ABC):
 
         return True
 
-    def create(self):
+    def create(self, encode="utf8"):
         """Create the table"""
         pk_attribute_names = ["`" + column.name + "`" for column in self.columns if column.pk is True]
         pk_query = "PRIMARY KEY (" + ", ".join(pk_attribute_names) + ")"
@@ -89,9 +89,14 @@ class TableController(ABC):
             query += "`" + column.name + "` " + str_type
             if column.not_null:
                 query += " NOT NULL"
+            if column.auto_increment:
+                query += " AUTO_INCREMENT"
             query += ", "
 
-        query += pk_query + ") ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci"
+        if encode == "utf8":
+            query += pk_query + ") ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci"
+        elif encode == "utf8mb4":
+            query += pk_query + ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_general_ci"
 
         self._mysql_db.insert(query)
 

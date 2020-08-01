@@ -12,7 +12,7 @@ from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController
 from database.anita.controller.FeedbackController import FeedbackController
 
-DEBUG = False
+DEBUG = True
 MESSAGE_LIMIT = 100
 
 # Task ID
@@ -41,11 +41,15 @@ def load_dump(self, dump_folder_path, market, timestamp):
         vendor_controller.create()
         print("Vendor table created")
 
+    if not feedback_controller.exist():
+        feedback_controller.create(encode="utf8mb4")
+        print("Feedback table created")
+
     # Get files
     pages = getfiles(dump_folder_path, abs_path=True, ext_filter="html", recursive=True)
 
     content = {"file_analyzed": 0, "successfull_pages": 0, "failed_pages": 0, "total_files": len(pages), "#products": 0,
-               "#vendors": 0, "db_insert": False}
+               "#vendors": 0, "#feedback": 0, "db_insert": False}
 
     if DEBUG:
         content["error_pages"] = {}
@@ -67,8 +71,17 @@ def load_dump(self, dump_folder_path, market, timestamp):
     page_analyzed = 0
     successfull_pages = 0
     failed_pages = 0
+
+    # Retrieve the last feedback id from the db
+    id_feedback = feedback_controller.get_last_feedback_id()
+    if id_feedback is None:
+        id_feedback = 1
+    else:
+        id_feedback += 1
+
+
     for page in pages:
-        # Extract info from an html page
+        # Extract info from an html o docker-composepage
         try:
             web_page_information, page_specific_data, irretrievable_info_json = scraper.extract_data(page, timestamp, market)
 
@@ -84,21 +97,38 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
             # Convert the information extracted into db models
             timestamp = web_page_information.date
+
+            # Check if there are any feedback in the specific page
+            feedback = None
+            if page_specific_data.__dict__["feedback"]:
+                feedback = json.loads(json.dumps(page_specific_data.__dict__), cls=FeedbackScraperDecoder)
+
+                for i in range(len(feedback)):
+                    feedback[i].id = id_feedback
+                    feedback_list.append(feedback[i])
+                content["#feedback"] = len(feedback_list)
+
             if web_page_information.page_type.lower() == "product":
                 product = json.loads(json.dumps(page_specific_data.__dict__), cls=ProductScraperDecoder)
                 product.market = market
                 product.timestamp = timestamp
+                product.feedback = None
+                if feedback:
+                    product.feedback = id_feedback
                 products.append(product)
                 content["#products"] = len(products)
             else:
                 vendor = json.loads(json.dumps(page_specific_data.__dict__), cls=VendorScraperDecoder)
                 vendor.market = market
                 vendor.timestamp = timestamp
+                vendor.feedback = None
+                if feedback:
+                    vendor.feedback = id_feedback
                 vendors.append(vendor)
                 content["#vendors"] = len(vendors)
 
-            # feedback = json.loads(data, cls=FeedbackScraperDecoder)
-            # feedback_list += feedback
+            if feedback:
+                id_feedback += 1
 
             successfull_pages += 1
             content["successfull_pages"] = successfull_pages
@@ -127,6 +157,7 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
     print("Products: {}".format(len(products)))
     print("Vendors: {}".format(len(vendors)))
+    print("Feedback: {}".format(len(feedback_list)))
     print_null_products(products)
     print_null_vendors(vendors)
 
@@ -136,6 +167,7 @@ def load_dump(self, dump_folder_path, market, timestamp):
     print("REMOVING DUPLICATES...")
     products = remove_products_duplicates(products)
     vendors = remove_vendors_duplicates(vendors)
+    feedback_list = remove_unreference_feedback(feedback_list, products, vendors)
     print("DUPLICATES REMOVED")
 
     """d_products = [product.__dict__ for product in products]
@@ -145,6 +177,7 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
     print("Products: {}".format(len(products)))
     print("Vendors: {}".format(len(vendors)))
+    print("Feedback: {}".format(len(feedback_list)))
     content["#products"] = len(products)
     content["#vendors"] = len(vendors)
 
@@ -163,8 +196,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
         if vendors:
             vendor_controller.insert_beans(vendors)
 
-        """if feedback_list:
-            feedback_controller.insert_beans(feedback_list)"""
+        if feedback_list:
+            feedback_controller.insert_beans(feedback_list)
     except Exception as e:
         content["error"] = str(e)
         self.update_state(state=states.FAILURE, meta=content)
@@ -197,6 +230,25 @@ def remove_null_vendors(vendors):
             notnull_vendors.append(vendor)
 
     return notnull_vendors
+
+
+def remove_unreference_feedback(feedback_list, products, vendors):
+    ref_feedback_list = []
+
+    ids = []
+    for product in products:
+        if product.feedback:
+            ids.append(product.feedback)
+
+    for vendor in vendors:
+        if vendor.feedback:
+            ids.append(vendor.feedback)
+
+    for feedback in feedback_list:
+        if feedback.id in ids:
+            ref_feedback_list.append(feedback)
+
+    return ref_feedback_list
 
 
 # TO DO: REFACTORING
