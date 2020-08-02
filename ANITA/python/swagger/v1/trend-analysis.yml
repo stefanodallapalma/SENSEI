@@ -117,6 +117,10 @@ paths:
           name: vendor
           required: true
           type: string
+        - in: formData
+          name: name
+          required: true
+          type: string
 
       responses:
         200:
@@ -184,7 +188,7 @@ paths:
         503:
           description: "Database unreachable"
 
-  /graph-analysis/:
+  /graph-analysis/vendors/:
     get:
       operationId: "api.endpoints.trend_analysis.trend_analysis.graph_analysis"
       summary: "Provides the graph analysis of each vendor in all marketplaces available"
@@ -200,7 +204,7 @@ paths:
         503:
           description: "Database unreachable"
 
-  /graph-analysis/{vendor}:
+  /graph-analysis/vendors/{vendor}:
     get:
       operationId: "api.endpoints.trend_analysis.trend_analysis.graph_analysis_vendor"
       summary: "Provides the graph analysis of a vendor, showing the relation with all marketplaces available"
@@ -213,6 +217,30 @@ paths:
       parameters:
         - in: path
           name: vendor
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing the graph analysis of a vendor"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /graph-analysis/pgp/:
+    post:
+      operationId: "api.endpoints.trend_analysis.trend_analysis.graph_analysis_pgp"
+      summary: "Provides the graph analysis of a vendor, showing the relation with all marketplaces available, based on its pgp key"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: formData
+          name: pgp
           required: true
           type: string
 

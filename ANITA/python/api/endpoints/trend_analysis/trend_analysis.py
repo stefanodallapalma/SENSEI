@@ -267,6 +267,25 @@ def graph_analysis_vendor(vendor):
     return Response(json.dumps(vendor_markets), status=200, mimetype="application/json")
 
 
+def graph_analysis_pgp():
+    logger.debug("Trend-Analysis - Endpoint get_vendor (GET): START")
+    vendor_controller = VendorController()
+
+    pgp = request.form["pgp"]
+
+    try:
+        graph = vendor_controller.retrieve_vendor_by_pgp(pgp)
+    except Exception as e:
+        logger.error("Internal server error")
+        logger.error(str(e))
+        logger.error(traceback.format_exc())
+        logger.debug("Trend-Analysis - Endpoint get_vendor (GET): END")
+        error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
+        return Response(json.dumps(error_content), status=500, mimetype="application/json")
+
+    return Response(json.dumps(graph), status=200, mimetype="application/json")
+
+
 # Functions
 def reverse_market_vendors(markets_timestamps_vendors):
     # Remove the timestamps

@@ -130,3 +130,19 @@ class VendorController(TableController):
 
 
         return markets
+
+    def retrieve_vendor_by_pgp(self, pgp):
+        query = "SELECT {0}.name, {0}.market, {0}.pgp FROM {1}.{0} WHERE {0}.pgp = %s".format(TABLE_NAME, self.db_name)
+        values = (pgp,)
+
+        header, results = self.mysql_db.search(query, values)
+
+        pgp_graph = {}
+
+        for result in results:
+            vendor_name = result[0]
+            market = result[1]
+
+            pgp_graph[market] = vendor_name
+
+        return pgp_graph
