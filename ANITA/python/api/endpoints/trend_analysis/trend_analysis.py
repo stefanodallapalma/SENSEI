@@ -9,6 +9,7 @@ from flask import request, Response, json
 # Local imports
 from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController
+from database.anita.controller.FeedbackController import FeedbackController
 
 logger = logging.getLogger("Trend Analysis Endpoints")
 
@@ -29,6 +30,8 @@ def get_vendors(marketplace):
     # Get info from the db
     try:
         vendors = vendor_controller.retrieve_vendors()
+
+        # Get vendors of a specific marketplace
         vendors = {marketplace: vendors[marketplace]}
     except Exception as e:
         logger.error("Internal server error")
@@ -44,6 +47,7 @@ def get_vendors(marketplace):
 def get_vendor(marketplace, vendor):
     logger.debug("Trend-Analysis - Endpoint get_vendor (GET): START")
     vendor_controller = VendorController()
+    feedback_controller = FeedbackController()
 
     # Retrieve all markets available in the db
     markets = vendor_controller.retrieve_markets()
@@ -55,8 +59,19 @@ def get_vendor(marketplace, vendor):
 
     # Get info from the db
     try:
-        vendor = vendor_controller.retrieve_vendor(vendor)
-        vendor = {marketplace: vendor[marketplace]}
+        vendor_markets = vendor_controller.retrieve_vendor(vendor)
+        vendor_market = {marketplace: vendor_markets[marketplace]}
+
+        # Iterate over timestamps
+        for timestamp in vendor_market[marketplace]:
+            id = vendor_market[marketplace][timestamp]["feedback"]
+
+            if id:
+                # Get all feedback with this id
+                feedback_list = feedback_controller.get_feedback(id)
+                vendor_market[marketplace][timestamp]["feedback"] = feedback_list
+            else:
+                vendor_market[marketplace][timestamp]["feedback"] = []
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -65,7 +80,7 @@ def get_vendor(marketplace, vendor):
         error_content = {"error": "Internal server error", "msg": str(e), "traceback": traceback.format_exc()}
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
-    return Response(json.dumps(vendor), status=200, mimetype="application/json")
+    return Response(json.dumps(vendor_market), status=200, mimetype="application/json")
 
 
 def get_products(marketplace):
@@ -98,6 +113,7 @@ def get_products(marketplace):
 def get_product(marketplace):
     logger.debug("Trend-Analysis - Endpoint get_product (GET): START")
     product_controller = ProductController()
+    feedback_controller = FeedbackController()
 
     # Retrieve all markets available in the db
     markets = product_controller.retrieve_markets()
@@ -111,6 +127,18 @@ def get_product(marketplace):
 
     try:
         product = product_controller.get_product(marketplace, name)
+
+        # Iterate over timestamps
+        for timestamp in product[marketplace]:
+            for i in range(len(product[marketplace][timestamp])):
+                id = product[marketplace][timestamp][i]["feedback"]
+
+                if id:
+                    # Get all feedback with this id
+                    feedback_list = feedback_controller.get_feedback(id)
+                    product[marketplace][timestamp][i]["feedback"] = feedback_list
+                else:
+                    product[marketplace][timestamp][i]["feedback"] = []
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -154,6 +182,7 @@ def get_vendor_products(marketplace, vendor):
 def get_vendor_product(marketplace, vendor):
     logger.debug("Trend-Analysis - Endpoint get_vendor_product (GET): START")
     product_controller = ProductController()
+    feedback_controller = FeedbackController()
 
     # Retrieve all markets available in the db
     markets = product_controller.retrieve_markets()
@@ -169,6 +198,16 @@ def get_vendor_product(marketplace, vendor):
         product = product_controller.retrieve_vendor_product(vendor, name)
         if marketplace in product[vendor]:
             product = product[vendor][marketplace]
+
+            for timestamp in product:
+                for i in range(len(product[timestamp])):
+                    id = product[timestamp][i]["feedback"]
+
+                    if id:
+                        feedback_list = feedback_controller.get_feedback(id)
+                        product[timestamp][i]["feedback"] = feedback_list
+                    else:
+                        product[timestamp][i]["feedback"] = []
         else:
             product = {}
     except Exception as e:

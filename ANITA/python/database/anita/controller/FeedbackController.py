@@ -69,6 +69,24 @@ class FeedbackController(TableController):
 
         return feedback_list
 
+    def get_feedback(self, id):
+        query = "SELECT * FROM {0}.{1} WHERE {1}.id = %s".format(self.db_name, TABLE_NAME)
+        values = (id,)
+
+        header, results = self.mysql_db.search(query, values)
+
+        feedback_list = []
+        for result in results:
+            feedback = {}
+            for i in range(len(header)):
+                attribute = header[i]
+                value = result[i]
+                if attribute != "id" and attribute != "id_feedback":
+                    feedback[attribute] = value
+            feedback_list.append(feedback)
+
+        return feedback_list
+
     def get_last_feedback_id(self):
         query = "SELECT DISTINCT {0}.id FROM {1}.{0} ORDER BY {0}.id DESC" \
             .format(TABLE_NAME, self.db_name)
