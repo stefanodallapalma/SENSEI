@@ -19,12 +19,15 @@ def timestamp_validator(name):
         name = name.split(".")[0]
 
     formats = [
+        "%Y-%m-%d",
         "%Y-%m-%d %H:%M:%S",
         "%Y-%m-%d %H-%M-%S",
         "%Y-%m-%d %H_%M_%S",
+        "%Y-%m-%d_%H:%M:%S"
+        "%Y-%m-%d_%H-%M-%S",
         "%Y-%m-%dT%H:%M:%S",
         "%Y-%m-%dT%H-%M-%S",
-        "%Y-%m-%dT%H_%M_%S",
+        "%Y-%m-%dT%H_%M_%S"
     ]
 
     for fmt in formats:
