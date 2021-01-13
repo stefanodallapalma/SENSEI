@@ -8,19 +8,24 @@ from dateutil.parser import parse
 
 # Local import
 from .scraper import Scraper, ProductScraper, VendorScraper
-
+from exceptions import ExtractDataException
 
 class DarkmarketScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = DarkmarketProductScraper()
+        self.vendor_scraper = DarkmarketVendorScraper()
 
     def pagetype(self, soup):
         try:
             if 'cart' in soup.find('div', {'class': 'col-md-7'}).text:
+                print("Type: product")
                 return 'product'
 
             if 'Vendor' in soup.find('ol', {'class': 'breadcrumb'}).text:
+                print("Type: vendor")
                 return 'vendor'
         except:
-            raise Exception("Unknown type")
+            raise ExtractDataException("Unknown page type (page not a product or vendor)")
 
 
 class DarkmarketProductScraper(ProductScraper):

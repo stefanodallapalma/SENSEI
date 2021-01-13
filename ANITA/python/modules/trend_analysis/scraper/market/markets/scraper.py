@@ -2,13 +2,13 @@ import time
 import pycountry
 import requests
 import datetime
-import json
 from bs4 import BeautifulSoup
 from abc import ABC, abstractmethod
 
 # Local imports
 from modules.trend_analysis.scraper.market.models import *
 from modules.trend_analysis.scraper.market.enum import Market
+from exceptions import ExtractDataException
 
 
 class Scraper(ABC):
@@ -37,26 +37,29 @@ class Scraper(ABC):
         try:
             soup = BeautifulSoup(open(html_path), "html.parser")
         except:
-            raise Exception("BS4 Problem!!!")
+            raise ExtractDataException("BS4 Problem!!!")
 
-        # Check if the html refers to a product or a vendor page
-        page_type = self.pagetype(soup)
+        try:
+            # Check if the html refers to a product or a vendor page
+            page_type = self.pagetype(soup)
 
-        # Market detection
-        market_name = market
-        if isinstance(market, Market):
-            market_name = market.name.lower()
+            # Market detection
+            market_name = market
+            if isinstance(market, Market):
+                market_name = market.name.lower()
 
-        # Create overview object of the main information about the page
-        web_page_information = WebPage(html_path, market_name, page_type, timestamp)
+            # Create overview object of the main information about the page
+            web_page_information = WebPage(html_path, market_name, page_type, timestamp)
 
-        # Page data for vendor or product pages
-        if web_page_information.page_type == 'product':
-            page_specific_data, irretrievable_info_json = self.product_scraper.scrape(timestamp, soup)
-        elif web_page_information.page_type == 'vendor':
-            page_specific_data, irretrievable_info_json = self.vendor_scraper.scrape(timestamp, soup)
-        else:
-            raise Exception("Invalid page type")
+            # Page data for vendor or product pages
+            if web_page_information.page_type == 'product':
+                page_specific_data, irretrievable_info_json = self.product_scraper.scrape(timestamp, soup)
+            elif web_page_information.page_type == 'vendor':
+                page_specific_data, irretrievable_info_json = self.vendor_scraper.scrape(timestamp, soup)
+            else:
+                raise ExtractDataException("Unknown page type (page not a product or vendor)")
+        except Exception as e:
+            raise ExtractDataException(str(e))
 
         return web_page_information, page_specific_data, irretrievable_info_json
 

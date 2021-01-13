@@ -1,8 +1,7 @@
 import json, os, random, string
 from sonarqube.bean.SonarqubeParameters import SonarqubeParameters
 
-from exception.NoProjectException import NoProjectException
-from exception.DuplicateProjectException import DuplicateProjectException
+from exceptions import NoProjectException, DuplicateProjectException
 
 sonarqube_setup_path = "../resources/sonarqube_properties.json"
 

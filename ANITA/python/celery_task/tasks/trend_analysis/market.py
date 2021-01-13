@@ -1,4 +1,5 @@
 import json
+import traceback
 
 # Third party imports
 from celery import states
@@ -11,6 +12,7 @@ from database.anita.decoder.market_decoder import *
 from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController
 from database.anita.controller.FeedbackController import FeedbackController
+from exceptions import ExtractDataException
 
 DEBUG = True
 MESSAGE_LIMIT = 100
@@ -52,9 +54,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
                "#vendors": 0, "#feedback": 0, "db_insert": False}
 
     if DEBUG:
-        content["error_pages"] = {}
-        content["irretrievable_pages_rate"] = []
-        content["irretrievable_parameters_page"] = []
+        content["DEBUG - error_pages"] = {}
+        content["DEBUG - missed_parameters"] = []
 
     self.update_state(state=states.STARTED, meta=content)
 
@@ -79,21 +80,21 @@ def load_dump(self, dump_folder_path, market, timestamp):
     else:
         id_feedback += 1
 
-
     for page in pages:
         # Extract info from an html o docker-composepage
         try:
             web_page_information, page_specific_data, irretrievable_info_json = scraper.extract_data(page, timestamp, market)
+            if web_page_information.page_type.lower() == "product":
+                print("Product {}".format(len(products) + 1))
+            if web_page_information.page_type.lower() == "vendor":
+                print("Vendor {}".format(len(vendors) + 1))
 
             if DEBUG:
                 # Irretrievable rate and exceptions raised
                 irretrievable_rate = irretrievable_info_json["irretrievable_rate"]
-                irretrievable_page_rate = {"page": page, "rate": irretrievable_rate}
-                content["irretrievable_pages_rate"].append(irretrievable_page_rate)
-
                 exceptions = irretrievable_info_json["exception_params"]
-                irretrievable_page = {"page": page, "exception_params": exceptions}
-                content["irretrievable_parameters_page"].append(irretrievable_page)
+                irretrievable_page = {"page": page, "missing_rate": irretrievable_rate, "exception_params": exceptions}
+                content["DEBUG - missed_parameters"].append(irretrievable_page)
 
             # Convert the information extracted into db models
             timestamp = web_page_information.date
@@ -102,7 +103,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
             feedback = None
             if page_specific_data.__dict__["feedback"]:
                 feedback = json.loads(json.dumps(page_specific_data.__dict__), cls=FeedbackScraperDecoder)
-
+                print(type(feedback))
+                print(feedback)
                 for i in range(len(feedback)):
                     feedback[i].id = id_feedback
                     feedback_list.append(feedback[i])
@@ -112,18 +114,26 @@ def load_dump(self, dump_folder_path, market, timestamp):
                 product = json.loads(json.dumps(page_specific_data.__dict__), cls=ProductScraperDecoder)
                 product.market = market
                 product.timestamp = timestamp
+
+                # In the product and vendor it is saved just the id of the feedback> The feedback will be saved in
+                # another json and db table
                 product.feedback = None
                 if feedback:
                     product.feedback = id_feedback
+
                 products.append(product)
                 content["#products"] = len(products)
             else:
                 vendor = json.loads(json.dumps(page_specific_data.__dict__), cls=VendorScraperDecoder)
                 vendor.market = market
                 vendor.timestamp = timestamp
+
+                # In the product and vendor it is saved just the id of the feedback> The feedback will be saved in
+                # another json and db table
                 vendor.feedback = None
                 if feedback:
                     vendor.feedback = id_feedback
+
                 vendors.append(vendor)
                 content["#vendors"] = len(vendors)
 
@@ -133,16 +143,23 @@ def load_dump(self, dump_folder_path, market, timestamp):
             successfull_pages += 1
             content["successfull_pages"] = successfull_pages
         except Exception as e:
-            if "error_pages" not in content:
-                content["error_pages"] = {}
-
-            if str(e) not in content["error_pages"]:
-                content["error_pages"][str(e)] = 1
-            else:
-                content["error_pages"][str(e)] = content["error_pages"][str(e)] + 1
+            if type(e).__name__ == "KeyError":
+                print("LEN FB: {}".format(len(feedback)))
+                traceback.print_exc()
 
             failed_pages += 1
             content["failed_pages"] = failed_pages
+
+            if DEBUG:
+                exception_name = type(e).__name__
+                msg = exception_name + " - " + str(e)
+
+                if msg not in content["DEBUG - error_pages"]:
+                    content["DEBUG - error_pages"][msg] = 1
+                else:
+                    content["DEBUG - error_pages"][msg] = content["DEBUG - error_pages"][msg] + 1
+
+
 
         page_analyzed += 1
         content["file_analyzed"] = page_analyzed

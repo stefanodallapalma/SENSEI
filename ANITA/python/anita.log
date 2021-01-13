@@ -634,3 +634,954 @@
 2020-12-23 10:25:02,780 - server - INFO - PORT: 5000
 2020-12-23 10:25:02,780 - connexion.app - DEBUG - Starting flask HTTP server..
 2020-12-23 10:25:02,803 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 11:05:13,109 - server - INFO - Start anita server
+2020-12-23 11:05:13,110 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 11:05:13,110 - precondition - INFO - Resource folders: OK
+2020-12-23 11:05:13,110 - precondition - INFO - PARAMETERS
+2020-12-23 11:05:13,110 - precondition - INFO - Sonarqube: OK
+2020-12-23 11:05:13,110 - precondition - INFO - MySQL: OK
+2020-12-23 11:05:13,111 - precondition - INFO - CONNECTION TEST
+2020-12-23 11:05:13,157 - precondition - INFO - MySQL: OK
+2020-12-23 11:05:13,159 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 11:05:13,160 - precondition - INFO - Sonarqube: OK
+2020-12-23 11:05:13,160 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 11:05:13,164 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:14,167 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:15,170 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:16,173 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:17,180 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:18,185 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:19,626 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:20,628 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:21,632 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:22,635 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:23,645 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:24,648 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:29,266 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:30,268 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:30,276 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:31,279 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:31,285 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:32,288 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:32,293 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:33,296 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:33,581 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:34,584 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:34,607 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:35,612 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:35,618 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 11:05:36,627 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:36,665 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 11:05:36,668 - precondition - INFO - DATABASE
+2020-12-23 11:05:36,685 - precondition - INFO - Schema: OK
+2020-12-23 11:05:36,687 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 11:05:36,715 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 11:05:36,734 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 11:05:36,740 - precondition - INFO - PRODUCT table: OK
+2020-12-23 11:05:36,746 - precondition - INFO - VENDOR table: OK
+2020-12-23 11:05:36,753 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 11:05:36,754 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 11:05:36,754 - server - INFO - INFO
+2020-12-23 11:05:36,754 - server - INFO - HOST: 0.0.0.0
+2020-12-23 11:05:36,755 - server - INFO - PORT: 5000
+2020-12-23 11:05:36,755 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 11:05:36,775 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 15:28:56,948 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 15:28:56] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 15:28:56,963 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 15:28:56,963 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 15:28:56,964 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 15:28:56,964 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 15:28:56,964 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 15:28:56,964 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 15:28:56,964 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 15:28:56,964 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 15:28:56] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 16:15:02,211 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 16:15:02,211 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 16:15:02,213 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 16:15:02,213 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 16:15:02,213 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 16:15:02,219 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 16:15:02,219 - market module - INFO - Timestamp - 1585785600
+2020-12-23 16:15:02,246 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 16:15:02,247 - amqp - DEBUG - using channel_id: 1
+2020-12-23 16:15:02,249 - amqp - DEBUG - Channel open
+2020-12-23 16:15:03,033 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 16:15:03,033 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 16:15:03,033 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 16:15:03,037 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 16:15:03] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 16:15:14,821 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 16:15:14] "[32mGET /v1//status/TA-darkmarket-1585785600-1608740102-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 16:15:14,836 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 16:15:14,837 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608740102-UPLOAD_DUMP validating parameters...
+2020-12-23 16:15:14,837 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 16:15:14,837 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 16:15:14,868 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 16:15:14,869 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 16:15:14,869 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 16:15:14,869 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 16:15:14] "[37mGET /v1/status/TA-darkmarket-1585785600-1608740102-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 16:45:52,568 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 16:45:52] "[32mGET /v1//status/TA-darkmarket-1585785600-1608740102-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 16:45:52,579 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 16:45:52,579 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608740102-UPLOAD_DUMP validating parameters...
+2020-12-23 16:45:52,580 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 16:45:52,580 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 16:45:52,704 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 16:45:52,704 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 16:45:52,704 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 16:45:52,704 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 16:45:52] "[37mGET /v1/status/TA-darkmarket-1585785600-1608740102-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-12-23 17:19:24,563 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:19:24,564 - connexion.apis.abstract - DEBUG - Prepared body and status code (404)
+2020-12-23 17:19:24,564 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:19:24,564 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:19:24] "[33mGET /v1/marketplaces/dump HTTP/1.1[0m" 404 -
+2020-12-23 17:19:31,561 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:19:31] "[32mGET /v1/marketplaces/dumps HTTP/1.1[0m" 308 -
+2020-12-23 17:19:31,567 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:19:31,567 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 17:19:31,568 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:19:31,568 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:19:31,568 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:19:31] "[35m[1mGET /v1/marketplaces/dumps/ HTTP/1.1[0m" 500 -
+2020-12-23 17:19:41,666 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:19:41] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 17:19:41,670 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:19:41,670 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 17:19:41,670 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 17:19:41,670 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 17:19:41,670 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 17:19:41,670 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:19:41,671 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:19:41,671 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:19:41] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 17:36:08,624 - server - INFO - Start anita server
+2020-12-23 17:36:08,624 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 17:36:08,624 - precondition - INFO - Resource folders: OK
+2020-12-23 17:36:08,624 - precondition - INFO - PARAMETERS
+2020-12-23 17:36:08,625 - precondition - INFO - Sonarqube: OK
+2020-12-23 17:36:08,625 - precondition - INFO - MySQL: OK
+2020-12-23 17:36:08,625 - precondition - INFO - CONNECTION TEST
+2020-12-23 17:36:08,626 - precondition - INFO - MySQL: OK
+2020-12-23 17:36:08,627 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 17:36:08,628 - precondition - INFO - Sonarqube: OK
+2020-12-23 17:36:08,628 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 17:36:08,633 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:09,636 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:10,640 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:11,645 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:12,648 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:13,654 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:14,657 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:15,659 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:16,662 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:17,666 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:18,669 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:22,434 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:23,438 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:23,449 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:24,451 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:24,458 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:25,461 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:25,466 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:26,469 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:26,503 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:27,506 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:27,513 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:28,516 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:28,537 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 17:36:29,539 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:29,549 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 17:36:29,550 - precondition - INFO - DATABASE
+2020-12-23 17:36:29,568 - precondition - INFO - Schema: OK
+2020-12-23 17:36:29,570 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 17:36:29,601 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 17:36:29,622 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 17:36:29,628 - precondition - INFO - PRODUCT table: OK
+2020-12-23 17:36:29,635 - precondition - INFO - VENDOR table: OK
+2020-12-23 17:36:29,642 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 17:36:29,645 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 17:36:29,646 - server - INFO - INFO
+2020-12-23 17:36:29,646 - server - INFO - HOST: 0.0.0.0
+2020-12-23 17:36:29,646 - server - INFO - PORT: 5000
+2020-12-23 17:36:29,647 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 17:36:29,669 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 17:40:45,863 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:40:45] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 17:40:45,887 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:40:45,887 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 17:40:45,888 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 17:40:45,888 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 17:40:45,888 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 17:40:45,888 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:40:45,888 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:40:45,889 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:40:45] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 17:42:15,429 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:42:15,430 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 17:42:15,431 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 17:42:15,432 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 17:42:15,432 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 17:42:15,452 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 17:42:15,452 - market module - INFO - Timestamp - 1585785600
+2020-12-23 17:42:15,513 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 17:42:15,522 - amqp - DEBUG - using channel_id: 1
+2020-12-23 17:42:15,524 - amqp - DEBUG - Channel open
+2020-12-23 17:42:16,471 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 17:42:16,471 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:42:16,471 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:42:16,478 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:42:16] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 17:42:24,899 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:42:24] "[32mGET /v1//status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 17:42:24,903 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:42:24,904 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP validating parameters...
+2020-12-23 17:42:24,904 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 17:42:24,904 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 17:42:24,947 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 17:42:24,948 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:42:24,948 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:42:24,949 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:42:24] "[37mGET /v1/status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 17:42:33,460 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:42:33] "[32mGET /v1//status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 17:42:33,467 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:42:33,467 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP validating parameters...
+2020-12-23 17:42:33,468 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 17:42:33,468 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 17:42:33,547 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 17:42:33,551 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:42:33,551 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:42:33,552 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:42:33] "[37mGET /v1/status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 17:43:45,349 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:43:45] "[32mGET /v1//status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 17:43:45,354 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 17:43:45,354 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP validating parameters...
+2020-12-23 17:43:45,354 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 17:43:45,354 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 17:43:45,474 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 17:43:45,477 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 17:43:45,477 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 17:43:45,477 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 17:43:45] "[37mGET /v1/status/TA-darkmarket-1585785600-1608745335-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-12-23 18:34:40,957 - server - INFO - Start anita server
+2020-12-23 18:34:40,971 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 18:34:40,971 - precondition - INFO - Resource folders: OK
+2020-12-23 18:34:40,971 - precondition - INFO - PARAMETERS
+2020-12-23 18:34:40,971 - precondition - INFO - Sonarqube: OK
+2020-12-23 18:34:40,971 - precondition - INFO - MySQL: OK
+2020-12-23 18:34:40,972 - precondition - INFO - CONNECTION TEST
+2020-12-23 18:34:40,984 - precondition - INFO - MySQL: OK
+2020-12-23 18:34:40,986 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 18:34:40,987 - precondition - INFO - Sonarqube: OK
+2020-12-23 18:34:40,987 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 18:34:40,991 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:41,994 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:42,999 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:44,012 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:45,017 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:46,029 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:47,031 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:48,034 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:49,037 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:50,039 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:51,043 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:52,047 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:56,501 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:34:57,508 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:57,523 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:34:58,526 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:58,540 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:34:59,544 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:34:59,557 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:35:00,563 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:35:00,570 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:35:01,573 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:35:01,585 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:35:02,591 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:35:02,609 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:35:03,614 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:35:03,623 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 18:35:04,627 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:35:04,640 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 18:35:04,641 - precondition - INFO - DATABASE
+2020-12-23 18:35:04,674 - precondition - INFO - Schema: OK
+2020-12-23 18:35:04,680 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 18:35:04,715 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 18:35:04,759 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 18:35:04,769 - precondition - INFO - PRODUCT table: OK
+2020-12-23 18:35:04,778 - precondition - INFO - VENDOR table: OK
+2020-12-23 18:35:04,792 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 18:35:04,793 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 18:35:04,793 - server - INFO - INFO
+2020-12-23 18:35:04,794 - server - INFO - HOST: 0.0.0.0
+2020-12-23 18:35:04,794 - server - INFO - PORT: 5000
+2020-12-23 18:35:04,794 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 18:35:04,836 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 18:36:32,673 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:36:32] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 18:36:32,737 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 18:36:32,739 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 18:36:32,744 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 18:36:32,745 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 18:36:32,745 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 18:36:32,747 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 18:36:32,747 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 18:36:32,748 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:36:32] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 18:36:36,252 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 18:36:36,253 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 18:36:36,283 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 18:36:36,285 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 18:36:36,286 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 18:36:36,504 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 18:36:36,504 - market module - INFO - Timestamp - 1585785600
+2020-12-23 18:36:36,634 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 18:36:36,638 - amqp - DEBUG - using channel_id: 1
+2020-12-23 18:36:36,643 - amqp - DEBUG - Channel open
+2020-12-23 18:36:37,552 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 18:36:37,553 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 18:36:37,553 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 18:36:37,555 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:36:37] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 18:36:47,544 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:36:47] "[32mGET /v1//status/TA-darkmarket-1585785600-1608748596-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 18:36:47,558 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 18:36:47,559 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608748596-UPLOAD_DUMP validating parameters...
+2020-12-23 18:36:47,559 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 18:36:47,560 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 18:36:48,085 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 18:36:48,088 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 18:36:48,088 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 18:36:48,088 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:36:48] "[37mGET /v1/status/TA-darkmarket-1585785600-1608748596-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 18:37:52,556 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:37:52] "[32mGET /v1//status/TA-darkmarket-1585785600-1608748596-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2020-12-23 18:37:52,560 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 18:37:52,560 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608748596-UPLOAD_DUMP validating parameters...
+2020-12-23 18:37:52,560 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 18:37:52,560 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 18:37:52,679 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 18:37:52,682 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 18:37:52,682 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 18:37:52,683 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 18:37:52] "[37mGET /v1/status/TA-darkmarket-1585785600-1608748596-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-12-23 20:27:47,508 - server - INFO - Start anita server
+2020-12-23 20:27:47,508 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 20:27:47,508 - precondition - INFO - Resource folders: OK
+2020-12-23 20:27:47,508 - precondition - INFO - PARAMETERS
+2020-12-23 20:27:47,508 - precondition - INFO - Sonarqube: OK
+2020-12-23 20:27:47,508 - precondition - INFO - MySQL: OK
+2020-12-23 20:27:47,508 - precondition - INFO - CONNECTION TEST
+2020-12-23 20:27:47,510 - precondition - INFO - MySQL: OK
+2020-12-23 20:27:47,511 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 20:27:47,512 - precondition - INFO - Sonarqube: OK
+2020-12-23 20:27:47,512 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 20:27:47,517 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:48,521 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:49,524 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:50,527 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:51,531 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:52,534 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:53,537 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:54,540 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:55,543 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:56,546 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:57,551 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:58,564 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:27:59,567 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:03,142 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:04,146 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:04,154 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:05,157 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:05,162 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:06,165 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:06,171 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:07,174 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:07,188 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:08,572 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:08,587 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:09,592 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:09,598 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:28:10,601 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:10,612 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 20:28:10,613 - precondition - INFO - DATABASE
+2020-12-23 20:28:10,641 - precondition - INFO - Schema: OK
+2020-12-23 20:28:10,644 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:28:10,684 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 20:28:10,708 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 20:28:10,715 - precondition - INFO - PRODUCT table: OK
+2020-12-23 20:28:10,722 - precondition - INFO - VENDOR table: OK
+2020-12-23 20:28:10,731 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 20:28:10,732 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 20:28:10,733 - server - INFO - INFO
+2020-12-23 20:28:10,733 - server - INFO - HOST: 0.0.0.0
+2020-12-23 20:28:10,733 - server - INFO - PORT: 5000
+2020-12-23 20:28:10,733 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 20:28:10,761 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 20:47:17,023 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:47:17] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 20:47:17,091 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:47:17,092 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 20:47:17,092 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 20:47:17,092 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 20:47:17,092 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 20:47:17,092 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:47:17,092 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:47:17,093 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:47:17] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 20:47:31,463 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:47:31,463 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 20:47:31,464 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 20:47:31,464 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 20:47:31,465 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 20:47:31,486 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 20:47:31,486 - market module - INFO - Timestamp - 1585785600
+2020-12-23 20:47:31,567 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 20:47:31,572 - amqp - DEBUG - using channel_id: 1
+2020-12-23 20:47:31,574 - amqp - DEBUG - Channel open
+2020-12-23 20:47:32,689 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 20:47:32,690 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:47:32,690 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:47:32,694 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:47:32] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 20:47:52,359 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:47:52,359 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608756451-UPLOAD_DUMP validating parameters...
+2020-12-23 20:47:52,360 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 20:47:52,360 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 20:47:52,417 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 20:47:52,421 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:47:52,421 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:47:52,422 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:47:52] "[37mGET /v1/status/TA-darkmarket-1585785600-1608756451-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 20:48:51,378 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:48:51,881 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608756451-UPLOAD_DUMP validating parameters...
+2020-12-23 20:48:51,881 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 20:48:51,881 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 20:48:51,985 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 20:48:51,989 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:48:51,989 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:48:51,990 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:48:51] "[37mGET /v1/status/TA-darkmarket-1585785600-1608756451-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-12-23 20:58:21,351 - server - INFO - Start anita server
+2020-12-23 20:58:21,352 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 20:58:21,352 - precondition - INFO - Resource folders: OK
+2020-12-23 20:58:21,352 - precondition - INFO - PARAMETERS
+2020-12-23 20:58:21,352 - precondition - INFO - Sonarqube: OK
+2020-12-23 20:58:21,352 - precondition - INFO - MySQL: OK
+2020-12-23 20:58:21,352 - precondition - INFO - CONNECTION TEST
+2020-12-23 20:58:21,354 - precondition - INFO - MySQL: OK
+2020-12-23 20:58:21,355 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 20:58:21,356 - precondition - INFO - Sonarqube: OK
+2020-12-23 20:58:21,356 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 20:58:21,358 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:22,361 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:23,365 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:24,369 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:25,578 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:26,583 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:27,587 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:28,590 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:29,922 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:30,925 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:31,928 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:34,937 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:35,941 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:35,953 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:36,957 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:36,963 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:37,966 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:37,971 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:38,974 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:38,982 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:39,985 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:39,991 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:40,994 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:41,001 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 20:58:42,008 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:42,017 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 20:58:42,018 - precondition - INFO - DATABASE
+2020-12-23 20:58:42,027 - precondition - INFO - Schema: OK
+2020-12-23 20:58:42,030 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 20:58:42,068 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 20:58:42,094 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 20:58:42,098 - precondition - INFO - PRODUCT table: OK
+2020-12-23 20:58:42,102 - precondition - INFO - VENDOR table: OK
+2020-12-23 20:58:42,106 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 20:58:42,107 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 20:58:42,107 - server - INFO - INFO
+2020-12-23 20:58:42,108 - server - INFO - HOST: 0.0.0.0
+2020-12-23 20:58:42,108 - server - INFO - PORT: 5000
+2020-12-23 20:58:42,108 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 20:58:42,139 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 20:58:49,596 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:58:49] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 20:58:49,629 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:58:49,629 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 20:58:49,630 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 20:58:49,630 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 20:58:49,630 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 20:58:49,630 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:58:49,630 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:58:49,631 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:58:49] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 20:58:54,249 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:58:54,259 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 20:58:54,263 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 20:58:54,266 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 20:58:54,266 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 20:58:54,291 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 20:58:54,291 - market module - INFO - Timestamp - 1585785600
+2020-12-23 20:58:54,356 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 20:58:54,358 - amqp - DEBUG - using channel_id: 1
+2020-12-23 20:58:54,359 - amqp - DEBUG - Channel open
+2020-12-23 20:58:55,242 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 20:58:55,243 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:58:55,243 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:58:55,245 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:58:55] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 20:59:04,911 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 20:59:04,912 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608757134-UPLOAD_DUMP validating parameters...
+2020-12-23 20:59:04,912 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 20:59:04,912 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 20:59:04,950 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 20:59:04,951 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 20:59:04,951 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 20:59:04,952 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 20:59:04] "[37mGET /v1/status/TA-darkmarket-1585785600-1608757134-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:03:40,443 - server - INFO - Start anita server
+2020-12-23 22:03:40,445 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 22:03:40,446 - precondition - INFO - Resource folders: OK
+2020-12-23 22:03:40,446 - precondition - INFO - PARAMETERS
+2020-12-23 22:03:40,446 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:03:40,446 - precondition - INFO - MySQL: OK
+2020-12-23 22:03:40,446 - precondition - INFO - CONNECTION TEST
+2020-12-23 22:03:40,455 - precondition - INFO - MySQL: OK
+2020-12-23 22:03:40,457 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 22:03:40,457 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:03:40,458 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 22:03:40,464 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:41,467 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:42,470 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:43,472 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:44,692 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:45,699 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:46,702 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:47,705 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:48,708 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:49,711 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:53,638 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:03:54,643 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:54,648 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:03:55,656 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:55,661 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:03:56,663 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:56,667 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:03:57,670 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:57,674 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:03:58,678 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:58,684 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:03:59,687 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:03:59,691 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:04:00,695 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:04:00,705 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 22:04:00,706 - precondition - INFO - DATABASE
+2020-12-23 22:04:00,744 - precondition - INFO - Schema: OK
+2020-12-23 22:04:00,748 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:04:00,787 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 22:04:00,809 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 22:04:00,813 - precondition - INFO - PRODUCT table: OK
+2020-12-23 22:04:00,817 - precondition - INFO - VENDOR table: OK
+2020-12-23 22:04:00,823 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 22:04:00,824 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 22:04:00,824 - server - INFO - INFO
+2020-12-23 22:04:00,824 - server - INFO - HOST: 0.0.0.0
+2020-12-23 22:04:00,824 - server - INFO - PORT: 5000
+2020-12-23 22:04:00,824 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 22:04:00,858 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 22:04:11,123 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:11] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 22:04:11,155 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:11,155 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 22:04:11,156 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 22:04:11,156 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 22:04:11,156 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 22:04:11,156 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:11,156 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:11,156 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:11] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 22:04:15,228 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:15,230 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 22:04:15,231 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 22:04:15,232 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 22:04:15,232 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 22:04:15,267 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 22:04:15,267 - market module - INFO - Timestamp - 1585785600
+2020-12-23 22:04:15,354 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 22:04:15,360 - amqp - DEBUG - using channel_id: 1
+2020-12-23 22:04:15,365 - amqp - DEBUG - Channel open
+2020-12-23 22:04:16,557 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 22:04:16,558 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:16,558 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:16,560 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:16] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 22:04:25,859 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:25,859 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:25,860 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:25,860 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:25,943 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:25,945 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:25,945 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:25,946 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:25] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:04:30,840 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:30,840 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:30,841 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:30,841 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:30,899 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:30,901 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:30,901 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:30,902 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:30] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:04:38,832 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:38,833 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:38,834 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:38,835 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:38,912 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:38,916 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:38,916 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:38,917 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:38] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:04:43,968 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:43,968 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:43,969 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:43,969 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:44,009 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:44,012 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:44,012 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:44,013 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:44] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:04:45,115 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:45,115 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:45,115 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:45,116 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:45,142 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:45,147 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:45,147 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:45,148 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:45] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:04:46,712 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:46,712 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:46,713 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:46,713 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:46,755 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:46,761 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:46,762 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:46,762 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:46] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:04:48,571 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:04:48,571 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP validating parameters...
+2020-12-23 22:04:48,571 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:04:48,572 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:04:48,645 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:04:48,648 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:04:48,648 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:04:48,648 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:04:48] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761055-UPLOAD_DUMP HTTP/1.1[0m" 200 -
+2020-12-23 22:05:49,788 - server - INFO - Start anita server
+2020-12-23 22:05:49,792 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 22:05:49,793 - precondition - INFO - Resource folders: OK
+2020-12-23 22:05:49,793 - precondition - INFO - PARAMETERS
+2020-12-23 22:05:49,793 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:05:49,793 - precondition - INFO - MySQL: OK
+2020-12-23 22:05:49,793 - precondition - INFO - CONNECTION TEST
+2020-12-23 22:05:49,799 - precondition - INFO - MySQL: OK
+2020-12-23 22:05:49,801 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 22:05:49,802 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:05:49,803 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 22:05:49,814 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:50,819 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:51,825 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:52,827 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:53,834 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:54,849 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:55,852 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:56,856 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:57,859 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:58,865 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:05:59,868 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:00,871 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:01,874 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:05,452 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:06:06,458 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:06,596 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:06:07,600 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:07,605 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:06:08,609 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:08,615 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:06:09,619 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:09,627 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:06:10,630 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:10,648 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:06:11,651 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:11,664 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 22:06:11,666 - precondition - INFO - DATABASE
+2020-12-23 22:06:11,712 - precondition - INFO - Schema: OK
+2020-12-23 22:06:11,716 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:06:11,736 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 22:06:11,756 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 22:06:11,762 - precondition - INFO - PRODUCT table: OK
+2020-12-23 22:06:11,767 - precondition - INFO - VENDOR table: OK
+2020-12-23 22:06:11,776 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 22:06:11,777 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 22:06:11,777 - server - INFO - INFO
+2020-12-23 22:06:11,777 - server - INFO - HOST: 0.0.0.0
+2020-12-23 22:06:11,777 - server - INFO - PORT: 5000
+2020-12-23 22:06:11,778 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 22:06:11,805 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 22:06:19,209 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:19] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 22:06:19,233 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:06:19,233 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 22:06:19,233 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 22:06:19,234 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 22:06:19,234 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 22:06:19,234 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:06:19,234 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:06:19,235 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:19] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 22:06:23,327 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:06:23,328 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 22:06:23,329 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 22:06:23,330 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 22:06:23,330 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 22:06:23,352 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 22:06:23,352 - market module - INFO - Timestamp - 1585785600
+2020-12-23 22:06:23,425 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 22:06:23,429 - amqp - DEBUG - using channel_id: 1
+2020-12-23 22:06:23,431 - amqp - DEBUG - Channel open
+2020-12-23 22:06:24,665 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 22:06:24,666 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:06:24,666 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:06:24,668 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:24] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 22:06:34,846 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:06:34,846 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP validating parameters...
+2020-12-23 22:06:34,847 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:06:34,847 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:06:34,874 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:06:34,875 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:06:34,875 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:06:34,875 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:34] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:06:38,817 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:06:38,818 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP validating parameters...
+2020-12-23 22:06:38,818 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:06:38,819 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:06:38,851 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:06:38,853 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:06:38,854 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:06:38,854 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:38] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:06:40,130 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:06:40,130 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP validating parameters...
+2020-12-23 22:06:40,130 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:06:40,131 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:06:40,153 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:06:40,155 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:06:40,155 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:06:40,155 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:40] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:06:44,118 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:06:44,118 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP validating parameters...
+2020-12-23 22:06:44,119 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:06:44,119 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:06:44,194 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:06:44,197 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:06:44,197 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:06:44,198 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:06:44] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761183-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:18:39,823 - server - INFO - Start anita server
+2020-12-23 22:18:39,824 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 22:18:39,824 - precondition - INFO - Resource folders: OK
+2020-12-23 22:18:39,824 - precondition - INFO - PARAMETERS
+2020-12-23 22:18:39,824 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:18:39,824 - precondition - INFO - MySQL: OK
+2020-12-23 22:18:39,825 - precondition - INFO - CONNECTION TEST
+2020-12-23 22:18:39,826 - precondition - INFO - MySQL: OK
+2020-12-23 22:18:39,827 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 22:18:39,828 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:18:39,828 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 22:18:39,832 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:40,835 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:41,839 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:42,842 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:43,847 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:44,853 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:45,856 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:46,860 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:47,864 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:48,868 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:49,871 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:50,878 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:53,990 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:18:54,996 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:55,008 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:18:56,010 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:56,015 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:18:57,018 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:57,024 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:18:58,027 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:58,031 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:18:59,034 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:18:59,042 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:19:00,045 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:19:00,085 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:19:01,088 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:19:01,104 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:19:02,108 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:19:02,123 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 22:19:02,124 - precondition - INFO - DATABASE
+2020-12-23 22:19:02,138 - precondition - INFO - Schema: OK
+2020-12-23 22:19:02,140 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:19:02,164 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 22:19:02,187 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 22:19:02,193 - precondition - INFO - PRODUCT table: OK
+2020-12-23 22:19:02,197 - precondition - INFO - VENDOR table: OK
+2020-12-23 22:19:02,205 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 22:19:02,206 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 22:19:02,206 - server - INFO - INFO
+2020-12-23 22:19:02,206 - server - INFO - HOST: 0.0.0.0
+2020-12-23 22:19:02,207 - server - INFO - PORT: 5000
+2020-12-23 22:19:02,208 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 22:19:02,237 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 22:19:50,582 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:19:50] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2020-12-23 22:19:50,606 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:19:50,606 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2020-12-23 22:19:50,606 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2020-12-23 22:19:50,607 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2020-12-23 22:19:50,607 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2020-12-23 22:19:50,607 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:19:50,607 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:19:50,607 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:19:50] "[37mGET /v1/marketplaces/ HTTP/1.1[0m" 200 -
+2020-12-23 22:19:53,565 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:19:53,570 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 22:19:53,571 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 22:19:53,572 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 22:19:53,572 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 22:19:53,594 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 22:19:53,594 - market module - INFO - Timestamp - 1585785600
+2020-12-23 22:19:53,663 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 22:19:53,667 - amqp - DEBUG - using channel_id: 1
+2020-12-23 22:19:53,668 - amqp - DEBUG - Channel open
+2020-12-23 22:19:54,850 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 22:19:54,850 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:19:54,850 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:19:54,853 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:19:54] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 22:20:04,432 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:20:04,432 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761993-UPLOAD_DUMP validating parameters...
+2020-12-23 22:20:04,432 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:20:04,432 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:20:04,465 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:20:04,466 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:20:04,466 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:20:04,466 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:20:04] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761993-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:20:10,321 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:20:10,321 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-darkmarket-1585785600-1608761993-UPLOAD_DUMP validating parameters...
+2020-12-23 22:20:10,321 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2020-12-23 22:20:10,321 - Status endpoints - INFO - Endpoint Status: START
+2020-12-23 22:20:10,368 - Status endpoints - INFO - Endpoint Status: END
+2020-12-23 22:20:10,370 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:20:10,371 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:20:10,371 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:20:10] "[37mGET /v1/status/TA-darkmarket-1585785600-1608761993-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2020-12-23 22:26:29,632 - server - INFO - Start anita server
+2020-12-23 22:26:29,633 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 22:26:29,633 - precondition - INFO - Resource folders: OK
+2020-12-23 22:26:29,633 - precondition - INFO - PARAMETERS
+2020-12-23 22:26:29,633 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:26:29,633 - precondition - INFO - MySQL: OK
+2020-12-23 22:26:29,633 - precondition - INFO - CONNECTION TEST
+2020-12-23 22:26:29,635 - precondition - INFO - MySQL: OK
+2020-12-23 22:26:29,636 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 22:26:29,637 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:26:29,637 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 22:26:29,640 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:30,643 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:31,646 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:32,649 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:33,651 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:34,657 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:35,660 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:36,663 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:37,667 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:38,671 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:39,673 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:40,677 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:41,679 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:45,864 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:46,866 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:46,875 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:47,879 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:47,953 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:48,955 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:48,961 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:49,964 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:49,968 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:50,971 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:50,976 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:51,978 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:51,984 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:26:52,986 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:52,997 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 22:26:52,998 - precondition - INFO - DATABASE
+2020-12-23 22:26:53,018 - precondition - INFO - Schema: OK
+2020-12-23 22:26:53,019 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:26:53,066 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 22:26:53,081 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 22:26:53,086 - precondition - INFO - PRODUCT table: OK
+2020-12-23 22:26:53,090 - precondition - INFO - VENDOR table: OK
+2020-12-23 22:26:53,123 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 22:26:53,123 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 22:26:53,123 - server - INFO - INFO
+2020-12-23 22:26:53,123 - server - INFO - HOST: 0.0.0.0
+2020-12-23 22:26:53,124 - server - INFO - PORT: 5000
+2020-12-23 22:26:53,124 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 22:26:53,143 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 22:27:31,154 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:27:31,158 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 22:27:31,160 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 22:27:31,160 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 22:27:31,160 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 22:27:31,181 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 22:27:31,181 - market module - INFO - Timestamp - 1585785600
+2020-12-23 22:27:31,239 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 22:27:31,245 - amqp - DEBUG - using channel_id: 1
+2020-12-23 22:27:31,247 - amqp - DEBUG - Channel open
+2020-12-23 22:27:32,641 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 22:27:32,642 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:27:32,642 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:27:32,647 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:27:32] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2020-12-23 22:34:03,728 - server - INFO - Start anita server
+2020-12-23 22:34:03,729 - precondition - INFO - PRECONDITION CHECKING
+2020-12-23 22:34:03,730 - precondition - INFO - Resource folders: OK
+2020-12-23 22:34:03,730 - precondition - INFO - PARAMETERS
+2020-12-23 22:34:03,730 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:34:03,730 - precondition - INFO - MySQL: OK
+2020-12-23 22:34:03,731 - precondition - INFO - CONNECTION TEST
+2020-12-23 22:34:03,736 - precondition - INFO - MySQL: OK
+2020-12-23 22:34:03,737 - precondition - INFO - Sonarqube: waiting...
+2020-12-23 22:34:03,738 - precondition - INFO - Sonarqube: OK
+2020-12-23 22:34:03,738 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2020-12-23 22:34:03,741 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:04,743 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:05,746 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:06,750 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:07,753 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:08,757 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:09,762 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:10,765 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:11,767 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:12,772 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:13,775 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:17,617 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:18,621 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:18,628 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:19,631 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:19,635 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:20,639 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:20,644 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:21,648 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:21,657 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:22,661 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:22,667 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:23,670 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:23,963 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2020-12-23 22:34:24,965 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:24,975 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2020-12-23 22:34:24,976 - precondition - INFO - DATABASE
+2020-12-23 22:34:24,989 - precondition - INFO - Schema: OK
+2020-12-23 22:34:24,992 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2020-12-23 22:34:25,013 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2020-12-23 22:34:25,031 - precondition - INFO - SONARQUBE table: OK
+2020-12-23 22:34:25,036 - precondition - INFO - PRODUCT table: OK
+2020-12-23 22:34:25,039 - precondition - INFO - VENDOR table: OK
+2020-12-23 22:34:25,045 - precondition - INFO - FEEDBACK table: OK
+2020-12-23 22:34:25,045 - precondition - INFO - Sonar-scanner status: OK
+2020-12-23 22:34:25,046 - server - INFO - INFO
+2020-12-23 22:34:25,046 - server - INFO - HOST: 0.0.0.0
+2020-12-23 22:34:25,046 - server - INFO - PORT: 5000
+2020-12-23 22:34:25,046 - connexion.app - DEBUG - Starting flask HTTP server..
+2020-12-23 22:34:25,061 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2020-12-23 22:34:33,508 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2020-12-23 22:34:33,512 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/darkmarket validating parameters...
+2020-12-23 22:34:33,513 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2020-12-23 22:34:33,514 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2020-12-23 22:34:33,514 - Markets endpoint - INFO - Endpoint Load dump - START
+2020-12-23 22:34:33,524 - market module - INFO - Analysing darkmarket-1585785600 dump
+2020-12-23 22:34:33,524 - market module - INFO - Timestamp - 1585785600
+2020-12-23 22:34:33,585 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@180035576f94', 'copyright': 'Copyright (c) 2007-2020 Pivotal Software, Inc.', 'information': 'Licensed under the MPL 1.1. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 22.3', 'product': 'RabbitMQ', 'version': '3.8.3'}, mechanisms: [b'PLAIN', b'AMQPLAIN'], locales: ['en_US']
+2020-12-23 22:34:33,586 - amqp - DEBUG - using channel_id: 1
+2020-12-23 22:34:33,587 - amqp - DEBUG - Channel open
+2020-12-23 22:34:34,674 - Markets endpoint - INFO - Endpoint Load dump - END
+2020-12-23 22:34:34,675 - connexion.apis.abstract - DEBUG - Getting data and status code
+2020-12-23 22:34:34,675 - connexion.apis.abstract - DEBUG - Got framework response
+2020-12-23 22:34:34,678 - werkzeug - INFO - 172.18.0.1 - - [23/Dec/2020 22:34:34] "[37mPOST /v1/marketplaces/dumps/darkmarket HTTP/1.1[0m" 202 -
+2021-01-13 13:06:53,036 - server - INFO - Start anita server
+2021-01-13 13:06:53,036 - precondition - INFO - PRECONDITION CHECKING
+2021-01-13 13:06:53,036 - precondition - INFO - Resource folders: OK
+2021-01-13 13:06:53,036 - precondition - INFO - PARAMETERS
+2021-01-13 13:06:53,036 - precondition - INFO - Sonarqube: OK
+2021-01-13 13:06:53,037 - precondition - INFO - MySQL: OK
+2021-01-13 13:06:53,037 - precondition - INFO - CONNECTION TEST
+2021-01-13 13:06:53,098 - precondition - INFO - MySQL: waiting...
+2021-01-13 13:06:53,099 - precondition - INFO - MySQL: OK

@@ -32,6 +32,7 @@ def get_scraper_instance(market):
         return CannazonScraper()
 
     elif market == Market.DARKMARKET or (isinstance(market, str) and market.upper() == Market.DARKMARKET.name):
+        print(Market.DARKMARKET.name)
         return DarkmarketScraper()
 
     elif market == Market.DIRECTDRUGS or (isinstance(market, str) and market.upper() == Market.DIRECTDRUGS.name):

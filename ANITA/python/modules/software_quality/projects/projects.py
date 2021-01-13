@@ -11,7 +11,7 @@ import sonarqube.utils.SonarqubeUtils as sq_utils
 from ..experimentation.preprocessing import three_classifiers
 from utils.FileUtils import getdirs
 
-from modules.exceptions.exceptions import UndefinedTaskStateException
+from exceptions import UndefinedTaskStateException
 
 
 def load_data(project_name, zip_file, new_project=False, additional_info=False):

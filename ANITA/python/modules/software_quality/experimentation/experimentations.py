@@ -4,7 +4,7 @@ import celery_task.tasks.software_quality.experimentations as exp_task
 
 from sonarqube.local.SonarqubeLocalProject import SonarqubeLocalProject
 
-from modules.exceptions.exceptions import UndefinedTaskStateException
+from exceptions import UndefinedTaskStateException
 
 
 def evaluation(project_name):

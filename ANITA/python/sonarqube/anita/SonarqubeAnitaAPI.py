@@ -2,8 +2,7 @@ import time, datetime
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from utils.ListUtils import array_split
 
-from exception.ServerError import ServerError
-from exception.PendingTaskException import PendingTaskException
+from exceptions import PendingTaskException, ServerError
 
 TIMEOUT = 6000  # sec
 LIMIT_METRICS_API = 15
