@@ -1,2 +1,0 @@
-class UndefinedTaskStateException(Exception):
-    pass

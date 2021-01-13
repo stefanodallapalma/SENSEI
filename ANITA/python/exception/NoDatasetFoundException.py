@@ -1,2 +1,0 @@
-class NoDatasetFoundException(Exception):
-    pass
