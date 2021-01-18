@@ -82,10 +82,14 @@ def load_dump_status(unique_id):
     elif task.state == "FAILURE" or (task.state == "SUCCESS" and "error" in task.result):
         # Delete raw folder
         market = unique_id.split("-")[1]
+        timestamp = unique_id.split("-")[2]
         market_local = MarketLocalProject(market)
 
         if os.path.exists(market_local.raw_path):
             market_local.delete_raw_folder()
+
+        # Delete zip file
+        market_local.delete_zipfile(timestamp)
 
         return 500, task.result
     else:

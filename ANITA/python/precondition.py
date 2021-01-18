@@ -131,10 +131,10 @@ def check_preconditions():
             logger.info(table.upper() + " table: OK")
         else:
             logger.info(table.upper() + " table: generation...")
-            if table == "feedback":
-                controller.create(encode="utf8mb4")
-            else:
-                controller.create()
+            result = controller.create(encode="utf8mb4")
+            if not result:
+                logger.info(result)
+                return False
             logger.info(table.upper() + " table generated")
 
     # Sonarqube token

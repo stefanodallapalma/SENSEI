@@ -22,7 +22,15 @@ class ProductController(TableController):
 
         for attribute_name in attribute_names:
             if attribute_name in pk_attribute_names:
-                datatype = DataType(Type.VARCHAR, 200)
+                if attribute_name == "timestamp":
+                    datatype = DataType(Type.VARCHAR, 20)
+                elif "price" in attribute_name:
+                    datatype = DataType(Type.VARCHAR, 50)
+                elif attribute_name == "market":
+                    datatype = DataType(Type.VARCHAR, 100)
+                else:
+                    datatype = DataType(Type.VARCHAR, 200)
+
                 column = ColumnDB(attribute_name, datatype, pk=True, not_null=True)
             else:
                 if attribute_name == "info":

@@ -55,6 +55,13 @@ class MarketLocalProject:
     def delete_raw_folder(self):
         shutil.rmtree(self.raw_path)
 
+    def delete_zipfile(self, timestamp):
+        zip_name = self.market_name + "_" + str(timestamp) + ".zip"
+        zip_path = os.path.join(self.market_path, zip_name)
+
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
+
     def save_and_extract(self, zip_file, timestamp):
         zip_name = self.market_name + "_" + str(timestamp) + ".zip"
         zip_path = os.path.join(self.market_path, zip_name)

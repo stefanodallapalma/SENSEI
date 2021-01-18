@@ -98,9 +98,9 @@ class TableController(ABC):
         elif encode == "utf8mb4":
             query += pk_query + ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE utf8mb4_general_ci"
 
-        self._mysql_db.insert(query)
+        result = self._mysql_db.insert(query)
 
-        return True
+        return result
 
     def drop(self):
         """Delete the controller from the database"""

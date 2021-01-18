@@ -20,7 +20,7 @@ class AgarthaScraper(Scraper):
         except:
             pass
 
-        raise Exception("Unknown type")
+        return None
 
 
 class AgarthaProductScraper(ProductScraper):

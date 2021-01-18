@@ -1,3 +1,5 @@
+from utils.charset_utils import remove_unknown_charset
+
 class Product:
     def __init__(self, timestamp=None, market=None, name=None, vendor=None, ships_from=None, ships_to=None, price=None,
                  price_eur=None, info=None, feedback=None):
@@ -9,7 +11,7 @@ class Product:
         self.ships_to = ships_to
         self.price = price
         self.price_eur = price_eur
-        self.info = info
+        self.info = remove_unknown_charset(info)
         self.feedback = feedback
 
     @property
@@ -111,7 +113,7 @@ class Vendor:
         self.last_login = last_login
         self.last_login_deviation = last_login_deviation
         self.sales = sales
-        self.info = info
+        self.info = remove_unknown_charset(info)
         self.feedback = feedback
         self.pgp = pgp
 
@@ -229,7 +231,7 @@ class Feedback:
     def __init__(self, id=None, score=None, message=None, date=None, product=None, user=None, deals=None):
         self.id = id
         self.score = score
-        self.message = message
+        self.message = remove_unknown_charset(message)
         self.date = date
         self.product = product
         self.user = user

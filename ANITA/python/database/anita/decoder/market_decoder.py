@@ -103,16 +103,27 @@ class FeedbackScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        keys = ["name", "score", "score_normalized", "registration", "registration_deviation", "last_login",
+        product_keys = ["product_name", "vendor", "ships_from", "ships_to", "price", "price_eur", "info", "feedback"]
+        vendor_keys = ["name", "score", "score_normalized", "registration", "registration_deviation", "last_login",
                 "last_login_deviation", "sales", "info", "feedback"]
-        if all(key in dct for key in keys):
+
+        if all(key in dct for key in product_keys) or all(key in dct for key in vendor_keys):
             feedback_list = []
             feedback_list_json = dct["feedback"]
 
+            product = False
+            if all(key in dct for key in product_keys):
+                product = True
+
             for feedback_json in feedback_list_json:
-                feedback = Feedback(id=None, score=feedback_json["score"], message=feedback_json["message"],
-                                    date=feedback_json["date"], product=feedback_json["product"],
-                                    user=feedback_json["user"], deals=feedback_json["deals"])
+                # A feedback's product does not have the product and the deal parameters
+                if product:
+                    feedback = Feedback(id=None, score=feedback_json["score"], message=feedback_json["message"],
+                                        date=feedback_json["date"], user=feedback_json["user"])
+                else:
+                    feedback = Feedback(id=None, score=feedback_json["score"], message=feedback_json["message"],
+                                        date=feedback_json["date"], product=feedback_json["product"],
+                                        user=feedback_json["user"], deals=feedback_json["deals"])
                 feedback_list.append(feedback)
 
             return feedback_list
