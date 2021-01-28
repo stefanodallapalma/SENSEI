@@ -1,5 +1,6 @@
 import json
 import traceback
+from os.path import basename, normpath
 
 # Third party imports
 from celery import states
@@ -77,10 +78,6 @@ def load_dump(self, dump_folder_path, market, timestamp):
         # Extract info from an html o docker-composepage
         try:
             web_page_information, page_specific_data, irretrievable_info_json = scraper.extract_data(page, timestamp, market)
-            if web_page_information.page_type.lower() == "product":
-                print("Product {}".format(len(products) + 1))
-            if web_page_information.page_type.lower() == "vendor":
-                print("Vendor {}".format(len(vendors) + 1))
 
             if STATISTICAL_INFO:
                 # Irretrievable rate and exceptions raised
@@ -96,25 +93,53 @@ def load_dump(self, dump_folder_path, market, timestamp):
             feedback = None
             if page_specific_data.__dict__["feedback"]:
                 feedback = json.loads(json.dumps(page_specific_data.__dict__), cls=FeedbackScraperDecoder)
-                print("Feedback type: {}".format(type(feedback)))
-                for i in range(len(feedback)):
+                #print("Feedback type: {}".format(type(feedback)))
+
+                """for i in range(len(feedback)):
                     feedback[i].id = id_feedback
                     feedback_list.append(feedback[i])
                 content["#feedback"] = len(feedback_list)
-
+                print("FEEDBACK")
+                print(feedback)
+                """
             if web_page_information.page_type.lower() == "product":
                 product = json.loads(json.dumps(page_specific_data.__dict__), cls=ProductScraperDecoder)
                 product.market = market
                 product.timestamp = timestamp
 
+                if feedback:
+                    try:
+                        print("FB PRODUCT")
+                        if product not in products and not product.isnull():
+                            product.feedback = id_feedback
+                            print(product.feedback)
+                            id_feedback += 1
+                        else:
+                            index_original_product = products.index(product)
+                            original_product = products[index_original_product]
+                            if original_product.feedback:
+                                for feedback_elem in feedback:
+                                    feedback_elem.id = original_product.feedback
+                                print(original_product.feedback)
+                            else:
+                                products[index_original_product].feedback = id_feedback
+                                print(products[index_original_product].feedback)
+                                id_feedback += 1
+
+                        feedback_list += feedback
+                        content["#feedback"] = len(feedback_list)
+
+                    except ValueError as e:
+                        # No original found: null case - ignore
+                        pass
+
+                if product not in products and not product.isnull():
+                    products.append(product)
+                    content["#products"] = len(products)
+                    print("Product {}".format(len(products)))
+
                 # In the product and vendor it is saved just the id of the feedback> The feedback will be saved in
                 # another json and db table
-                product.feedback = None
-                if feedback:
-                    product.feedback = id_feedback
-
-                products.append(product)
-                content["#products"] = len(products)
             else:
                 vendor = json.loads(json.dumps(page_specific_data.__dict__), cls=VendorScraperDecoder)
                 vendor.market = market
@@ -122,19 +147,45 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
                 # In the product and vendor it is saved just the id of the feedback> The feedback will be saved in
                 # another json and db table
-                vendor.feedback = None
                 if feedback:
-                    vendor.feedback = id_feedback
+                    try:
+                        print("FB VENDOR")
+                        if vendor not in vendors and not vendor.isnull():
+                            vendor.feedback = id_feedback
+                            print(vendor.feedback)
+                            id_feedback += 1
+                        else:
+                            index_original_vendor = vendors.index(vendor)
+                            original_vendor = vendors[index_original_vendor]
+                            if original_vendor.feedback:
+                                for feedback_elem in feedback:
+                                    feedback_elem.id = original_vendor.feedback
+                                print(original_vendor.feedback)
+                            else:
+                                vendors[index_original_vendor].feedback = id_feedback
+                                print(vendors[index_original_vendor].feedback)
+                                id_feedback += 1
 
-                vendors.append(vendor)
-                content["#vendors"] = len(vendors)
+                        feedback_list += feedback
+                        content["#feedback"] = len(feedback_list)
+                    except ValueError as e:
+                        # No original found: null case - ignore
+                        pass
 
-            if feedback:
-                id_feedback += 1
+                if vendor not in vendors and not vendor.isnull():
+                    vendors.append(vendor)
+                    content["#vendors"] = len(vendors)
+                    print("Vendor {}".format(len(vendors)))
 
             successfull_pages += 1
             content["successfull_pages"] = successfull_pages
         except Exception as e:
+            file_name = basename(normpath(page))
+            print("ERROR with the page \"{}\"".format(file_name))
+            print("MESSAGE: {}".format(str(e)))
+            print("TRACEBACK")
+            traceback.print_exc()
+
             failed_pages += 1
             content["failed_pages"] = failed_pages
 
@@ -158,14 +209,17 @@ def load_dump(self, dump_folder_path, market, timestamp):
     print("Vendors: {}".format(len(vendors)))
     print("Feedback: {}".format(len(feedback_list)))
 
-    products = remove_null_products(products)
-    vendors = remove_null_vendors(vendors)
+    """products, feedback_list = remove_null_products(products, feedback_list)
+    vendors, feedback_list = remove_null_vendors(vendors, feedback_list)
+
     print("Products not null: {}".format(len(products)))
     print("Vendors not null: {}".format(len(vendors)))
+    print("Feedback: {}".format(len(feedback_list)))
 
     print("REMOVING DUPLICATES...")
-    products = remove_products_duplicates(products)
-    vendors = remove_vendors_duplicates(vendors)
+    products, feedback_list = remove_products_duplicates(products, feedback_list)
+    vendors, feedback_list = remove_vendors_duplicates(vendors, feedback_list)
+    feedback_list = remove_feedback_duplicates(feedback_list)
     feedback_list = remove_unreference_feedback(feedback_list, products, vendors)
     print("DUPLICATES REMOVED")
 
@@ -173,7 +227,7 @@ def load_dump(self, dump_folder_path, market, timestamp):
     print("Vendors: {}".format(len(vendors)))
     print("Feedback: {}".format(len(feedback_list)))
     content["#products"] = len(products)
-    content["#vendors"] = len(vendors)
+    content["#vendors"] = len(vendors)"""
 
     # Rates
     if STATISTICAL_INFO:
@@ -207,26 +261,48 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
 
 # TO DO: REFACTORING
-def remove_null_products(products):
+def remove_null_products(products, feedback_list):
     notnull_products = []
+    notnull_feedback = []
 
+    feedback_index_removed = []
+
+    # All the pk must be not null
     for product in products:
-        if product.timestamp is not None and product.market is not None and product.name is not None and\
-                product.price is not None:
+        if not product.isnull():
             notnull_products.append(product)
+        else:
+            if product.feedback:
+                feedback_index_removed.append(product.feedback)
 
-    return notnull_products
+    # Remove all feedback connected with null products
+    for feedback in feedback_list:
+        if feedback.id not in feedback_index_removed:
+            notnull_feedback.append(feedback)
+
+    return notnull_products, notnull_feedback
 
 
 # TO DO: REFACTORING
-def remove_null_vendors(vendors):
+def remove_null_vendors(vendors, feedback_list):
     notnull_vendors = []
+    notnull_feedback = []
 
+    feedback_index_removed = []
+
+    # All the pk must be not null
     for vendor in vendors:
-        if vendor.timestamp is not None and vendor.market is not None and vendor.name is not None:
+        if not vendor.isnull():
             notnull_vendors.append(vendor)
+        else:
+            if vendor.feedback:
+                feedback_index_removed.append(vendor.feedback)
 
-    return notnull_vendors
+    for feedback in feedback_list:
+        if feedback.id not in feedback_index_removed:
+            notnull_feedback.append(feedback)
+
+    return notnull_vendors, notnull_feedback
 
 
 def remove_unreference_feedback(feedback_list, products, vendors):
@@ -249,41 +325,75 @@ def remove_unreference_feedback(feedback_list, products, vendors):
 
 
 # TO DO: REFACTORING
-def remove_products_duplicates(products):
+def remove_products_duplicates(products, feedback_list):
     new_products = []
+
+    feedback_duplicate_dct = {}
 
     for product in products:
         i = 0
 
-        while i < len(new_products) and not \
-                (new_products[i].timestamp == product.timestamp and
-                 new_products[i].market.lower() == product.market.lower() and
-                 new_products[i].name.lower() == product.name.lower() and
-                 new_products[i].vendor.lower() == product.vendor.lower() and
-                 new_products[i].price.lower() == product.price.lower()):
+        # id feedback of a possible duplicate
+        feedback_id = product.feedback
 
+        while i < len(new_products) and new_products[i] != product:
             i += 1
 
         if i >= len(new_products):
             new_products.append(product)
+        else:
+            # Id of the original product
+            original_feedback_id = new_products[i].feedback
+            feedback_duplicate_dct[feedback_id] = original_feedback_id
 
-    return new_products
+    # Replace duplicate feedback id with the original one
+    for feedback in feedback_list:
+        if feedback.id in feedback_duplicate_dct:
+            feedback.id = feedback_duplicate_dct[feedback.id]
+
+    return new_products, feedback_list
 
 
 # TO DO: REFACTORING
-def remove_vendors_duplicates(vendors):
+def remove_vendors_duplicates(vendors, feedback_list):
     new_vendors = []
 
-    i = 0
+    feedback_duplicate_dct = {}
+
     for vendor in vendors:
         i = 0
-        while i < len(new_vendors) and not \
-                (new_vendors[i].timestamp == vendor.timestamp and
-                 new_vendors[i].market.lower() == vendor.market.lower() and
-                 new_vendors[i].name.lower() == vendor.name.lower()):
+
+        # id feedback of a possible duplicate
+        feedback_id = vendor.feedback
+
+        while i < len(new_vendors) and new_vendors[i] != vendor:
             i += 1
 
         if i >= len(new_vendors):
             new_vendors.append(vendor)
+        else:
+            # Id of the original product
+            original_feedback_id = new_vendors[i].feedback
+            feedback_duplicate_dct[feedback_id] = original_feedback_id
 
-    return new_vendors
+    # Replace duplicate feedback id with the original one
+    for feedback in feedback_list:
+        if feedback.id in feedback_duplicate_dct:
+            feedback.id = feedback_duplicate_dct[feedback.id]
+
+    return new_vendors, feedback_list
+
+
+def remove_feedback_duplicates(feedback_list):
+    new_feedback_list = []
+
+    for feedback in feedback_list:
+        i = 0
+
+        while i < len(new_feedback_list) and new_feedback_list[i] != feedback:
+            i += 1
+
+        if i >= len(new_feedback_list):
+            new_feedback_list.append(feedback)
+
+    return new_feedback_list

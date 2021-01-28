@@ -58,11 +58,17 @@ class DarkmarketProductScraper(ProductScraper):
         return ships_to
 
     def price(self):
-        price_dict = dict()
+        prices = []
         price_list = self.soup.find('div', {'class', 'col-md-12 text-center'}).find_all('li')
         for item in price_list:
-            price_dict[item.text.replace('\n', '')] = item.find('strong').text.replace('\n', '')
-        return None  # replace None
+            # price_dict[item.text.replace('\n', '')] = item.find('strong').text.replace('\n', '')
+            prices.append(item.find('strong').text.replace('\n', ''))
+
+        # Return the first price
+        if prices:
+            return prices[0]
+
+        return None
 
     def info(self):
         info = ''

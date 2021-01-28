@@ -1,12 +1,13 @@
 from utils.charset_utils import remove_unknown_charset
 
+
 class Product:
     def __init__(self, timestamp=None, market=None, name=None, vendor=None, ships_from=None, ships_to=None, price=None,
                  price_eur=None, info=None, feedback=None):
         self.timestamp = timestamp
         self.market = market
-        self.name = name
-        self.vendor = vendor
+        self.name = remove_unknown_charset(name)
+        self.vendor = remove_unknown_charset(vendor)
         self.ships_from = ships_from
         self.ships_to = ships_to
         self.price = price
@@ -94,6 +95,29 @@ class Product:
     def feedback(self, value):
         self._feedback = value
 
+    def isnull(self):
+        if self.timestamp is not None and self.market is not None and self.name is not None and self.price is not None:
+            return False
+
+        return True
+
+    def __eq__(self, other):
+        if not isinstance(other, Product):
+            return self.__dict__ == other.__dict__
+
+        try:
+            if self.timestamp == other.timestamp and self.market.lower() == other.market.lower() and \
+                    self.name.lower() == other.name.lower() and self.vendor.lower() == other.vendor.lower() and \
+                    self.price.lower() == other.price.lower():
+                return True
+        except AttributeError as e:
+            # If some parameters are null, just check without lower() func
+            if self.timestamp == other.timestamp and self.market == other.market and self.name == other.name and \
+                    self.vendor == other.vendor and self.price == other.price:
+                return True
+
+        return False
+
     @staticmethod
     def __prop__():
         return [key for key in Product.__dict__
@@ -105,7 +129,7 @@ class Vendor:
                  last_login_deviation, sales, info, feedback, pgp):
         self.timestamp = timestamp
         self.market = market
-        self.name = name
+        self.name = remove_unknown_charset(name)
         self.score = score
         self.score_normalized = score_normalized
         self.registration = registration
@@ -221,6 +245,27 @@ class Vendor:
     def pgp(self, value):
         self._pgp = value
 
+    def isnull(self):
+        if self.timestamp is not None and self.market is not None and self.name is not None:
+            return False
+
+        return True
+
+    def __eq__(self, other):
+        if not isinstance(other, Vendor):
+            return self.__dict__ == other.__dict__
+
+        try:
+            if self.timestamp == other.timestamp and self.market.lower() == other.market.lower() and \
+                    self.name.lower() == other.name.lower():
+                return True
+        except AttributeError as e:
+            # If some parameters are null, just check without lower() func
+            if self.timestamp == other.timestamp and self.market == other.market and self.name == other.name:
+                return True
+
+        return False
+
     @staticmethod
     def __prop__():
         return [key for key in Vendor.__dict__
@@ -233,8 +278,8 @@ class Feedback:
         self.score = score
         self.message = remove_unknown_charset(message)
         self.date = date
-        self.product = product
-        self.user = user
+        self.product = remove_unknown_charset(product)
+        self.user = remove_unknown_charset(user)
         self.deals = deals
 
     @property
@@ -292,6 +337,9 @@ class Feedback:
     @deals.setter
     def deals(self, value):
         self._deals = value
+
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
 
     @staticmethod
     def __prop__():

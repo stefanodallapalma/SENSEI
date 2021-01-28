@@ -95,8 +95,7 @@ def identify_market(soup):
     except:
         pass
 
-
-
+    return None
 
 
 
