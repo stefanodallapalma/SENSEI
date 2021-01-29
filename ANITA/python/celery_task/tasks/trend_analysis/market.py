@@ -74,6 +74,11 @@ def load_dump(self, dump_folder_path, market, timestamp):
     else:
         id_feedback += 1
 
+    # Exit condition if there are 0 pages
+    if not pages:
+        self.update_state(state=states.SUCCESS, meta=content)
+        return content
+
     for page in pages:
         # Extract info from an html o docker-composepage
         try:
@@ -112,6 +117,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
                         print("FB PRODUCT")
                         if product not in products and not product.isnull():
                             product.feedback = id_feedback
+                            for feedback_elem in feedback:
+                                feedback_elem.id = id_feedback
                             print(product.feedback)
                             id_feedback += 1
                         else:
@@ -122,6 +129,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
                                     feedback_elem.id = original_product.feedback
                                 print(original_product.feedback)
                             else:
+                                for feedback_elem in feedback:
+                                    feedback_elem.id = id_feedback
                                 products[index_original_product].feedback = id_feedback
                                 print(products[index_original_product].feedback)
                                 id_feedback += 1
@@ -152,6 +161,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
                         print("FB VENDOR")
                         if vendor not in vendors and not vendor.isnull():
                             vendor.feedback = id_feedback
+                            for feedback_elem in feedback:
+                                feedback_elem.id = id_feedback
                             print(vendor.feedback)
                             id_feedback += 1
                         else:
@@ -163,6 +174,8 @@ def load_dump(self, dump_folder_path, market, timestamp):
                                 print(original_vendor.feedback)
                             else:
                                 vendors[index_original_vendor].feedback = id_feedback
+                                for feedback_elem in feedback:
+                                    feedback_elem.id = id_feedback
                                 print(vendors[index_original_vendor].feedback)
                                 id_feedback += 1
 
@@ -238,7 +251,6 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
     self.update_state(state='PROGRESS', meta=content)
 
-    # Database step
     try:
         if products:
             product_controller.insert_beans(products)
@@ -258,142 +270,3 @@ def load_dump(self, dump_folder_path, market, timestamp):
     self.update_state(state=states.SUCCESS, meta=content)
 
     return content
-
-
-# TO DO: REFACTORING
-def remove_null_products(products, feedback_list):
-    notnull_products = []
-    notnull_feedback = []
-
-    feedback_index_removed = []
-
-    # All the pk must be not null
-    for product in products:
-        if not product.isnull():
-            notnull_products.append(product)
-        else:
-            if product.feedback:
-                feedback_index_removed.append(product.feedback)
-
-    # Remove all feedback connected with null products
-    for feedback in feedback_list:
-        if feedback.id not in feedback_index_removed:
-            notnull_feedback.append(feedback)
-
-    return notnull_products, notnull_feedback
-
-
-# TO DO: REFACTORING
-def remove_null_vendors(vendors, feedback_list):
-    notnull_vendors = []
-    notnull_feedback = []
-
-    feedback_index_removed = []
-
-    # All the pk must be not null
-    for vendor in vendors:
-        if not vendor.isnull():
-            notnull_vendors.append(vendor)
-        else:
-            if vendor.feedback:
-                feedback_index_removed.append(vendor.feedback)
-
-    for feedback in feedback_list:
-        if feedback.id not in feedback_index_removed:
-            notnull_feedback.append(feedback)
-
-    return notnull_vendors, notnull_feedback
-
-
-def remove_unreference_feedback(feedback_list, products, vendors):
-    ref_feedback_list = []
-
-    ids = []
-    for product in products:
-        if product.feedback:
-            ids.append(product.feedback)
-
-    for vendor in vendors:
-        if vendor.feedback:
-            ids.append(vendor.feedback)
-
-    for feedback in feedback_list:
-        if feedback.id in ids:
-            ref_feedback_list.append(feedback)
-
-    return ref_feedback_list
-
-
-# TO DO: REFACTORING
-def remove_products_duplicates(products, feedback_list):
-    new_products = []
-
-    feedback_duplicate_dct = {}
-
-    for product in products:
-        i = 0
-
-        # id feedback of a possible duplicate
-        feedback_id = product.feedback
-
-        while i < len(new_products) and new_products[i] != product:
-            i += 1
-
-        if i >= len(new_products):
-            new_products.append(product)
-        else:
-            # Id of the original product
-            original_feedback_id = new_products[i].feedback
-            feedback_duplicate_dct[feedback_id] = original_feedback_id
-
-    # Replace duplicate feedback id with the original one
-    for feedback in feedback_list:
-        if feedback.id in feedback_duplicate_dct:
-            feedback.id = feedback_duplicate_dct[feedback.id]
-
-    return new_products, feedback_list
-
-
-# TO DO: REFACTORING
-def remove_vendors_duplicates(vendors, feedback_list):
-    new_vendors = []
-
-    feedback_duplicate_dct = {}
-
-    for vendor in vendors:
-        i = 0
-
-        # id feedback of a possible duplicate
-        feedback_id = vendor.feedback
-
-        while i < len(new_vendors) and new_vendors[i] != vendor:
-            i += 1
-
-        if i >= len(new_vendors):
-            new_vendors.append(vendor)
-        else:
-            # Id of the original product
-            original_feedback_id = new_vendors[i].feedback
-            feedback_duplicate_dct[feedback_id] = original_feedback_id
-
-    # Replace duplicate feedback id with the original one
-    for feedback in feedback_list:
-        if feedback.id in feedback_duplicate_dct:
-            feedback.id = feedback_duplicate_dct[feedback.id]
-
-    return new_vendors, feedback_list
-
-
-def remove_feedback_duplicates(feedback_list):
-    new_feedback_list = []
-
-    for feedback in feedback_list:
-        i = 0
-
-        while i < len(new_feedback_list) and new_feedback_list[i] != feedback:
-            i += 1
-
-        if i >= len(new_feedback_list):
-            new_feedback_list.append(feedback)
-
-    return new_feedback_list

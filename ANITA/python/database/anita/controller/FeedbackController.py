@@ -97,3 +97,18 @@ class FeedbackController(TableController):
             return None
         else:
             return results[0][0]
+
+    def insert_beans(self, beans):
+        attributes = ["id", "score", "message", "date", "product", "user", "deals"]
+
+        # Preprocessing
+        new_beans = []
+        for bean in beans:
+            for attr in attributes:
+                val = getattr(bean, attr)
+                if isinstance(val, list):
+                    val = ", ".join(str(elem) for elem in val)
+                    setattr(bean, attr, val)
+            new_beans.append(bean)
+
+        super(FeedbackController, self).insert_beans(new_beans)

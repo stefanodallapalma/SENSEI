@@ -28,7 +28,7 @@ def load_dump(market, dump_zip, timestamp):
         error = {"error": "Market not implemented"}
         return 404, error
 
-    if market_local.dump_filepath(timestamp) is not None:
+    if market_local.dump_path(timestamp) is not None:
         error = {"error": "Dump already loaded"}
         return 404, error
 
@@ -51,11 +51,11 @@ def load_dump(market, dump_zip, timestamp):
         return 400, content
 
     # STEP 1 - SAVE DUMP
-    market_local.save_and_extract(dump_zip, timestamp)
-    dump_raw_path = market_local.raw_path
+    market_local.save_and_extract(dump_zip, timestamp, delete_zip=True)
+    dump_path = market_local.dump_path(str(timestamp))
 
     # Start the task
-    args = [dump_raw_path, market, timestamp]
+    args = [dump_path, market, timestamp]
     market_task.load_dump.apply_async(args, task_id=unique_id)
 
     return 202, {"unique_id": unique_id}
@@ -72,24 +72,23 @@ def load_dump_status(unique_id):
         return 202, task.result
     elif task.state == "SUCCESS" and "error" not in task.result:
         # Delete raw folder
-        market = unique_id.split("-")[1]
+        """market = unique_id.split("-")[1]
         market_local = MarketLocalProject(market)
 
         if os.path.exists(market_local.raw_path):
-            market_local.delete_raw_folder()
+            market_local.delete_raw_folder()"""
 
         return 200, task.result
     elif task.state == "FAILURE" or (task.state == "SUCCESS" and "error" in task.result):
-        # Delete raw folder
+        # Delete dump folder
         market = unique_id.split("-")[1]
         timestamp = unique_id.split("-")[2]
-        market_local = MarketLocalProject(market)
 
-        if os.path.exists(market_local.raw_path):
-            market_local.delete_raw_folder()
+        market_local = MarketLocalProject(market)
+        market_local.delete_dump(timestamp)
 
         # Delete zip file
-        market_local.delete_zipfile(timestamp)
+        #market_local.delete_zipfile(timestamp)
 
         return 500, task.result
     else:

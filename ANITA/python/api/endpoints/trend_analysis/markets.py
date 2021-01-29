@@ -2,6 +2,9 @@
 import datetime
 import logging
 import traceback
+from os.path import basename, normpath, join, exists
+import os
+import shutil
 
 # Third party imports
 from flask import request, Response, json
@@ -10,6 +13,8 @@ from flask import request, Response, json
 from modules.trend_analysis.markets import markets
 from modules.trend_analysis.scraper.market.enum import Market
 from utils.validators import timestamp_validator
+from utils.FileUtils import getdirs, getfiles
+from modules.trend_analysis.markets.local.MarketLocalProject import MarketLocalProject, root_path as market_folder_path
 
 logger = logging.getLogger("Markets endpoint")
 
@@ -25,16 +30,67 @@ def markets_list():
 
 # Markets - Dumps
 def get_all_dumps():
-    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
+    market_dumps = {}
+    # Read all the markets with at least one dump
+    markets_path = getdirs(market_folder_path, abs_path=True)
+    for market_path in markets_path:
+        market = basename(normpath(market_path))
+        dumps_path = getdirs(market_path, abs_path=True)
+
+        if dumps_path:
+            market_dumps[market] = {}
+            for dump_path in dumps_path:
+                # Get the timestamp
+                timestamp = basename(normpath(dump_path)).split("_")[1]
+
+                # Get the total of html filed
+                n_html = len(getfiles(dump_path, ext_filter="html", recursive=True))
+                n_img = len(getfiles(dump_path, ext_filter=["png", "jpg"], recursive=True))
+
+                market_dumps[market][timestamp] = {"Total html pages": n_html, "Total images": n_img}
+
+    return Response(json.dumps(market_dumps), status=200, mimetype="application/json")
 
 
 def delete_all_dumps():
-    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
+    market_dumps = {}
+    # Read all the markets with at least one dump
+    markets_path = getdirs(market_folder_path, abs_path=True)
+    for market_path in markets_path:
+        market = basename(normpath(market_path))
+        dumps_path = getdirs(market_path, abs_path=True)
+
+        if dumps_path:
+            market_dumps[market] = []
+            for dump_path in dumps_path:
+                # Get the timestamp
+                timestamp = basename(normpath(dump_path)).split("_")[1]
+
+                shutil.rmtree(dump_path)
+                market_dumps[market].append(timestamp)
+
+    return Response(json.dumps(market_dumps), status=200, mimetype="application/json")
 
 
 # Market - Dumps
 def get_dumps(market):
-    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
+    market_dumps = {}
+
+    # Read all the markets with at least one dump
+    market_path = join(market_folder_path, market)
+    dumps_path = getdirs(market_path, abs_path=True)
+
+    for dump_path in dumps_path:
+        # Get the timestamp
+        timestamp = basename(normpath(dump_path)).split("_")[1]
+
+        # Get the total of html filed
+        n_html = len(getfiles(dump_path, ext_filter="html", recursive=True))
+        n_img = len(getfiles(dump_path, ext_filter=["png", "jpg"], recursive=True))
+
+        market_dumps[timestamp] = {"Total html pages": n_html, "Total images": n_img}
+
+    return Response(json.dumps({market: market_dumps}), status=200, mimetype="application/json")
 
 
 def load_dump(market):
@@ -75,7 +131,31 @@ def load_dump(market):
 
 
 def delete_dumps(market):
-    return Response(json.dumps({"msg": "NOT IMPLEMENTED YET"}), status=500, mimetype="application/json")
+    deleted_dumps = {market: []}
+
+    try:
+        market = market.lower()
+    except:
+        error_content = {"error": "Invalid market in the url"}
+        return Response(json.dumps(error_content), status=400, mimetype="application/json")
+
+    market_local = MarketLocalProject(market)
+
+    # Delete all the timestamp passed
+    if "dump" in request.form:
+        timestamps = request.form.getlist("dump")
+        for timestamp in timestamps:
+            deleted = market_local.delete_dump(timestamp)
+            if deleted:
+                deleted_dumps[market].append(timestamp)
+
+    else:
+        for folder in os.listdir(market_local.market_path):
+            folder_path = join(market_local.market_path, folder)
+            shutil.rmtree(folder_path)
+            deleted_dumps[market].append(folder.split("_")[1])
+
+    return Response(json.dumps(deleted_dumps), status=200, mimetype="application/json")
 
 
 def status():

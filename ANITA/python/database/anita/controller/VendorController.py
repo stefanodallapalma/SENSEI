@@ -57,7 +57,7 @@ class VendorController(TableController):
             for attr in attributes:
                 val = getattr(bean, attr)
                 if isinstance(val, list):
-                    val = ", ".join(val)
+                    val = ", ".join(str(elem) for elem in val)
                     setattr(bean, attr, val)
             new_beans.append(bean)
 
