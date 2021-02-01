@@ -13,6 +13,8 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class PalmettoScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = PalmettoProductScraper()
 
     def pagetype(self, soup):
         try:

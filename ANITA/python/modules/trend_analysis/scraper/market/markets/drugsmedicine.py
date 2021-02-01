@@ -3,6 +3,9 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class DrugsmedicineScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = DrugsmedicineProductScraper()
+        self.vendor_scraper = DrugsmedicineVendorScraper()
 
     def pagetype(self, soup):
         try:

@@ -12,6 +12,8 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class DirectdrugsScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = DirectdrugsProductScraper()
 
     def pagetype(self, soup):
         try:

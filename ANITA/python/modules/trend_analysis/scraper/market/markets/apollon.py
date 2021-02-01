@@ -6,6 +6,9 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class ApollonScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = ApollonProductScraper()
+        self.vendor_scraper = ApollonVendorScraper()
 
     def pagetype(self, soup):
         try:

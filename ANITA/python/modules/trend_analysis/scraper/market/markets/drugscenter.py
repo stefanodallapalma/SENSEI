@@ -13,6 +13,8 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class DrugscenterScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = DrugscenterProductScraper()
 
     def pagetype(self, soup):
         try:

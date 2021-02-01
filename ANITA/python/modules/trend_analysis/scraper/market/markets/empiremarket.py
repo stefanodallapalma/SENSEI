@@ -12,6 +12,8 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class EmpiremarketScraper(Scraper):
+    def __init__(self):
+        self.vendor_scraper = EmpiremarketVendorScraper()
 
     def pagetype(self, soup):
         try:

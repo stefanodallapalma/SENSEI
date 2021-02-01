@@ -1,0 +1,80 @@
+2021-02-01 11:44:45,889 - server - INFO - Start anita server
+2021-02-01 11:44:45,889 - precondition - INFO - PRECONDITION CHECKING
+2021-02-01 11:44:45,890 - precondition - INFO - Resource folders: OK
+2021-02-01 11:44:45,890 - precondition - INFO - PARAMETERS
+2021-02-01 11:44:45,890 - precondition - INFO - Sonarqube: OK
+2021-02-01 11:44:45,890 - precondition - INFO - MySQL: OK
+2021-02-01 11:44:45,890 - precondition - INFO - CONNECTION TEST
+2021-02-01 11:44:45,894 - precondition - INFO - MySQL: OK
+2021-02-01 11:44:45,894 - precondition - INFO - Sonarqube: waiting...
+2021-02-01 11:44:45,895 - precondition - INFO - Sonarqube: OK
+2021-02-01 11:44:45,895 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-02-01 11:44:45,898 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:46,900 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:47,904 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:48,907 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:49,914 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:50,921 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:51,925 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:52,928 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:53,931 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:54,942 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:58,330 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-02-01 11:44:59,335 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:44:59,342 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-02-01 11:45:00,344 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:45:00,349 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-02-01 11:45:01,352 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:45:01,359 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-02-01 11:45:02,362 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:45:02,366 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-02-01 11:45:03,369 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:45:03,373 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-02-01 11:45:04,376 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:45:04,383 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-02-01 11:45:04,384 - precondition - INFO - DATABASE
+2021-02-01 11:45:04,390 - precondition - INFO - Schema: OK
+2021-02-01 11:45:04,391 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-02-01 11:45:04,409 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-02-01 11:45:04,419 - precondition - INFO - SONARQUBE table: OK
+2021-02-01 11:45:04,423 - precondition - INFO - PRODUCT table: OK
+2021-02-01 11:45:04,428 - precondition - INFO - VENDOR table: OK
+2021-02-01 11:45:04,432 - precondition - INFO - FEEDBACK table: OK
+2021-02-01 11:45:04,433 - precondition - INFO - Sonar-scanner status: OK
+2021-02-01 11:45:04,433 - server - INFO - INFO
+2021-02-01 11:45:04,433 - server - INFO - HOST: 0.0.0.0
+2021-02-01 11:45:04,433 - server - INFO - PORT: 5000
+2021-02-01 11:45:04,433 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-02-01 11:45:04,445 - werkzeug - INFO -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2021-02-01 11:45:47,169 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-02-01 11:45:47,169 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/marketplaces/dumps/cannazon validating parameters...
+2021-02-01 11:45:47,170 - connexion.decorators.parameter - DEBUG - Function Arguments: ['market']
+2021-02-01 11:45:47,170 - connexion.operations.swagger2 - DEBUG - FormData parameter 'timestamp' not in function arguments
+2021-02-01 11:45:47,171 - Markets endpoint - INFO - Endpoint Load dump - START
+2021-02-01 11:45:47,171 - market module - INFO - Analysing cannazon-1585656003 dump
+2021-02-01 11:45:47,171 - market module - INFO - Timestamp - 1585656003
+2021-02-01 11:45:47,190 - amqp - DEBUG - Start from server, version: 0.9, properties: {'capabilities': {'publisher_confirms': True, 'exchange_exchange_bindings': True, 'basic.nack': True, 'consumer_cancel_notify': True, 'connection.blocked': True, 'consumer_priorities': True, 'authentication_failure_close': True, 'per_consumer_qos': True, 'direct_reply_to': True}, 'cluster_name': 'rabbit@d3b6628ee2fa', 'copyright': 'Copyright (c) 2007-2020 VMware, Inc. or its affiliates.', 'information': 'Licensed under the MPL 2.0. Website: https://rabbitmq.com', 'platform': 'Erlang/OTP 23.2.1', 'product': 'RabbitMQ', 'version': '3.8.9'}, mechanisms: [b'AMQPLAIN', b'PLAIN'], locales: ['en_US']
+2021-02-01 11:45:47,191 - amqp - DEBUG - using channel_id: 1
+2021-02-01 11:45:47,196 - amqp - DEBUG - Channel open
+2021-02-01 11:45:48,050 - Markets endpoint - INFO - Endpoint Load dump - END
+2021-02-01 11:45:48,050 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-02-01 11:45:48,050 - connexion.apis.abstract - DEBUG - Got framework response
+2021-02-01 11:45:48,052 - werkzeug - INFO - 172.18.0.1 - - [01/Feb/2021 11:45:48] "[37mPOST /v1/marketplaces/dumps/cannazon HTTP/1.1[0m" 202 -
+2021-02-01 11:45:56,202 - werkzeug - INFO - 172.18.0.1 - - [01/Feb/2021 11:45:56] "[32mGET /v1//status/TA-cannazon-1585656003-1612179947-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2021-02-01 11:45:56,208 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-02-01 11:45:56,208 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-cannazon-1585656003-1612179947-UPLOAD_DUMP validating parameters...
+2021-02-01 11:45:56,209 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2021-02-01 11:45:56,209 - Status endpoints - INFO - Endpoint Status: START
+2021-02-01 11:45:56,232 - Status endpoints - INFO - Endpoint Status: END
+2021-02-01 11:45:56,233 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-02-01 11:45:56,233 - connexion.apis.abstract - DEBUG - Got framework response
+2021-02-01 11:45:56,234 - werkzeug - INFO - 172.18.0.1 - - [01/Feb/2021 11:45:56] "[37mGET /v1/status/TA-cannazon-1585656003-1612179947-UPLOAD_DUMP HTTP/1.1[0m" 202 -
+2021-02-01 11:46:10,986 - werkzeug - INFO - 172.18.0.1 - - [01/Feb/2021 11:46:10] "[32mGET /v1//status/TA-cannazon-1585656003-1612179947-UPLOAD_DUMP HTTP/1.1[0m" 308 -
+2021-02-01 11:46:10,990 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-02-01 11:46:10,991 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/status/TA-cannazon-1585656003-1612179947-UPLOAD_DUMP validating parameters...
+2021-02-01 11:46:10,991 - connexion.decorators.parameter - DEBUG - Function Arguments: ['unique_id']
+2021-02-01 11:46:10,991 - Status endpoints - INFO - Endpoint Status: START
+2021-02-01 11:46:11,009 - Status endpoints - INFO - Endpoint Status: END
+2021-02-01 11:46:11,010 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-02-01 11:46:11,010 - connexion.apis.abstract - DEBUG - Got framework response
+2021-02-01 11:46:11,010 - werkzeug - INFO - 172.18.0.1 - - [01/Feb/2021 11:46:11] "[37mGET /v1/status/TA-cannazon-1585656003-1612179947-UPLOAD_DUMP HTTP/1.1[0m" 202 -

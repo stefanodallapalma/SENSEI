@@ -12,6 +12,9 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class CannahomeScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = CannahomeProductScraper()
+        self.vendor_scraper = CannahomeVendorScraper()
 
     def pagetype(self, soup):
         try:

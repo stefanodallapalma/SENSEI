@@ -12,6 +12,9 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class Silkroad3Scraper(Scraper):
+    def __init__(self):
+        self.product_scraper = Silkroad3ProductScraper()
+        self.vendor_scraper = Silkroad3VendorScraper()
 
     def pagetype(self, soup):
         try:

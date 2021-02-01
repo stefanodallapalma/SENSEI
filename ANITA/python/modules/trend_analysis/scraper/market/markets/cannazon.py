@@ -13,6 +13,9 @@ from .scraper import Scraper, ProductScraper, VendorScraper
 
 
 class CannazonScraper(Scraper):
+    def __init__(self):
+        self.product_scraper = CannazonProductScraper()
+        self.vendor_scraper = CannazonVendorScraper()
 
     def pagetype(self, soup):
         try:
