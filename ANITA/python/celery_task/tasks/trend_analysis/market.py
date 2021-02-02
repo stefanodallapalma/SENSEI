@@ -114,12 +114,10 @@ def load_dump(self, dump_folder_path, market, timestamp):
 
                 if feedback:
                     try:
-                        print("FB PRODUCT")
                         if product not in products and not product.isnull():
                             product.feedback = id_feedback
                             for feedback_elem in feedback:
                                 feedback_elem.id = id_feedback
-                            print(product.feedback)
                             id_feedback += 1
                         else:
                             index_original_product = products.index(product)
@@ -127,17 +125,15 @@ def load_dump(self, dump_folder_path, market, timestamp):
                             if original_product.feedback:
                                 for feedback_elem in feedback:
                                     feedback_elem.id = original_product.feedback
-                                print(original_product.feedback)
                             else:
                                 for feedback_elem in feedback:
                                     feedback_elem.id = id_feedback
                                 products[index_original_product].feedback = id_feedback
-                                print(products[index_original_product].feedback)
                                 id_feedback += 1
 
                         feedback_list += feedback
                         content["#feedback"] = len(feedback_list)
-
+                        print("Feedback {}".format(len(feedback_list)))
                     except ValueError as e:
                         # No original found: null case - ignore
                         pass
@@ -158,12 +154,10 @@ def load_dump(self, dump_folder_path, market, timestamp):
                 # another json and db table
                 if feedback:
                     try:
-                        print("FB VENDOR")
                         if vendor not in vendors and not vendor.isnull():
                             vendor.feedback = id_feedback
                             for feedback_elem in feedback:
                                 feedback_elem.id = id_feedback
-                            print(vendor.feedback)
                             id_feedback += 1
                         else:
                             index_original_vendor = vendors.index(vendor)
@@ -171,16 +165,15 @@ def load_dump(self, dump_folder_path, market, timestamp):
                             if original_vendor.feedback:
                                 for feedback_elem in feedback:
                                     feedback_elem.id = original_vendor.feedback
-                                print(original_vendor.feedback)
                             else:
                                 vendors[index_original_vendor].feedback = id_feedback
                                 for feedback_elem in feedback:
                                     feedback_elem.id = id_feedback
-                                print(vendors[index_original_vendor].feedback)
                                 id_feedback += 1
 
                         feedback_list += feedback
                         content["#feedback"] = len(feedback_list)
+                        print("Feedback {}".format(len(feedback_list)))
                     except ValueError as e:
                         # No original found: null case - ignore
                         pass

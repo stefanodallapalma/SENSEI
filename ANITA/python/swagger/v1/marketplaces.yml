@@ -36,6 +36,18 @@ paths:
     delete:
       operationId: "api.endpoints.trend_analysis.markets.delete_all_dumps"
       summary: "Delete all dumps for each market passed as input"
+
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: formData
+          name: db
+          required: false
+          type: string
+
       responses:
         200:
           description: "The json containing all the projects"
@@ -100,6 +112,16 @@ paths:
         - in:  path
           name: market
           required: true
+          type: string
+        - in: formData
+          name: timestamp
+          required: false
+          type: array
+          items:
+            type: string
+        - in: formData
+          name: db
+          required: false
           type: string
 
       responses:

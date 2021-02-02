@@ -98,6 +98,38 @@ class FeedbackController(TableController):
         else:
             return results[0][0]
 
+    def get_all_feed_from_timestamp(self, market, timestamp):
+        query = "SELECT DISTINCT feedback FROM (SELECT timestamp, market, feedback FROM {0}.product UNION DISTINCT " \
+                "SELECT timestamp, market, feedback FROM {0}.vendor) as feed WHERE feed.market = %s AND " \
+                "feed.timestamp = %s AND feed.feedback is not null ORDER BY feedback ASC".format(self.db_name)
+
+        value = (market, timestamp)
+
+        header, results = self.mysql_db.search(query, value)
+
+        id_list = []
+        for result in results:
+            id_list.append(result[0])
+
+        return id_list
+
+    def delete_feedback(self, market, timestamps):
+        # Get the list of all id to remove
+        id_list = []
+
+        for timestamp in timestamps:
+            id_list += self.get_all_feed_from_timestamp(market, timestamp)
+
+        id_list = list(set(id_list))
+
+        query = "DELETE FROM {0}.{1} WHERE (`id` = %s)".format(self.db_name, TABLE_NAME)
+
+        values = []
+        for id in id_list:
+            values.append((id,))
+
+        self.mysql_db.delete(query, values)
+
     def insert_beans(self, beans):
         attributes = ["id", "score", "message", "date", "product", "user", "deals"]
 

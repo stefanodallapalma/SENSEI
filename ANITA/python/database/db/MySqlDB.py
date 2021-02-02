@@ -131,3 +131,15 @@ class MySqlDB(DB):
             return header, results
         else:
             return results
+
+    def generate_dict(self, header, results):
+        row_list = []
+
+        for result in results:
+            row_dict = {}
+            for i in range(len(result)):
+                row_dict[header[i]] = result[i]
+
+            row_list.append(row_dict)
+
+        return row_list

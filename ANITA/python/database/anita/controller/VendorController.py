@@ -146,3 +146,12 @@ class VendorController(TableController):
             pgp_graph[market] = vendor_name
 
         return pgp_graph
+
+    def delete_dumps(self, market, timestamps):
+        query = "DELETE FROM `{0}`.`{1}` WHERE (`market` = %s) AND (`timestamp` = %s)".format(self.db_name, TABLE_NAME)
+
+        values = []
+        for timestamp in timestamps:
+            values.append((market, timestamp))
+
+        self.mysql_db.delete(query, values)

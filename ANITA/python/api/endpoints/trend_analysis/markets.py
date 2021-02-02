@@ -15,6 +15,9 @@ from modules.trend_analysis.scraper.market.enum import Market
 from utils.validators import timestamp_validator
 from utils.FileUtils import getdirs, getfiles
 from modules.trend_analysis.markets.local.MarketLocalProject import MarketLocalProject, root_path as market_folder_path
+from database.anita.controller.FeedbackController import FeedbackController
+from database.anita.controller.ProductController import ProductController
+from database.anita.controller.VendorController import VendorController
 
 logger = logging.getLogger("Markets endpoint")
 
@@ -56,18 +59,47 @@ def delete_all_dumps():
     market_dumps = {}
     # Read all the markets with at least one dump
     markets_path = getdirs(market_folder_path, abs_path=True)
+
+    logger.info("Delele local dumps")
     for market_path in markets_path:
-        market = basename(normpath(market_path))
+        market = basename(normpath(market_path)).lower()
         dumps_path = getdirs(market_path, abs_path=True)
 
         if dumps_path:
+            logger.info("Market: {}".format(market))
             market_dumps[market] = []
             for dump_path in dumps_path:
                 # Get the timestamp
                 timestamp = basename(normpath(dump_path)).split("_")[1]
+                logger.info("Timestamp: {}".format(timestamp))
 
                 shutil.rmtree(dump_path)
                 market_dumps[market].append(timestamp)
+
+    # Delete the dumps from the database as well
+    if "db" in request.form and request.form["db"].upper() == "TRUE":
+        logger.info("Delete db dumps")
+        v_controller = VendorController()
+        p_controller = ProductController()
+        f_controller = FeedbackController()
+
+        try:
+            for market in market_dumps:
+                logger.info("Market: {}".format(market))
+
+                timestamps = market_dumps[market]
+                logger.info("DELETE: Feedback")
+                f_controller.delete_feedback(market, timestamps)
+                logger.info("DELETE: Products")
+                p_controller.delete_dumps(market, timestamps)
+                logger.info("DELETE: Vendors")
+                v_controller.delete_dumps(market, timestamps)
+        except Exception as e:
+            logger.error("Internal server error")
+            logger.error(str(e))
+            logger.error(traceback.format_exc())
+            error_msg = {"error": "Internal DB error"}
+            return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
     return Response(json.dumps(market_dumps), status=200, mimetype="application/json")
 
@@ -141,19 +173,47 @@ def delete_dumps(market):
 
     market_local = MarketLocalProject(market)
 
+    logger.info("Delele local dumps")
     # Delete all the timestamp passed
     if "dump" in request.form:
         timestamps = request.form.getlist("dump")
         for timestamp in timestamps:
+            logger.info("DUMP: {}".format(timestamp))
             deleted = market_local.delete_dump(timestamp)
             if deleted:
                 deleted_dumps[market].append(timestamp)
 
     else:
+        timestamps = []
         for folder in os.listdir(market_local.market_path):
+            timestamp = folder.split("_")[1]
+            logger.info("DUMP: {}".format(timestamp))
+            timestamps.append(timestamp)
+
             folder_path = join(market_local.market_path, folder)
             shutil.rmtree(folder_path)
             deleted_dumps[market].append(folder.split("_")[1])
+
+    # Delete the dumps from the database as well
+    if "db" in request.form and request.form["db"].upper() == "TRUE":
+        logger.info("Delete db dumps")
+        v_controller = VendorController()
+        p_controller = ProductController()
+        f_controller = FeedbackController()
+
+        try:
+            logger.info("DELETE: Feedback")
+            f_controller.delete_feedback(market, timestamps)
+            logger.info("DELETE: Products")
+            p_controller.delete_dumps(market, timestamps)
+            logger.info("DELETE: Vendors")
+            v_controller.delete_dumps(market, timestamps)
+        except Exception as e:
+            logger.error("Internal server error")
+            logger.error(str(e))
+            logger.error(traceback.format_exc())
+            error_msg = {"error": "Internal DB error"}
+            return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
     return Response(json.dumps(deleted_dumps), status=200, mimetype="application/json")
 

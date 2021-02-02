@@ -6,7 +6,7 @@ class TochkaScraper(Scraper):
     def __init__(self):
         self.product_scraper = TochkaProductScraper()
         self.vendor_scraper = TochkaVendorScraper()
-        
+
     def pagetype(self, soup):
         try:
             if soup.find_all('div', {'class': "ui segment"})[1].find_all('h3')[0].text == 'Purchase':
