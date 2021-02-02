@@ -1,8 +1,7 @@
 # Standard
-import datetime
 import logging
 import traceback
-from os.path import basename, normpath, join, exists
+from os.path import basename, normpath, join
 import os
 import shutil
 
@@ -11,7 +10,7 @@ from flask import request, Response, json
 
 # Local imports
 from modules.trend_analysis.markets import markets
-from modules.trend_analysis.scraper.market.enum import Market
+from modules.trend_analysis.scraper.enum import Market
 from utils.validators import timestamp_validator
 from utils.FileUtils import getdirs, getfiles
 from modules.trend_analysis.markets.local.MarketLocalProject import MarketLocalProject, root_path as market_folder_path

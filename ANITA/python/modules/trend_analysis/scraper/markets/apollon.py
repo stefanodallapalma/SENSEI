@@ -41,6 +41,9 @@ class ApollonProductScraper(ProductScraper):
     def price(self):
         return ' '.join(self.soup.find('span', {'class' : 'label label-info'}).text.split(' ')[3:5])
 
+    def category(self):
+        return None
+
     def info(self):
         if self.soup.find('li', {'class': 'active'}).text == 'Product Description':
             return self.soup.find('pre').text

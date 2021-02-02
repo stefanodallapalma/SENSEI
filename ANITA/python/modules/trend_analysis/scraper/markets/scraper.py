@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 from abc import ABC, abstractmethod
 
 # Local imports
-from modules.trend_analysis.scraper.market.models import *
-from modules.trend_analysis.scraper.market.enum import Market
+from modules.trend_analysis.scraper.models import *
+from modules.trend_analysis.scraper.enum import Market
 from exceptions import ExtractDataException
 
 
@@ -93,6 +93,11 @@ class ProductScraper(ABC):
     @abstractmethod
     def price(self):
         """Return the price of the produc as string"""
+        pass
+
+    @abstractmethod
+    def category(self):
+        """Return the category as string"""
         pass
 
     @abstractmethod

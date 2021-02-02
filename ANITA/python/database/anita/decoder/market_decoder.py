@@ -15,6 +15,7 @@ class ProductScraperDecoder(JSONDecoder):
             ships_to = None
             price = None
             price_eur = None
+            category = None
             info = None
 
             if "product_name" in dct:
@@ -35,10 +36,13 @@ class ProductScraperDecoder(JSONDecoder):
             if "price_eur" in dct:
                 price_eur = dct["price_eur"]
 
+            if "category" in dct:
+                category = dct["category"]
+
             if "info" in dct:
                 info = dct["info"]
 
-            return Product(None, None, name, vendor, ships_from, ships_to, price, price_eur, info, None)
+            return Product(None, None, name, vendor, ships_from, ships_to, price, price_eur, category, info, None)
         else:
             return dct
 
@@ -103,7 +107,8 @@ class FeedbackScraperDecoder(JSONDecoder):
         JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        product_keys = ["product_name", "vendor", "ships_from", "ships_to", "price", "price_eur", "info", "feedback"]
+        product_keys = ["product_name", "vendor", "ships_from", "ships_to", "price", "price_eur", "category", "info",
+                        "feedback"]
         vendor_keys = ["name", "score", "score_normalized", "registration", "registration_deviation", "last_login",
                 "last_login_deviation", "sales", "info", "feedback"]
 

@@ -3,7 +3,7 @@ from utils.charset_utils import remove_unknown_charset
 
 class Product:
     def __init__(self, timestamp=None, market=None, name=None, vendor=None, ships_from=None, ships_to=None, price=None,
-                 price_eur=None, info=None, feedback=None):
+                 price_eur=None, category=None, info=None, feedback=None):
         self.timestamp = timestamp
         self.market = market
         self.name = remove_unknown_charset(name)
@@ -12,6 +12,7 @@ class Product:
         self.ships_to = ships_to
         self.price = price
         self.price_eur = price_eur
+        self.category = category
         self.info = remove_unknown_charset(info)
         self.feedback = feedback
 
@@ -78,6 +79,14 @@ class Product:
     @price_eur.setter
     def price_eur(self, value):
         self._price_eur = value
+
+    @property
+    def category(self):
+        return self._category
+
+    @category.setter
+    def category(self, value):
+        self._category = value
 
     @property
     def info(self):

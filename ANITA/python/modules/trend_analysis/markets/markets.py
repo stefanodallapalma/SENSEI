@@ -1,13 +1,11 @@
 import json
-import os
 import logging
 from datetime import datetime
 
 from celery_task.celery_app import celery
-from ..scraper.market.enum import Market
+from modules.trend_analysis.scraper.enum import Market
 from modules.trend_analysis.markets.local.MarketLocalProject import MarketLocalProject
 from celery_task.tasks.trend_analysis import market as market_task
-from utils.validators import timestamp_validator
 from exceptions import UndefinedTaskStateException
 
 logger = logging.getLogger("market module")

@@ -70,6 +70,9 @@ class DarkmarketProductScraper(ProductScraper):
 
         return None
 
+    def category(self):
+        return None
+
     def info(self):
         info = ''
         for string in self.soup.find('div', {'class': 'mt-4'}).find_all('p'):

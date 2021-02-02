@@ -44,6 +44,9 @@ class CannahomeProductScraper(ProductScraper):
     def price(self):
         return self.soup.find('div', {'class': "price"}).find('span', {'class': 'big'}).text.split(' ')[0]
 
+    def category(self):
+        pass
+
     def info(self):
         return self.soup.find('div', {'class': 'top-tabs'}).find('div', {'class': "formatted"}).text
 

@@ -45,6 +45,9 @@ class TochkaProductScraper(ProductScraper):
             i += 2
         return price_dict
 
+    def category(self):
+        return None
+
     def info(self):
         return self.soup.find('div', {'ui segment'}).text
 

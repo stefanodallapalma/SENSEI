@@ -49,6 +49,9 @@ class Silkroad3ProductScraper(ProductScraper):
         info = list(self.soup.find('div', {'style': 'color:#555;font-weight:bold;font-size:12px'}).stripped_strings)
         return info[info.index('Price:') + 1]
 
+    def category(self):
+        pass
+
     def info(self):
         return self.soup.find_all('div', {'id': 'cats'})[1].text
 

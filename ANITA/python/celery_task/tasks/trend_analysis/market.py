@@ -7,8 +7,8 @@ from celery import states
 
 # Local application imports
 from celery_task.celery_app import celery
-from utils.FileUtils import getfiles, save_json
-from modules.trend_analysis.scraper.market.handler import get_scraper_instance
+from utils.FileUtils import getfiles
+from modules.trend_analysis.scraper.handler import get_scraper_instance
 from database.anita.decoder.market_decoder import *
 from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController

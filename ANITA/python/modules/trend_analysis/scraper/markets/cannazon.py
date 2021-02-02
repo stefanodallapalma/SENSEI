@@ -67,6 +67,9 @@ class CannazonProductScraper(ProductScraper):
     def price(self):
         return self.soup.find('p', {'class' : 'price'}).text
 
+    def category(self):
+        return None
+
     def info(self):
         info = ''
         for content in self.soup.find_all('div', {'class': 'content'})[:4]:

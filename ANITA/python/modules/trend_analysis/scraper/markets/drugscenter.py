@@ -1,19 +1,20 @@
 # ----------------------------------------------------------
-# This is a the scraper file for directdrugs.to
+# This is a template for new market
 # Fill the indicated fields with answers, if you cannot
 # find the specific field in the market. Let the function return None.
 # ----------------------------------------------------------
 
 # -- IMPORT
+# from datetime import datetime
 from dateutil.parser import parse
 
 # Local import
 from .scraper import Scraper, ProductScraper, VendorScraper
 
 
-class DirectdrugsScraper(Scraper):
+class DrugscenterScraper(Scraper):
     def __init__(self):
-        self.product_scraper = DirectdrugsProductScraper()
+        self.product_scraper = DrugscenterProductScraper()
 
     def pagetype(self, soup):
         try:
@@ -23,50 +24,47 @@ class DirectdrugsScraper(Scraper):
             raise Exception("Unknown type")
 
 
-class DirectdrugsProductScraper(ProductScraper):
+class DrugscenterProductScraper(ProductScraper):
 
     def product_name(self):
-        return self.soup.find('h1', {'class':'product_title entry-title'}).text
+        return self.soup.find('h1', {'class' : 'product-title product_title entry-title'}).text
 
     def vendor(self):
         return None
 
     def ships_from(self):
-        return None
+        return 'Gibraltar (european deliveries)'
 
     def ships_to(self):
-        return None
+        return 'Worldwide'
 
     def price(self):
-        price = self.soup.find('p', {'class': 'price'}).text
-        if len(price.split(' ')) == 2:
-            price = price.split(' ')[1]
-        if len(price.split('/')) == 2:
-            price = price.split('/')[0]
-        return price
+        return self.soup.find('div', {'class' : 'price-wrapper'}).text
+
+    def category(self):
+        return None
 
     def info(self):
-        return self.soup.find('div', {'class' : 'woocommerce-product-details__short-description'}).text
+        return self.soup.find('div', {'class' : 'product-short-description'}).text
 
     def feedback(self):
         feedback_list = []
 
         # loop to walk through the feedback
-        reviews = self.soup.find('div', {'id': 'comments'})
-
-        for review in reviews.find_all('li'):
+        reviews = self.soup.find('div', {'id': 'comments'}).find_all('li')
+        for review in reviews:
             # Find the score, can be numerical score: (score, scale), or 'positive', 'negative' or 'neutral'
             # for pos/neg scores.
-            score = (review.find('strong', {'class': 'rating'}).text, 5)
+            score = (int(review.find('strong', {'class': 'rating'}).text), 5)
 
             # The message of the feedback in type str
-            message = review.find('div', {'class': 'description'}).text
+            message = self.soup.find('div', {'class': 'description'}).text
 
             # The time in datetime object or time ago in type str
-            date = parse(review.find('time', {'class': 'woocommerce-review__published-date'}).text)
+            date = parse(self.soup.find('time', {'class': 'woocommerce-review__published-date'}).text)
 
             # User, name of the user or encrypted user name (if any) in type str
-            user = review.find('strong', {'class': 'woocommerce-review__author'}).text
+            user = self.soup.find('strong', {'class': 'woocommerce-review__author'}).text
 
             # in json format
             feedback_json = {

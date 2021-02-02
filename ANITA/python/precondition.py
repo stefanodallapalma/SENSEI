@@ -1,19 +1,16 @@
 import datetime
-import logging
-import os
 import time
 from os.path import join, exists
 
 from database.anita.AnitaDB import AnitaDB
 from database.anita.controller_handler import get_controller_instance
-from database.anita.controller.TableController import TableController
 from database.db.structure.DBType import DBType
 from database.utils import DBUtils as db_utils
 from sonarqube.api.SonarqubeAPI import SonarqubeAPI
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.utils import SonarqubeUtils as sq_utils
 from sonarscanner.SonarscannerUtils import *
-from modules.trend_analysis.scraper.market.enum import Market
+from modules.trend_analysis.scraper.enum import Market
 from utils.PortScanner import scanner
 from utils.FileUtils import *
 

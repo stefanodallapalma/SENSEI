@@ -57,6 +57,9 @@ class BerlusconiProductScraper(ProductScraper):
         else:
             return None
 
+    def category(self):
+        return None
+
     def feedback(self):
         if 'No feedbacks yet' not in self.soup.find('div', {'class': 'col-md-12'}).text:
             feedback_list = []

@@ -1,8 +1,5 @@
 from __future__ import absolute_import
 
-# Standard library imports
-import json
-
 # Third party imports
 from celery import states
 

@@ -20,7 +20,60 @@ class VendorController(TableController):
 
     def init_columns(self):
         columns = []
-        attribute_names = Vendor.__prop__()
+
+        # Timestamp
+        datatype = DataType(Type.VARCHAR, 20)
+        columns.append(ColumnDB("timestamp", datatype, pk=True, not_null=True))
+
+        # Market
+        datatype = DataType(Type.VARCHAR, 100)
+        columns.append(ColumnDB("market", datatype, pk=True, not_null=True))
+
+        # Name
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("name", datatype, pk=True, not_null=True))
+
+        # Score
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("score", datatype))
+
+        # Score normalized
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("score_normalized", datatype))
+
+        # Registration
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("registration", datatype))
+
+        # Registration deviation
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("registration_deviation", datatype))
+
+        # Last login
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("last_login", datatype))
+
+        # Last login deviation
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("last_login_deviation", datatype))
+
+        # Sales
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("sales", datatype))
+
+        # Info
+        datatype = DataType(Type.LONGTEXT)
+        columns.append(ColumnDB("info", datatype))
+
+        # Feedback
+        datatype = DataType(Type.INT)
+        columns.append(ColumnDB("feedback", datatype))
+
+        # PGP
+        datatype = DataType(Type.VARCHAR, 5000)
+        columns.append(ColumnDB("pgp", datatype))
+
+        """attribute_names = Vendor.__prop__()
         pk_attribute_names = ["timestamp", "market", "name"]
         double_attribute_names = ["score", "score_normalized"]
 
@@ -41,7 +94,7 @@ class VendorController(TableController):
                 else:
                     datatype = DataType(Type.VARCHAR, 200)
                 column = ColumnDB(attribute_name, datatype)
-            columns.append(column)
+            columns.append(column)"""
 
         self.columns = columns
 

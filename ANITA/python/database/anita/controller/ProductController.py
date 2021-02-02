@@ -16,7 +16,53 @@ class ProductController(TableController):
 
     def init_columns(self):
         columns = []
-        attribute_names = Product.__prop__()
+
+        # Timestamp
+        datatype = DataType(Type.VARCHAR, 20)
+        columns.append(ColumnDB("timestamp", datatype, pk=True, not_null=True))
+
+        # Market
+        datatype = DataType(Type.VARCHAR, 100)
+        columns.append(ColumnDB("market", datatype, pk=True, not_null=True))
+
+        # Name
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("name", datatype, pk=True, not_null=True))
+
+        # Vendor
+        datatype = DataType(Type.VARCHAR, 200)
+        columns.append(ColumnDB("vendor", datatype, pk=True, not_null=True))
+
+        # Ships from
+        datatype = DataType(Type.VARCHAR, 2000)
+        columns.append(ColumnDB("ships_from", datatype))
+
+        # Ships from
+        datatype = DataType(Type.VARCHAR, 2000)
+        columns.append(ColumnDB("ships_to", datatype))
+
+        # Price
+        datatype = DataType(Type.VARCHAR, 50)
+        columns.append(ColumnDB("price", datatype, pk=True, not_null=True))
+
+        # Price eur
+        datatype = DataType(Type.VARCHAR, 50)
+        columns.append(ColumnDB("price_eur", datatype))
+
+        # Category
+        datatype = DataType(Type.VARCHAR, 100)
+        columns.append(ColumnDB("category", datatype))
+
+        # Info
+        datatype = DataType(Type.LONGTEXT)
+        columns.append(ColumnDB("info", datatype))
+
+        # Feedback
+        datatype = DataType(Type.INT)
+        columns.append(ColumnDB("feedback", datatype))
+
+
+        """attribute_names = Product.__prop__()
         pk_attribute_names = ["timestamp", "market", "name", "vendor", "price"]
         #double_attribute_names = ["price", "price_eur"]
 
@@ -43,7 +89,7 @@ class ProductController(TableController):
                     datatype = DataType(Type.VARCHAR, 200)
 
                 column = ColumnDB(attribute_name, datatype)
-            columns.append(column)
+            columns.append(column)"""
 
         self.columns = columns
 

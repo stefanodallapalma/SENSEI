@@ -41,6 +41,9 @@ class PalmettoProductScraper(ProductScraper):
     def price(self):
         return self.soup.find('span', {'class' : 'price-value'}).text
 
+    def category(self):
+        return None
+
     def info(self):
         info = self.soup.find('div', {'class': 'short-description'}).text
         info = info + self.soup.find('div', {'class': 'box-collateral box-description'}).text

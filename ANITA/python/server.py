@@ -1,5 +1,4 @@
 import logging, logging.config, os
-from logging.handlers import TimedRotatingFileHandler
 import connexion
 from flask_cors import CORS
 from precondition import check_preconditions

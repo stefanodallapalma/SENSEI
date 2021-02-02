@@ -1,17 +1,17 @@
 from .enum import Market
-from modules.trend_analysis.scraper.market.markets.agartha import AgarthaScraper
-from modules.trend_analysis.scraper.market.markets.apollon import ApollonScraper
-from modules.trend_analysis.scraper.market.markets.berlusconi import BerlusconiScraper
-from modules.trend_analysis.scraper.market.markets.cannahome import CannahomeScraper
-from modules.trend_analysis.scraper.market.markets.cannazon import CannazonScraper
-from modules.trend_analysis.scraper.market.markets.darkmarket import DarkmarketScraper
-from modules.trend_analysis.scraper.market.markets.directdrugs import DirectdrugsScraper
-from modules.trend_analysis.scraper.market.markets.drugscenter import DrugscenterScraper
-from modules.trend_analysis.scraper.market.markets.drugsmedicine import DrugsmedicineScraper
-from modules.trend_analysis.scraper.market.markets.empiremarket import EmpiremarketScraper
-from modules.trend_analysis.scraper.market.markets.palmetto import PalmettoScraper
-from modules.trend_analysis.scraper.market.markets.silkroad3 import Silkroad3Scraper
-from modules.trend_analysis.scraper.market.markets.tochka import TochkaScraper
+from modules.trend_analysis.scraper.markets.agartha import AgarthaScraper
+from modules.trend_analysis.scraper.markets.apollon import ApollonScraper
+from modules.trend_analysis.scraper.markets.berlusconi import BerlusconiScraper
+from modules.trend_analysis.scraper.markets.cannahome import CannahomeScraper
+from modules.trend_analysis.scraper.markets.cannazon import CannazonScraper
+from modules.trend_analysis.scraper.markets.darkmarket import DarkmarketScraper
+from modules.trend_analysis.scraper.markets.directdrugs import DirectdrugsScraper
+from modules.trend_analysis.scraper.markets.drugscenter import DrugscenterScraper
+from modules.trend_analysis.scraper.markets.drugsmedicine import DrugsmedicineScraper
+from modules.trend_analysis.scraper.markets.empiremarket import EmpiremarketScraper
+from modules.trend_analysis.scraper.markets.palmetto import PalmettoScraper
+from modules.trend_analysis.scraper.markets.silkroad3 import Silkroad3Scraper
+from modules.trend_analysis.scraper.markets.tochka import TochkaScraper
 
 
 def get_scraper_instance(market):

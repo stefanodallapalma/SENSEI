@@ -35,6 +35,9 @@ class DrugsmedicineProductScraper(ProductScraper):
     def price(self):
         return self.soup.find('div', {'price_big_inner'}).text.split()[0]
 
+    def category(self):
+        return None
+
     def info(self):
         return self.soup.find('div', {'prod_info'}).text
 
