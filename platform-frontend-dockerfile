@@ -1,0 +1,9 @@
+FROM node:lts-alpine
+RUN mkdir /Platform-frontend
+COPY /Platform/frontend/package.json /Platform-frontend/package.json
+
+WORKDIR /Platform-frontend
+
+RUN npm install --quiet
+RUN npm install tsparticles
+COPY /Platform/frontend /Platform-frontend

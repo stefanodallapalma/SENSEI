@@ -1,6 +1,42 @@
 version: "3"
 
 services:
+  platform-frontend:
+    container_name: platform-frontend
+    image: platform-frontend
+    build:
+      context: .
+      dockerfile: platform-frontend-dockerfile
+    command: npm start
+    volumes:
+      - ./Platform:/Platform
+    ports:
+      - "3000:3000"
+    depends_on:
+      - platform-backend
+
+  platform-backend:
+    container_name: platform-backend
+    image: platform-backend
+    build:
+      context: .
+      dockerfile: platform-backend-dockerfile
+    ports:
+      - "4000:4000"
+    expose:
+      - 4000
+    networks:
+      - anita-network
+    environment:
+      - FLASK_HOST=0.0.0.0
+      - FLASK_PORT=4000
+    entrypoint: python3
+    command: server.py
+    depends_on:
+      - mysql
+    volumes:
+      - ./Platform:/Platform
+
   anita:
     container_name: anita
     image: anita

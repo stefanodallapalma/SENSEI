@@ -1,0 +1,738 @@
+2021-06-25 13:26:46,389 - server - INFO - Start anita server
+2021-06-25 13:26:46,390 - precondition - INFO - PRECONDITION CHECKING
+2021-06-25 13:26:46,390 - precondition - INFO - Resource folders: OK
+2021-06-25 13:26:46,390 - precondition - INFO - PARAMETERS
+2021-06-25 13:26:46,390 - precondition - INFO - Sonarqube: OK
+2021-06-25 13:26:46,390 - precondition - INFO - MySQL: OK
+2021-06-25 13:26:46,390 - precondition - INFO - CONNECTION TEST
+2021-06-25 13:26:46,398 - precondition - INFO - MySQL: OK
+2021-06-25 13:26:46,399 - precondition - INFO - Sonarqube: waiting...
+2021-06-25 13:26:46,399 - precondition - INFO - Sonarqube: OK
+2021-06-25 13:26:46,399 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-06-25 13:26:46,404 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:47,407 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:48,410 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:49,413 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:50,416 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:51,419 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:52,422 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:53,425 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:54,427 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:55,430 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:56,432 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:26:59,759 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 13:27:00,762 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:00,767 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 13:27:01,770 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:01,777 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 13:27:02,780 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:02,789 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 13:27:03,792 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:03,796 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 13:27:04,801 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:04,812 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 13:27:05,815 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:05,822 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-06-25 13:27:05,823 - precondition - INFO - DATABASE
+2021-06-25 13:27:05,829 - precondition - INFO - Schema: OK
+2021-06-25 13:27:05,831 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 13:27:05,860 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-06-25 13:27:05,881 - precondition - INFO - SONARQUBE table: OK
+2021-06-25 13:27:05,888 - precondition - INFO - PRODUCT table: OK
+2021-06-25 13:27:05,892 - precondition - INFO - VENDOR table: OK
+2021-06-25 13:27:05,896 - precondition - INFO - FEEDBACK table: OK
+2021-06-25 13:27:05,896 - precondition - INFO - Sonar-scanner status: OK
+2021-06-25 13:27:05,896 - server - INFO - INFO
+2021-06-25 13:27:05,896 - server - INFO - HOST: 0.0.0.0
+2021-06-25 13:27:05,896 - server - INFO - PORT: 5000
+2021-06-25 13:27:05,896 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-06-25 13:27:05,911 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-06-25 13:27:05,911 - werkzeug - INFO -  * Running on http://172.18.0.7:5000/ (Press CTRL+C to quit)
+2021-06-25 13:36:24,017 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2021 13:36:24] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-06-25 13:36:24,022 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-06-25 13:36:24,023 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-06-25 13:36:24,023 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-06-25 13:36:24,023 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-06-25 13:36:24,023 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-06-25 13:36:24,023 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-06-25 13:36:24,023 - connexion.apis.abstract - DEBUG - Got framework response
+2021-06-25 13:36:24,024 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2021 13:36:24] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-06-25 19:11:35,087 - server - INFO - Start anita server
+2021-06-25 19:11:35,088 - precondition - INFO - PRECONDITION CHECKING
+2021-06-25 19:11:35,090 - precondition - INFO - Resource folders: OK
+2021-06-25 19:11:35,090 - precondition - INFO - PARAMETERS
+2021-06-25 19:11:35,090 - precondition - INFO - Sonarqube: OK
+2021-06-25 19:11:35,091 - precondition - INFO - MySQL: OK
+2021-06-25 19:11:35,091 - precondition - INFO - CONNECTION TEST
+2021-06-25 19:11:35,138 - precondition - INFO - MySQL: OK
+2021-06-25 19:11:35,140 - precondition - INFO - Sonarqube: waiting...
+2021-06-25 19:11:35,142 - precondition - INFO - Sonarqube: OK
+2021-06-25 19:11:35,142 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-06-25 19:11:35,150 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:36,154 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:37,157 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:38,162 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:39,166 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:40,169 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:41,172 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:42,174 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:43,177 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:44,179 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:45,182 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:46,186 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:47,189 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:48,192 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:52,044 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 19:11:53,050 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:53,056 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 19:11:54,060 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:54,064 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 19:11:55,066 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:55,070 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 19:11:56,073 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:56,088 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 19:11:57,091 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:57,097 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-06-25 19:11:58,099 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:58,122 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-06-25 19:11:58,123 - precondition - INFO - DATABASE
+2021-06-25 19:11:58,135 - precondition - INFO - Schema: OK
+2021-06-25 19:11:58,137 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-06-25 19:11:58,181 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-06-25 19:11:58,205 - precondition - INFO - SONARQUBE table: OK
+2021-06-25 19:11:58,214 - precondition - INFO - PRODUCT table: OK
+2021-06-25 19:11:58,226 - precondition - INFO - VENDOR table: OK
+2021-06-25 19:11:58,231 - precondition - INFO - FEEDBACK table: OK
+2021-06-25 19:11:58,231 - precondition - INFO - Sonar-scanner status: OK
+2021-06-25 19:11:58,231 - server - INFO - INFO
+2021-06-25 19:11:58,232 - server - INFO - HOST: 0.0.0.0
+2021-06-25 19:11:58,232 - server - INFO - PORT: 5000
+2021-06-25 19:11:58,232 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-06-25 19:11:58,247 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-06-25 19:11:58,247 - werkzeug - INFO -  * Running on http://172.18.0.7:5000/ (Press CTRL+C to quit)
+2021-06-25 19:12:41,688 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2021 19:12:41] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-06-25 19:12:41,694 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-06-25 19:12:41,694 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-06-25 19:12:41,694 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-06-25 19:12:41,694 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-06-25 19:12:41,694 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-06-25 19:12:41,695 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-06-25 19:12:41,695 - connexion.apis.abstract - DEBUG - Got framework response
+2021-06-25 19:12:41,695 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2021 19:12:41] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-06-25 19:49:44,492 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2021 19:49:44] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-06-25 19:49:44,497 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-06-25 19:49:44,497 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-06-25 19:49:44,497 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-06-25 19:49:44,497 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-06-25 19:49:44,497 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-06-25 19:49:44,497 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-06-25 19:49:44,497 - connexion.apis.abstract - DEBUG - Got framework response
+2021-06-25 19:49:44,498 - werkzeug - INFO - 172.18.0.1 - - [25/Jun/2021 19:49:44] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-19 12:24:09,927 - server - INFO - Start anita server
+2021-07-19 12:24:09,927 - precondition - INFO - PRECONDITION CHECKING
+2021-07-19 12:24:09,930 - precondition - INFO - Resource folders: OK
+2021-07-19 12:24:09,930 - precondition - INFO - PARAMETERS
+2021-07-19 12:24:09,930 - precondition - INFO - Sonarqube: OK
+2021-07-19 12:24:09,930 - precondition - INFO - MySQL: OK
+2021-07-19 12:24:09,931 - precondition - INFO - CONNECTION TEST
+2021-07-19 12:24:09,958 - precondition - INFO - MySQL: OK
+2021-07-19 12:24:09,958 - precondition - INFO - Sonarqube: waiting...
+2021-07-19 12:24:09,961 - precondition - INFO - Sonarqube: OK
+2021-07-19 12:24:09,962 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-19 12:24:09,967 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:10,973 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:11,976 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:12,979 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:13,982 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:14,985 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:15,987 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:16,990 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:17,992 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:18,996 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:23,150 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-19 12:24:24,153 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:24,557 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-19 12:24:25,561 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:25,566 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-19 12:24:26,569 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:26,575 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-19 12:24:27,578 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:27,591 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-19 12:24:28,598 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:28,605 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-19 12:24:28,606 - precondition - INFO - DATABASE
+2021-07-19 12:24:28,614 - precondition - INFO - Schema: OK
+2021-07-19 12:24:28,616 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-19 12:24:28,634 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-19 12:24:28,654 - precondition - INFO - SONARQUBE table: OK
+2021-07-19 12:24:28,660 - precondition - INFO - PRODUCT table: OK
+2021-07-19 12:24:28,664 - precondition - INFO - VENDOR table: OK
+2021-07-19 12:24:28,675 - precondition - INFO - FEEDBACK table: OK
+2021-07-19 12:24:28,675 - precondition - INFO - Sonar-scanner status: OK
+2021-07-19 12:24:28,675 - server - INFO - INFO
+2021-07-19 12:24:28,675 - server - INFO - HOST: 0.0.0.0
+2021-07-19 12:24:28,675 - server - INFO - PORT: 5000
+2021-07-19 12:24:28,675 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-19 12:24:28,690 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-19 12:24:28,690 - werkzeug - INFO -  * Running on http://172.18.0.7:5000/ (Press CTRL+C to quit)
+2021-07-28 11:59:18,349 - server - INFO - Start anita server
+2021-07-28 11:59:18,349 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 11:59:18,349 - precondition - INFO - Resource folders: OK
+2021-07-28 11:59:18,349 - precondition - INFO - PARAMETERS
+2021-07-28 11:59:18,349 - precondition - INFO - Sonarqube: OK
+2021-07-28 11:59:18,349 - precondition - INFO - MySQL: OK
+2021-07-28 11:59:18,349 - precondition - INFO - CONNECTION TEST
+2021-07-28 11:59:18,362 - precondition - INFO - MySQL: OK
+2021-07-28 11:59:18,362 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 11:59:18,363 - precondition - INFO - Sonarqube: OK
+2021-07-28 11:59:18,363 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 11:59:18,366 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:19,370 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:20,372 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:21,375 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:22,379 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:23,388 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:24,393 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:25,396 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:26,400 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:27,403 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:28,435 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:31,890 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 11:59:32,894 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:32,898 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 11:59:33,900 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:33,931 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 11:59:34,935 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:34,944 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 11:59:35,947 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:35,951 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 11:59:36,954 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:36,958 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 11:59:37,960 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:37,967 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 11:59:37,968 - precondition - INFO - DATABASE
+2021-07-28 11:59:37,980 - precondition - INFO - Schema: OK
+2021-07-28 11:59:37,981 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 11:59:37,999 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 11:59:38,020 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 11:59:38,023 - precondition - INFO - PRODUCT table: OK
+2021-07-28 11:59:38,028 - precondition - INFO - VENDOR table: OK
+2021-07-28 11:59:38,031 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 11:59:38,032 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 11:59:38,032 - server - INFO - INFO
+2021-07-28 11:59:38,032 - server - INFO - HOST: 0.0.0.0
+2021-07-28 11:59:38,032 - server - INFO - PORT: 5000
+2021-07-28 11:59:38,032 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 11:59:38,044 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 11:59:38,044 - werkzeug - INFO -  * Running on http://172.18.0.7:5000/ (Press CTRL+C to quit)
+2021-07-28 12:14:38,387 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:14:38] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-07-28 12:14:38,391 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 12:14:38,391 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-07-28 12:14:38,392 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-07-28 12:14:38,392 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-07-28 12:14:38,392 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-07-28 12:14:38,392 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:14:38,392 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:14:38,392 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:14:38] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-28 12:14:44,160 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 12:14:44,160 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/williamsharry464 validating parameters...
+2021-07-28 12:14:44,161 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace', 'vendor']
+2021-07-28 12:14:44,161 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): START
+2021-07-28 12:14:44,166 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendor (GET): END
+2021-07-28 12:14:44,167 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:14:44,167 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:14:44,167 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:14:44] "[33mGET /v1/trend-analysis/agartha/vendors/williamsharry464 HTTP/1.1[0m" 404 -
+2021-07-28 12:14:55,973 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 12:14:55,973 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/cannazon/products/ validating parameters...
+2021-07-28 12:14:55,974 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2021-07-28 12:14:55,979 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:14:55,979 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:14:55,979 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:14:55] "[33mGET /v1/trend-analysis/cannazon/products/ HTTP/1.1[0m" 404 -
+2021-07-28 12:15:04,917 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 12:15:04,917 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/cannazon/vendors/ validating parameters...
+2021-07-28 12:15:04,918 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2021-07-28 12:15:04,918 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2021-07-28 12:15:04,921 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:15:04,921 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:15:04,922 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:15:04] "[33mGET /v1/trend-analysis/cannazon/vendors/ HTTP/1.1[0m" 404 -
+2021-07-28 12:15:13,668 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 12:15:13,668 - connexion.decorators.validation - DEBUG - http://0.0.0.0:5000/v1/trend-analysis/agartha/vendors/ validating parameters...
+2021-07-28 12:15:13,668 - connexion.decorators.parameter - DEBUG - Function Arguments: ['marketplace']
+2021-07-28 12:15:13,669 - Trend Analysis Endpoints - DEBUG - Trend-Analysis - Endpoint get_vendors (GET): START
+2021-07-28 12:15:13,672 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:15:13,672 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:15:13,673 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:15:13] "[33mGET /v1/trend-analysis/agartha/vendors/ HTTP/1.1[0m" 404 -
+2021-07-28 12:28:00,731 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:28:00] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-07-28 12:28:00,734 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 12:28:00,734 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-07-28 12:28:00,734 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-07-28 12:28:00,734 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-07-28 12:28:00,734 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-07-28 12:28:00,734 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:28:00,735 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:28:00,735 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:28:00] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-28 12:33:22,395 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:33:22,396 - connexion.apis.abstract - DEBUG - Prepared body and status code (404)
+2021-07-28 12:33:22,400 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:33:22,401 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:33:22] "[33mGET /productpage HTTP/1.1[0m" 404 -
+2021-07-28 12:33:45,618 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:33:45,618 - connexion.apis.abstract - DEBUG - Prepared body and status code (404)
+2021-07-28 12:33:45,618 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:33:45,619 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:33:45] "[33mGET /productpage HTTP/1.1[0m" 404 -
+2021-07-28 12:35:41,748 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 12:35:41,749 - connexion.apis.abstract - DEBUG - Prepared body and status code (404)
+2021-07-28 12:35:41,749 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 12:35:41,749 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 12:35:41] "[33mGET /productpage HTTP/1.1[0m" 404 -
+2021-07-28 13:16:15,238 - server - INFO - Start anita server
+2021-07-28 13:16:15,238 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 13:16:15,238 - precondition - INFO - Resource folders: OK
+2021-07-28 13:16:15,238 - precondition - INFO - PARAMETERS
+2021-07-28 13:16:15,238 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:16:15,238 - precondition - INFO - MySQL: OK
+2021-07-28 13:16:15,238 - precondition - INFO - CONNECTION TEST
+2021-07-28 13:16:15,240 - precondition - INFO - MySQL: OK
+2021-07-28 13:16:15,240 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 13:16:15,241 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:16:15,241 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 13:16:15,243 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:16,246 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:17,249 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:18,252 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:19,254 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:20,256 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:21,259 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:22,261 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:23,264 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:25,925 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:16:26,928 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:26,933 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:16:27,937 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:27,942 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:16:28,944 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:28,950 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:16:29,953 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:29,963 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:16:30,966 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:30,973 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 13:16:30,974 - precondition - INFO - DATABASE
+2021-07-28 13:16:30,977 - precondition - INFO - Schema: OK
+2021-07-28 13:16:30,979 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:16:30,996 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 13:16:31,004 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 13:16:31,007 - precondition - INFO - PRODUCT table: OK
+2021-07-28 13:16:31,010 - precondition - INFO - VENDOR table: OK
+2021-07-28 13:16:31,013 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 13:16:31,013 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 13:16:31,014 - server - INFO - INFO
+2021-07-28 13:16:31,014 - server - INFO - HOST: 0.0.0.0
+2021-07-28 13:16:31,014 - server - INFO - PORT: 5000
+2021-07-28 13:16:31,014 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 13:16:31,021 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 13:16:31,022 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 13:16:53,238 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:16:53] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-07-28 13:16:53,242 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 13:16:53,242 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-07-28 13:16:53,242 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-07-28 13:16:53,242 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-07-28 13:16:53,242 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-07-28 13:16:53,242 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 13:16:53,242 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 13:16:53,243 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:16:53] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-28 13:19:02,685 - server - INFO - Start anita server
+2021-07-28 13:19:02,685 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 13:19:02,685 - precondition - INFO - Resource folders: OK
+2021-07-28 13:19:02,685 - precondition - INFO - PARAMETERS
+2021-07-28 13:19:02,685 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:19:02,685 - precondition - INFO - MySQL: OK
+2021-07-28 13:19:02,685 - precondition - INFO - CONNECTION TEST
+2021-07-28 13:19:02,686 - precondition - INFO - MySQL: OK
+2021-07-28 13:19:02,687 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 13:19:02,687 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:19:02,687 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 13:19:02,689 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:03,692 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:04,695 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:05,698 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:06,700 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:07,703 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:08,706 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:09,709 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:10,711 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:12,623 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:19:13,627 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:13,637 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:19:14,641 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:14,645 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:19:15,648 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:15,655 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:19:16,659 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:16,662 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:19:17,665 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:17,674 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 13:19:17,675 - precondition - INFO - DATABASE
+2021-07-28 13:19:17,679 - precondition - INFO - Schema: OK
+2021-07-28 13:19:17,681 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:19:17,705 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 13:19:17,713 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 13:19:17,716 - precondition - INFO - PRODUCT table: OK
+2021-07-28 13:19:17,719 - precondition - INFO - VENDOR table: OK
+2021-07-28 13:19:17,722 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 13:19:17,722 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 13:19:17,723 - server - INFO - INFO
+2021-07-28 13:19:17,723 - server - INFO - HOST: 0.0.0.0
+2021-07-28 13:19:17,723 - server - INFO - PORT: 5000
+2021-07-28 13:19:17,723 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 13:19:17,732 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 13:19:17,732 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 13:19:44,118 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:19:44] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-07-28 13:19:44,122 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 13:19:44,122 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-07-28 13:19:44,122 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-07-28 13:19:44,122 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-07-28 13:19:44,122 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-07-28 13:19:44,123 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 13:19:44,123 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 13:19:44,123 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:19:44] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-28 13:21:16,987 - server - INFO - Start anita server
+2021-07-28 13:21:16,987 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 13:21:16,987 - precondition - INFO - Resource folders: OK
+2021-07-28 13:21:16,988 - precondition - INFO - PARAMETERS
+2021-07-28 13:21:16,988 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:21:16,988 - precondition - INFO - MySQL: OK
+2021-07-28 13:21:16,988 - precondition - INFO - CONNECTION TEST
+2021-07-28 13:21:16,989 - precondition - INFO - MySQL: OK
+2021-07-28 13:21:16,990 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 13:21:16,990 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:21:16,990 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 13:21:16,993 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:17,996 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:18,998 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:20,001 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:21,005 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:22,008 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:23,012 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:24,015 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:25,019 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:26,793 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:21:27,796 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:27,801 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:21:28,803 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:28,808 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:21:29,811 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:29,816 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:21:30,819 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:30,824 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:21:31,828 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:31,836 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 13:21:31,837 - precondition - INFO - DATABASE
+2021-07-28 13:21:31,840 - precondition - INFO - Schema: OK
+2021-07-28 13:21:31,842 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:21:31,865 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 13:21:31,873 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 13:21:31,877 - precondition - INFO - PRODUCT table: OK
+2021-07-28 13:21:31,881 - precondition - INFO - VENDOR table: OK
+2021-07-28 13:21:31,885 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 13:21:31,885 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 13:21:31,885 - server - INFO - INFO
+2021-07-28 13:21:31,885 - server - INFO - HOST: 0.0.0.0
+2021-07-28 13:21:31,885 - server - INFO - PORT: 5000
+2021-07-28 13:21:31,886 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 13:21:31,902 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 13:21:31,902 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 13:21:57,790 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:21:57] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-07-28 13:21:57,794 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 13:21:57,794 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-07-28 13:21:57,794 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-07-28 13:21:57,794 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-07-28 13:21:57,794 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-07-28 13:21:57,794 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 13:21:57,794 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 13:21:57,794 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:21:57] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-28 13:23:58,731 - server - INFO - Start anita server
+2021-07-28 13:23:58,732 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 13:23:58,732 - precondition - INFO - Resource folders: OK
+2021-07-28 13:23:58,732 - precondition - INFO - PARAMETERS
+2021-07-28 13:23:58,732 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:23:58,732 - precondition - INFO - MySQL: OK
+2021-07-28 13:23:58,732 - precondition - INFO - CONNECTION TEST
+2021-07-28 13:23:58,733 - precondition - INFO - MySQL: OK
+2021-07-28 13:23:58,734 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 13:23:58,734 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:23:58,734 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 13:23:58,737 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:23:59,741 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:00,744 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:01,748 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:02,751 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:03,754 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:04,756 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:05,759 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:06,762 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:07,765 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:10,783 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:24:11,787 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:11,793 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:24:12,796 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:12,801 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:24:13,805 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:13,813 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:24:14,817 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:14,840 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:24:15,843 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:15,857 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 13:24:15,858 - precondition - INFO - DATABASE
+2021-07-28 13:24:15,863 - precondition - INFO - Schema: OK
+2021-07-28 13:24:15,865 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:24:15,902 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 13:24:15,910 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 13:24:15,914 - precondition - INFO - PRODUCT table: OK
+2021-07-28 13:24:15,917 - precondition - INFO - VENDOR table: OK
+2021-07-28 13:24:15,921 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 13:24:15,921 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 13:24:15,921 - server - INFO - INFO
+2021-07-28 13:24:15,921 - server - INFO - HOST: 0.0.0.0
+2021-07-28 13:24:15,921 - server - INFO - PORT: 5000
+2021-07-28 13:24:15,921 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 13:24:15,938 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 13:24:15,938 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 13:25:00,250 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:25:00] "[32mGET /v1/marketplaces HTTP/1.1[0m" 308 -
+2021-07-28 13:25:00,255 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-07-28 13:25:00,255 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-07-28 13:25:00,255 - Markets endpoint - DEBUG - Endpoint MARKET LIST - START
+2021-07-28 13:25:00,255 - Markets endpoint - DEBUG - ["agartha", "apollon", "berlusconi", "cannahome", "cannazon", "darkmarket", "directdrugs", "drugscenter", "drugsmedicine", "empiremarket", "palmetto", "silkroad3", "tochka"]
+2021-07-28 13:25:00,255 - Markets endpoint - DEBUG - Endpoint MARKET LIST - END
+2021-07-28 13:25:00,256 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-07-28 13:25:00,256 - connexion.apis.abstract - DEBUG - Got framework response
+2021-07-28 13:25:00,256 - werkzeug - INFO - 172.18.0.1 - - [28/Jul/2021 13:25:00] "GET /v1/marketplaces/ HTTP/1.1" 200 -
+2021-07-28 13:34:56,852 - server - INFO - Start anita server
+2021-07-28 13:34:56,852 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 13:34:56,852 - precondition - INFO - Resource folders: OK
+2021-07-28 13:34:56,852 - precondition - INFO - PARAMETERS
+2021-07-28 13:34:56,852 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:34:56,852 - precondition - INFO - MySQL: OK
+2021-07-28 13:34:56,853 - precondition - INFO - CONNECTION TEST
+2021-07-28 13:34:56,854 - precondition - INFO - MySQL: OK
+2021-07-28 13:34:56,854 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 13:34:56,854 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:34:56,854 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 13:34:56,857 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:34:57,860 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:34:58,863 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:34:59,866 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:00,869 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:01,872 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:02,875 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:03,878 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:06,444 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:35:07,448 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:07,454 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:35:08,458 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:08,462 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:35:09,464 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:09,468 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:35:10,470 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:10,476 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 13:35:11,479 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:11,489 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 13:35:11,490 - precondition - INFO - DATABASE
+2021-07-28 13:35:11,493 - precondition - INFO - Schema: OK
+2021-07-28 13:35:11,495 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:35:11,515 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 13:35:11,522 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 13:35:11,525 - precondition - INFO - PRODUCT table: OK
+2021-07-28 13:35:11,528 - precondition - INFO - VENDOR table: OK
+2021-07-28 13:35:11,530 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 13:35:11,530 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 13:35:11,530 - server - INFO - INFO
+2021-07-28 13:35:11,531 - server - INFO - HOST: 0.0.0.0
+2021-07-28 13:35:11,531 - server - INFO - PORT: 5000
+2021-07-28 13:35:11,531 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 13:35:11,538 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 13:35:11,538 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 13:46:25,659 - server - INFO - Start anita server
+2021-07-28 13:46:25,659 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 13:46:25,659 - precondition - INFO - Resource folders: OK
+2021-07-28 13:46:25,659 - precondition - INFO - PARAMETERS
+2021-07-28 13:46:25,659 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:46:25,659 - precondition - INFO - MySQL: OK
+2021-07-28 13:46:25,659 - precondition - INFO - CONNECTION TEST
+2021-07-28 13:46:25,660 - precondition - INFO - MySQL: OK
+2021-07-28 13:46:25,661 - precondition - INFO - Sonarqube: OK
+2021-07-28 13:46:25,661 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 13:46:25,664 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:46:25,667 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 13:46:25,668 - precondition - INFO - DATABASE
+2021-07-28 13:46:25,671 - precondition - INFO - Schema: OK
+2021-07-28 13:46:25,672 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 13:46:25,683 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 13:46:25,688 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 13:46:25,691 - precondition - INFO - PRODUCT table: OK
+2021-07-28 13:46:25,693 - precondition - INFO - VENDOR table: OK
+2021-07-28 13:46:25,695 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 13:46:25,696 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 13:46:25,696 - server - INFO - INFO
+2021-07-28 13:46:25,696 - server - INFO - HOST: 0.0.0.0
+2021-07-28 13:46:25,696 - server - INFO - PORT: 5000
+2021-07-28 13:46:25,696 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 13:46:25,707 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 13:46:25,707 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 14:00:47,272 - server - INFO - Start anita server
+2021-07-28 14:00:47,272 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 14:00:47,272 - precondition - INFO - Resource folders: OK
+2021-07-28 14:00:47,272 - precondition - INFO - PARAMETERS
+2021-07-28 14:00:47,272 - precondition - INFO - Sonarqube: OK
+2021-07-28 14:00:47,272 - precondition - INFO - MySQL: OK
+2021-07-28 14:00:47,272 - precondition - INFO - CONNECTION TEST
+2021-07-28 14:00:47,274 - precondition - INFO - MySQL: OK
+2021-07-28 14:00:47,274 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 14:00:47,275 - precondition - INFO - Sonarqube: OK
+2021-07-28 14:00:47,275 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 14:00:47,278 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:48,280 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:49,284 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:50,286 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:51,289 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:52,292 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:53,295 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:54,298 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:55,300 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:56,304 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:00:59,467 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:01:00,471 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:00,480 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:01:01,483 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:01,488 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:01:02,491 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:02,499 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:01:03,503 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:03,510 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:01:04,514 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:04,517 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:01:05,520 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:05,528 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 14:01:05,530 - precondition - INFO - DATABASE
+2021-07-28 14:01:05,535 - precondition - INFO - Schema: OK
+2021-07-28 14:01:05,537 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:01:05,558 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 14:01:05,566 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 14:01:05,572 - precondition - INFO - PRODUCT table: OK
+2021-07-28 14:01:05,577 - precondition - INFO - VENDOR table: OK
+2021-07-28 14:01:05,582 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 14:01:05,582 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 14:01:05,583 - server - INFO - INFO
+2021-07-28 14:01:05,583 - server - INFO - HOST: 0.0.0.0
+2021-07-28 14:01:05,583 - server - INFO - PORT: 5000
+2021-07-28 14:01:05,583 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 14:01:05,595 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 14:01:05,595 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 14:03:17,843 - server - INFO - Start anita server
+2021-07-28 14:03:17,843 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 14:03:17,844 - precondition - INFO - Resource folders: OK
+2021-07-28 14:03:17,844 - precondition - INFO - PARAMETERS
+2021-07-28 14:03:17,844 - precondition - INFO - Sonarqube: OK
+2021-07-28 14:03:17,844 - precondition - INFO - MySQL: OK
+2021-07-28 14:03:17,844 - precondition - INFO - CONNECTION TEST
+2021-07-28 14:03:17,847 - precondition - INFO - MySQL: OK
+2021-07-28 14:03:17,849 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 14:03:17,849 - precondition - INFO - Sonarqube: OK
+2021-07-28 14:03:17,850 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 14:03:17,854 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:18,859 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:19,862 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:20,866 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:21,869 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:22,872 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:23,876 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:24,878 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:25,882 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:28,962 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:03:29,969 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:29,975 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:03:30,978 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:30,988 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:03:31,992 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:32,003 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:03:33,006 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:33,048 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 14:03:34,051 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:34,060 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 14:03:34,061 - precondition - INFO - DATABASE
+2021-07-28 14:03:34,064 - precondition - INFO - Schema: OK
+2021-07-28 14:03:34,065 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 14:03:34,089 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 14:03:34,097 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 14:03:34,099 - precondition - INFO - PRODUCT table: OK
+2021-07-28 14:03:34,102 - precondition - INFO - VENDOR table: OK
+2021-07-28 14:03:34,105 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 14:03:34,106 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 14:03:34,106 - server - INFO - INFO
+2021-07-28 14:03:34,106 - server - INFO - HOST: 0.0.0.0
+2021-07-28 14:03:34,106 - server - INFO - PORT: 5000
+2021-07-28 14:03:34,107 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 14:03:34,116 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 14:03:34,116 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
+2021-07-28 20:18:13,234 - server - INFO - Start anita server
+2021-07-28 20:18:13,234 - precondition - INFO - PRECONDITION CHECKING
+2021-07-28 20:18:13,234 - precondition - INFO - Resource folders: OK
+2021-07-28 20:18:13,234 - precondition - INFO - PARAMETERS
+2021-07-28 20:18:13,234 - precondition - INFO - Sonarqube: OK
+2021-07-28 20:18:13,234 - precondition - INFO - MySQL: OK
+2021-07-28 20:18:13,234 - precondition - INFO - CONNECTION TEST
+2021-07-28 20:18:13,260 - precondition - INFO - MySQL: OK
+2021-07-28 20:18:13,265 - precondition - INFO - Sonarqube: waiting...
+2021-07-28 20:18:13,265 - precondition - INFO - Sonarqube: OK
+2021-07-28 20:18:13,265 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-07-28 20:18:13,269 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:14,273 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:15,276 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:16,279 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:17,283 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:18,285 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:19,288 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:20,291 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:21,294 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:22,301 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:23,307 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:26,996 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:28,003 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:28,008 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:29,013 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:29,017 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:30,020 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:30,023 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:31,026 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:31,040 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:32,052 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:32,056 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:33,059 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:33,063 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-07-28 20:18:34,067 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:34,074 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-07-28 20:18:34,075 - precondition - INFO - DATABASE
+2021-07-28 20:18:34,081 - precondition - INFO - Schema: OK
+2021-07-28 20:18:34,082 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-07-28 20:18:34,099 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-07-28 20:18:34,157 - precondition - INFO - SONARQUBE table: OK
+2021-07-28 20:18:34,161 - precondition - INFO - PRODUCT table: OK
+2021-07-28 20:18:34,165 - precondition - INFO - VENDOR table: OK
+2021-07-28 20:18:34,178 - precondition - INFO - FEEDBACK table: OK
+2021-07-28 20:18:34,178 - precondition - INFO - Sonar-scanner status: OK
+2021-07-28 20:18:34,178 - server - INFO - INFO
+2021-07-28 20:18:34,179 - server - INFO - HOST: 0.0.0.0
+2021-07-28 20:18:34,179 - server - INFO - PORT: 5000
+2021-07-28 20:18:34,179 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-07-28 20:18:34,189 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-07-28 20:18:34,190 - werkzeug - INFO -  * Running on http://172.18.0.8:5000/ (Press CTRL+C to quit)
