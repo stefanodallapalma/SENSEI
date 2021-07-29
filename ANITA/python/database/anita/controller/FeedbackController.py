@@ -144,3 +144,12 @@ class FeedbackController(TableController):
             new_beans.append(bean)
 
         super(FeedbackController, self).insert_beans(new_beans)
+
+    def get_feedback_vendor(self):
+        query = "SELECT feedback.id_feedback, feedback.id, vendor.name, feedback.message, feedback.product, " \
+                "feedback.deals, vendor.market, feedback.date FROM anita.feedback INNER JOIN anita.vendor ON " \
+                "feedback.id=vendor.feedback;"
+
+        header, results = self.mysql_db.search(query)
+
+        return results

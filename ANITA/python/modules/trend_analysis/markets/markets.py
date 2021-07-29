@@ -1,5 +1,6 @@
 import json
 import logging
+import traceback
 from datetime import datetime
 
 from celery_task.celery_app import celery
@@ -7,6 +8,10 @@ from modules.trend_analysis.scraper.enum import Market
 from modules.trend_analysis.markets.local.MarketLocalProject import MarketLocalProject
 from celery_task.tasks.trend_analysis import market as market_task
 from exceptions import UndefinedTaskStateException
+from database.anita.controller.FeedbackController import FeedbackController
+from database.anita.controller.ProductController import ProductController
+from database.anita.controller.VendorController import VendorController
+
 
 logger = logging.getLogger("market module")
 
@@ -84,6 +89,23 @@ def load_dump_status(unique_id):
 
         market_local = MarketLocalProject(market)
         market_local.delete_dump(timestamp)
+
+        if task.result["db_insert"]:
+            v_controller = VendorController()
+            p_controller = ProductController()
+            f_controller = FeedbackController()
+
+            try:
+                logger.info("DELETE: Feedback")
+                f_controller.delete_feedback(market, [timestamp])
+                logger.info("DELETE: Products")
+                p_controller.delete_dumps(market, [timestamp])
+                logger.info("DELETE: Vendors")
+                v_controller.delete_dumps(market, [timestamp])
+            except Exception as e:
+                logger.error("Internal server error")
+                logger.error(str(e))
+                logger.error(traceback.format_exc())
 
         # Delete zip file
         #market_local.delete_zipfile(timestamp)

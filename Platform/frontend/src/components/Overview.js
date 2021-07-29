@@ -369,6 +369,7 @@ function Overview() {
             }
           }
         }}
+        console.log(vendorData)
         console.log(biggestVendor[0]['name'])
         setLargestVendor(biggestVendor[0]['name'])
         return(null)

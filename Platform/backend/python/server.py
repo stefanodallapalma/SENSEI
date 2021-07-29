@@ -30,6 +30,7 @@ app.secret_key = 'p85d4d1154eb513f4c45a021392dd1fb9ec23aed706a29ac745b3d090285a2
 #app.config['SESSION_TYPE'] = 'redis'
 #app.config['SESSION_REDIS'] = redis.from_url('redis://:p85d4d1154eb513f4c45a021392dd1fb9ec23aed706a29ac745b3d090285a282b@ec2-34-248-71-23.eu-west-1.compute.amazonaws.com:9620')
 app.config['JSON_SORT_KEYS'] = False
+app.config['CORS_HEADERS'] = 'Content-Type'
 cache.init_app(app)
 
 CORS(app)
@@ -467,8 +468,16 @@ def reviews():
                 all_weeks = list(unique_vendors_dict[vendor].keys())
                 weeks_first_half = all_weeks[:len(all_weeks)//2]
                 weeks_second_half = all_weeks[len(all_weeks)//2:]
-                average_sales_first_half = sum([v for k,v in unique_vendors_dict[vendor].items() if k in weeks_first_half])/len(weeks_first_half)
-                average_sales_second_half = sum([v for k,v in unique_vendors_dict[vendor].items() if k in weeks_second_half])/len(weeks_second_half)
+                if weeks_first_half:
+                    average_sales_first_half = sum([v for k,v in unique_vendors_dict[vendor].items() if k in weeks_first_half])/len(weeks_first_half)
+                else:
+                    average_sales_first_half = 0
+
+                if weeks_second_half:
+                    average_sales_second_half = sum([v for k,v in unique_vendors_dict[vendor].items() if k in weeks_second_half])/len(weeks_second_half)
+                else:
+                    average_sales_second_half = 0
+
                 if average_sales_first_half == 0:
                     treemap_d[vendor] = 100
                     continue
@@ -498,9 +507,11 @@ def reviews():
             for colour, range_perc in colour_palette.items():
                 if range_perc[0] <= percentage <= range_perc[1]:
                     treemap_growth[market][vendor] = colour
+
     # This is done to set the background colour of the treemap
-    treemap_growth['agartha']['agartha'] = '#FFFFFF'
-    treemap_growth['agartha']['Dark markets'] = '#FFFFFF'
+    if 'agartha' in treemap_growth:
+        treemap_growth['agartha']['agartha'] = '#FFFFFF'
+        treemap_growth['agartha']['Dark markets'] = '#FFFFFF'
 
     #Lastly, give dict with market, vendor, weeks sales
     market_vendor_weeks_sales = {market:{} for market in unique_markets}
@@ -683,8 +694,11 @@ def product_page():
                             if country_total == 0:
                                 countries_to_remove_markets.append([market_final_markets,country_final_markets])
     # Remove the countries
-    for country in countries_to_remove:
-        del final_dict[country]
+    try:
+        for country in countries_to_remove:
+            del final_dict[country]
+    except:
+        pass
     # # Remove the countries
     # for country in countries_to_remove_markets:
     #     del final_dict_markets[country[0]][country[1]]

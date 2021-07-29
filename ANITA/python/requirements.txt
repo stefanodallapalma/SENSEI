@@ -13,3 +13,5 @@ pycrypto==2.6.1
 scikit-learn==0.22.2
 sh==1.12.14
 chardet==4.0.0
+forex_python==1.6
+Faker==8.10.3

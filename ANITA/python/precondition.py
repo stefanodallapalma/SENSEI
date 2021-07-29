@@ -6,6 +6,7 @@ from database.anita.AnitaDB import AnitaDB
 from database.anita.controller_handler import get_controller_instance
 from database.db.structure.DBType import DBType
 from database.utils import DBUtils as db_utils
+from database.db.MySqlDB import MySqlDB
 from sonarqube.api.SonarqubeAPI import SonarqubeAPI
 from sonarqube.api.SonarqubeAPIExtended import SonarqubeAPIExtended
 from sonarqube.utils import SonarqubeUtils as sq_utils
@@ -134,6 +135,9 @@ def check_preconditions():
                 return False
             logger.info(table.upper() + " table generated")
 
+    # MySQL platform table
+    create_db_table_platform()
+
     # Sonarqube token
     server_sq = SonarqubeAPIExtended()
     sonarqube_property = sq_utils.get_sonarqube_properties()
@@ -225,3 +229,42 @@ def sonarscanner_setup():
     zip_path = download()
     extract_content(zip_path, "sonar-scanner")
     os.remove(zip_path)
+
+
+def create_db_table_platform():
+    mysql = MySqlDB("anita")
+
+    logger.info("Platform table genenation")
+    # PRODUCT CLEANED
+    if not mysql.exist_table("products_cleaned"):
+        query = "CREATE TABLE anita.`products_cleaned`(`timestamp` VARCHAR(255), `market` VARCHAR(255), " \
+                "`name` VARCHAR(255), `vendor` VARCHAR(225), `ships_from` VARCHAR(2047), `ships_to` VARCHAR(2047), " \
+                "`category` VARCHAR(255), `price` FLOAT, `macro_category` VARCHAR(255))"
+        mysql.insert(query)
+        logger.info("products_cleaned table generated")
+
+    # VENDOR ANALYSIS
+    if not mysql.exist_table("vendor-analysis"):
+        query = "CREATE TABLE anita.`vendor-analysis`(`timestamp` VARCHAR(255), `market` VARCHAR(255), " \
+                "`name` VARCHAR(255), `registration_date` VARCHAR(255), `normalized_score` VARCHAR(225)," \
+                "`email` VARCHAR(255), `phone number` VARCHAR(255), `wickr` VARCHAR(255), " \
+                "`group/individual` VARCHAR(255), `other markets` VARCHAR(255), `ships_from` VARCHAR(2047), " \
+                "`ships_to` VARCHAR(2047))"
+        mysql.insert(query)
+        logger.info("vendor-analysis table generated")
+
+    # PSEUDONYM
+    if not mysql.exist_table("pseudonymized_vendors"):
+        query = "CREATE TABLE anita.`pseudonymized_vendors`(`alias` VARCHAR(255), `pseudonym` VARCHAR(255))"
+        mysql.insert(query)
+        logger.info("pseudonymized_vendors table generated")
+
+    # REVIEW
+    if not mysql.exist_table("reviews"):
+        query = "CREATE TABLE anita.`reviews`(`feedback_id` VARCHAR(255), `id` VARCHAR(255), `name` VARCHAR(255), " \
+                "`message` LONGTEXT, `product` VARCHAR(255),`deals` VARCHAR(255),`market` VARCHAR(255), " \
+                "`timestamp` VARCHAR(255),`macro_category` VARCHAR(255))"
+        mysql.insert(query)
+        logger.info("reviews table generated")
+
+    logger.info("Platform table genenated")

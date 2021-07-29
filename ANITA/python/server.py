@@ -12,6 +12,7 @@ app.add_api("swagger/v1/software-quality.yml")
 app.add_api("swagger/v1/marketplaces.yml")
 app.add_api("swagger/v1/status.yml")
 app.add_api("swagger/v1/trend-analysis.yml")
+app.add_api("swagger/v1/platform.yml")
 
 
 def config_log():

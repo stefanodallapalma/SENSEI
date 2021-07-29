@@ -13,6 +13,10 @@ from database.anita.decoder.market_decoder import *
 from database.anita.controller.ProductController import ProductController
 from database.anita.controller.VendorController import VendorController
 from database.anita.controller.FeedbackController import FeedbackController
+import modules.post_processing.product as pc_product
+import modules.post_processing.vendor as pc_vendor
+import modules.post_processing.pseudonym as pc_pseudonym
+import modules.post_processing.feedback as pc_feedback
 
 STATISTICAL_INFO = True
 MESSAGE_LIMIT = 100
@@ -45,7 +49,7 @@ def load_dump(self, dump_folder_path, market, timestamp):
     pages = getfiles(dump_folder_path, abs_path=True, ext_filter="html", recursive=True)
 
     content = {"file_analyzed": 0, "successfull_pages": 0, "failed_pages": 0, "total_files": len(pages), "#products": 0,
-               "#vendors": 0, "#feedback": 0, "db_insert": False}
+               "#vendors": 0, "#feedback": 0, "db_insert": False, "db_platform_updated": False}
 
     if STATISTICAL_INFO:
         content["STATISTICAL INFO"] = {"page not analyzed": 0, "page not analyzed - error_pages": {},
@@ -215,26 +219,6 @@ def load_dump(self, dump_folder_path, market, timestamp):
     print("Vendors: {}".format(len(vendors)))
     print("Feedback: {}".format(len(feedback_list)))
 
-    """products, feedback_list = remove_null_products(products, feedback_list)
-    vendors, feedback_list = remove_null_vendors(vendors, feedback_list)
-
-    print("Products not null: {}".format(len(products)))
-    print("Vendors not null: {}".format(len(vendors)))
-    print("Feedback: {}".format(len(feedback_list)))
-
-    print("REMOVING DUPLICATES...")
-    products, feedback_list = remove_products_duplicates(products, feedback_list)
-    vendors, feedback_list = remove_vendors_duplicates(vendors, feedback_list)
-    feedback_list = remove_feedback_duplicates(feedback_list)
-    feedback_list = remove_unreference_feedback(feedback_list, products, vendors)
-    print("DUPLICATES REMOVED")
-
-    print("Products: {}".format(len(products)))
-    print("Vendors: {}".format(len(vendors)))
-    print("Feedback: {}".format(len(feedback_list)))
-    content["#products"] = len(products)
-    content["#vendors"] = len(vendors)"""
-
     # Rates
     if STATISTICAL_INFO:
         successfull_rate = (successfull_pages/len(pages))*100
@@ -260,6 +244,32 @@ def load_dump(self, dump_folder_path, market, timestamp):
         return content
 
     content["db_insert"] = True
-    self.update_state(state=states.SUCCESS, meta=content)
+    self.update_state(state='PROGRESS', meta=content)
+
+    # Platform DB UPDATE
+    delete_platform_db()
+    try:
+        update_platform_db()
+        content["db_platform_updated"] = True
+        self.update_state(state=states.SUCCESS, meta=content)
+    except:
+        traceback.print_exc()
+        delete_platform_db()
+        content["error"] = "Platform database error"
+        self.update_state(state=states.FAILURE, meta=content)
 
     return content
+
+
+def update_platform_db():
+    pc_product.update_products()
+    pc_vendor.update_vendors()
+    pc_pseudonym.update_pseudonym()
+    pc_feedback.update_feedback()
+
+
+def delete_platform_db():
+    pc_product.delete_products()
+    pc_vendor.delete_vendors()
+    pc_pseudonym.delete_pseudonym()
+    pc_feedback.delete_feedback()

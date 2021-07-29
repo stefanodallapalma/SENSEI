@@ -268,6 +268,21 @@ class ProductController(TableController):
 
         self.mysql_db.delete(query, values)
 
+    def get_product_no_fdb(self):
+        """
+        Get products without feedback
+        """
+
+        query = f"SELECT timestamp, market, name, vendor, ships_from, ships_to, category, price " \
+                f"FROM {self.db_name}.{TABLE_NAME};"
+
+        header, results = self.mysql_db.search(query)
+
+        json_data = []
+        for line in results:
+            json_data.append(dict(zip(header, line)))
+
+        return json_data
 
     def check_table(self):
         sql = "DESCRIBE product;"

@@ -57,6 +57,22 @@ class MySqlDB(DB):
         else:
             return self.__execute_with_escape__(query, value, fetch_header=False, fetch_content=False)
 
+    def exist_table(self, table_name):
+        query = "SELECT * FROM information_schema.tables WHERE table_schema = \"" + self._db_name + \
+                "\" AND table_name = \"" + table_name + "\""
+
+        fields, res = self.search(query)
+
+        if len(res) == 0:
+            return False
+
+        return True
+
+    def create_table(self, query):
+        """Create the table"""
+        result = self.insert(query())
+        return result
+
     def __execute__(self, query, fetch_header=True, fetch_content=True):
         header = None
         try:

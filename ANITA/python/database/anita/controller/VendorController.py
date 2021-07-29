@@ -208,3 +208,35 @@ class VendorController(TableController):
             values.append((market, timestamp))
 
         self.mysql_db.delete(query, values)
+
+    def get_vendor_filtered(self):
+        """
+        This function retrieves vendor data from MySql DB, based on the following attributes:
+        timestamp, market, name, info,registration,score_normalized
+        """
+        query = f"SELECT timestamp, market, name, info, registration, score_normalized FROM {self.db_name}.{TABLE_NAME}"
+        header, results = self.mysql_db.search(query)
+
+        final_data = []
+        for vendor_info in results:
+            if vendor_info[3] == None:
+                vendor_info_list = list(vendor_info)
+                vendor_info_list[3] = ''
+                vendor_info_tuple = tuple(vendor_info_list)
+                final_data.append(vendor_info_tuple)
+            else:
+                final_data.append(vendor_info)
+
+        return final_data
+
+    def get_vendor_country(self):
+        query = 'SELECT vendor.name, vendor.market, product.ships_from, product.ships_to FROM anita.vendor INNER JOIN' \
+                ' anita.product ON vendor.name = product.vendor;'
+
+        header, results = self.mysql_db.search(query)
+
+        vendor_country = []
+        for line in results:
+            vendor_country.append(dict(zip(header, line)))
+
+        return vendor_country

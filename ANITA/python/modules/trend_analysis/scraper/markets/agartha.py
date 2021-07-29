@@ -47,13 +47,13 @@ class AgarthaProductScraper(ProductScraper):
                 return ship_from.text.split()[0]
 
     def price(self):
-        return ' '.join(self.soup.find('span', {'style' : 'font-size:95%;'}).text.split()[1:3])
+        return ' '.join(self.soup.find('span', {'style': 'font-size:95%;'}).text.split()[1:3])
 
     def category(self):
         pass
 
     def info(self):
-        return self.soup.find('p', {'style' : 'max-width:74%; width:auto; overflow:auto; word-wrap: break-word; text-overflow: ellipsis;'}).text
+        return self.soup.find('p', {'style': 'max-width:74%; width:auto; overflow:auto; word-wrap: break-word; text-overflow: ellipsis;'}).text
 
     def feedback(self):
         """ NONE IN DATASET, THUS ALL NONE"""

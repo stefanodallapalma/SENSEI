@@ -1,0 +1,98 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/v1/platform-update"
+
+# Paths supported by the server application
+paths:
+  /products/:
+    get:
+      operationId: "api.endpoints.post_processing.product.update_products"
+      summary: ""
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing all vendors for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+    delete:
+      operationId: "api.endpoints.post_processing.product.delete_all"
+      summary: ""
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing all vendors for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+  /pseudonym/:
+    get:
+      operationId: "api.endpoints.post_processing.pseudonym.update_pseudonym"
+      summary: ""
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing all vendors for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+  /vendors/:
+    get:
+      operationId: "api.endpoints.post_processing.vendor.update_vendors"
+      summary: ""
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing all vendors for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+  /feedback/:
+    get:
+      operationId: "api.endpoints.post_processing.feedback.update_feedback"
+      summary: ""
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing all vendors for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
