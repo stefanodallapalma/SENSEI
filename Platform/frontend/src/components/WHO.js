@@ -298,14 +298,14 @@ const useStyles = makeStyles((theme) => ({
 
     // Load data
     useEffect( async() => {
-        const all_data = await axios.get('http://0.0.0.0:4000/operational');
+        const all_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/operational");
         setData(all_data.data[0])
         setSizeData(["Large", "Medium","Small"]);
         setGrowingData(['Increased', 'Same/unknown', 'Decreased']);
         setCountryData(all_data.data[2]);
         setMarketData(all_data.data[3]);
         setTimestamps(all_data.data[4])
-        const category_data = await axios.get('http://0.0.0.0:4000/productpage');
+        const category_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/productpage");
         setCategories(category_data.data[3])
         setCategoryData(category_data.data[4])
         

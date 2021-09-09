@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  anita-platform-backend:
+    container_name: anita-platform-backend
+    image: anita-platform-backend
+    build:
+      context: .
+      dockerfile: platform-backend-dockerfile
+    ports:
+      - "4500:4500"
+    expose:
+      - 4500
+    networks:
+      - anita-network
+    environment:
+      - PLATFORM_FLASK_HOST=0.0.0.0
+      - PLATFORM_FLASK_PORT=4500
+    entrypoint: python3
+    command: server_platform.py
+    depends_on:
+      - mysql
+    volumes:
+      - ./Platform:/Platform
+    networks:
+      - anita-network
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "gfT!-@sayUOO"
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD-SHELL", 'mysqladmin ping']
+      interval: 10s
+      timeout: 2s
+      retries: 10
+    volumes:
+      - mysql-db:/var/lib/mysql
+    networks:
+      - anita-network
+
+networks:
+  anita-network:
+    external: true
+
+volumes:
+  mysql-db:

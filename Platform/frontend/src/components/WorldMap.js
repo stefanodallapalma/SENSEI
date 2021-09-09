@@ -86,7 +86,7 @@ function Worldmap() {
 
     // Load data
     useEffect( async() => {
-        const results_reviews = await axios.get('http://0.0.0.0:4000/reviews');
+        const results_reviews = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/reviews");
         for (const [key, value] of Object.entries(results_reviews.data[1])){
           setTimestampSalesButtons(Object.keys(value))
           console.log(Object.keys(value))

@@ -9,6 +9,7 @@ mysql_param_path = "../resources/mysql.json"
 class MySqlDB:
     def __init__(self, database_name=None):
         self._parameters = load_json(mysql_param_path)
+        print(self._parameters)
         self._db_name = database_name
 
     def connect(self):

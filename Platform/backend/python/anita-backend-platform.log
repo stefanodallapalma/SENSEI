@@ -1,0 +1,20 @@
+2021-09-07 17:11:35,046 - server - INFO - Start anita platform server
+2021-09-07 17:11:35,046 - server - INFO - INFO
+2021-09-07 17:11:57,025 - server - INFO - Start anita platform server
+2021-09-07 17:11:57,026 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-09-07 17:11:57,046 - werkzeug - INFO -  * Running on http://0.0.0.0:4500/ (Press CTRL+C to quit)
+2021-09-07 17:12:59,206 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2021 17:12:59] "[32mGET /countrylist HTTP/1.1[0m" 308 -
+2021-09-07 17:12:59,225 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-09-07 17:12:59,226 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-09-07 17:12:59,242 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-09-07 17:12:59,247 - connexion.apis.abstract - DEBUG - Got framework response
+2021-09-07 17:12:59,248 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2021 17:12:59] "[35m[1mGET /countrylist/ HTTP/1.1[0m" 500 -
+2021-09-07 17:14:04,973 - server - INFO - Start anita platform server
+2021-09-07 17:14:04,973 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-09-07 17:14:04,981 - werkzeug - INFO -  * Running on http://0.0.0.0:4500/ (Press CTRL+C to quit)
+2021-09-07 17:14:07,754 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2021 17:14:07] "[32mGET /countrylist HTTP/1.1[0m" 308 -
+2021-09-07 17:14:07,768 - connexion.apis.flask_api - DEBUG - Getting data and status code
+2021-09-07 17:14:07,768 - connexion.decorators.parameter - DEBUG - Function Arguments: []
+2021-09-07 17:14:07,773 - connexion.apis.abstract - DEBUG - Getting data and status code
+2021-09-07 17:14:07,773 - connexion.apis.abstract - DEBUG - Got framework response
+2021-09-07 17:14:07,774 - werkzeug - INFO - 127.0.0.1 - - [07/Sep/2021 17:14:07] "[35m[1mGET /countrylist/ HTTP/1.1[0m" 500 -

@@ -66,6 +66,33 @@ class ReviewController:
 
         return reviews
 
+    def n_reviews_per_country(self):
+        query = "SELECT ships_from, count(message) as n_reviews " \
+                f"FROM {DB_NAME}.reviews JOIN {DB_NAME}.products_cleaned ON reviews.product = products_cleaned.name " \
+                "WHERE ships_from is not NULL " \
+                "GROUP BY ships_from;"
+
+        header, results = self.db.search(query)
+
+        countries = {}
+        for row in results:
+            countries[row[0]] = row[1]
+
+        return countries
+
+    def n_sales_per_vendor(self):
+        query = "SELECT reviews.name, COUNT(reviews.name) as n_sales " \
+                f"FROM {DB_NAME}.reviews JOIN {DB_NAME}.`vendor-analysis` ON reviews.name = `vendor-analysis`.name " \
+                "GROUP BY reviews.name;"
+
+        header, results = self.db.search(query)
+
+        n_sales = {}
+        for row in results:
+            n_sales[row[0]] = row[1]
+
+        return n_sales
+
 
 class ProductCleanedController:
     def __init__(self):
@@ -89,8 +116,92 @@ class ProductCleanedController:
 
         return products
 
+    def n_products_per_country(self):
+        query = "SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, " \
+                "count(name) as n_products " \
+                f"FROM {DB_NAME}.ints, {DB_NAME}.`products_cleaned` " \
+                "WHERE ships_from is not NULL " \
+                "GROUP BY country;"
 
+        header, results = self.db.search(query)
 
+        countries = {}
+        for row in results:
+            countries[row[0]] = row[1]
+
+        return countries
+
+    def best_vendor(self, country=None):
+        """
+        Takes the vendor with the higher number of product on the market
+        """
+
+        if not country:
+            query = "SELECT vendor, COUNT(vendor) as n_products " \
+                    f"FROM {DB_NAME}.products_cleaned " \
+                    "GROUP BY vendor " \
+                    "ORDER BY n_products DESC;"
+            header, results = self.db.search(query)
+        else:
+            query = "SELECT vendor, COUNT(vendor) as n_products " \
+                    f"FROM {DB_NAME}.products_cleaned " \
+                    "WHERE ships_from = %s " \
+                    "GROUP BY vendor " \
+                    "ORDER BY n_products DESC;"
+            value = (country,)
+            header, results = self.db.search(query, value)
+
+        if not results:
+            return None
+
+        best_vendor = results[0][0]
+        return best_vendor
+
+    def n_sales_per_country(self):
+        query = f"SELECT ships_from, ROUND(SUM(price),2) FROM {DB_NAME}.products_cleaned GROUP BY ships_from;"
+
+        header, results = self.db.search(query)
+
+        countries_price = {}
+        for row in results:
+            countries_price[row[0]] = row[1]
+
+        return countries_price
+
+class VendorAnalysisController:
+    def __init__(self):
+        self.db = MySqlDB()
+
+    def get_distinct_ships_from(self):
+        query = "(SELECT DISTINCT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country " \
+                f"FROM {DB_NAME}.`ints`, {DB_NAME}.`vendor-analysis` " \
+                "WHERE ships_from is not NULL) " \
+                "UNION " \
+                "(SELECT DISTINCT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country " \
+                f"FROM {DB_NAME}.`ints`, {DB_NAME}.`products_cleaned` " \
+                "WHERE ships_from is not NULL) " \
+                "ORDER BY country;"
+
+        header, results = self.db.search(query)
+
+        countries = [row[0] for row in results]
+
+        return countries
+
+    def n_vendors_per_country(self):
+        query = "SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, " \
+                "count(name) as n_vendors " \
+                f"FROM {DB_NAME}.ints, {DB_NAME}.`vendor-analysis` " \
+                f"WHERE ships_from is not NULL " \
+                f"GROUP BY country"
+
+        header, results = self.db.search(query)
+
+        countries = {}
+        for row in results:
+            countries[row[0]] = row[1]
+
+        return countries
 
 
 

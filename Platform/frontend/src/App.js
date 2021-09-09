@@ -48,6 +48,10 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
 
+  console.log('APP')
+  console.log("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/product")
+  console.log(process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT);
+
   const classes = useStyles()
   // These are the routes to the various functionalities
   const routesFirstTab = ['Tactical', 'Data','Overview']

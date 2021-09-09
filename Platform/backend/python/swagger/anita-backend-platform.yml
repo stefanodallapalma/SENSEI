@@ -1,0 +1,80 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"k
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/country"
+
+# Paths supported by the server application
+paths:
+  /list/:
+    get:
+      operationId: "endpoints.overview.get_countries"
+      summary: "Get all countries available"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Countries retrieved"
+        500:
+          description: "Internal server error"
+  /rawdata/:
+    get:
+      operationId: "endpoints.overview.get_countries_raw_data"
+      summary: "Countries raw data - n_vendors, n_products, n_reviews"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Raw data retrieved"
+        500:
+          description: "Internal server error"
+  /sales/:
+    get:
+      operationId: "endpoints.overview.n_sales"
+      summary: "Number of products for each country"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Sales retrieved"
+        500:
+          description: "Internal server error"
+  /sales-euro/:
+    get:
+      operationId: "endpoints.overview.n_sales_euro"
+      summary: "Number of products in euro for each country"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Sales retrieved"
+        500:
+          description: "Internal server error"
+  /best-vendors/:
+    get:
+      operationId: "endpoints.overview.get_biggest_vendors"
+      summary: "Retrieve the best vendors given their product in sale for each country"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Vendors retrieved"
+        500:
+          description: "Internal server error"
+

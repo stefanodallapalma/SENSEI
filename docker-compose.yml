@@ -12,6 +12,12 @@ services:
       - ./Platform:/Platform
     ports:
       - "3000:3000"
+    networks:
+      - anita-network
+    environment:
+      - env_file=.env 
+      - REACT_APP_BACKEND_HOST=0.0.0.0
+      - REACT_APP_BACKEND_PORT=4000
     depends_on:
       - platform-backend
 
@@ -36,7 +42,6 @@ services:
       - mysql
     volumes:
       - ./Platform:/Platform
-
   anita:
     container_name: anita
     image: anita

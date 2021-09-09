@@ -330,7 +330,7 @@ export default function Salespage() {
   // Load the data
     useEffect( async() => {
      
-        const results = await axios.get('http://0.0.0.0:4000/reviews');
+        const results = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/reviews");
         setTreemapData(results.data[5])
         var all_vendors_colours = {}
         for (const [market, colours] of Object.entries(results.data[7])){

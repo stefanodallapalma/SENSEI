@@ -153,7 +153,7 @@ const MO = () => {
 
  // Import all the data from the FLASK application
   useEffect( async() => {
-    const all_data = await axios.get("http://0.0.0.0:4000/product");
+    const all_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/product");
     setTimestamps(all_data.data[0])
     setDistributorData(all_data.data[1])
     setDistributorDataSliceLeft(all_data.data[1]['United States'])
@@ -168,18 +168,18 @@ const MO = () => {
     setSelectedMarkets(all_data.data[3])
    
 
-    const individual_data = await axios.get("http://0.0.0.0:4000/nlp");
+    const individual_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/nlp");
     setIndividualData(individual_data.data[0])
     setIndividualDataSliceLeft(individual_data.data[0]['United States'])
     setIndividualDataSliceRight(individual_data.data[0]['Netherlands'])
     
 
-    const specialistData = await axios.get("http://0.0.0.0:4000/productpage");
+    const specialistData = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/productpage");
     setSpecialistGeneralistData(specialistData.data[5])
     setSpecialistGeneralistDataSliceLeft(specialistData.data[5]['United States'])
     setSpecialistGeneralistDataSliceRight(specialistData.data[5]['Netherlands'])
 
-    const countriesData = await axios.get("http://0.0.0.0:4000/operational");
+    const countriesData = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/operational");
     setCountryData(countriesData.data[7])
     setCountryDataMarket(countriesData.data[7]['All markets'])
     setCountryMarkets(Object.keys(countriesData.data[7]))

@@ -37,7 +37,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     const [isTourOpen, setIsTourOpen] = useState(false);
 
     useEffect( async() => {
-        const all_data = await axios.get("http://0.0.0.0:4000/rawdata");
+        const all_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/rawdata");
         setData(all_data.data[0]);
         setLoaded(true);
     }, [])

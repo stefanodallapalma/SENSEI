@@ -78,7 +78,7 @@ function Network() {
 
   // UseEffect to load all the data once the page renders
   useEffect( async() => {
-    const results = await axios.get('http://0.0.0.0:4000/network');
+    const results = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/network");
     var dataObject = {};
     for (const [key, value] of Object.entries(results.data[0])) {
       const json_value = JSON.parse(value)

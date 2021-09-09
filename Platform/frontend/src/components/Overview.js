@@ -277,7 +277,7 @@ function Overview() {
 
     useEffect( async() => {
       // Load data for the 'what' section
-      const results = await axios.get('http://0.0.0.0:4000/productpage');
+      const results = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/productpage");
       setProductData(results.data[0]['All markets'])
       setProductDataSlice(results.data[0]['All markets']['United States'])
       setAllCountries(Object.keys(results.data[5]))
@@ -289,24 +289,24 @@ function Overview() {
       setCountryName('United States')
 
       // load data for the 'how' section
-      const all_data = await axios.get("http://0.0.0.0:4000/product");
+      const all_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/product");
       setTimestamps(all_data.data[0])
       setDistributorData(all_data.data[1])
       setDistributorDataSlice(all_data.data[1]['United States'])
 
-      const specialistData = await axios.get("http://0.0.0.0:4000/productpage");
+      const specialistData = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/productpage");
       setSpecialistGeneralistData(specialistData.data[5])
       setSpecialistGeneralistDataSlice(specialistData.data[5]['United States'])
 
-      const individual_data = await axios.get("http://0.0.0.0:4000/nlp");
+      const individual_data = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/nlp");
       setIndividualData(individual_data.data[0])
       setIndividualDataSlice(individual_data.data[0]['United States'])
 
-      const data_vendor = await axios.get('http://0.0.0.0:4000/operational');
+      const data_vendor = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/operational");
       setVendorData(data_vendor.data[0])
       
       // Load data for the 'where' section
-      const results_reviews = await axios.get('http://0.0.0.0:4000/reviews');
+      const results_reviews = await axios.get("http://" + process.env.REACT_APP_BACKEND_HOST + ":" + process.env.REACT_APP_BACKEND_PORT + "/reviews");
       setMapData(results_reviews.data[2])
       setMapDataSlice(results_reviews.data[2]["2021- week 4"])
       setLoaded(true)
@@ -357,9 +357,15 @@ function Overview() {
       // This function is used to define the biggest vendor for the country that the user has selected
       const calculateBiggestVendors = (nameOfCountry) => {
         var biggestVendor = []
+        console.log("COUNTRY NAME")
+        console.log(nameOfCountry)
+        console.log("COUNTRY LIST")
+        console.log(allCountries)
+
         for (let i = 0; i < vendorData.length; i++){
-          if (vendorData[i]['ships_from'].includes(nameOfCountry)){
-            
+          console.log("VENDOR COUNTRY")
+          console.log(vendorData[i]['ships_from'])
+          if (vendorData[i]['ships_from'].includes(nameOfCountry) || (nameOfCountry === "All" && allCountries.includes(vendorData[i]['ships_from']))){
             if (biggestVendor.length === 0){
               biggestVendor.push(vendorData[i])  
             } else {
@@ -370,8 +376,14 @@ function Overview() {
           }
         }}
         console.log(vendorData)
-        console.log(biggestVendor[0]['name'])
-        setLargestVendor(biggestVendor[0]['name'])
+        if (biggestVendor.length === 0) {
+            console.log("Vendor not available")
+            setLargestVendor("Vendor not available")
+        } else {
+            console.log(biggestVendor[0]['name'])
+            setLargestVendor(biggestVendor[0]['name'])
+        }
+
         return(null)
       }
       
