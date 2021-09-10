@@ -1,6 +1,15 @@
 version: "3"
 
 services:
+  platform-frontend-html:
+    container_name: platform-frontend-html
+    image: nginx
+    ports:
+      - 3500:80
+    networks:
+      - anita-network
+    volumes:
+      - ./Platform/admirite-platform:/usr/share/nginx/html
   anita-platform-backend:
     container_name: anita-platform-backend
     image: anita-platform-backend

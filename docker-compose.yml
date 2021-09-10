@@ -20,7 +20,15 @@ services:
       - REACT_APP_BACKEND_PORT=4000
     depends_on:
       - platform-backend
-
+  platform-frontend-html:
+        container_name: platform-frontend-html
+        image: nginx
+        ports:
+            - 3500:80
+        networks:
+            - anita-network
+        volumes:
+            - ./Platform/admirite-platform:/usr/share/nginx/html
   platform-backend:
     container_name: platform-backend
     image: platform-backend

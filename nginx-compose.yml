@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    client:
+        image: nginx
+        ports:
+            - 3500:3500
+        volumes:
+            - ./Platform/admirite-platform:/usr/share/nginx/html
+
