@@ -54,7 +54,58 @@ function getTopSales() {
     });
 }
 
+function addTopVendor(vendor, qty, price) {
+    //return "<tr><td class=\"fw-600\">" + vendor + "</td<td><span class=\"badge bgc-red-50 c-red-700 p-10 lh-0 tt-c rounded-pill\">AAA</span></td><td>" + qty + "</td><td><span class=\"text-success\">" + price + "</span></td></tr>"
+    return "<tr>" +
+        "<td class=\"fw-600\">" + vendor + "</td>" +
+        "<td>" + qty + "</td>" +
+        "<td><span class=\"text-success\">€" + price + "</span></td>" +
+        "</tr>"
+}
+
+function getVendorsReport() {
+    $.ajax({
+        url: 'http://0.0.0.0:4500/top-vendors/',
+        type: 'GET',
+        datatype: 'jsonp',
+        success: function(data) {
+            $("#top-vendors-body").empty();
+            console.log("TOP VENDORS");
+            console.log(data);
+
+            var date = data["date"]
+            $('#top-vendors-date').text(date)
+
+            var tot_price = data["price"].toString();
+            var parts = tot_price.match(/.{1,3}/g);
+            var new_value = parts.join("ॱ");
+            $('#top-vendors-sum-price').text("€ " + new_value)
+
+            for (var i = 0; i < data["top_vendors"].length; i++) {
+                console.log(data["top_vendors"][i])
+                var vendor = data["top_vendors"][i]['vendor']
+                var qty = data["top_vendors"][i]['qty']
+                var price = data["top_vendors"][i]['tot_price']
+
+                var html_row = addTopVendor(vendor, qty, price)
+                console.log(html_row)
+                $(html_row).appendTo($("#top-vendors-body"))
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("ERROR")
+            console.log(jqXHR.status)
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+    });
+
+}
+
+
+
 $(document).ready(function() {
     getTopInsights();
     getTopSales();
+    getVendorsReport();
 });

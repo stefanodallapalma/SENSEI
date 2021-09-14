@@ -3,6 +3,7 @@ import operator
 from traceback import format_exc
 from db import controller
 from flask import Response, json, request
+from utils import month_year_date_format
 
 logger = logging.getLogger("Overview endpoints")
 
@@ -142,6 +143,30 @@ def top_sales():
     return Response(json.dumps(top_sales_list), status=200, mimetype="application/json")
 
 
+def top_vendors():
+    # Default value
+    n_vendors = 7
+
+    if "n-vendors" in request.args:
+        n_vendors = int(request.args.get('n-vendors'))
+
+    product_cleaned_controller = controller.ProductCleanedController()
+
+    try:
+        top_vendors = product_cleaned_controller.get_top_vendors(limit=n_vendors)
+        latest_timestamp = product_cleaned_controller.last_timestamp()
+        sum_prices = int(product_cleaned_controller.sum_price())
+        date = month_year_date_format(latest_timestamp)
+
+        json_response = {"date": date, "price": sum_prices, "top_vendors": top_vendors}
+    except Exception as e:
+        error_msg = "Internal server error"
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=500, mimetype="application/json")
+
+    return Response(json.dumps(json_response), status=200, mimetype="application/json")
+
+
 def n_sales_euro():
     product_cleanedcontroller = controller.ProductCleanedController()
 
@@ -182,3 +207,15 @@ def get_insights():
 
     return Response(json.dumps(insight_json), status=200, mimetype="application/json")
 
+
+def latest_month_sales():
+    product_cleaned_controller = controller.ProductCleanedController()
+
+    try:
+        latest_month_sales = product_cleaned_controller.latest_monthly_sales()
+    except Exception as e:
+        error_msg = "Internal server error"
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=500, mimetype="application/json")
+
+    return Response(json.dumps(latest_month_sales), status=200, mimetype="application/json")

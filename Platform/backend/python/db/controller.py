@@ -1,4 +1,8 @@
+import datetime
+import time
+
 from db.mysql_connection import MySqlDB
+from utils import first_day_timestamp
 
 DB_NAME = "anita"
 
@@ -6,6 +10,8 @@ DB_NAME = "anita"
 class PseudonymizedVendorController:
     def __init__(self):
         self.db = MySqlDB()
+        self.table_name = "pseudonymized_vendors"
+
 
     def get_vendors_alias(self):
         """
@@ -13,7 +19,7 @@ class PseudonymizedVendorController:
         :return: Dict containing all alias-name of a vendor
         """
 
-        query = f'SELECT * FROM {DB_NAME}.pseudonymized_vendors;'
+        query = f'SELECT * FROM {DB_NAME}.{self.table_name};'
         header, results = self.db.search(query)
 
         # Dict alias - vendor name
@@ -29,6 +35,7 @@ class PseudonymizedVendorController:
 class ReviewController:
     def __init__(self):
         self.db = MySqlDB()
+        self.table_name = "reviews"
 
     def get_reviews(self):
         """
@@ -36,7 +43,7 @@ class ReviewController:
         :return: Review list
         """
 
-        query = f'SELECT * FROM {DB_NAME}.reviews;'
+        query = f'SELECT * FROM {DB_NAME}.{self.table_name};'
         header, results = self.db.search(query)
 
         reviews = []
@@ -68,7 +75,8 @@ class ReviewController:
 
     def n_reviews_per_country(self):
         query = "SELECT ships_from, count(message) as n_reviews " \
-                f"FROM {DB_NAME}.reviews JOIN {DB_NAME}.products_cleaned ON reviews.product = products_cleaned.name " \
+                f"FROM {DB_NAME}.{self.table_name} JOIN {DB_NAME}.products_cleaned ON {self.table_name}.product = " \
+                f"products_cleaned.name " \
                 "WHERE ships_from is not NULL " \
                 "GROUP BY ships_from;"
 
@@ -82,8 +90,9 @@ class ReviewController:
 
     def n_sales_per_vendor(self):
         query = "SELECT reviews.name, COUNT(reviews.name) as n_sales " \
-                f"FROM {DB_NAME}.reviews JOIN {DB_NAME}.`vendor-analysis` ON reviews.name = `vendor-analysis`.name " \
-                "GROUP BY reviews.name;"
+                f"FROM {DB_NAME}.{self.table_name} JOIN {DB_NAME}.`vendor-analysis` " \
+                f"ON {self.table_name}.name = `vendor-analysis`.name " \
+                f"GROUP BY {self.table_name}.name;"
 
         header, results = self.db.search(query)
 
@@ -94,7 +103,7 @@ class ReviewController:
         return n_sales
 
     def n_review_foreach_market(self):
-        query = f"SELECT market, COUNT(DISTINCT(message)) FROM {DB_NAME}.reviews GROUP BY market;"
+        query = f"SELECT market, COUNT(DISTINCT(message)) FROM {DB_NAME}.{self.table_name} GROUP BY market;"
 
         header, results = self.db.search(query)
 
@@ -117,16 +126,30 @@ class ReviewController:
 class ProductCleanedController:
     def __init__(self):
         self.db = MySqlDB()
+        self.table_name = "products_cleaned"
+
+    def last_timestamp(self):
+        timestamp_skip = 1612264332
+
+        query = f"SELECT MAX(timestamp) from {DB_NAME}.{self.table_name} WHERE timestamp != %s;"
+
+        value = (timestamp_skip,)
+        header, results = self.db.search(query, value)
+
+        if not results:
+            return None
+
+        return results[0][0]
 
     def get_distinct_timestamps(self):
-        query = f"SELECT distinct products_cleaned.timestamp FROM {DB_NAME}.products_cleaned;"
+        query = f"SELECT distinct products_cleaned.timestamp FROM {DB_NAME}.{self.table_name};"
 
         header, results = self.db.search(query)
 
         return [row[0] for row in results]
 
     def get_product_cleaned(self):
-        query = f'SELECT * FROM {DB_NAME}.products_cleaned;'
+        query = f'SELECT * FROM {DB_NAME}.{self.table_name};'
 
         header, results = self.db.search(query)
 
@@ -191,6 +214,28 @@ class ProductCleanedController:
 
         return countries_price
 
+    def sum_price(self):
+        last_ts = self.last_timestamp()
+
+        if not last_ts:
+            return None
+
+        first_day_ts = first_day_timestamp(last_ts)
+
+        query = "SELECT ROUND(SUM(tot_price),2) FROM " \
+                "(SELECT DISTINCT(vendor), count(name) as qty, round(sum(price),2) as tot_price " \
+                "FROM anita.products_cleaned " \
+                "WHERE timestamp >= %s AND timestamp <= %s " \
+                "GROUP BY vendor " \
+                "ORDER BY tot_price DESC) as top_vendors;"
+
+        value = (first_day_ts, last_ts)
+
+        header, results = self.db.search(query, value)
+
+        return results[0][0]
+
+
     def n_products_foreach_market(self):
         query = f"SELECT DISTINCT(market), COUNT(name) FROM {DB_NAME}.products_cleaned GROUP BY market;"
 
@@ -210,6 +255,72 @@ class ProductCleanedController:
             tot_products += market_products[market]
 
         return tot_products
+
+    def get_top_vendors(self, limit=None):
+        """
+        Retrieve the top n vendors based on the number of products in the marketplace
+        """
+
+        last_ts = self.last_timestamp()
+
+        if not last_ts:
+            return None
+
+        first_day_ts = first_day_timestamp(last_ts)
+
+        query = "SELECT DISTINCT(vendor), count(name) as qty, round(sum(price),2) as tot_price " \
+                f"FROM {DB_NAME}.{self.table_name} " \
+                f"WHERE timestamp >= %s AND timestamp <= %s " \
+                f"GROUP BY vendor " \
+                f"ORDER BY tot_price DESC"
+
+        if limit and isinstance(limit, int) and limit > 0:
+            query += " LIMIT %s"
+            value = (str(first_day_ts), str(last_ts), limit)
+        else:
+            value = (str(first_day_ts), str(last_ts))
+
+        header, results = self.db.search(query, value)
+
+        top_vendors = [{"vendor": row[0], "qty": row[1], "tot_price": row[2]} for row in results]
+
+        return top_vendors
+
+    def latest_monthly_sales(self):
+        """
+        Return the number of sales for each day of the last month, starting from the 1st up to the last day recorder
+        """
+
+        latest_ts = self.last_timestamp()
+        first_day_ts = first_day_timestamp(latest_ts)
+
+        last_day = datetime.datetime.fromtimestamp(int(latest_ts)).day
+
+        current_date = datetime.datetime.fromtimestamp(int(first_day_ts))
+        current_date_ts = int(
+            time.mktime(datetime.datetime.strptime(str(current_date), "%Y-%m-%d %H:%M:%S").timetuple()))
+
+        sales = {}
+        for i in range(1, last_day+1):
+            # Generate timestamp with the next day
+            current_date += datetime.timedelta(days=1)
+
+            prev_current_date_ts = current_date_ts
+            current_date_ts = int(
+                time.mktime(datetime.datetime.strptime(str(current_date), "%Y-%m-%d %H:%M:%S").timetuple()))
+
+            query = f"SELECT COUNT(name) as qty FROM {DB_NAME}.{self.table_name} " \
+                    f"WHERE timestamp >= %s AND timestamp < %s;"
+
+            value = (prev_current_date_ts, current_date_ts)
+
+            header, results = self.db.search(query, value)
+            if results[0][0] > 0:
+                sales[str(i)] = int(results[0][0])
+
+
+
+        return sales
 
 
 class VendorAnalysisController:
