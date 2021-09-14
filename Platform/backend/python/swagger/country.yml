@@ -46,6 +46,12 @@ paths:
       produces:
         - "application/json"
 
+      parameters:
+        - in: query
+          name: top
+          required: false
+          type: integer
+
       responses:
         200:
           description: "Sales retrieved"
@@ -58,6 +64,31 @@ paths:
 
       produces:
         - "application/json"
+
+      parameters:
+        - in: query
+          name: top
+          required: false
+          type: integer
+
+      responses:
+        200:
+          description: "Sales retrieved"
+        500:
+          description: "Internal server error"
+  /top-sales/:
+    get:
+      operationId: "endpoints.overview.top_sales"
+      summary: "Top n sales of the best countries - default n = 4"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: top
+          required: false
+          type: integer
 
       responses:
         200:
@@ -77,4 +108,3 @@ paths:
           description: "Vendors retrieved"
         500:
           description: "Internal server error"
-

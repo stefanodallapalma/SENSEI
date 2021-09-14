@@ -1,6 +1,8 @@
 import logging
+import operator
+from traceback import format_exc
 from db import controller
-from flask import Response, json
+from flask import Response, json, request
 
 logger = logging.getLogger("Overview endpoints")
 
@@ -42,7 +44,7 @@ def get_biggest_vendors():
 
     except Exception as e:
         error_msg = "Internal server error"
-        logger.error(e)
+        logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
     return Response(json.dumps(biggest_vendors), status=200, mimetype="application/json")
@@ -86,7 +88,7 @@ def get_countries_raw_data():
 
     except Exception as e:
         error_msg = "Internal server error"
-        logger.error(e)
+        logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
     return Response(json.dumps(countries_dct), status=200, mimetype="application/json")
@@ -101,12 +103,43 @@ def n_sales():
 
     try:
         n_products = product_cleanedcontroller.n_products_per_country()
+
+        if "top" in request.args:
+            n_elements = request.args.get('top')
+            n_products = {k: n_products[k] for k in list(n_products)[:int(n_elements)]}
     except Exception as e:
         error_msg = "Internal server error"
-        logger.error(e)
+        logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
-    return Response(json.dumps(n_products), status=200, mimetype="application/json")
+    return Response(json.dumps(n_products, sort_keys=False), status=200, mimetype="application/json")
+
+
+def top_sales():
+    # Default value
+    top_sales = 4
+
+    if "top" in request.args:
+        top_sales = int(request.args.get('top'))
+
+    product_cleanedcontroller = controller.ProductCleanedController()
+
+    try:
+        n_products = product_cleanedcontroller.n_products_per_country()
+        n_products = {k: n_products[k] for k in list(n_products)[:int(top_sales)]}
+
+        tot_product = product_cleanedcontroller.n_products()
+
+        top_sales_list = []
+        for key, value in n_products.items():
+            sale = {"country": key, "n_products": value, "percentage": round((value/tot_product)*100, 2)}
+            top_sales_list.append(sale)
+    except Exception as e:
+        error_msg = "Internal server error"
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=500, mimetype="application/json")
+
+    return Response(json.dumps(top_sales_list), status=200, mimetype="application/json")
 
 
 def n_sales_euro():
@@ -120,3 +153,32 @@ def n_sales_euro():
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
     return Response(json.dumps(n_sales), status=200, mimetype="application/json")
+
+
+def get_insights():
+    vendor_analysis_controller = controller.VendorAnalysisController()
+    product_cleanedcontroller = controller.ProductCleanedController()
+    review_controller = controller.ReviewController()
+
+    try:
+        # N. markets
+        tot_markets = len(controller.get_markets())
+
+        # N. vendors
+        tot_vendors = vendor_analysis_controller.n_vendors()
+
+        # N. products
+        tot_products = product_cleanedcontroller.n_products()
+
+        # N. reviews
+        tot_reviews = review_controller.n_review()
+    except Exception as e:
+        error_msg = "Internal server error"
+        logger.error(e)
+        return Response(json.dumps(error_msg), status=500, mimetype="application/json")
+
+    insight_json = {"n_markets": tot_markets, "n_vendors": tot_vendors, "n_products": tot_products,
+                    "n_reviews": tot_reviews}
+
+    return Response(json.dumps(insight_json), status=200, mimetype="application/json")
+

@@ -93,6 +93,26 @@ class ReviewController:
 
         return n_sales
 
+    def n_review_foreach_market(self):
+        query = f"SELECT market, COUNT(DISTINCT(message)) FROM {DB_NAME}.reviews GROUP BY market;"
+
+        header, results = self.db.search(query)
+
+        market_reviews = {}
+        for row in results:
+            market_reviews[row[0]] = row[1]
+
+        return market_reviews
+
+    def n_review(self):
+        market_reviews = self.n_review_foreach_market()
+
+        tot_reviews = 0
+        for market in market_reviews:
+            tot_reviews += market_reviews[market]
+
+        return tot_reviews
+
 
 class ProductCleanedController:
     def __init__(self):
@@ -122,6 +142,9 @@ class ProductCleanedController:
                 f"FROM {DB_NAME}.ints, {DB_NAME}.`products_cleaned` " \
                 "WHERE ships_from is not NULL " \
                 "GROUP BY country;"
+
+        query = f"SELECT DISTINCT(ships_from), COUNT(name) as n_products FROM {DB_NAME}.`products_cleaned` " \
+                f"WHERE ships_from is not NULL GROUP BY ships_from ORDER BY n_products DESC;"
 
         header, results = self.db.search(query)
 
@@ -168,6 +191,27 @@ class ProductCleanedController:
 
         return countries_price
 
+    def n_products_foreach_market(self):
+        query = f"SELECT DISTINCT(market), COUNT(name) FROM {DB_NAME}.products_cleaned GROUP BY market;"
+
+        header, results = self.db.search(query)
+
+        market_products = {}
+        for row in results:
+            market_products[row[0]] = row[1]
+
+        return market_products
+
+    def n_products(self):
+        market_products = self.n_products_foreach_market()
+
+        tot_products = 0
+        for market in market_products:
+            tot_products += market_products[market]
+
+        return tot_products
+
+
 class VendorAnalysisController:
     def __init__(self):
         self.db = MySqlDB()
@@ -202,6 +246,45 @@ class VendorAnalysisController:
             countries[row[0]] = row[1]
 
         return countries
+
+    def n_vendors_foreach_market(self):
+        """
+        Number of vendors for each market
+        """
+
+        query = f"SELECT market, COUNT(DISTINCT(name)) as n_vendors FROM {DB_NAME}.`vendor-analysis` GROUP BY market;"
+
+        header, results = self.db.search(query)
+
+        market_vendors = {}
+        for row in results:
+            market_vendors[row[0]] = row[1]
+
+        return market_vendors
+
+    def n_vendors(self):
+        market_vendors = self.n_vendors_foreach_market()
+
+        tot_vendors = 0
+        for market in market_vendors:
+            tot_vendors += market_vendors[market]
+
+        return tot_vendors
+
+
+def get_markets():
+    db = MySqlDB()
+
+    query = f"SELECT DISTINCT(market) from {DB_NAME}.products_cleaned " \
+            "UNION " \
+            f"SELECT DISTINCT(market) from {DB_NAME}.`vendor-analysis` " \
+            "UNION " \
+            f"SELECT DISTINCT(market) from {DB_NAME}.reviews;"
+
+    header, results = db.search(query)
+
+    return [row[0] for row in results]
+
 
 
 

@@ -7,7 +7,8 @@ app = connexion.App(__name__, specification_dir='./')
 CORS(app.app)
 
 # Read the swagger.yml file to configure the endpoints
-app.add_api("swagger/anita-backend-platform.yml")
+app.add_api("swagger/country.yml")
+app.add_api("swagger/general.yml")
 
 
 def config_log():

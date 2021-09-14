@@ -1,0 +1,28 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/"
+
+# Paths supported by the server application
+paths:
+  /insights/:
+    get:
+      operationId: "endpoints.overview.get_insights"
+      summary: "Retrieve the following insight: n_markets, n_vendors, n_products, n_reviews"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Insights retrieved"
+        500:
+          description: "Internal server error"
+
