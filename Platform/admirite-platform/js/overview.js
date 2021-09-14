@@ -102,10 +102,54 @@ function getVendorsReport() {
 
 }
 
+function getCountryList() {
+    $.ajax({
+        url: 'http://0.0.0.0:4500/country/list/',
+        type: 'GET',
+        datatype: 'jsonp',
+        success: function(data) {
+            console.log("Country list");
+            console.log(data);
 
+            for (var i = 0; i < data.length; i++) {
+                $('#counntrySelection').append($('<option>', {
+                    value: i + 1,
+                    text: data[i]
+                }));
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("ERROR")
+            console.log(jqXHR.status)
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+    });
+}
+
+function getRawData() {
+    $.ajax({
+        url: 'http://0.0.0.0:4500/country/rawdata/',
+        type: 'GET',
+        datatype: 'jsonp',
+        success: function(data) {
+            console.log("Raw Data");
+            console.log(data);
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("ERROR")
+            console.log(jqXHR.status)
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+    });
+}
 
 $(document).ready(function() {
     getTopInsights();
     getTopSales();
     getVendorsReport();
+    getRawData();
+    getCountryList();
 });
