@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Charts</title>
+    <title>Dashboard</title>
     <style>
         #loader {
             transition: all .3s ease-in-out;
@@ -56,7 +56,19 @@
             }
         }
     </style>
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="jvector/jquery-jvectormap-2.0.5.css" type="text/css" media="screen" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="jvector/jquery-jvectormap-2.0.5.min.js"></script>
+    <script src="jvector/jquery-jvectormap-world-mill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="module" src="js/map.js"></script>
+    <script type="text/javascript" src="js/overview.js"></script>
+    <script type="text/javascript" src="js/sales-chart.js"></script>
 </head>
 
 <body class="app">
@@ -95,6 +107,7 @@
                 </div>
                 <ul class="sidebar-menu scrollable pos-r">
                     <li class="nav-item mT-30 active"><a class="sidebar-link" href="index.html"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Dashboard</span></a></li>
+                    <li class="nav-item"><a class="sidebar-link" href="country.html"><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Country</span></a></li>
                     <li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Email</span></a></li>
                     <li class="nav-item"><a class="sidebar-link" href="compose.html"><span class="icon-holder"><i class="c-blue-500 ti-share"></i> </span><span class="title">Compose</span></a></li>
                     <li class="nav-item"><a class="sidebar-link" href="calendar.html"><span class="icon-holder"><i class="c-deep-orange-500 ti-calendar"></i> </span><span class="title">Calendar</span></a></li>
@@ -253,89 +266,38 @@
             </div>
             <main class="main-content bgc-grey-100">
                 <div id="mainContent">
-                    <div class="row gap-20 masonry pos-r">
-                        <div class="masonry-sizer col-md-6 pos-a"></div>
-                        <div class="masonry-item col-md-6">
-                            <div class="bgc-white p-20 bd">
-                                <h6 class="c-grey-900">Line Chart</h6>
-                                <div class="mT-30"><canvas id="line-chart" height="220"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="masonry-item col-md-6">
-                            <div class="bgc-white p-20 bd">
-                                <h6 class="c-grey-900">Area Chart</h6>
-                                <div class="mT-30"><canvas id="area-chart" height="220"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="masonry-item col-md-6">
-                            <div class="bgc-white p-20 bd">
-                                <h6 class="c-grey-900">Scatter Chart</h6>
-                                <div class="mT-30"><canvas id="scatter-chart" height="220"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="masonry-item col-md-6">
-                            <div class="bgc-white p-20 bd">
-                                <h6 class="c-grey-900">Bar Chart</h6>
-                                <div class="mT-30"><canvas id="bar-chart" height="220"></canvas></div>
-                            </div>
-                        </div>
-                        <div class="masonry-item col-md-6">
-                            <div class="bgc-white p-20 bd">
-                                <h6 class="c-grey-900">jQuery Sparkline</h6>
-                                <div class="mT-30">
-                                    <div class="peers ai-c jc-sb fxw-nw bdB pY-15">
-                                        <div class="peer"><span>Spark Line</span></div>
-                                        <div class="peer"><span class="sparkline">&nbsp;</span></div>
-                                    </div>
-                                    <div class="peers ai-c jc-sb fxw-nw bdB pY-15">
-                                        <div class="peer"><span>Spark Bar</span></div>
-                                        <div class="peer"><span class="sparkbar">&nbsp;</span></div>
-                                    </div>
-                                    <div class="peers ai-c jc-sb fxw-nw bdB pY-15">
-                                        <div class="peer"><span>Spark Tristate</span></div>
-                                        <div class="peer"><span class="sparktri">&nbsp;</span></div>
-                                    </div>
-                                    <div class="peers ai-c jc-sb fxw-nw bdB pY-15">
-                                        <div class="peer"><span>Spark Discrete</span></div>
-                                        <div class="peer"><span class="sparkdisc">&nbsp;</span></div>
-                                    </div>
-                                    <div class="peers ai-c jc-sb fxw-nw bdB pY-15">
-                                        <div class="peer"><span>Spark Bullet</span></div>
-                                        <div class="peer"><span class="sparkbull">&nbsp;</span></div>
-                                    </div>
-                                    <div class="peers ai-c jc-sb fxw-nw pT-15">
-                                        <div class="peer"><span>Spark Box</span></div>
-                                        <div class="peer"><span class="sparkbox">&nbsp;</span></div>
+                    <div class="masonry-sizer col-md-6"></div>
+                    <div class="masonry-item col-12">
+                        <div class="bd bgc-white">
+                            <div class="peers fxw-nw@lg+ ai-s">
+                                <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
+                                    <div class="layers">
+                                        <div class="layer w-100 mB-10">
+                                            <h6 class="lh-1">Monthly/Yearly Stats</h6>
+                                        </div>
+                                        <div class="layer w-100">
+                                            <canvas id="myChart" height="100px"></canvas>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="masonry-item col-md-6">
-                            <div class="bgc-white p-20 bd">
-                                <h6 class="c-grey-900">Easy Pie Charts</h6>
-                                <div class="mT-30">
-                                    <div class="peers mT-20 fxw-nw@lg+ jc-sb ta-c gap-10">
-                                        <div class="peer">
-                                            <div class="easy-pie-chart" data-size="80" data-percent="75" data-bar-color="#f44336"><span></span></div>
-                                            <h6 class="fsz-sm">New Users</h6>
-                                        </div>
-                                        <div class="peer">
-                                            <div class="easy-pie-chart" data-size="80" data-percent="50" data-bar-color="#2196f3"><span></span></div>
-                                            <h6 class="fsz-sm">New Purchases</h6>
-                                        </div>
-                                        <div class="peer">
-                                            <div class="easy-pie-chart" data-size="80" data-percent="65" data-bar-color="#f44336"><span></span></div>
-                                            <h6 class="fsz-sm">New Customers</h6>
-                                        </div>
-                                        <div class="peer">
-                                            <div class="easy-pie-chart" data-size="80" data-percent="90" data-bar-color="#ff9800"><span></span></div>
-                                            <h6 class="fsz-sm">Bounce Rate</h6>
+                                <div class="peer bdL p-20 w-30p@lg+ w-100p@lg-">
+                                    <div class="layer w-100 mB-10">
+                                        <h6 class="lh-1">Settings</h6>
+                                    </div>
+                                    <div class="layers">
+                                        <div class="layer w-100">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--<div class="masonry-item col-md-6">
+                        <div class="bgc-white p-20 bd">
+                            <h6 class="c-grey-900">Monthly Stats</h6>
+                            <div class="mT-30"><canvas id="myChart" height="100px"></canvas></div>
+                        </div>
+                    </div>-->
                 </div>
             </main>
             <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer>
@@ -343,6 +305,10 @@
     </div>
     <script type="text/javascript" src="vendor.js"></script>
     <script type="text/javascript" src="bundle.js"></script>
+
+    <script type="module" src="js/map.js"></script>
+    <script type="text/javascript" src="js/overview.js"></script>
+    <script type="text/javascript" src="js/sales-chart.js"></script>
 </body>
 
 </html>

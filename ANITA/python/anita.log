@@ -930,3 +930,174 @@
 2021-09-10 08:41:09,012 - werkzeug - WARNING -  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
 2021-09-10 08:41:09,013 - werkzeug - INFO -  * Running on http://172.18.0.10:5000/ (Press CTRL+C to quit)
+2021-09-15 09:35:27,659 - server - INFO - Start anita server
+2021-09-15 09:35:27,661 - precondition - INFO - PRECONDITION CHECKING
+2021-09-15 09:35:27,663 - precondition - INFO - Resource folders: OK
+2021-09-15 09:35:27,664 - precondition - INFO - PARAMETERS
+2021-09-15 09:35:27,665 - precondition - INFO - Sonarqube: OK
+2021-09-15 09:35:27,666 - precondition - INFO - MySQL: OK
+2021-09-15 09:35:27,666 - precondition - INFO - CONNECTION TEST
+2021-09-15 09:35:27,671 - precondition - INFO - MySQL: OK
+2021-09-15 09:35:27,675 - precondition - INFO - Sonarqube: waiting...
+2021-09-15 09:35:27,677 - precondition - INFO - Sonarqube: OK
+2021-09-15 09:35:27,677 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-09-15 09:35:27,694 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:36:15,672 - server - INFO - Start anita server
+2021-09-15 09:36:15,673 - precondition - INFO - PRECONDITION CHECKING
+2021-09-15 09:36:15,675 - precondition - INFO - Resource folders: OK
+2021-09-15 09:36:15,675 - precondition - INFO - PARAMETERS
+2021-09-15 09:36:15,676 - precondition - INFO - Sonarqube: OK
+2021-09-15 09:36:15,677 - precondition - INFO - MySQL: OK
+2021-09-15 09:36:15,678 - precondition - INFO - CONNECTION TEST
+2021-09-15 09:42:55,364 - server - INFO - Start anita server
+2021-09-15 09:42:55,365 - precondition - INFO - PRECONDITION CHECKING
+2021-09-15 09:42:55,367 - precondition - INFO - Resource folders: OK
+2021-09-15 09:42:55,368 - precondition - INFO - PARAMETERS
+2021-09-15 09:42:55,368 - precondition - INFO - Sonarqube: OK
+2021-09-15 09:42:55,369 - precondition - INFO - MySQL: OK
+2021-09-15 09:42:55,369 - precondition - INFO - CONNECTION TEST
+2021-09-15 09:42:55,377 - precondition - INFO - MySQL: OK
+2021-09-15 09:42:55,379 - precondition - INFO - Sonarqube: waiting...
+2021-09-15 09:42:55,385 - precondition - INFO - Sonarqube: OK
+2021-09-15 09:42:55,386 - precondition - INFO - Sonarqube status: Waiting that the server is up...
+2021-09-15 09:42:55,408 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:42:56,427 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:42:57,446 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:42:58,466 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:42:59,500 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:00,537 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:01,559 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:02,576 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:03,588 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:04,602 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:05,631 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:06,658 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:07,692 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:08,715 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:09,733 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:10,749 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:11,777 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:12,823 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:13,846 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:14,873 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:15,890 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:16,934 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:17,952 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:18,970 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:19,995 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:21,011 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:22,028 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:23,042 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:24,056 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:25,068 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:26,085 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:27,104 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:28,129 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:29,155 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:30,191 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:31,209 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:32,225 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:33,237 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:34,247 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:35,264 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:36,282 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:37,300 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:38,313 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:39,331 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:40,366 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:43:41,403 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:05,288 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:06,309 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:06,369 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:07,383 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:07,428 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:08,447 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:08,513 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:09,527 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:09,574 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:10,589 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:10,686 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:11,701 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:11,758 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:12,772 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:12,816 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:13,839 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:13,886 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:14,900 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:14,957 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:15,973 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:16,039 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:17,051 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:17,081 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:18,095 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:18,193 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:19,230 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:19,268 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:20,285 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:20,332 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:21,350 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:21,369 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:22,385 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:22,419 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:23,439 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:23,487 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:24,500 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:24,547 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:25,561 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:25,599 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:26,614 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:26,656 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:27,667 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:27,710 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:28,726 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:28,747 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:29,760 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:29,779 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:30,790 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:30,822 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:31,839 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:31,882 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:32,895 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:32,982 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:33,996 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:34,021 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:35,037 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:35,054 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:36,076 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:36,122 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:37,136 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:37,161 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:38,181 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:38,257 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:39,280 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:39,358 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:40,382 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:40,429 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:41,451 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:41,469 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:42,500 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:42,542 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:43,560 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:43,582 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:44,596 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:44,626 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 82
+2021-09-15 09:44:45,643 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:45,719 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/system/status HTTP/1.1" 200 76
+2021-09-15 09:44:45,725 - precondition - INFO - DATABASE
+2021-09-15 09:44:45,813 - precondition - INFO - Schema: OK
+2021-09-15 09:44:45,825 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): sonarqube:9000
+2021-09-15 09:44:46,015 - urllib3.connectionpool - DEBUG - http://sonarqube:9000 "GET /api/metrics/search HTTP/1.1" 200 None
+2021-09-15 09:44:46,087 - precondition - INFO - SONARQUBE table: OK
+2021-09-15 09:44:46,115 - precondition - INFO - PRODUCT table: OK
+2021-09-15 09:44:46,136 - precondition - INFO - VENDOR table: OK
+2021-09-15 09:44:46,159 - precondition - INFO - FEEDBACK table: OK
+2021-09-15 09:44:46,161 - sonarscanner - INFO - Platform table genenation
+2021-09-15 09:44:46,229 - sonarscanner - INFO - Platform table genenated
+2021-09-15 09:44:46,234 - precondition - INFO - Sonar-scanner status: OK
+2021-09-15 09:44:46,235 - server - INFO - INFO
+2021-09-15 09:44:46,237 - server - INFO - HOST: 0.0.0.0
+2021-09-15 09:44:46,238 - server - INFO - PORT: 5000
+2021-09-15 09:44:46,239 - connexion.app - DEBUG - Starting flask HTTP server..
+2021-09-15 09:44:46,362 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-09-15 09:44:46,364 - werkzeug - INFO -  * Running on http://172.18.0.9:5000/ (Press CTRL+C to quit)

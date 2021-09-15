@@ -103,6 +103,8 @@ function getVendorsReport() {
 }
 
 function getCountryList() {
+    var countryList = null;
+
     $.ajax({
         url: 'http://0.0.0.0:4500/country/list/',
         type: 'GET',
@@ -111,8 +113,10 @@ function getCountryList() {
             console.log("Country list");
             console.log(data);
 
+            countryList = data;
+
             for (var i = 0; i < data.length; i++) {
-                $('#counntrySelection').append($('<option>', {
+                $('#countrySelection').append($('<option>', {
                     value: i + 1,
                     text: data[i]
                 }));
@@ -123,11 +127,16 @@ function getCountryList() {
             console.log(jqXHR.status)
             console.log(textStatus)
             console.log(errorThrown)
-        }
+        },
+        async: false
     });
+
+    return countryList;
 }
 
-function getRawData() {
+function getRawData(selectedCountry) {
+    var rawData = null;
+
     $.ajax({
         url: 'http://0.0.0.0:4500/country/rawdata/',
         type: 'GET',
@@ -136,6 +145,11 @@ function getRawData() {
             console.log("Raw Data");
             console.log(data);
 
+            rawData = data;
+
+            $('#country-n-vendors').text("Vendors: " + rawData[selectedCountry]["n_vendors"]);
+            $('#country-n-products').text("Products: " + rawData[selectedCountry]["n_products"]);
+            $('#country-n-reviews').text("Reviews: " + rawData[selectedCountry]["n_reviews"]);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("ERROR")
@@ -144,12 +158,26 @@ function getRawData() {
             console.log(errorThrown)
         }
     });
+
+    return rawData;
 }
+
+
+var countryList = getCountryList();
 
 $(document).ready(function() {
     getTopInsights();
     getTopSales();
     getVendorsReport();
-    getRawData();
-    getCountryList();
+
+    // Raw Data
+    var rawData = getRawData(countryList[0]);
+
+    $('#countrySelection').change(function() {
+        var country = $('#countrySelection option:selected').text();
+
+        $('#country-n-vendors').text("Vendors: " + rawData[country]["n_vendors"]);
+        $('#country-n-products').text("Products: " + rawData[country]["n_products"]);
+        $('#country-n-reviews').text("Reviews: " + rawData[country]["n_reviews"]);
+    });
 });

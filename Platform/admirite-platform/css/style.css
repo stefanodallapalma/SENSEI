@@ -1846,3 +1846,15 @@ a.fc-more:hover {
 .fc-unthemed .fc-list-empty {
     background-color: #eee
 }
+
+
+/*ANITA CSS*/
+
+.anita-card {
+    background-color: white;
+}
+
+.anita-card .title {
+    font-size: 0.7rem;
+    color: '#72777a';
+}
