@@ -1,0 +1,64 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+body {
+    padding: 70px 0px;
+}
+
+.date-picker,
+.date-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color: rgb(75, 77, 78);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.date-container {
+    padding: 0px 40px;
+}
+
+.date-picker h2,
+.date-picker h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.date-container {
+    text-align: center;
+}
+
+.date-picker span.fa {
+    /*position: absolute;*/
+    cursor: pointer;
+}
+
+.date-picker span.fa[data-method="subtract"] {
+    left: 0px;
+    line-height: 25px;
+}
+
+.date-picker span.fa[data-method="add"] {
+    right: 0px;
+    line-height: 25px;
+}
+
+@media (min-width: 768px) and (max-width: 1010px) {
+    .date-picker h2 {
+        font-size: 1.5em;
+        font-weight: 400;
+    }
+    .date-picker h4 {
+        font-size: 1.1em;
+    }
+    .date-picker span.fa {
+        font-size: 3em;
+    }
+}
