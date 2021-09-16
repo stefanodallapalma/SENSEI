@@ -1,0 +1,87 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/ta"
+
+# Paths supported by the server application
+paths:
+  /drugs/:
+    get:
+      operationId: "endpoints.trend_analysis.drugs"
+      summary: "Get the trend analysis of all drugs in the marketplace"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: year
+          required: false
+          type: string
+        - in: query
+          name: month
+          required: false
+          type: string
+        - in: query
+          name: y
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Drugs Trend Analysis retrieved"
+        500:
+          description: "Internal server error"
+  /markets/:
+    get:
+      operationId: "endpoints.trend_analysis.markets"
+      summary: "Get the trend analysis of all markets in the marketplace"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: x
+          required: true
+          type: string
+        - in: query
+          name: y
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Markets Trend Analysis retrieved"
+        500:
+          description: "Internal server error"
+  /countries/:
+    get:
+      operationId: "endpoints.trend_analysis.countries"
+      summary: "Get the trend analysis of all countries in the marketplace"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: x
+          required: true
+          type: string
+        - in: query
+          name: y
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Countries Trend Analysis retrieved"
+        500:
+          description: "Internal server error"

@@ -12,7 +12,6 @@ class PseudonymizedVendorController:
         self.db = MySqlDB()
         self.table_name = "pseudonymized_vendors"
 
-
     def get_vendors_alias(self):
         """
         Search for the alias-real_name key-value
@@ -235,8 +234,7 @@ class ProductCleanedController:
 
         return results[0][0]
 
-
-    def n_products_foreach_market(self):
+    def n_products_for_each_market(self):
         query = f"SELECT DISTINCT(market), COUNT(name) FROM {DB_NAME}.products_cleaned GROUP BY market;"
 
         header, results = self.db.search(query)
@@ -248,7 +246,7 @@ class ProductCleanedController:
         return market_products
 
     def n_products(self):
-        market_products = self.n_products_foreach_market()
+        market_products = self.n_products_for_each_market()
 
         tot_products = 0
         for market in market_products:
@@ -322,6 +320,84 @@ class ProductCleanedController:
 
         return sales
 
+    def price_group_by_drugs(self, year=None, month=None):
+        if not year and not month:
+            x_format = '%Y'
+            ts_format = '%Y'
+            ts = None
+        elif year and not month:
+            x_format = '%b'
+            ts_format = '%Y'
+            ts = str(year)
+        else:
+            x_format = '%d'
+            ts_format = '%Y/%m'
+            ts = year + "/" + month
+
+        query = """
+        SELECT category_list.macro_category, ts_drug_price.time_x, ts_drug_price.dt, 
+        IFNULL(ts_drug_price.tot_price, 0) as tot_price 
+        FROM (
+            SELECT DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp), %s) 
+            as dt, macro_category, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null 
+            GROUP BY time_x, dt, macro_category
+        ) as ts_drug_price
+        RIGHT JOIN (
+            SELECT DISTINCT(macro_category) 
+            FROM anita.reviews 
+            WHERE macro_category is not null
+        ) as category_list
+        ON category_list.macro_category = ts_drug_price.macro_category 
+        """
+
+        if ts:
+            query += "WHERE dt is null OR dt = %s "
+        query += "ORDER BY ts_drug_price.time_x DESC;"
+
+
+
+        #query = "SELECT category_list.macro_category, ts_drug_price.dt, IFNULL(ts_drug_price.tot_price, 0) as " \
+        #        "tot_price FROM (SELECT DATE_FORMAT(from_unixtime(timestamp), %s) as dt, macro_category, " \
+        #        "ROUND(SUM(price),2) as tot_price FROM anita.products_cleaned WHERE macro_category is not null " \
+        #        "GROUP BY dt, macro_category) as ts_drug_price RIGHT JOIN" \
+        #        "(SELECT DISTINCT(macro_category) FROM anita.reviews WHERE macro_category is not null) " \
+        #       "as category_list ON category_list.macro_category = ts_drug_price.macro_category " \
+        #        "WHERE dt is null "
+
+        #if ts:
+        #    query += "OR dt = %s "
+
+        #query += "ORDER BY dt DESC;"
+
+        value = (x_format, ts_format)
+        if ts:
+            value = (x_format, ts_format, ts)
+
+        header, results = self.db.search(query, value)
+
+        drugs = {}
+        for row in results:
+            drug = row[0]
+            date = row[1]
+            price = row[3]
+
+            if drug not in drugs:
+                drugs[drug] = {}
+
+            if not date:
+                drugs[drug] = None
+            else:
+                drugs[drug][date] = price
+
+        return drugs
+
+    def n_products_group_by_drugs(self):
+        pass
+
+    def n_vendors_group_by_drugs(self):
+        pass
 
 class VendorAnalysisController:
     def __init__(self):
