@@ -284,10 +284,35 @@
                                     <div class="layer w-100 mB-10">
                                         <h6 class="lh-1">Settings</h6>
                                     </div>
-                                    <div class="layers">
-                                        <div class="layer w-100">
+                                    <form>
+                                        <div class="layers">
+                                            <div class="form-group col-12 p-0 mT-10">
+                                                <label for="ta-dataset">Dataset</label>
+                                                <select id="ta-dataset" class="form-control">
+                                                    <option selected="selected">Drugs</option>
+                                                    <option>DarkMarkets</option>
+                                                    <option>Countries</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-12 p-0 mT-10">
+                                                <label for="ta-x">X Axes</label>
+                                                <select id="ta-x" class="form-control">
+                                                    <option selected="selected">Year</option>
+                                                    <option>Month</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-12 p-0 mT-10">
+                                                <label for="ta-y">Y Axes</label>
+                                                <select id="ta-y" class="form-control">
+                                                    <option selected="selected">Price</option>
+                                                    <option>N. Products</option>
+                                                    <option>N. Vendors</option>
+                                                    <option>N. Reviews</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mT-10">Submit</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
