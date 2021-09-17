@@ -2,7 +2,7 @@ import datetime
 import time
 
 from db.mysql_connection import MySqlDB
-from utils import first_day_timestamp
+from utils import first_day_timestamp, convert_numerical_month_to_str
 
 DB_NAME = "anita"
 
@@ -326,7 +326,7 @@ class ProductCleanedController:
             ts_format = '%Y'
             ts = None
         elif year and not month:
-            x_format = '%b'
+            x_format = '%m'
             ts_format = '%Y'
             ts = str(year)
         else:
@@ -354,7 +354,7 @@ class ProductCleanedController:
 
         if ts:
             query += "WHERE dt is null OR dt = %s "
-        query += "ORDER BY ts_drug_price.time_x DESC;"
+        query += "ORDER BY ts_drug_price.time_x ASC;"
 
 
 
@@ -377,11 +377,20 @@ class ProductCleanedController:
 
         header, results = self.db.search(query, value)
 
+        time = []
         drugs = {}
         for row in results:
             drug = row[0]
             date = row[1]
             price = row[3]
+
+            if date:
+                # Change the numerical month into month name
+                if year and not month:
+                    date = convert_numerical_month_to_str(date)
+
+                if date not in time:
+                    time.append(date)
 
             if drug not in drugs:
                 drugs[drug] = {}
@@ -391,7 +400,7 @@ class ProductCleanedController:
             else:
                 drugs[drug][date] = price
 
-        return drugs
+        return time, drugs
 
     def n_products_group_by_drugs(self):
         pass
