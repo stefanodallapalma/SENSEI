@@ -162,7 +162,7 @@ function getRawData(selectedCountry) {
     return rawData;
 }
 
-
+// Retrieve the country list before html load 
 var countryList = getCountryList();
 
 $(document).ready(function() {

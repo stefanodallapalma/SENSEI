@@ -57,18 +57,14 @@
         }
     </style>
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/month-picker.css" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="jvector/jquery-jvectormap-2.0.5.css" type="text/css" media="screen" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></link>
 
-    <script src="jvector/jquery-jvectormap-2.0.5.min.js"></script>
-    <script src="jvector/jquery-jvectormap-world-mill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script type="module" src="js/map.js"></script>
 </head>
 
 <body class="app">
@@ -273,10 +269,10 @@
                                 <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
                                     <div class="layers">
                                         <div class="layer w-100 mB-10">
-                                            <h6 class="lh-1">Monthly/Yearly Stats</h6>
+                                            <h6 class="lh-1">Trend Analysis</h6>
                                         </div>
-                                        <div class="layer w-100">
-                                            <canvas id="myChart" height="100px"></canvas>
+                                        <div id="chart-container" class="layer w-100">
+                                            <canvas id="ta-chart" height="100px"></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -284,7 +280,7 @@
                                     <div class="layer w-100 mB-10">
                                         <h6 class="lh-1">Settings</h6>
                                     </div>
-                                    <form>
+                                    <form id="ta-setting-form">
                                         <div class="layers">
                                             <div class="form-group col-12 p-0 mT-10">
                                                 <label for="ta-dataset">Dataset</label>
@@ -301,56 +297,51 @@
                                                     <option>Month</option>
                                                     <option>Day</option>
                                                 </select>
-                                                <div class="date-picker" data-date="2014-02-03">
+                                                <!-- Year and Month picker -->
+                                                <label for="startDate">Date :</label>
+                                                <input name="startDate" id="startDate" class="date-picker" />
+                                                <!--<div class="date-picker" data-date="2014-02-03">
                                                     <div class="date-container">
                                                         <h2 class="month">
                                                             <span data-toggle="datepicker" data-method="subtract" data-type="M" class="fa fa-angle-left"></span>
-                                                            <span class="text">December</span>
+                                                            <span id="ta-month" class="text"></span>
                                                             <span data-toggle="datepicker" data-method="add" data-type="M" class="fa fa-angle-right"></span>
                                                         </h2>
                                                         <h3 class="year">
                                                             <span data-toggle="datepicker" data-method="subtract" data-type="y" class="fa fa-angle-left"></span>
-                                                            <span class="text">2014</span>
+                                                            <span id="ta-year" class="text"></span>
                                                             <span data-toggle="datepicker" data-method="add" data-type="y" class="fa fa-angle-right"></span>
                                                         </h3>
                                                     </div>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <div class="form-group col-12 p-0 mT-10 ">
-                                                <label for="ta-y ">Y Axes</label>
-                                                <select id="ta-y " class="form-control ">
+                                                <label for="ta-y">Y Axes</label>
+                                                <select id="ta-y" class="form-control ">
                                                     <option selected="selected ">Price</option>
                                                     <option>N. Products</option>
                                                     <option>N. Vendors</option>
                                                     <option>N. Reviews</option>
                                                 </select>
                                             </div>
-                                            <button type="submit " class="btn btn-primary mT-10 ">Submit</button>
+
                                         </div>
+                                        <button type="submit" class="btn btn-primary mT-10 ">Submit</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="masonry-item col-md-6 ">
-                        <div class="bgc-white p-20 bd ">
-                            <h6 class="c-grey-900 ">Monthly Stats</h6>
-                            <div class="mT-30 "><canvas id="myChart " height="100px "></canvas></div>
-                        </div>
-                    </div>-->
                 </div>
             </main>
-            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600 "><span>Copyright © 2017 Designed by <a href="https://colorlib.com " target="_blank " title="Colorlib ">Colorlib</a>. All rights reserved.</span></footer>
+            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer>
         </div>
     </div>
+
     <script type="text/javascript " src="vendor.js "></script>
     <script type="text/javascript " src="bundle.js "></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.js "></script>
-    <script type="module " src="js/map.js "></script>
-    <script type="text/javascript " src="js/overview.js "></script>
-    <script type="text/javascript " src="js/sales-chart.js "></script>
     <script type="text/javascript " src="js/month-picker.js "></script>
+    <script type="text/javascript " src="js/trend-analysis.js "></script>
 </body>
 
 </html>

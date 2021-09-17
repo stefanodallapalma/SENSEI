@@ -1850,11 +1850,6 @@ a.fc-more:hover {
 
 /*ANITA CSS*/
 
-.anita-card {
-    background-color: white;
-}
-
-.anita-card .title {
-    font-size: 0.7rem;
-    color: '#72777a';
+.ui-datepicker-calendar {
+    display: none;
 }
