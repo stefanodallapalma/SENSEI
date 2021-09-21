@@ -14,7 +14,7 @@ def drugs():
 
     if 'year' in request.args:
         year = request.args.get('year').lower()
-        logger.info(year)
+        logger.debug(year)
         if not utils.valid_year(year):
             error_msg = "Invalid year paramenter. Year format accepted: YYYY"
             logger.error(format_exc())
@@ -25,20 +25,19 @@ def drugs():
         logger.error(format_exc())
         return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    if 'month' in request.args:
-        month = request.args.get('month').lower()
-        logger.info(month)
-        if not utils.valid_month(month):
-            error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
-            logger.error(format_exc())
-            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+    try:
+        if 'month' in request.args:
+            month = request.args.get('month').lower()
+            logger.debug(month)
+            if not utils.valid_month(month):
+                error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
+                return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-        try:
             month = utils.convert_letteral_month_to_int(month)
-        except:
-            error_msg = "Invalid month paramenter."
-            logger.error(format_exc())
-            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+    except:
+        error_msg = "Invalid month paramenter."
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     product_cleaned_controller = controller.ProductCleanedController()
 

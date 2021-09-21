@@ -74,14 +74,23 @@ def valid_month(month):
     if not month:
         return False
 
+    logger.debug(type(month))
+
     if not month.isdigit():
         formats = ["%B", "%b"]
         for format in formats:
             try:
                 datetime_object = datetime.strptime(str(month), format)
+                logger.debug(datetime_object)
                 return True
             except:
-                pass
+                logger.error(format_exc())
+    else:
+        if isinstance(month, str):
+            month = int(month)
+
+        if 1 <= month <= 12:
+            return True
 
     return False
 
@@ -100,8 +109,11 @@ def convert_letteral_month_to_int(month):
                     month_number = "0" + str(month_number)
                 return str(month_number)
             except Exception as e:
-                logger.error(e)
+                logger.error(format_exc())
     else:
+        if isinstance(month, str):
+            month = int(month)
+
         if month <= 0 or month > 12:
             raise Exception("Invalid range. Month must be included into 1-12.")
         if month < 10:
