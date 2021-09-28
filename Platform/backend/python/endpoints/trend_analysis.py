@@ -50,6 +50,7 @@ def drugs():
         return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     product_cleaned_controller = controller.ProductCleanedController()
+    vendor_analysis_controller = controller.VendorAnalysisController()
 
     try:
         time = {}
@@ -57,6 +58,9 @@ def drugs():
         if y_category == 'price':
             time, drugs = product_cleaned_controller.ta_by_price('drug', country=country, market=market, year=year,
                                                                  month=month)
+        elif y_category == 'n. products':
+            time, drugs = product_cleaned_controller.ta_by_n_products('drug', country=country, market=market,
+                                                                      year=year, month=month)
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
@@ -77,8 +81,8 @@ def markets():
         logger.debug(country)
 
     if "drug" in request.args:
-        market = request.args.get('drug')
-        logger.debug(market)
+        drug = request.args.get('drug').capitalize()
+        logger.debug(drug)
 
     if 'year' in request.args:
         year = request.args.get('year').lower()
@@ -108,6 +112,7 @@ def markets():
         return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     product_cleaned_controller = controller.ProductCleanedController()
+    vendor_analysis_controller = controller.VendorAnalysisController()
 
     try:
         time = {}
@@ -115,6 +120,10 @@ def markets():
         if y_category == 'price':
             time, markets = product_cleaned_controller.ta_by_price('market', country=country, drug=drug, year=year,
                                                                    month=month)
+        elif y_category == 'n. products':
+            time, markets = product_cleaned_controller.ta_by_n_products('market', country=country, drug=drug, year=year,
+                                                                        month=month)
+
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
@@ -172,7 +181,10 @@ def countries():
         countries = {}
         if y_category == 'price':
             time, countries = product_cleaned_controller.ta_by_price('country', market=market, drug=drug, year=year,
-                                                                   month=month)
+                                                                     month=month)
+        elif y_category == 'n. products':
+            time, countries = product_cleaned_controller.ta_by_n_products('country', market=market, drug=drug, year=year,
+                                                                          month=month)
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
