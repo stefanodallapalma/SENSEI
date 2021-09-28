@@ -1,10 +1,15 @@
 import datetime
 import time
+import logging
+
+from certifi import where
 
 from db.mysql_connection import MySqlDB
 from utils import first_day_timestamp, convert_numerical_month_to_str
 
 DB_NAME = "anita"
+
+logger = logging.getLogger("Controller")
 
 
 class PseudonymizedVendorController:
@@ -320,7 +325,7 @@ class ProductCleanedController:
 
         return sales
 
-    def price_group_by_drugs(self, year=None, month=None):
+    def price_group_by_drugs(self, country=None, market=None, year=None, month=None):
         if not year and not month:
             x_format = '%Y'
             ts_format = '%Y'
@@ -334,15 +339,41 @@ class ProductCleanedController:
             ts_format = '%Y/%m'
             ts = year + "/" + month
 
-        query = """
-        SELECT category_list.macro_category, ts_drug_price.time_x, ts_drug_price.dt, 
+        attr = ""
+        if country and market:
+            attr = "ships_from, market, "
+        elif country and not market:
+            attr = "ships_from, "
+        elif not country and market:
+            attr = "market, "
+
+        # WHERE STATEMENT
+        where = ""
+        if ts or country or market:
+            where = "WHERE"
+            clauses = []
+
+            if ts:
+                clauses.append("(dt is null OR dt = %s)")
+            if country:
+                clauses.append("(ships_from is null OR ships_from = %s)")
+            if market:
+                clauses.append("(market is null OR market = %s)")
+
+            clauses = " AND ".join(clauses)
+            where += " " + clauses
+
+        logger.debug(attr)
+        logger.debug(where)
+        query = f"""
+        SELECT category_list.macro_category, ts_drug_price.time_x, ts_drug_price.dt, {attr}
         IFNULL(ts_drug_price.tot_price, 0) as tot_price 
         FROM (
             SELECT DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp), %s) 
-            as dt, macro_category, ROUND(SUM(price),2) as tot_price 
+            as dt, {attr}macro_category, ROUND(SUM(price),2) as tot_price 
             FROM anita.products_cleaned 
             WHERE macro_category is not null 
-            GROUP BY time_x, dt, macro_category
+            GROUP BY time_x, dt, {attr}macro_category
         ) as ts_drug_price
         RIGHT JOIN (
             SELECT DISTINCT(macro_category) 
@@ -350,39 +381,31 @@ class ProductCleanedController:
             WHERE macro_category is not null
         ) as category_list
         ON category_list.macro_category = ts_drug_price.macro_category 
+        {where}
+        ORDER BY ts_drug_price.time_x ASC;
         """
 
+        value = [x_format, ts_format]
         if ts:
-            query += "WHERE dt is null OR dt = %s "
-        query += "ORDER BY ts_drug_price.time_x ASC;"
-
-
-
-        #query = "SELECT category_list.macro_category, ts_drug_price.dt, IFNULL(ts_drug_price.tot_price, 0) as " \
-        #        "tot_price FROM (SELECT DATE_FORMAT(from_unixtime(timestamp), %s) as dt, macro_category, " \
-        #        "ROUND(SUM(price),2) as tot_price FROM anita.products_cleaned WHERE macro_category is not null " \
-        #        "GROUP BY dt, macro_category) as ts_drug_price RIGHT JOIN" \
-        #        "(SELECT DISTINCT(macro_category) FROM anita.reviews WHERE macro_category is not null) " \
-        #       "as category_list ON category_list.macro_category = ts_drug_price.macro_category " \
-        #        "WHERE dt is null "
-
-        #if ts:
-        #    query += "OR dt = %s "
-
-        #query += "ORDER BY dt DESC;"
-
-        value = (x_format, ts_format)
-        if ts:
-            value = (x_format, ts_format, ts)
+            value.append(ts)
+        if country:
+            value.append(country)
+        if market:
+            value.append(market)
+        value = tuple(value)
 
         header, results = self.db.search(query, value)
 
+        logger.debug(query)
+        logger.debug(results)
+
         time = []
         drugs = {}
+
         for row in results:
             drug = row[0]
             date = row[1]
-            price = row[3]
+            price = row[len(row)-1]
 
             if date:
                 # Change the numerical month into month name
@@ -407,6 +430,227 @@ class ProductCleanedController:
 
     def n_vendors_group_by_drugs(self):
         pass
+
+    def price_group_by_market(self, country=None, drug=None, year=None, month=None):
+        if not year and not month:
+            x_format = '%Y'
+            ts_format = '%Y'
+            ts = None
+        elif year and not month:
+            x_format = '%m'
+            ts_format = '%Y'
+            ts = str(year)
+        else:
+            x_format = '%d'
+            ts_format = '%Y/%m'
+            ts = year + "/" + month
+
+        attr = ""
+        if country and drug:
+            attr = "ships_from, macro_category, "
+        elif country and not drug:
+            attr = "ships_from, "
+        elif not country and drug:
+            attr = "macro_category, "
+
+        value = [x_format, ts_format]
+
+        # WHERE STATEMENT
+        where = ""
+        if ts or country or drug:
+            where = "WHERE"
+            clauses = []
+
+            if ts:
+                clauses.append("(dt is null OR dt = %s)")
+                value.append(ts)
+            if country:
+                clauses.append("(ships_from is null OR ships_from = %s)")
+                value.append(country)
+            if drug:
+                clauses.append("(macro_category is null OR macro_category = %s)")
+                value.append(drug)
+
+            clauses = " AND ".join(clauses)
+            where += " " + clauses
+
+        value = tuple(value)
+
+        logger.debug(attr)
+        logger.debug(where)
+
+        query = f"""
+        SELECT * FROM
+        (SELECT market, {attr}DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
+        %s) as dt, ROUND(SUM(price),2) as tot_price 
+        FROM anita.products_cleaned 
+        WHERE market is not null GROUP BY market, {attr}time_x, dt) as ta_market {where};
+        """
+
+        header, results = self.db.search(query, value)
+
+        logger.debug(query)
+        logger.debug(results)
+
+        time = []
+        markets = {}
+
+        for row in results:
+            market = row[0]
+            date = row[1]
+            price = row[len(row)-1]
+
+            if date:
+                # Change the numerical month into month name
+                if year and not month:
+                    date = convert_numerical_month_to_str(date)
+
+                if date not in time:
+                    time.append(date)
+
+            if market not in markets:
+                markets[market] = {}
+
+            if not date:
+                markets[market] = None
+            else:
+                markets[market][date] = price
+
+        return time, markets
+
+    def ta_by_price(self, dataset, country=None, drug=None, market=None, year=None, month=None):
+        # Preconditions
+        if dataset.lower() == 'drug':
+            dataset = 'macro_category'
+        if dataset.lower() == 'country':
+            dataset = 'ships_from'
+        logger.debug(dataset)
+
+        if dataset != 'market' and dataset != 'macro_category' and dataset != 'ships_from':
+            raise Exception("Invalid dataset for the trend analysis")
+
+        if dataset == 'market' and market:
+            raise Exception("Market must be None, if the ta is applied on the markets")
+
+        if dataset == 'macro_category' and drug:
+            raise Exception("Drug must be None, if the ta is applied on the drugs")
+
+        if dataset == 'ships_from' and country:
+            raise Exception("Country must be None, if the ta is applied on the countries")
+
+        if not year and not month:
+            x_format = '%Y'
+            ts_format = '%Y'
+            ts = None
+        elif year and not month:
+            x_format = '%m'
+            ts_format = '%Y'
+            ts = str(year)
+        else:
+            x_format = '%d'
+            ts_format = '%Y/%m'
+            ts = year + "/" + month
+
+        value = [x_format, ts_format]
+
+        # Query build
+        attr = ""
+        if dataset.lower() == 'market':
+            if country and drug:
+                attr = "ships_from, macro_category, "
+            elif country and not drug:
+                attr = "ships_from, "
+            elif not country and drug:
+                attr = "macro_category, "
+        elif dataset.lower() == 'macro_category':
+            if country and market:
+                attr = "ships_from, market, "
+            elif country and not market:
+                attr = "ships_from, "
+            elif not country and market:
+                attr = "market, "
+        else:
+            logger.debug(market)
+            logger.debug(drug)
+            if market and drug:
+                attr = "market, macro_category, "
+            elif market and not drug:
+                attr = "market, "
+            elif not market and drug:
+                attr = "macro_category, "
+
+        # WHERE STATEMENT
+        where = ""
+        if ts or country or drug or market:
+            where = "WHERE"
+            clauses = []
+
+            if ts:
+                # clauses.append("(dt is null OR dt = %s)")
+                clauses.append("dt = %s")
+                value.append(ts)
+            if country:
+                # clauses.append("(ships_from is null OR ships_from = %s)")
+                clauses.append("ships_from = %s")
+                value.append(country)
+            if drug:
+                # clauses.append("(macro_category is null OR macro_category = %s)")
+                clauses.append("macro_category = %s")
+                value.append(drug)
+            if market:
+                # clauses.append("(market is null OR market = %s)")
+                clauses.append("market = %s")
+                value.append(market)
+
+            clauses = " AND ".join(clauses)
+            where += " " + clauses
+
+        value = tuple(value)
+
+        logger.debug(f"SELECT + GROUP BY Additional attr: {attr}")
+        logger.debug(f"WHERE statement: {where}")
+
+        query = f"""
+        SELECT * FROM
+        (SELECT {dataset}, {attr}DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
+        %s) as dt, ROUND(SUM(price),2) as tot_price 
+        FROM anita.products_cleaned 
+        WHERE {dataset} is not null GROUP BY {dataset}, {attr}time_x, dt) as ta_market 
+        {where} 
+        ORDER BY time_x ASC;
+        """
+
+        header, results = self.db.search(query, value)
+
+        logger.debug(query)
+        # logger.debug(results)
+
+        time = []
+        markets = {}
+
+        for row in results:
+            market = row[0]
+            date = row[len(row)-3]
+            price = row[len(row)-1]
+
+            if date:
+                # Change the numerical month into month name
+                if year and not month:
+                    date = convert_numerical_month_to_str(date)
+
+                if date not in time:
+                    time.append(date)
+
+            if market not in markets:
+                markets[market] = {}
+
+            if not date:
+                markets[market] = None
+            else:
+                markets[market][date] = price
+
+        return time, markets
+
 
 class VendorAnalysisController:
     def __init__(self):

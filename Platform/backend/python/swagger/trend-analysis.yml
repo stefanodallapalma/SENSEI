@@ -22,6 +22,14 @@ paths:
 
       parameters:
         - in: query
+          name: country
+          required: false
+          type: string
+        - in: query
+          name: market
+          required: false
+          type: string
+        - in: query
           name: year
           required: false
           type: string
@@ -49,8 +57,20 @@ paths:
 
       parameters:
         - in: query
-          name: x
-          required: true
+          name: country
+          required: false
+          type: string
+        - in: query
+          name: drug
+          required: false
+          type: string
+        - in: query
+          name: year
+          required: false
+          type: string
+        - in: query
+          name: month
+          required: false
           type: string
         - in: query
           name: y
@@ -72,8 +92,20 @@ paths:
 
       parameters:
         - in: query
-          name: x
-          required: true
+          name: market
+          required: false
+          type: string
+        - in: query
+          name: drug
+          required: false
+          type: string
+        - in: query
+          name: year
+          required: false
+          type: string
+        - in: query
+          name: month
+          required: false
           type: string
         - in: query
           name: y
