@@ -267,52 +267,47 @@
                     <div class="masonry-item col-12">
                         <div class="bd bgc-white">
                             <div class="peers fxw-nw@lg+ ai-s">
-                                <div class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
+                                <div class="peer peer-greed w-40p@lg+ w-100@lg- p-20">
                                     <div class="layers">
-                                        <div class="layer w-100 mB-10">
-                                            <h6 class="lh-1">Trend Analysis</h6>
+                                        <div class="w-100">
+                                            <select id="cp-l-countries" class="header-select">
+                                            </select>
+                                            <!--<h6 id="cp-country-1" class="lh-1">Country 1</h6>-->
                                         </div>
-                                        <div id="chart-container" class="layer w-100">
-                                            <canvas id="ta-chart" height="100px"></canvas>
-                                        </div>
-                                        <div class="layers">
-                                            <div id="dataset-section" class="layer w-100 p-20">
-                                                <h6 class="lh-1">Dataset</h6>
-                                                <ul id="dataset-checkboxes" class="dataset-checkboxes p-0"></ul>
-                                            </div>
+                                        <div id="chart-container-1" class="layer w-100">
+                                            <canvas id="cp-chart-1" height="150px"></canvas>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="peer bdL p-20 w-30p@lg+ w-100p@lg-">
+                                <div class="peer p-20 w-20p@lg+ w-100p@lg-">
                                     <div class="layer w-100 mB-10">
                                         <h6 class="lh-1">Settings</h6>
                                     </div>
-                                    <form id="ta-setting-form">
+                                    <form id="cp-setting-form">
                                         <div class="layers">
                                             <div class="form-group col-12 p-0 mT-10">
-                                                <label for="ta-dataset">Dataset</label>
-                                                <select id="ta-dataset" class="form-control">
+                                                <label for="cp-dataset">Dataset</label>
+                                                <select id="cp-dataset" class="form-control">
                                                     <option selected="selected">Drugs</option>
                                                     <option>DarkMarkets</option>
-                                                    <option>Countries</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-12 p-0 mT-10">
-                                                <label for="ta-x">X Axes</label>
-                                                <select id="ta-x" class="form-control">
+                                                <label for="cp-x">X Axes</label>
+                                                <select id="cp-x" class="form-control">
                                                     <option selected="selected">Year</option>
                                                     <option>Month</option>
                                                     <option>Day</option>
                                                 </select>
                                                 <!-- Year and Month picker -->
                                                 <div id="datepicker-container" style="margin-top: 10px;">
-                                                    <label for="startDate">Date :</label>
-                                                    <input name="startDate" id="startDate" class="date-picker" />
+                                                    <label for="cp-Date">Date :</label>
+                                                    <input name="cp-Date" id="cp-Date" class="date-picker" />
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 p-0 mT-10 ">
-                                                <label for="ta-y">Y Axes</label>
-                                                <select id="ta-y" class="form-control ">
+                                                <label for="cp-y">Y Axes</label>
+                                                <select id="cp-y" class="form-control ">
                                                     <option selected="selected ">Price</option>
                                                     <option>N. Products</option>
                                                     <option>N. Vendors</option>
@@ -320,15 +315,32 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mT-10 ">Submit</button>
+                                        <button type="submit" class="btn btn-primary mT-10" style="margin:0 auto; display:block;">Submit</button>
                                     </form>
+                                </div>
+                                <div class="peer peer-greed w-40p@lg+ w-100@lg- p-20">
+                                    <div class="layers">
+                                        <div class="w-100">
+                                            <select id="cp-r-countries" class="header-select r">
+                                            </select>
+                                            <!--<h6 id="cp-country-1" class="lh-1">Country 1</h6>-->
+                                        </div>
+                                        <div id="chart-container-2" class="layer w-100">
+                                            <canvas id="cp-chart-2" height="150px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layers">
+                                <div id="dataset-section" class="layer w-100 p-20">
+                                    <h6 class="lh-1">Dataset</h6>
+                                    <ul id="dataset-checkboxes" class="dataset-checkboxes p-0"></ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer>
         </div>
     </div>
 
@@ -336,8 +348,8 @@
     <script type="text/javascript " src="bundle.js "></script>
     <script type="text/javascript " src="js/chart.js"></script>
     <script type="text/javascript " src="js/ta-chart.js"></script>
-    <script type="text/javascript " src="js/month-picker.js "></script>
-    <script type="text/javascript " src="js/trend-analysis.js "></script>
+    <script type="text/javascript " src="js/month-picker.js"></script>
+    <script type="text/javascript " src="js/comparison.js "></script>
 </body>
 
 </html>
