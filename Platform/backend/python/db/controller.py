@@ -1,8 +1,7 @@
 import datetime
 import time
 import logging
-
-from certifi import where
+from pypika import Query, Table, Field
 
 from db.mysql_connection import MySqlDB
 from utils import first_day_timestamp, convert_numerical_month_to_str
@@ -690,87 +689,22 @@ class VendorAnalysisController:
             ts_format = '%Y/%m'
             ts = year + "/" + month
 
-        value = [x_format, ts_format]
+        query, value = _ta_query_builder(dataset, 'n. vendors', x_format, ts_format, country, drug, market, ts)
 
-        # Query build
-        attr = ""
-        if dataset.lower() == 'market':
-            if country and drug:
-                attr = "ships_from, macro_category, "
-            elif country and not drug:
-                attr = "ships_from, "
-            elif not country and drug:
-                attr = "macro_category, "
-        elif dataset.lower() == 'macro_category':
-            if country and market:
-                attr = "ships_from, market, "
-            elif country and not market:
-                attr = "ships_from, "
-            elif not country and market:
-                attr = "market, "
-        else:
-            logger.debug(market)
-            logger.debug(drug)
-            if market and drug:
-                attr = "market, macro_category, "
-            elif market and not drug:
-                attr = "market, "
-            elif not market and drug:
-                attr = "macro_category, "
-
-        # WHERE STATEMENT
-        where = ""
-        if ts or country or drug or market:
-            where = "WHERE"
-            clauses = []
-
-            if ts:
-                # clauses.append("(dt is null OR dt = %s)")
-                clauses.append("dt = %s")
-                value.append(ts)
-            if country:
-                # clauses.append("(ships_from is null OR ships_from = %s)")
-                clauses.append("ships_from = %s")
-                value.append(country)
-            if drug:
-                # clauses.append("(macro_category is null OR macro_category = %s)")
-                clauses.append("macro_category = %s")
-                value.append(drug)
-            if market:
-                # clauses.append("(market is null OR market = %s)")
-                clauses.append("market = %s")
-                value.append(market)
-
-            clauses = " AND ".join(clauses)
-            where += " " + clauses
-
-        value = tuple(value)
-
-        logger.debug(f"SELECT + GROUP BY Additional attr: {attr}")
-        logger.debug(f"WHERE statement: {where}")
-
-        query = f"""
-        SELECT * FROM
-        (SELECT {dataset}, {attr}DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
-        %s) as dt, COUNT(name) as n_products 
-        FROM anita.`vendor-analysis` 
-        WHERE {dataset} is not null GROUP BY {dataset}, {attr}time_x, dt) as ta_market 
-        {where} 
-        ORDER BY time_x ASC;
-        """
+        logger.debug("QUERY")
+        logger.debug(query)
+        logger.debug("VALUES")
+        logger.debug(value)
 
         header, results = self.db.search(query, value)
 
-        logger.debug(query)
-        # logger.debug(results)
-
         time = []
-        markets = {}
+        datasets = {}
 
         for row in results:
-            market = row[0]
+            dataset_sql = row[0]
             date = row[len(row) - 3]
-            price = row[len(row) - 1]
+            n_vendors = row[len(row) - 1]
 
             if date:
                 # Change the numerical month into month name
@@ -780,15 +714,15 @@ class VendorAnalysisController:
                 if date not in time:
                     time.append(date)
 
-            if market not in markets:
-                markets[market] = {}
+            if dataset_sql not in datasets:
+                datasets[dataset_sql] = {}
 
             if not date:
-                markets[market] = None
+                datasets[dataset_sql] = None
             else:
-                markets[market][date] = price
+                datasets[dataset_sql][date] = n_vendors
 
-        return time, markets
+        return time, datasets
 
 
 def get_markets():
@@ -805,138 +739,225 @@ def get_markets():
     return [row[0] for row in results]
 
 
-def __ta(self, dataset, country=None, drug=None, market=None, year=None, month=None):
-    # Preconditions
-    if dataset.lower() == 'drug':
-        dataset = 'macro_category'
-    if dataset.lower() == 'country':
-        dataset = 'ships_from'
-    logger.debug(dataset)
+# TO DO: Refactoring with a query builder
+def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=None, date=None):
+    query = None
+    value = None
 
-    if dataset != 'market' and dataset != 'macro_category' and dataset != 'ships_from':
-        raise Exception("Invalid dataset for the trend analysis")
-
-    if dataset == 'market' and market:
-        raise Exception("Market must be None, if the ta is applied on the markets")
-
-    if dataset == 'macro_category' and drug:
-        raise Exception("Drug must be None, if the ta is applied on the drugs")
-
-    if dataset == 'ships_from' and country:
-        raise Exception("Country must be None, if the ta is applied on the countries")
-
-    if not year and not month:
-        x_format = '%Y'
-        ts_format = '%Y'
-        ts = None
-    elif year and not month:
-        x_format = '%m'
-        ts_format = '%Y'
-        ts = str(year)
-    else:
-        x_format = '%d'
-        ts_format = '%Y/%m'
-        ts = year + "/" + month
-
-    value = [x_format, ts_format]
-
-    # Query build
-    attr = ""
-    if dataset.lower() == 'market':
-        if country and drug:
-            attr = "ships_from, macro_category, "
-        elif country and not drug:
-            attr = "ships_from, "
-        elif not country and drug:
-            attr = "macro_category, "
-    elif dataset.lower() == 'macro_category':
-        if country and market:
-            attr = "ships_from, market, "
-        elif country and not market:
-            attr = "ships_from, "
-        elif not country and market:
-            attr = "market, "
-    else:
-        logger.debug(market)
-        logger.debug(drug)
-        if market and drug:
-            attr = "market, macro_category, "
-        elif market and not drug:
-            attr = "market, "
-        elif not market and drug:
-            attr = "macro_category, "
-
-    # WHERE STATEMENT
-    where = ""
-    if ts or country or drug or market:
-        where = "WHERE"
-        clauses = []
-
-        if ts:
-            # clauses.append("(dt is null OR dt = %s)")
-            clauses.append("dt = %s")
-            value.append(ts)
-        if country:
-            # clauses.append("(ships_from is null OR ships_from = %s)")
-            clauses.append("ships_from = %s")
-            value.append(country)
-        if drug:
-            # clauses.append("(macro_category is null OR macro_category = %s)")
-            clauses.append("macro_category = %s")
-            value.append(drug)
-        if market:
-            # clauses.append("(market is null OR market = %s)")
-            clauses.append("market = %s")
-            value.append(market)
-
-        clauses = " AND ".join(clauses)
-        where += " " + clauses
-
-    value = tuple(value)
-
-    logger.debug(f"SELECT + GROUP BY Additional attr: {attr}")
-    logger.debug(f"WHERE statement: {where}")
-
-    query = f"""
-    SELECT * FROM
-    (SELECT {dataset}, {attr}DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
-    %s) as dt, ROUND(SUM(price),2) as tot_price 
-    FROM anita.products_cleaned 
-    WHERE {dataset} is not null GROUP BY {dataset}, {attr}time_x, dt) as ta_market 
-    {where} 
-    ORDER BY time_x ASC;
-    """
-
-    header, results = self.db.search(query, value)
-
-    logger.debug(query)
-    # logger.debug(results)
-
-    time = []
-    markets = {}
-
-    for row in results:
-        market = row[0]
-        date = row[len(row)-3]
-        price = row[len(row)-1]
-
-        if date:
-            # Change the numerical month into month name
-            if year and not month:
-                date = convert_numerical_month_to_str(date)
-
-            if date not in time:
-                time.append(date)
-
-        if market not in markets:
-            markets[market] = {}
-
-        if not date:
-            markets[market] = None
+    date_attr = ""
+    if date:
+        date_attr = "dt = %s "
+        if country or drug or market:
+            date_attr += "AND "
         else:
-            markets[market][date] = price
+            date_attr = "WHERE " + date_attr
 
-    return time, markets
+    if dataset.lower() == 'market' and y.lower() == 'price':
+        pass
+    elif dataset.lower() == 'market' and y.lower() == 'n. products':
+        pass
+    elif dataset.lower() == 'market' and y.lower() == 'n. vendors':
+        if country and drug:
+            query = f"""
+            SELECT vendor_drug.market, vendor_drug.country, products_cleaned.macro_category, vendor_drug.time_x, 
+            vendor_drug.dt, count(DISTINCT(vendor_drug.name)) as n_vendors 
+            FROM (SELECT market, name, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
+            FROM anita.`vendor-analysis`, anita.ints 
+            WHERE name is not null) as vendor_drug
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
+            WHERE {date_attr}country = %s and macro_category = %s
+            GROUP BY market, country, macro_category, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, country, drug)
+            else:
+                value = (time_x, dt, country, drug)
+        elif country and not drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt, 
+            COUNT(DISTINCT(name)) as n_vendors FROM anita.`vendor-analysis`, anita.ints 
+            WHERE name is not null GROUP BY market, country, time_x, dt) as ta_market
+            WHERE {date_attr}country = %s
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        elif not country and drug:
+            query = f"""
+            SELECT ta_market.market, products_cleaned.macro_category, ta_market.time_x, ta_market.dt, 
+            COUNT(DISTINCT(ta_market.name)) as n_vendors FROM
+            (SELECT market, DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) 
+            as dt, name FROM anita.`vendor-analysis` WHERE name is not null) as ta_market
+            JOIN anita.products_cleaned ON ta_market.name = products_cleaned.vendor
+            WHERE {date_attr}macro_category = %s
+            GROUP BY market, macro_category, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(DISTINCT(name)) as n_vendors
+            FROM anita.`vendor-analysis` WHERE name is not null GROUP BY market, time_x, dt) as ta_market
+            {date_attr}
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
+    elif dataset.lower() == 'market' and y.lower() == 'n. reviews':
+        pass
+    elif dataset.lower() == 'macro_category' and y.lower() == 'price':
+        pass
+    elif dataset.lower() == 'macro_category' and y.lower() == 'n. products':
+        pass
+    elif dataset.lower() == 'macro_category' and y.lower() == 'n. vendors':
+        if country and market:
+            query = f"""
+            SELECT products_cleaned.macro_category, vendor_drug.country, vendor_drug.market, vendor_drug.time_x, 
+            vendor_drug.dt, count(DISTINCT(vendor_drug.name)) as n_vendors FROM
+            (SELECT market, name, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
+            FROM anita.`vendor-analysis`, anita.ints WHERE name is not null AND ships_from is not null) as vendor_drug
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
+            WHERE macro_category is not null AND {date_attr}country = %s AND vendor_drug.market = %s
+            GROUP BY macro_category, country, market, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, country, market)
+            else:
+                value = (time_x, dt, country, market)
+        elif country and not market:
+            query = f"""
+            SELECT products_cleaned.macro_category, vendor_drug.country, vendor_drug.time_x, vendor_drug.dt, 
+            count(DISTINCT(vendor_drug.name)) as n_vendors FROM
+            (SELECT name, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
+            FROM anita.`vendor-analysis`, anita.ints WHERE name is not null) as vendor_drug
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
+            WHERE macro_category is not null AND {date_attr}country = %s
+            GROUP BY macro_category, country, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        elif not country and market:
+            query = f"""
+            SELECT products_cleaned.macro_category, ta_market.market, ta_market.time_x, ta_market.dt, 
+            COUNT(DISTINCT(ta_market.name)) as n_vendors FROM
+            (SELECT market, DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) 
+            as dt, name FROM anita.`vendor-analysis` WHERE name is not null) as ta_market
+            JOIN anita.products_cleaned ON ta_market.name = products_cleaned.vendor
+            WHERE macro_category is not null AND {date_attr}ta_market.market = %s
+            GROUP BY macro_category, market, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        else:
+            query = f"""
+            SELECT macro_category, time_x, dt, COUNT(DISTINCT(name)) as n_vendors FROM
+            (SELECT macro_category, DATE_FORMAT(from_unixtime(`vendor-analysis`.timestamp),%s) as time_x, 
+            DATE_FORMAT(from_unixtime(`vendor-analysis`.timestamp),%s) as dt, `vendor-analysis`.name
+            FROM anita.`vendor-analysis` JOIN anita.products_cleaned ON `vendor-analysis`.name = products_cleaned.vendor 
+            WHERE `vendor-analysis`.name is not null AND macro_category is not null) as ta_drug
+            {date_attr}
+            GROUP BY macro_category, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
+    elif dataset.lower() == 'macro_category' and y.lower() == 'n. reviews':
+        pass
+    elif dataset.lower() == 'ships_from' and y.lower() == 'price':
+        pass
+    elif dataset.lower() == 'ships_from' and y.lower() == 'n. products':
+        pass
+    elif dataset.lower() == 'ships_from' and y.lower() == 'n. vendors':
+        if market and drug:
+            query = f"""
+            SELECT vendor_drug.country, vendor_drug.market, products_cleaned.macro_category, vendor_drug.time_x, 
+            vendor_drug.dt, count(DISTINCT(vendor_drug.name)) as n_vendors FROM
+            (SELECT market, name, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
+            FROM anita.`vendor-analysis`, anita.ints 
+            WHERE name is not null AND ships_from is not null) as vendor_drug
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
+            WHERE {date_attr}vendor_drug.market = %s AND macro_category = %s
+            GROUP BY country, market, macro_category, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, market, drug)
+            else:
+                value = (time_x, dt, market, drug)
+        elif market and not drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, market, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt, 
+            COUNT(distinct(name)) as n_vendors FROM anita.`vendor-analysis`, anita.ints
+            WHERE name is not null AND ships_from is not null
+            GROUP BY country, market, time_x, dt) as ta_market
+            WHERE {date_attr}market = %s
+            ORDER BY time_x;
+            """
 
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and drug:
+            query = f"""
+            SELECT vendor_drug.country, products_cleaned.macro_category, vendor_drug.time_x, vendor_drug.dt, 
+            count(DISTINCT(vendor_drug.name)) as n_vendors FROM
+            (SELECT name, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
+            FROM anita.`vendor-analysis`, anita.ints 
+            WHERE name is not null AND ships_from is not null) as vendor_drug
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
+            WHERE {date_attr}macro_category = %s
+            GROUP BY country, macro_category, time_x, dt
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt, 
+            COUNT(distinct(name)) as n_vendors FROM anita.`vendor-analysis`, anita.ints
+            WHERE name is not null AND ships_from is not null GROUP BY country, time_x, dt) as ta_country
+            {date_attr}
+            ORDER BY time_x;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
+    elif dataset.lower() == 'ships_from' and y.lower() == 'n. reviews':
+        pass
 
+    return query, value
 
