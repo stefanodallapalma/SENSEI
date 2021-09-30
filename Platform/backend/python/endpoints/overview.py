@@ -51,10 +51,6 @@ def get_biggest_vendors():
     return Response(json.dumps(biggest_vendors), status=200, mimetype="application/json")
 
 
-def get_biggest_vendor(country):
-    pass
-
-
 def get_countries_raw_data():
     vendor_analysis_controller = controller.VendorAnalysisController()
     product_cleanedcontroller = controller.ProductCleanedController()

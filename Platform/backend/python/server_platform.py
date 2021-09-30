@@ -8,6 +8,8 @@ CORS(app.app)
 
 # Read the swagger.yml file to configure the endpoints
 app.add_api("swagger/country.yml")
+app.add_api("swagger/drug.yml")
+app.add_api("swagger/market.yml")
 app.add_api("swagger/general.yml")
 app.add_api("swagger/trend-analysis.yml")
 

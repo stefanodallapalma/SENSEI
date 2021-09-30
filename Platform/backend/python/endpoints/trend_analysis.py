@@ -22,6 +22,11 @@ def drugs():
         market = request.args.get('market').lower()
         logger.debug(market)
 
+    if 'month' in request.args and 'year' not in request.args:
+        error_msg = "Invalid date parameter. Month can be passed only with a valid year"
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+
     if 'year' in request.args:
         year = request.args.get('year').lower()
         logger.debug(year)
@@ -30,46 +35,43 @@ def drugs():
             logger.error(format_exc())
             return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    if 'month' in request.args and 'year' not in request.args:
-        error_msg = "Invalid date parameter. Month can be passed only with a valid year"
-        logger.error(format_exc())
-        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+    if 'month' in request.args:
+        month = request.args.get('month').lower()
+        logger.debug(month)
+        if not utils.valid_month(month):
+            error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    try:
-        if 'month' in request.args:
-            month = request.args.get('month').lower()
-            logger.debug(month)
-            if not utils.valid_month(month):
-                error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
-                return Response(json.dumps(error_msg), status=400, mimetype="application/json")
-
+        try:
             month = utils.convert_letteral_month_to_int(month)
-    except:
-        error_msg = "Invalid month paramenter."
-        logger.error(format_exc())
-        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+        except:
+            error_msg = "Invalid month paramenter."
+            logger.error(format_exc())
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     product_cleaned_controller = controller.ProductCleanedController()
     vendor_analysis_controller = controller.VendorAnalysisController()
 
     try:
-        time = {}
-        drugs = {}
         if y_category == 'price':
-            time, drugs = product_cleaned_controller.ta_by_price('drug', country=country, market=market, year=year,
-                                                                 month=month)
+            time, drugs_ds = product_cleaned_controller.ta_by_price('drug', country=country, market=market, year=year,
+                                                                    month=month)
         elif y_category == 'n. products':
-            time, drugs = product_cleaned_controller.ta_by_n_products('drug', country=country, market=market,
-                                                                      year=year, month=month)
+            time, drugs_ds = product_cleaned_controller.ta_by_n_products('drug', country=country, market=market,
+                                                                         year=year, month=month)
         elif y_category == 'n. vendors':
-            time, drugs = vendor_analysis_controller.ta_by_n_vendors('drug', country=country, market=market,
-                                                                     year=year, month=month)
+            time, drugs_ds = vendor_analysis_controller.ta_by_n_vendors('drug', country=country, market=market,
+                                                                        year=year, month=month)
+        else:
+            error_msg = "Invalid y parameter. Valid y params: 'price', 'n. products', 'n. vendors'"
+            logger.error(format_exc())
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
-    return Response(json.dumps([time, drugs]), status=200, mimetype="application/json")
+    return Response(json.dumps([time, drugs_ds]), status=200, mimetype="application/json")
 
 
 def markets():
@@ -87,6 +89,11 @@ def markets():
         drug = request.args.get('drug').capitalize()
         logger.debug(drug)
 
+    if 'month' in request.args and 'year' not in request.args:
+        error_msg = "Invalid date parameter. Month can be passed only with a valid year"
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+
     if 'year' in request.args:
         year = request.args.get('year').lower()
         logger.debug(year)
@@ -95,47 +102,44 @@ def markets():
             logger.error(format_exc())
             return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    if 'month' in request.args and 'year' not in request.args:
-        error_msg = "Invalid date parameter. Month can be passed only with a valid year"
-        logger.error(format_exc())
-        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+    if 'month' in request.args:
+        month = request.args.get('month').lower()
+        logger.debug(month)
+        if not utils.valid_month(month):
+            error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    try:
-        if 'month' in request.args:
-            month = request.args.get('month').lower()
-            logger.debug(month)
-            if not utils.valid_month(month):
-                error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
-                return Response(json.dumps(error_msg), status=400, mimetype="application/json")
-
+        try:
             month = utils.convert_letteral_month_to_int(month)
-    except:
-        error_msg = "Invalid month paramenter."
-        logger.error(format_exc())
-        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+        except:
+            error_msg = "Invalid month paramenter."
+            logger.error(format_exc())
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     product_cleaned_controller = controller.ProductCleanedController()
     vendor_analysis_controller = controller.VendorAnalysisController()
 
     try:
-        time = {}
-        markets = {}
         if y_category == 'price':
-            time, markets = product_cleaned_controller.ta_by_price('market', country=country, drug=drug, year=year,
-                                                                   month=month)
+            time, markets_ds = product_cleaned_controller.ta_by_price('market', country=country, drug=drug, year=year,
+                                                                      month=month)
         elif y_category == 'n. products':
-            time, markets = product_cleaned_controller.ta_by_n_products('market', country=country, drug=drug, year=year,
-                                                                        month=month)
+            time, markets_ds = product_cleaned_controller.ta_by_n_products('market', country=country, drug=drug, year=year,
+                                                                           month=month)
         elif y_category == 'n. vendors':
-            time, markets = vendor_analysis_controller.ta_by_n_vendors('market', country=country, drug=drug, year=year,
-                                                                       month=month)
+            time, markets_ds = vendor_analysis_controller.ta_by_n_vendors('market', country=country, drug=drug, year=year,
+                                                                          month=month)
+        else:
+            error_msg = "Invalid y parameter. Valid y params: 'price', 'n. products', 'n. vendors'"
+            logger.error(format_exc())
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
-    return Response(json.dumps([time, markets]), status=200, mimetype="application/json")
+    return Response(json.dumps([time, markets_ds]), status=200, mimetype="application/json")
 
 
 def countries():
@@ -153,6 +157,11 @@ def countries():
         drug = request.args.get('drug').capitalize()
         logger.debug(market)
 
+    if 'month' in request.args and 'year' not in request.args:
+        error_msg = "Invalid date parameter. Month can be passed only with a valid year"
+        logger.error(format_exc())
+        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+
     if 'year' in request.args:
         year = request.args.get('year').lower()
         logger.debug(year)
@@ -161,43 +170,40 @@ def countries():
             logger.error(format_exc())
             return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    if 'month' in request.args and 'year' not in request.args:
-        error_msg = "Invalid date parameter. Month can be passed only with a valid year"
-        logger.error(format_exc())
-        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+    if 'month' in request.args:
+        month = request.args.get('month').lower()
+        logger.debug(month)
+        if not utils.valid_month(month):
+            error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
-    try:
-        if 'month' in request.args:
-            month = request.args.get('month').lower()
-            logger.debug(month)
-            if not utils.valid_month(month):
-                error_msg = "Invalid month paramenter. Month format accepted: 1, 01, 'January', 'Jan'"
-                return Response(json.dumps(error_msg), status=400, mimetype="application/json")
-
+        try:
             month = utils.convert_letteral_month_to_int(month)
-    except:
-        error_msg = "Invalid month paramenter."
-        logger.error(format_exc())
-        return Response(json.dumps(error_msg), status=400, mimetype="application/json")
+        except:
+            error_msg = "Invalid month paramenter."
+            logger.error(format_exc())
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
 
     product_cleaned_controller = controller.ProductCleanedController()
     vendor_analysis_controller = controller.VendorAnalysisController()
 
     try:
-        time = {}
-        countries = {}
         if y_category == 'price':
-            time, countries = product_cleaned_controller.ta_by_price('country', market=market, drug=drug, year=year,
-                                                                     month=month)
+            time, countries_ds = product_cleaned_controller.ta_by_price('country', market=market, drug=drug, year=year,
+                                                                        month=month)
         elif y_category == 'n. products':
-            time, countries = product_cleaned_controller.ta_by_n_products('country', market=market, drug=drug, year=year,
-                                                                          month=month)
+            time, countries_ds = product_cleaned_controller.ta_by_n_products('country', market=market, drug=drug, year=year,
+                                                                             month=month)
         elif y_category == 'n. vendors':
-            time, countries = vendor_analysis_controller.ta_by_n_vendors('country', market=market, drug=drug, year=year,
-                                                                         month=month)
+            time, countries_ds = vendor_analysis_controller.ta_by_n_vendors('country', market=market, drug=drug, year=year,
+                                                                            month=month)
+        else:
+            error_msg = "Invalid y parameter. Valid y params: 'price', 'n. products', 'n. vendors'"
+            logger.error(format_exc())
+            return Response(json.dumps(error_msg), status=400, mimetype="application/json")
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
-    return Response(json.dumps([time, countries]), status=200, mimetype="application/json")
+    return Response(json.dumps([time, countries_ds]), status=200, mimetype="application/json")

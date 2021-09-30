@@ -1,0 +1,27 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/drug"
+
+# Paths supported by the server application
+paths:
+  /list/:
+    get:
+      operationId: "endpoints.drug.get_macro_categories"
+      summary: "Get all macro categories available"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Macro category drugs retrieved"
+        500:
+          description: "Internal server error"

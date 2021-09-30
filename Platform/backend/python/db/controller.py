@@ -324,6 +324,21 @@ class ProductCleanedController:
 
         return sales
 
+    def get_markets(self):
+        query = f"SELECT DISTINCT(market) from {DB_NAME}.products_cleaned WHERE market is not null;"
+        header, results = self.db.search(query)
+        return [row[0] for row in results]
+
+    def get_countries(self):
+        query = f"SELECT DISTINCT(ships_from) from {DB_NAME}.products_cleaned WHERE ships_from is not null;"
+        header, results = self.db.search(query)
+        return [row[0] for row in results]
+
+    def get_drugs(self):
+        query = f"SELECT DISTINCT(macro_category) from {DB_NAME}.products_cleaned WHERE macro_category is not null;"
+        header, results = self.db.search(query)
+        return [row[0] for row in results]
+
     def ta_by_price(self, dataset, country=None, drug=None, market=None, year=None, month=None):
         # Preconditions
         if dataset.lower() == 'drug':
@@ -357,79 +372,17 @@ class ProductCleanedController:
             ts_format = '%Y/%m'
             ts = year + "/" + month
 
-        value = [x_format, ts_format]
+        query, value = _ta_query_builder(dataset, 'price', x_format, ts_format, country, drug, market, ts)
 
-        # Query build
-        attr = ""
-        if dataset.lower() == 'market':
-            if country and drug:
-                attr = "ships_from, macro_category, "
-            elif country and not drug:
-                attr = "ships_from, "
-            elif not country and drug:
-                attr = "macro_category, "
-        elif dataset.lower() == 'macro_category':
-            if country and market:
-                attr = "ships_from, market, "
-            elif country and not market:
-                attr = "ships_from, "
-            elif not country and market:
-                attr = "market, "
-        else:
-            logger.debug(market)
-            logger.debug(drug)
-            if market and drug:
-                attr = "market, macro_category, "
-            elif market and not drug:
-                attr = "market, "
-            elif not market and drug:
-                attr = "macro_category, "
-
-        # WHERE STATEMENT
-        where = ""
-        if ts or country or drug or market:
-            where = "WHERE"
-            clauses = []
-
-            if ts:
-                # clauses.append("(dt is null OR dt = %s)")
-                clauses.append("dt = %s")
-                value.append(ts)
-            if country:
-                # clauses.append("(ships_from is null OR ships_from = %s)")
-                clauses.append("ships_from = %s")
-                value.append(country)
-            if drug:
-                # clauses.append("(macro_category is null OR macro_category = %s)")
-                clauses.append("macro_category = %s")
-                value.append(drug)
-            if market:
-                # clauses.append("(market is null OR market = %s)")
-                clauses.append("market = %s")
-                value.append(market)
-
-            clauses = " AND ".join(clauses)
-            where += " " + clauses
-
-        value = tuple(value)
-
-        logger.debug(f"SELECT + GROUP BY Additional attr: {attr}")
-        logger.debug(f"WHERE statement: {where}")
-
-        query = f"""
-        SELECT * FROM
-        (SELECT {dataset}, {attr}DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
-        %s) as dt, ROUND(SUM(price),2) as tot_price 
-        FROM anita.products_cleaned 
-        WHERE {dataset} is not null GROUP BY {dataset}, {attr}time_x, dt) as ta_market 
-        {where} 
-        ORDER BY time_x ASC;
-        """
+        logger.debug("QUERY")
+        logger.debug(query)
+        logger.debug("VALUES")
+        logger.debug(value)
 
         header, results = self.db.search(query, value)
 
-        logger.debug(query)
-        # logger.debug(results)
+        logger.debug("RESULTS")
+        logger.debug(results)
 
         time = []
         markets = {}
@@ -493,79 +446,19 @@ class ProductCleanedController:
             ts_format = '%Y/%m'
             ts = year + "/" + month
 
-        value = [x_format, ts_format]
+        query, value = _ta_query_builder(dataset, 'price', x_format, ts_format, country, drug, market, ts)
 
-        # Query build
-        attr = ""
-        if dataset.lower() == 'market':
-            if country and drug:
-                attr = "ships_from, macro_category, "
-            elif country and not drug:
-                attr = "ships_from, "
-            elif not country and drug:
-                attr = "macro_category, "
-        elif dataset.lower() == 'macro_category':
-            if country and market:
-                attr = "ships_from, market, "
-            elif country and not market:
-                attr = "ships_from, "
-            elif not country and market:
-                attr = "market, "
-        else:
-            logger.debug(market)
-            logger.debug(drug)
-            if market and drug:
-                attr = "market, macro_category, "
-            elif market and not drug:
-                attr = "market, "
-            elif not market and drug:
-                attr = "macro_category, "
-
-        # WHERE STATEMENT
-        where = ""
-        if ts or country or drug or market:
-            where = "WHERE"
-            clauses = []
-
-            if ts:
-                # clauses.append("(dt is null OR dt = %s)")
-                clauses.append("dt = %s")
-                value.append(ts)
-            if country:
-                # clauses.append("(ships_from is null OR ships_from = %s)")
-                clauses.append("ships_from = %s")
-                value.append(country)
-            if drug:
-                # clauses.append("(macro_category is null OR macro_category = %s)")
-                clauses.append("macro_category = %s")
-                value.append(drug)
-            if market:
-                # clauses.append("(market is null OR market = %s)")
-                clauses.append("market = %s")
-                value.append(market)
-
-            clauses = " AND ".join(clauses)
-            where += " " + clauses
-
-        value = tuple(value)
-
-        logger.debug(f"SELECT + GROUP BY Additional attr: {attr}")
-        logger.debug(f"WHERE statement: {where}")
-
-        query = f"""
-        SELECT * FROM
-        (SELECT {dataset}, {attr}DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
-        %s) as dt, COUNT(name) as n_price 
-        FROM anita.products_cleaned 
-        WHERE {dataset} is not null GROUP BY {dataset}, {attr}time_x, dt) as ta_market 
-        {where} 
-        ORDER BY time_x ASC;
-        """
+        logger.debug("QUERY")
+        logger.debug(query)
+        logger.debug("VALUES")
+        logger.debug(value)
 
         header, results = self.db.search(query, value)
 
-        logger.debug(query)
-        # logger.debug(results)
+        logger.debug("HEADER")
+        logger.debug(header)
+        logger.debug("RESULTS")
+        logger.debug(results)
 
         time = []
         markets = {}
@@ -753,9 +646,119 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             date_attr = "WHERE " + date_attr
 
     if dataset.lower() == 'market' and y.lower() == 'price':
-        pass
+        if country and drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, ships_from, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, ships_from, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}ships_from = %s AND macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, country, drug)
+            else:
+                value = (time_x, dt, country, drug)
+        elif country and not drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, ships_from, time_x, dt) as ta_market 
+            WHERE {date_attr}ships_from = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        elif not country and drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, time_x, dt) as ta_market 
+            {date_attr} 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'market' and y.lower() == 'n. products':
-        pass
+        if country and drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, ships_from, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, DATE_FORMAT(from_unixtime(timestamp),
+            %s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, ships_from, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}country = %s AND macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, country, drug)
+            else:
+                value = (time_x, dt, country, drug)
+        elif country and not drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, ships_from, time_x, dt) as ta_market 
+            WHERE {date_attr}country = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        elif not country and drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT market, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE market is not null GROUP BY market, time_x, dt) as ta_market 
+            {date_attr} 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'market' and y.lower() == 'n. vendors':
         if country and drug:
             query = f"""
@@ -766,8 +769,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             FROM anita.`vendor-analysis`, anita.ints 
             WHERE name is not null) as vendor_drug
             JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
-            WHERE {date_attr}country = %s and macro_category = %s
-            GROUP BY market, country, macro_category, time_x, dt
+            WHERE {date_attr}country = %s and macro_category = %s 
+            GROUP BY market, country, macro_category, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -780,8 +783,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             (SELECT market, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
             DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt, 
             COUNT(DISTINCT(name)) as n_vendors FROM anita.`vendor-analysis`, anita.ints 
-            WHERE name is not null GROUP BY market, country, time_x, dt) as ta_market
-            WHERE {date_attr}country = %s
+            WHERE name is not null GROUP BY market, country, time_x, dt) as ta_market 
+            WHERE {date_attr}country = %s 
             ORDER BY time_x;
             """
             if date:
@@ -795,8 +798,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             (SELECT market, DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) 
             as dt, name FROM anita.`vendor-analysis` WHERE name is not null) as ta_market
             JOIN anita.products_cleaned ON ta_market.name = products_cleaned.vendor
-            WHERE {date_attr}macro_category = %s
-            GROUP BY market, macro_category, time_x, dt
+            WHERE {date_attr}macro_category = %s 
+            GROUP BY market, macro_category, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -809,7 +812,7 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             (SELECT market, DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, 
             DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(DISTINCT(name)) as n_vendors
             FROM anita.`vendor-analysis` WHERE name is not null GROUP BY market, time_x, dt) as ta_market
-            {date_attr}
+            {date_attr} 
             ORDER BY time_x;
             """
             if date:
@@ -817,11 +820,148 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             else:
                 value = (time_x, dt)
     elif dataset.lower() == 'market' and y.lower() == 'n. reviews':
-        pass
+        if country and drug:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, country, drug)
+            else:
+                value = (time_x, dt, country, drug)
+        elif country and not drug:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        elif not country and drug:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'macro_category' and y.lower() == 'price':
-        pass
+        if market and country:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, market, ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, market, ships_from, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s AND ships_from = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market, country)
+            else:
+                value = (time_x, dt, market, country)
+        elif market and not country:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, market, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, market, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and country:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, ships_from, time_x, dt) as ta_market 
+            WHERE {date_attr}ships_from = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, time_x, dt) as ta_market 
+            {date_attr} 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'macro_category' and y.lower() == 'n. products':
-        pass
+        if market and country:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, market, ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, market, ships_from, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s AND country = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market, country)
+            else:
+                value = (time_x, dt, market, country)
+        elif market and not country:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, market, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, market, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and country:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, ships_from, time_x, dt) as ta_market 
+            WHERE {date_attr}country = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE macro_category is not null GROUP BY macro_category, time_x, dt) as ta_market 
+            {date_attr} 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'macro_category' and y.lower() == 'n. vendors':
         if country and market:
             query = f"""
@@ -831,8 +971,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
             FROM anita.`vendor-analysis`, anita.ints WHERE name is not null AND ships_from is not null) as vendor_drug
             JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
-            WHERE macro_category is not null AND {date_attr}country = %s AND vendor_drug.market = %s
-            GROUP BY macro_category, country, market, time_x, dt
+            WHERE macro_category is not null AND {date_attr}country = %s AND vendor_drug.market = %s 
+            GROUP BY macro_category, country, market, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -842,13 +982,13 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
         elif country and not market:
             query = f"""
             SELECT products_cleaned.macro_category, vendor_drug.country, vendor_drug.time_x, vendor_drug.dt, 
-            count(DISTINCT(vendor_drug.name)) as n_vendors FROM
+            count(DISTINCT(vendor_drug.name)) as n_vendors FROM 
             (SELECT name, TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
-            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
-            FROM anita.`vendor-analysis`, anita.ints WHERE name is not null) as vendor_drug
-            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
-            WHERE macro_category is not null AND {date_attr}country = %s
-            GROUP BY macro_category, country, time_x, dt
+            DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt 
+            FROM anita.`vendor-analysis`, anita.ints WHERE name is not null) as vendor_drug 
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor 
+            WHERE macro_category is not null AND {date_attr}country = %s 
+            GROUP BY macro_category, country, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -858,12 +998,12 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
         elif not country and market:
             query = f"""
             SELECT products_cleaned.macro_category, ta_market.market, ta_market.time_x, ta_market.dt, 
-            COUNT(DISTINCT(ta_market.name)) as n_vendors FROM
+            COUNT(DISTINCT(ta_market.name)) as n_vendors FROM 
             (SELECT market, DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) 
-            as dt, name FROM anita.`vendor-analysis` WHERE name is not null) as ta_market
-            JOIN anita.products_cleaned ON ta_market.name = products_cleaned.vendor
-            WHERE macro_category is not null AND {date_attr}ta_market.market = %s
-            GROUP BY macro_category, market, time_x, dt
+            as dt, name FROM anita.`vendor-analysis` WHERE name is not null) as ta_market 
+            JOIN anita.products_cleaned ON ta_market.name = products_cleaned.vendor 
+            WHERE macro_category is not null AND {date_attr}ta_market.market = %s 
+            GROUP BY macro_category, market, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -872,13 +1012,13 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
                 value = (time_x, dt, market)
         else:
             query = f"""
-            SELECT macro_category, time_x, dt, COUNT(DISTINCT(name)) as n_vendors FROM
+            SELECT macro_category, time_x, dt, COUNT(DISTINCT(name)) as n_vendors FROM 
             (SELECT macro_category, DATE_FORMAT(from_unixtime(`vendor-analysis`.timestamp),%s) as time_x, 
-            DATE_FORMAT(from_unixtime(`vendor-analysis`.timestamp),%s) as dt, `vendor-analysis`.name
+            DATE_FORMAT(from_unixtime(`vendor-analysis`.timestamp),%s) as dt, `vendor-analysis`.name 
             FROM anita.`vendor-analysis` JOIN anita.products_cleaned ON `vendor-analysis`.name = products_cleaned.vendor 
-            WHERE `vendor-analysis`.name is not null AND macro_category is not null) as ta_drug
-            {date_attr}
-            GROUP BY macro_category, time_x, dt
+            WHERE `vendor-analysis`.name is not null AND macro_category is not null) as ta_drug 
+            {date_attr} 
+            GROUP BY macro_category, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -886,11 +1026,148 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             else:
                 value = (time_x, dt)
     elif dataset.lower() == 'macro_category' and y.lower() == 'n. reviews':
-        pass
+        if market and country:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, market, country)
+            else:
+                value = (time_x, dt, market, country)
+        elif market and not country:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and country:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, country)
+            else:
+                value = (time_x, dt, country)
+        else:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'ships_from' and y.lower() == 'price':
-        pass
+        if market and drug:
+            query = f"""
+            SELECT * FROM 
+            (SELECT ships_from, market, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, market, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s AND macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market, drug)
+            else:
+                value = (time_x, dt, market, drug)
+        elif market and not drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT ships_from, market, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, market, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and drug:
+            query = f"""
+            SELECT * FROM 
+            (SELECT ships_from, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, ROUND(SUM(price),2) as tot_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, time_x, dt) as ta_market 
+            {date_attr} 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'ships_from' and y.lower() == 'n. products':
-        pass
+        if market and drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT ships_from, market, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, market, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s AND macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market, drug)
+            else:
+                value = (time_x, dt, market, drug)
+        elif market and not drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT ships_from, market, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, market, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and drug:
+            query = f"""
+            SELECT * FROM
+            (SELECT ships_from, macro_category, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, macro_category, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s AND macro_category = %s 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            SELECT * FROM
+            (SELECT ships_from, DATE_FORMAT(from_unixtime(timestamp), %s) as time_x, 
+            DATE_FORMAT(from_unixtime(timestamp),%s) as dt, COUNT(name) as n_price 
+            FROM anita.products_cleaned 
+            WHERE ships_from is not null GROUP BY ships_from, time_x, dt) as ta_market 
+            {date_attr} 
+            ORDER BY time_x ASC;
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
     elif dataset.lower() == 'ships_from' and y.lower() == 'n. vendors':
         if market and drug:
             query = f"""
@@ -901,8 +1178,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             FROM anita.`vendor-analysis`, anita.ints 
             WHERE name is not null AND ships_from is not null) as vendor_drug
             JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
-            WHERE {date_attr}vendor_drug.market = %s AND macro_category = %s
-            GROUP BY country, market, macro_category, time_x, dt
+            WHERE {date_attr}vendor_drug.market = %s AND macro_category = %s 
+            GROUP BY country, market, macro_category, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -916,8 +1193,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt, 
             COUNT(distinct(name)) as n_vendors FROM anita.`vendor-analysis`, anita.ints
             WHERE name is not null AND ships_from is not null
-            GROUP BY country, market, time_x, dt) as ta_market
-            WHERE {date_attr}market = %s
+            GROUP BY country, market, time_x, dt) as ta_market 
+            WHERE {date_attr}market = %s 
             ORDER BY time_x;
             """
 
@@ -933,9 +1210,9 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt
             FROM anita.`vendor-analysis`, anita.ints 
             WHERE name is not null AND ships_from is not null) as vendor_drug
-            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor
-            WHERE {date_attr}macro_category = %s
-            GROUP BY country, macro_category, time_x, dt
+            JOIN anita.products_cleaned ON vendor_drug.name = products_cleaned.vendor 
+            WHERE {date_attr}macro_category = %s 
+            GROUP BY country, macro_category, time_x, dt 
             ORDER BY time_x;
             """
             if date:
@@ -948,8 +1225,8 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             (SELECT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country, 
             DATE_FORMAT(from_unixtime(timestamp),%s) as time_x, DATE_FORMAT(from_unixtime(timestamp),%s) as dt, 
             COUNT(distinct(name)) as n_vendors FROM anita.`vendor-analysis`, anita.ints
-            WHERE name is not null AND ships_from is not null GROUP BY country, time_x, dt) as ta_country
-            {date_attr}
+            WHERE name is not null AND ships_from is not null GROUP BY country, time_x, dt) as ta_country 
+            {date_attr} 
             ORDER BY time_x;
             """
             if date:
@@ -957,7 +1234,34 @@ def _ta_query_builder(dataset, y, time_x, dt, country=None, drug=None, market=No
             else:
                 value = (time_x, dt)
     elif dataset.lower() == 'ships_from' and y.lower() == 'n. reviews':
-        pass
+        if market and drug:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, market, drug)
+            else:
+                value = (time_x, dt, market, drug)
+        elif market and not drug:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, market)
+            else:
+                value = (time_x, dt, market)
+        elif not market and drug:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date, drug)
+            else:
+                value = (time_x, dt, drug)
+        else:
+            query = f"""
+            """
+            if date:
+                value = (time_x, dt, date)
+            else:
+                value = (time_x, dt)
 
     return query, value
 
