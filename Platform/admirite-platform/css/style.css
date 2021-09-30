@@ -1850,6 +1850,10 @@ a.fc-more:hover {
 
 /*ANITA CSS*/
 
+.m-0a {
+    margin: 0 auto;
+}
+
 .ui-datepicker-calendar {
     display: none;
 }
