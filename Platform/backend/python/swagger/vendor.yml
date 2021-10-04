@@ -1,0 +1,84 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/vendor"
+
+# Paths supported by the server application
+paths:
+  /names/:
+    get:
+      operationId: "endpoints.vendor.get_vendor_list"
+      summary: "Vendors name list"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Vendors name list retrieved"
+        500:
+          description: "Internal server error"
+  /treemap/n-products/:
+    get:
+      operationId: "endpoints.vendor.n_products"
+      summary: "Get the tot products sold for each vendor"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: market
+          required: false
+          type: string
+
+      responses:
+        200:
+          description: "Tot products retrieved"
+        500:
+          description: "Internal server error"
+  /treemap/{vendor_name}:
+    get:
+      operationId: "endpoints.vendor.treemap_info"
+      summary: "Get the tot products sold for each vendor"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: vendor_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Treemap vendor's info retrieved"
+        500:
+          description: "Internal server error"
+  /info/{vendor_name}:
+    get:
+      operationId: "endpoints.vendor.get_vendor"
+      summary: "Retrieve the vendor's info"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: vendor_name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Info vendor retrieved"
+        500:
+          description: "Internal server error"

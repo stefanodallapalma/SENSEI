@@ -10,6 +10,7 @@ CORS(app.app)
 app.add_api("swagger/country.yml")
 app.add_api("swagger/drug.yml")
 app.add_api("swagger/market.yml")
+app.add_api("swagger/vendor.yml")
 app.add_api("swagger/general.yml")
 app.add_api("swagger/trend-analysis.yml")
 

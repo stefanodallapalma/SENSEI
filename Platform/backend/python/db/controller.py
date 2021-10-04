@@ -258,6 +258,48 @@ class ProductCleanedController:
 
         return tot_products
 
+    def n_products_for_each_vendor(self, market=None):
+        if not market:
+            query = f"SELECT DISTINCT(vendor), COUNT(DISTINCT(name)) as n_products FROM {DB_NAME}.products_cleaned " \
+                    f"GROUP BY vendor ORDER BY n_products DESC;"
+
+            # query = f"SELECT DISTINCT(market), vendor, COUNT(DISTINCT(name)) FROM {DB_NAME}.products_cleaned " \
+            #         f"GROUP BY market, vendor;"
+
+            header, results = self.db.search(query)
+
+            vendors = {}
+            for row in results:
+                vendors[row[0]] = row[1]
+        else:
+            query = f"SELECT DISTINCT(market), vendor, COUNT(DISTINCT(name)) as n_products FROM {DB_NAME}.products_cleaned " \
+                    f"WHERE market = %s GROUP BY market, vendor ORDER BY n_products DESC;"
+            value = (market,)
+
+            header, results = self.db.search(query, value)
+
+            vendors = {}
+
+            for row in results:
+                vendors[row[1]] = row[2]
+
+        return vendors
+
+    def n_drugs(self, vendor):
+        query = "SELECT vendor, macro_category, COUNT(macro_category) FROM " \
+                f"(SELECT DISTINCT(vendor), name, macro_category FROM {DB_NAME}.products_cleaned " \
+                "GROUP BY vendor, name, macro_category) as vendor_drugs " \
+                "WHERE vendor = %s GROUP BY vendor, macro_category;"
+        value = (vendor,)
+
+        header, results = self.db.search(query, value)
+
+        drugs = {}
+        for row in results:
+            drugs[row[1]] = row[2]
+
+        return drugs
+
     def get_top_vendors(self, limit=None):
         """
         Retrieve the top n vendors based on the number of products in the marketplace
@@ -490,6 +532,12 @@ class ProductCleanedController:
 class VendorAnalysisController:
     def __init__(self):
         self.db = MySqlDB()
+
+    def get_distinct_vendor_names(self):
+        query = f"SELECT DISTINCT(name) FROM {DB_NAME}.`vendor-analysis` WHERE name is not null;"
+        header, results = self.db.search(query)
+
+        return [row[0] for row in results]
 
     def get_distinct_ships_from(self):
         query = "(SELECT DISTINCT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(ships_from,',',i+1),',',-1)) as country " \
