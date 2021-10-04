@@ -175,6 +175,7 @@ $(document).ready(function() {
 
     $('#countrySelection').change(function() {
         var country = $('#countrySelection option:selected').text();
+        console.log(country)
 
         $('#country-n-vendors').text("Vendors: " + rawData[country]["n_vendors"]);
         $('#country-n-products').text("Products: " + rawData[country]["n_products"]);
