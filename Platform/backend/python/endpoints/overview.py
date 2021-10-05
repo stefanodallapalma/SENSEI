@@ -97,19 +97,36 @@ def get_country_raw_data(country):
 
 def n_sales():
     product_cleanedcontroller = controller.ProductCleanedController()
+    country_controller = controller.CountryController()
 
     try:
         n_products = product_cleanedcontroller.n_products_per_country()
+        countries = country_controller.get_countries_alpha2code()
+
+        logger.debug(countries)
+
+        n_products_alpha2code = []
+        for country in n_products:
+            if country not in countries:
+                try:
+                    alpha2code = country_controller.add_country(country)
+                except Exception as e:
+                    logger.info(f"Invalid country `{country}`: SKIPPED")
+            else:
+                alpha2code = countries[country]
+                
+            n_products_alpha2code.append({"country": country, "n. products": n_products[country],
+                                          "alpha2code": alpha2code})
 
         if "top" in request.args:
             n_elements = request.args.get('top')
-            n_products = {k: n_products[k] for k in list(n_products)[:int(n_elements)]}
+            n_products_alpha2code = {k: n_products_alpha2code[k] for k in list(n_products_alpha2code)[:int(n_elements)]}
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
-    return Response(json.dumps(n_products, sort_keys=False), status=200, mimetype="application/json")
+    return Response(json.dumps(n_products_alpha2code, sort_keys=False), status=200, mimetype="application/json")
 
 
 def top_sales():

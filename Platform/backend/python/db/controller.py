@@ -1,14 +1,74 @@
 import datetime
 import time
 import logging
+import requests
 from pypika import Query, Table, Field
 
 from db.mysql_connection import MySqlDB
 from utils import first_day_timestamp, convert_numerical_month_to_str
 
 DB_NAME = "anita"
-
+RESTCOUNTRIES_API_URL = "https://restcountries.com/v3.1/name/"
 logger = logging.getLogger("Controller")
+
+
+class CountryController:
+    def __init__(self):
+        self.db = MySqlDB()
+        self.table_name = "country"
+
+    def get_countries_alpha2code(self):
+        query = f"SELECT country, alpha2code FROM {DB_NAME}.{self.table_name};"
+        header, results = self.db.search(query)
+
+        countries = {}
+        for row in results:
+            countries[row[0]] = row[1]
+
+        return countries
+
+    def get_alpha2code(self, country):
+        query = f"SELECT alpha2code FROM {DB_NAME}.{self.table_name} WHERE country = %s;"
+        value = (country,)
+        header, results = self.db.search(query, value)
+
+        if not results:
+            return None
+
+        return results[0][0]
+
+    def add_country(self, country):
+        # Restcountry api used to retrieve the country info
+        url = RESTCOUNTRIES_API_URL + country + "?fullText=true"
+        response = requests.get(url)
+
+        if isinstance(response.json(), dict) and response.json()["status"] == 404:
+            raise Exception("RESTCOUNTRY API: Invalid country.")
+
+        alpha2code = None
+        alpha3code = None
+
+        for country_json in response.json():
+            name = country_json["name"]["common"].lower()
+            native_names = [country_json["name"]["nativeName"][key]["common"].lower()
+                            for key in country_json["name"]["nativeName"]
+                            if country_json["name"]["nativeName"][key]["common"].lower() == "india"]
+
+            if name == country.lower() or native_names or country.lower() in name:
+                alpha2code = country_json["cca2"]
+                alpha3code = country_json["cca3"]
+
+        # Database INSERT
+        query = f"INSERT INTO {DB_NAME}.{self.table_name} (`country`, `alpha2code`, `alpha3code`) " \
+                f"VALUES (%s, %s, %s);"
+        values = (country, alpha2code, alpha3code)
+
+        status = self.db.insert(query, values)
+
+        if not status:
+            return None
+
+        return alpha2code
 
 
 class PseudonymizedVendorController:

@@ -1,49 +1,5 @@
 import { coordCountries } from './coordinates.js'
 
-function getCountryAlpha2Code(country) {
-    var alpha2Code = null;
-
-    $.ajax({
-        url: 'https://restcountries.eu/rest/v2/name/' + country,
-        type: 'GET',
-        datatype: 'json',
-        success: function(data) {
-            // First checj - Name
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i])
-                if (data[i]["name"].toLowerCase() == country.toLowerCase()) {
-                    alpha2Code = data[i]["alpha2Code"];
-                    break;
-                }
-            }
-
-            // Second check - Native name
-            for (var i = 0; i < data.length; i++) {
-                if (data[i]["nativeName"].toLowerCase() == country.toLowerCase()) {
-                    alpha2Code = data[i]["alpha2Code"];
-                    break;
-                }
-            }
-
-            // Third check - Substring
-            if (alpha2Code == null) {
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i]["name"].toLowerCase().includes(country.toLowerCase())) {
-                        alpha2Code = data[i]["alpha2Code"];
-                        break;
-                    }
-                }
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log("Restcountries API connection failed")
-        },
-        async: false
-    });
-
-    return alpha2Code;
-}
-
 function getCountryName(code) {
     var mapObject = $('#world-map').vectorMap('get', 'mapObject');
     var name = null;
@@ -102,15 +58,17 @@ $(document).ready(function() {
         datatype: 'jsonp',
         success: function(data) {
             // Remove general EU products
-            delete data["EU (exact location unknown)"]
+            //delete data["EU (exact location unknown)"]
 
             var markers = []
 
             // Change the color in the overview map
-            for (var country in data) {
-                console.log(country)
-                var alpha2Code = getCountryAlpha2Code(country)
-                console.log(alpha2Code)
+            $.each(data, function(idx, country_json) {
+                console.log(country_json)
+
+                var country = country_json["country"]
+                var alpha2Code = country_json["alpha2code"]
+                var n_sales = country_json["n. products"]
 
                 if (alpha2Code != null) {
                     var name = getCountryName(alpha2Code)
@@ -121,7 +79,7 @@ $(document).ready(function() {
 
                         // Add marker on the map
                         var coord = coordCountries[alpha2Code]["coords"]
-                        var n_sales = data[country]
+                            //var n_sales = data[country]
                         var label = country + " - " + n_sales
                         console.log(label)
 
@@ -133,10 +91,8 @@ $(document).ready(function() {
                         markers.push(marker)
                         addMarkers(markers)
                     }
-
-
                 }
-            }
+            });
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("ERROR")
