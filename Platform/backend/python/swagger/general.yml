@@ -57,4 +57,19 @@ paths:
           description: "Sales retrieved"
         500:
           description: "Internal server error"
+  /graph/:
+    get:
+      operationId: "endpoints.graph.get_markets_data"
+      summary: "Retrieve the sales of the last month"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Sales retrieved"
+        500:
+          description: "Internal server error"
+
+
 

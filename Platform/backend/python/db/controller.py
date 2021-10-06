@@ -757,6 +757,19 @@ class VendorAnalysisController:
 
         return time, datasets
 
+    def get_vendors_foreach_market(self):
+        query = f"SELECT DISTINCT(market), name FROM {DB_NAME}.`vendor-analysis`;"
+        header, results = self.db.search(query)
+
+        markets = {}
+        for row in results:
+            if row[0] not in markets:
+                markets[row[0]] = [row[1]]
+            else:
+                markets[row[0]].append(row[1])
+
+        return markets
+
 
 def get_markets():
     db = MySqlDB()
