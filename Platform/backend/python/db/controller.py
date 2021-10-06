@@ -593,6 +593,38 @@ class VendorAnalysisController:
     def __init__(self):
         self.db = MySqlDB()
 
+    def search_vendors(self, vendor_query, limit=None):
+        query = f"SELECT DISTINCT(name) FROM {DB_NAME}.`vendor-analysis` WHERE name LIKE %s ORDER BY name"
+        value = (vendor_query + "%",)
+
+        if limit:
+            query += " LIMIT " + str(limit)
+
+        header, results = self.db.search(query, value)
+
+        return [row[0] for row in results]
+
+    def get_general_vendors(self, vendor_query):
+        """
+        Function used to retrieve the following vendor's information: vendor's name, marketplace(s), country
+        """
+
+        query = f"SELECT DISTINCT(name), market, ships_from FROM {DB_NAME}.`vendor-analysis` WHERE name LIKE %s " \
+                "GROUP BY name, market, ships_from;"
+        value = (vendor_query + "%",)
+
+        header, results = self.db.search(query, value)
+
+        vendors = []
+        for row in results:
+            name = row[0]
+            market = row[1]
+            country = [val.strip() for val in row[2].split(",")] if row[2] else None
+
+            vendors.append({"name": name, "market": market, "country": country})
+
+        return vendors
+
     def get_distinct_vendor_names(self):
         query = f"SELECT DISTINCT(name) FROM {DB_NAME}.`vendor-analysis` WHERE name is not null;"
         header, results = self.db.search(query)

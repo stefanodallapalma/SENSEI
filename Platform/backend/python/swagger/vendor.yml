@@ -12,19 +12,6 @@ basePath: "/vendor"
 
 # Paths supported by the server application
 paths:
-  /names/:
-    get:
-      operationId: "endpoints.vendor.get_vendor_list"
-      summary: "Vendors name list"
-
-      produces:
-        - "application/json"
-
-      responses:
-        200:
-          description: "Vendors name list retrieved"
-        500:
-          description: "Internal server error"
   /treemap/n-products/:
     get:
       operationId: "endpoints.vendor.n_products"
@@ -80,5 +67,47 @@ paths:
       responses:
         200:
           description: "Info vendor retrieved"
+        500:
+          description: "Internal server error"
+  /names/:
+    get:
+      operationId: "endpoints.vendor.get_vendor_names"
+      summary: "Get the tot products sold for each vendor"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: vendor-name
+          required: false
+          type: string
+        - in: query
+          name: top
+          required: false
+          type: integer
+
+      responses:
+        200:
+          description: "Vendor name list retrieved"
+        500:
+          description: "Internal server error"
+  /search/:
+    get:
+      operationId: "endpoints.vendor.get_vendors_general_info"
+      summary: "Get the tot products sold for each vendor"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: vendor-name
+          required: false
+          type: string
+
+      responses:
+        200:
+          description: "Vendor name list retrieved"
         500:
           description: "Internal server error"

@@ -114,7 +114,7 @@ def n_sales():
                     logger.info(f"Invalid country `{country}`: SKIPPED")
             else:
                 alpha2code = countries[country]
-                
+
             n_products_alpha2code.append({"country": country, "n. products": n_products[country],
                                           "alpha2code": alpha2code})
 
