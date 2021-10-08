@@ -27,16 +27,22 @@ def n_products():
 
 
 def get_vendor(vendor_name):
+    market = request.args.get('market').lower()
+
     vendor_controller = controller.VendorAnalysisController()
 
     try:
-        pass
+        vendor = vendor_controller.get_vendor(vendor_name, market)
+        if not vendor:
+            error_msg = "Vendor not found"
+            logger.debug(error_msg)
+            return Response(json.dumps(error_msg), status=404, mimetype="application/json")
     except Exception as e:
         error_msg = "Internal server error"
         logger.error(format_exc())
         return Response(json.dumps(error_msg), status=500, mimetype="application/json")
 
-    return Response(json.dumps({}), status=200, mimetype="application/json")
+    return Response(json.dumps(vendor, sort_keys=False), status=200, mimetype="application/json")
 
 
 def treemap_info(vendor_name):

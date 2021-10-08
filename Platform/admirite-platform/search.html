@@ -90,20 +90,60 @@
             <div class="header navbar">
             </div>
             <main class="main-content bgc-grey-100">
-                <div id="tableContainer" class="bgc-white bd bdrs-3 p-20 mB-20">
-                    <h4 class="c-grey-900 mB-20">Vendors Data Table</h4>
-                    <table cellpadding="0" cellspacing="0" class="display" id="example">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Marketplace</th>
-                                <th>Country</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                <div class="masonry-item col-12">
+                    <div class="bd bgc-white">
+                        <div class="peers fxw-nw@lg+ ai-s">
+                            <div id="tableContainer" class="peer peer-greed w-70p@lg+ w-100@lg- p-20">
+                                <h4 class="c-grey-900 mB-20">Vendors Data Table</h4>
+                                <table cellpadding="0" cellspacing="0" class="display" id="example">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Marketplace</th>
+                                            <th>Country</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="vendor-table-body"></tbody>
+                                </table>
+                            </div>
+                            <div id="vendor_info_container" class="peer bdL p-20 w-30p@lg+ w-100p@lg-">
+                                <div class="layer w-100 mB-10">
+                                    <h6 class="lh-1">Vendor Info</h6>
+                                </div>
+                                <div id="vendor_img" class="layer w-100 mB-10">
+                                    <img class="w-30p@lg+ mT-30 bdrs-50p" src="https://www.kindpng.com/picc/m/52-526798_anonymous-person-transparent-hd-png-download.png" alt="">
+                                </div>
+                                <div id="vendor_info">
+                                    <h6 class="mT-50">Name</h6>
+                                    <h6 class="mT-20">Name</h6>
+                                    <h6 class="mT-20">Name</h6>
+                                    <h6 class="mT-20">Name</h6>
+                                    <h6 class="mT-20">Name</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </main>
+
+
+
+
+            <!-- <div id="tableContainer" class="bgc-white bd bdrs-3 p-20 mB-20">
+                <h4 class="c-grey-900 mB-20">Vendors Data Table</h4>
+                <table cellpadding="0" cellspacing="0" class="display" id="example">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Marketplace</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div> -->
             </main>
         </div>
     </div>

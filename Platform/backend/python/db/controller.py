@@ -619,6 +619,21 @@ class VendorAnalysisController:
 
         return [row[0] for row in results]
 
+    def get_vendor(self, name, market):
+        query = 'SELECT name, market, normalized_score as "Score (normalized)", email, "phone number", wickr, ' \
+                'ships_from as "Ships from", ships_to as "Ships to", COUNT(timestamp) as snapshots FROM ' \
+                f'{DB_NAME}.`vendor-analysis` WHERE name = %s AND market = %s ' \
+                f'GROUP BY name, market, normalized_score, email, wickr, ships_from, ships_to;'
+
+        values = (name, market)
+
+        header, results = self.db.search(query, values)
+
+        if not results:
+            return None
+
+        return dict(zip(header, results[0]))
+
     def get_general_vendors(self, vendor_query):
         """
         Function used to retrieve the following vendor's information: vendor's name, marketplace(s), country
