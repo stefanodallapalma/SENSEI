@@ -154,7 +154,7 @@ function createTreemap(idMap, data, width = 900, height = 600) {
     });
 }
 
-function addInfoToHtml(name, value, maxValue = 12, top = false) {
+function addInfoToHtml(name, value, maxValue, top = false) {
     name = name.replaceAll("/", "-");
     name = name.replaceAll(" ", "-");
 

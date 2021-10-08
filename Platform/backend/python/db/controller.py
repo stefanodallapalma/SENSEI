@@ -240,6 +240,21 @@ class ProductCleanedController:
 
         return countries
 
+    def n_products_foreach_market(self):
+        query = f"SELECT DISTINCT(market), COUNT(name) as n_products " \
+                f"FROM {DB_NAME}.products_cleaned GROUP BY market;"
+
+        header, results = self.db.search(query)
+
+        markets = {}
+        for row in results:
+            if row[0] not in markets:
+                markets[row[0]] = {}
+
+            markets[row[0]] = row[1]
+
+        return markets
+
     def best_vendor(self, country=None):
         """
         Takes the vendor with the higher number of product on the market
@@ -769,6 +784,48 @@ class VendorAnalysisController:
                 markets[row[0]].append(row[1])
 
         return markets
+
+    def n_market_product_foreach_vendor(self):
+        query = "SELECT vendor_markets.name, n_markets, COUNT(products_cleaned.name) as n_products FROM " \
+                "(SELECT name, COUNT(market) as n_markets FROM " \
+                f"(SELECT DISTINCT(name), market FROM {DB_NAME}.`vendor-analysis`) as vendor_market " \
+                "GROUP BY name) as vendor_markets " \
+                f"JOIN {DB_NAME}.products_cleaned ON vendor_markets.name = products_cleaned.vendor " \
+                "GROUP BY vendor_markets.name, n_markets;"
+
+        header, results = self.db.search(query)
+
+        vendors = {}
+        for row in results:
+            vendors[row[0]] = {"N. Markets": row[1], "N. Products": row[2]}
+
+        return vendors
+
+    def n_products_foreach_market_vendor(self):
+        query = f"SELECT DISTINCT(vendor), market, COUNT(name) as n_products " \
+                f"FROM {DB_NAME}.products_cleaned GROUP BY vendor, market;"
+
+        header, results = self.db.search(query)
+
+        vendors = {}
+        for row in results:
+            if row[0] not in vendors:
+                vendors[row[0]] = {}
+
+            vendors[row[0]][row[1]] = row[2]
+
+        return vendors
+
+    def n_markets_foreach_vendor(self):
+        query = "SELECT name, COUNT(market) as n_markets FROM (SELECT DISTINCT(name), market " \
+                f"FROM {DB_NAME}.`vendor-analysis`) as vendor_market GROUP BY name;"
+        header, results = self.db.search(query)
+
+        vendors = {}
+        for row in results:
+            vendors[row[0]] = row[1]
+
+        return vendors
 
 
 def get_markets():

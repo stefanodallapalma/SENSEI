@@ -70,6 +70,25 @@ paths:
           description: "Sales retrieved"
         500:
           description: "Internal server error"
+  /graph/vendor:
+    get:
+      operationId: "endpoints.graph.get_vendor_info"
+      summary: "Retrieve the vendor's graph info"
+
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: query
+          name: vendor-name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Sales retrieved"
+        500:
+          description: "Internal server error"
 
 
 

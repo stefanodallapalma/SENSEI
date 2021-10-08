@@ -25,3 +25,16 @@ paths:
           description: "Markets retrieved"
         500:
           description: "Internal server error"
+  /n-products/:
+    get:
+      operationId: "endpoints.market.get_n_products"
+      summary: "Get the number of products for each market"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "N. products retrieved"
+        500:
+          description: "Internal server error"

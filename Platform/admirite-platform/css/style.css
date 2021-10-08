@@ -1858,6 +1858,10 @@ a.fc-more:hover {
     margin-top: 10px;
 }
 
+.mT-30 {
+    margin-top: 30px;
+}
+
 .mT-50 {
     margin-top: 50px;
 }
@@ -1936,6 +1940,14 @@ a.fc-more:hover {
     transform: translateY(-50%);
 }
 
+.horizontal-center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%) !important;
+    transform: translateX(-50%);
+}
+
 .center {
     margin: 0;
     position: absolute;
@@ -2004,7 +2016,16 @@ a.fc-more:hover {
     stroke-width: 1.5px;
 }
 
+.ta-c {
+    text-align: center;
+}
+
 text {
     font: 10px sans-serif;
     pointer-events: none;
+}
+
+#vendor_img img {
+    display: block;
+    margin: auto;
 }
