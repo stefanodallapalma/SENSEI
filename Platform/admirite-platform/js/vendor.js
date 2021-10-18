@@ -39,7 +39,7 @@ function apiGetVendorInfo(vendor_name, market) {
     params = { "market": market }
 
     $.ajax({
-        url: 'http://0.0.0.0:4500/vendor/' + vendor_name,
+        url: 'http://0.0.0.0:4500/vendor/info/' + vendor_name,
         type: 'GET',
         data: params,
         datatype: 'jsonp',

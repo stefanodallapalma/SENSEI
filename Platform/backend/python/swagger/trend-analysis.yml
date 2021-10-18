@@ -117,3 +117,16 @@ paths:
           description: "Countries Trend Analysis retrieved"
         500:
           description: "Internal server error"
+  /sales/last-month/:
+    get:
+      operationId: "endpoints.overview.latest_month_sales"
+      summary: "Retrieve the sales of the last month"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Sales retrieved"
+        500:
+          description: "Internal server error"

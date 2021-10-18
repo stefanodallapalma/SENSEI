@@ -12,7 +12,7 @@ basePath: "/vendor"
 
 # Paths supported by the server application
 paths:
-  /{vendor-name}:
+  /info/{vendor-name}:
     get:
       operationId: "endpoints.vendor.get_vendor"
       summary: "Get the vendor's info"

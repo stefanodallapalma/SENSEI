@@ -43,7 +43,7 @@ function getMarketGraph() {
     var res = null;
 
     $.ajax({
-        url: 'http://0.0.0.0:4500/graph/',
+        url: 'http://0.0.0.0:4500/market/graph/',
         type: 'GET',
         datatype: 'jsonp',
         success: function(data) {
@@ -70,7 +70,7 @@ function getVendorGraphInfo(vendor) {
         var params = { "vendor-name": vendor }
 
         $.ajax({
-            url: 'http://0.0.0.0:4500/graph/vendor',
+            url: 'http://0.0.0.0:4500/market/graph/vendor',
             type: 'GET',
             data: params,
             datatype: 'jsonp',

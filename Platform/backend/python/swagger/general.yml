@@ -44,51 +44,51 @@ paths:
           description: "Insights retrieved"
         500:
           description: "Internal server error"
-  /sales/:
-    get:
-      operationId: "endpoints.overview.latest_month_sales"
-      summary: "Retrieve the sales of the last month"
-
-      produces:
-        - "application/json"
-
-      responses:
-        200:
-          description: "Sales retrieved"
-        500:
-          description: "Internal server error"
-  /graph/:
-    get:
-      operationId: "endpoints.graph.get_markets_data"
-      summary: "Retrieve the sales of the last month"
-
-      produces:
-        - "application/json"
-
-      responses:
-        200:
-          description: "Sales retrieved"
-        500:
-          description: "Internal server error"
-  /graph/vendor:
-    get:
-      operationId: "endpoints.graph.get_vendor_info"
-      summary: "Retrieve the vendor's graph info"
-
-      produces:
-        - "application/json"
-
-      parameters:
-        - in: query
-          name: vendor-name
-          required: true
-          type: string
-
-      responses:
-        200:
-          description: "Sales retrieved"
-        500:
-          description: "Internal server error"
+#  /sales/:
+#    get:
+#      operationId: "endpoints.overview.latest_month_sales"
+#      summary: "Retrieve the sales of the last month"
+#
+#      produces:
+#        - "application/json"
+#
+#      responses:
+#        200:
+#          description: "Sales retrieved"
+#        500:
+#          description: "Internal server error"
+#  /graph/:
+#    get:
+#      operationId: "endpoints.graph.get_markets_data"
+#      summary: "Graph info. Tt contains the mapping between vendors and markets."
+#
+#      produces:
+#        - "application/json"
+#
+#      responses:
+#        200:
+#          description: "Sales retrieved"
+#        500:
+#          description: "Internal server error"
+#  /graph/vendor:
+#    get:
+#      operationId: "endpoints.graph.get_vendor_info"
+#      summary: "Retrieve the vendor's graph info"
+#
+#      produces:
+#        - "application/json"
+#
+#      parameters:
+#        - in: query
+#          name: vendor-name
+#          required: true
+#          type: string
+#
+#      responses:
+#        200:
+#          description: "Sales retrieved"
+#        500:
+#          description: "Internal server error"
 
 
 

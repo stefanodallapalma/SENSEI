@@ -8,7 +8,7 @@ function getChartSalesData() {
     var sales = null;
 
     $.ajax({
-        url: 'http://0.0.0.0:4500/sales/',
+        url: 'http://0.0.0.0:4500/ta/sales/last-month/',
         type: 'GET',
         datatype: 'jsonp',
         success: function(data) {
