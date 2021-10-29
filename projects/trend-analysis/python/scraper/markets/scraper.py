@@ -236,7 +236,7 @@ class ProductScraper(ABC):
                 conversion_rate = response.json()['rates'][date_1]['USD']
                 return price / conversion_rate
             else:
-                print('error: Request went wrong, exchangerates api status code: ' + str(response.status_code))
+                print('error: Request went wrong, exchangerates api_endpoints status code: ' + str(response.status_code))
                 return None
         else:
             if type(date) != datetime.date:

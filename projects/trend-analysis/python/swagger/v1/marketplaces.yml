@@ -1,0 +1,130 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/v1/marketplaces"
+
+# Paths supported by the server application
+paths:
+  /:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.markets.markets_list"
+      summary: "Get all market implemented"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "Markets retrieved"
+        500:
+          description: "Internal server error"
+
+  /dumps/:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.markets.get_all_dumps"
+      summary: "Get all dumps stored for each market"
+      responses:
+        200:
+          description: "The json containing all the projects"
+    delete:
+      operationId: "api_endpoints.endpoints.trend_analysis.markets.delete_all_dumps"
+      summary: "Delete all dumps for each market passed as input"
+
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: formData
+          name: db
+          required: false
+          type: string
+
+      responses:
+        200:
+          description: "The json containing all the projects"
+
+  /dumps/{market}:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.markets.get_dumps"
+      summary: "Get all dumps stored for the market passed as input"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: market
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "The json containing all the projects"
+    post:
+      operationId: "api_endpoints.endpoints.trend_analysis.markets.load_dump"
+      summary: "Upload a dump for the market selected"
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  formData
+          name: market_zip
+          required: true
+          type: file
+        - in: path
+          name: market
+          required: true
+          type: string
+        - in: formData
+          name: timestamp
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "Dump uploaded successfully"
+        404:
+          description: "Bad request. More information in the response"
+        500:
+          description: "Internal server error"
+    delete:
+      operationId: "api_endpoints.endpoints.trend_analysis.markets.delete_dumps"
+      summary: "Delete all dumps passed as input, for the given market"
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: market
+          required: true
+          type: string
+        - in: formData
+          name: timestamp
+          required: false
+          type: array
+          items:
+            type: string
+        - in: formData
+          name: db
+          required: false
+          type: string
+
+      responses:
+        200:
+          description: "The json containing all the projects"
+

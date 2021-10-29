@@ -4,9 +4,9 @@ import traceback
 from datetime import datetime
 
 from celery_task.celery_app import celery
-from modules.trend_analysis.scraper.enum import Market
+from scraper.enum import Market
 from modules.trend_analysis.markets.local.MarketLocalProject import MarketLocalProject
-from celery_task.tasks.trend_analysis import market as market_task
+from celery_task.tasks import market as market_task
 from exceptions import UndefinedTaskStateException
 from database.anita.controller.FeedbackController import FeedbackController
 from database.anita.controller.ProductController import ProductController

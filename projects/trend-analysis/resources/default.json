@@ -1,0 +1,10 @@
+{
+    "mysql_host": "mysql",
+    "mysql_port": "3306",
+    "mysql_user": "root",
+    "mysql_password": "gfT!-@sayUOO",
+    "sonarqube_host": "sonarqube",
+    "sonarqube_port": "9000",
+    "sonarqube_user": "admin",
+    "sonarqube_password": "admin"
+}

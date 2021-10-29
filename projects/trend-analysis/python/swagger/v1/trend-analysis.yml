@@ -1,0 +1,253 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/v1/trend-analysis"
+
+# Paths supported by the server application
+paths:
+  /{marketplace}/vendors/:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.get_vendors"
+      summary: ""
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: marketplace
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all vendors for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /{marketplace}/vendors/{vendor}:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.get_vendor"
+      summary: ""
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: marketplace
+          required: true
+          type: string
+        - in:  path
+          name: vendor
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all the vendor's info of a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace and/or vendor not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /{marketplace}/vendors/{vendor}/products:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.get_vendor_products"
+      summary: ""
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: marketplace
+          required: true
+          type: string
+        - in:  path
+          name: vendor
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all the products of a vendor in a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace and/or vendor not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /{marketplace}/vendors/{vendor}/product:
+    post:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.get_vendor_product"
+      summary: ""
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: marketplace
+          required: true
+          type: string
+        - in:  path
+          name: vendor
+          required: true
+          type: string
+        - in: formData
+          name: name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing the product's info of a vendor in a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace and/or vendor not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /{marketplace}/products/:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.get_products"
+      summary: ""
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in:  path
+          name: marketplace
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all products for a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /{marketplace}/product/:
+    post:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.get_product"
+      summary: "Endpoint used to obtain all the data related to a project from the db"
+
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: marketplace
+          required: true
+          type: string
+        - in: formData
+          name: name
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing all the product's info of a given marketplace, ordered by timestamp"
+        404:
+          description: "Marketplace and/or vendor not found"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /graph-analysis/vendors/:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.graph_analysis"
+      summary: "Provides the graph analysis of each vendor in all marketplaces available"
+
+      produces:
+        - "application/json"
+
+      responses:
+        200:
+          description: "A json containing the graph analysis of all vendors"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /graph-analysis/vendors/{vendor}:
+    get:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.graph_analysis_vendor"
+      summary: "Provides the graph analysis of a vendor, showing the relation with all marketplaces available"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: path
+          name: vendor
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing the graph analysis of a vendor"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"
+
+  /graph-analysis/pgp/:
+    post:
+      operationId: "api_endpoints.endpoints.trend_analysis.trend_analysis.graph_analysis_pgp"
+      summary: "Provides the graph analysis of a vendor, showing the relation with all marketplaces available, based on its pgp key"
+
+      consumes:
+        - "application/xml"
+      produces:
+        - "application/json"
+
+      parameters:
+        - in: formData
+          name: pgp
+          required: true
+          type: string
+
+      responses:
+        200:
+          description: "A json containing the graph analysis of a vendor"
+        500:
+          description: "Internal server error: general error used if the server raises an exception unmanaged by other 5xx status code"
+        503:
+          description: "Database unreachable"

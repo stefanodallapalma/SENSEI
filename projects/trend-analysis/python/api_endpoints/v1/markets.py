@@ -23,11 +23,10 @@ logger = logging.getLogger("Markets endpoint")
 
 # Markets
 def markets_list():
-    logger.debug("Endpoint MARKET LIST - START")
-    status, content = markets.get_markets()
-    logger.debug(content)
-    logger.debug("Endpoint MARKET LIST - END")
-    return Response(content, status=status, mimetype="application/json")
+    # Get the market list from the scraper enum
+    markets = [market.name.lower() for market in Market if market.value != 0]
+
+    return Response(json.dumps(markets), status=200, mimetype="application/json")
 
 
 # Markets - Dumps
@@ -148,7 +147,46 @@ def load_dump(market):
         return Response(json.dumps(error_content), status=404, mimetype="application/json")
 
     try:
-        status, content = markets.load_dump(market, market_zip, timestamp)
+        # Preconditions
+        markets = [market.name.lower() for market in Market if market.value != 0]
+        market_local = MarketLocalProject(market)
+
+        if market is None or market.lower() not in markets:
+            error = {"error": "Market not implemented"}
+            return Response(json.dumps(error), status=404, mimetype="application/json")
+
+        if market_local.dump_path(timestamp) is not None:
+            error = {"error": "Dump already loaded"}
+            return Response(json.dumps(error), status=404, mimetype="application/json")
+
+        logger.info("Analysing {} dump".format(market + "-" + str(timestamp)))
+
+        if timestamp is None:
+            logger.info("Impossible to retrieve the timestamp. Generation of a new one")
+            timestamp = int(datetime.now().timestamp())
+
+        logger.info("Timestamp - {}".format(timestamp))
+
+        # Unique id
+        unique_id = "-".join(
+            ["TA", market, str(timestamp), str(int(datetime.now().timestamp())), market_task.LOAD_DUMP_TASK_ID])
+
+        # CELERY TASK
+        task = celery.AsyncResult(unique_id)
+
+        if task.state != "PENDING":
+            error = {"error": "Duplicate task"}
+            return Response(json.dumps(error), status=400, mimetype="application/json")
+
+        # STEP 1 - SAVE DUMP
+        market_local.save_and_extract(dump_zip, timestamp, delete_zip=True)
+        dump_path = market_local.dump_path(str(timestamp))
+
+        # Start the task
+        args = [dump_path, market, timestamp]
+        market_task.load_dump.apply_async(args, task_id=unique_id)
+
+        content = {"unique_id": unique_id}
     except Exception as e:
         logger.error("Internal server error")
         logger.error(str(e))
@@ -158,7 +196,7 @@ def load_dump(market):
         return Response(json.dumps(error_content), status=500, mimetype="application/json")
 
     logger.info("Endpoint Load dump - END")
-    return Response(json.dumps(content, sort_keys=False), status=202, mimetype="application/json")
+    return Response(json.dumps(content), status=202, mimetype="application/json")
 
 
 def delete_dumps(market):
